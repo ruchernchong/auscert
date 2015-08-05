@@ -2,7 +2,7 @@
   <head>
 	<meta charset="UTF-8">
 	<title>My Place Login</title>
-	<link rel="stylesheet" type="text/css" href=" <?php echo base_url('assets/my.css'); ?>" /> 
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/my.css'); ?>" /> 
 	<script src="js/jquery-1.11.0.min.js"></script>
   </head>
   <body class="login_bg">
