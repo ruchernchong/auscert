@@ -9,9 +9,9 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>Dashboard</title>
-    <link href="../Redones/assets/my.css" rel="stylesheet">
+    <link href="assets/my.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
-    <link href="../Redones/assets/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/bootstrap.min.css" rel="stylesheet">
 
   </head>
 
