@@ -8,7 +8,7 @@
   <body class="login_bg">
     <div class="uq-login">
       <div class="uq-logo"></div>
-       <form method="post" class="login_form effect7" action='Login/Check_Login' name='Check_Login'>
+       <form method="post" class="login_form effect7" action='index.php' name='Check_Login'>
         <?php
             $attr =  array('class' => 'login_form effect7');
         //echo form_open('Login/check_login',$attr);?>

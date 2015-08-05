@@ -13,7 +13,7 @@
 	$query = "SELECT `username` FROM `members` WHERE 1";
 	if($query != ""){
 		if(!$result = $dbconn->query($query)){
-			die("There was an error running the query [".$db->error."]");
+			die("There was an error running the query [".$dbconn->error."]");
 		}
 	}
 	$row = $result->fetch_assoc();

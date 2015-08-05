@@ -4,7 +4,7 @@
 	$dbhost = "localhost";
 	// Username & password for accessing the database, you can use phpMyAdmin to create users for your database
 	$dbuser = "root";
-	$dbpass = "4SUr=@PAf%yS";
+	$dbpass = "";
 	// Database to be accessed - replace this with the name you've given to your database
 	$dbname = "deco";
 	
