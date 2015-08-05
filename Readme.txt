@@ -8,4 +8,4 @@ Application Deployment Procedures
 3. configure the database connection information by going to /application/config/database.php and there are instructions about how to configure the host, username and password in the file.
 4. deploy the whole folder as the web application.
 
-/* There are samples of javascript and flash programs in AllPrototye folder */
+/* There are samples of javascript and flash programs in AllPrototye folder  .*/
