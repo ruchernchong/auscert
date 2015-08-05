@@ -1,0 +1,37 @@
+
+em{
+	font-style: italic;
+}
+
+strong{
+	font-weight: bold;
+}
+
+iframe{
+	background-color: #FFF;
+}
+
+input{
+	margin: 0px 30px;
+}
+
+#content{
+	background-color: #8AB8E6;
+	margin: 100px auto;
+	width: 700px;
+	text-align: left;
+	overflow: auto;
+	padding-bottom: 61px;
+}
+
+#search-results ul{
+	list-style-type: none;
+}
+
+#search-results li{
+	font-weight: bold;
+}
+
+#search-results span{
+	font-weight: normal;
+}

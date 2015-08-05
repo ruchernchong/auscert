@@ -1,0 +1,1 @@
+THIS TEXT WAS LOADED FROM A FILE. This is a test piece of text. You can see that tags can be used as normal, such as <strong>strong</strong> and <em>emphasis</em>. You can also use <a href="http://www.google.com">links</a>

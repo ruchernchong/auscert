@@ -1,0 +1,53 @@
+body{
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+p{
+	font-family: Verdana, Geneva, sans-serif;
+	padding: 15px 15px 0px 20px;
+	font-size: 1em;
+	line-height: 1.2em;
+}
+
+h1, h2, h3, h4, h5, h6, h7{
+	font-family: Georgia, Times, "Times New Roman", serif;
+	padding: 15px 15px 0px 20px;
+}
+
+em{
+	font-style: italic;
+}
+
+strong{
+	font-weight: bold;
+}
+
+iframe{
+	background-color: #FFF;
+}
+
+input{
+	margin: 0px 30px;
+}
+
+#content{
+	background-color: #8AB8E6;
+	margin: 10px auto;
+	width: 700px;
+	text-align: left;
+	overflow: auto;
+	padding-bottom: 61px;
+}
+
+#search-results ul{
+	list-style-type: none;
+}
+
+#search-results li{
+	font-weight: bold;
+}
+
+#search-results span{
+	font-weight: normal;
+}

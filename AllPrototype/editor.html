@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or http://ckeditor.com/license
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CKEditor Sample</title>
+	<script src="ckeditor/ckeditor.js"></script>
+	<link rel="stylesheet" href="css/style.css" type="css/text/css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<!--<script type="text/javascript" src="js/texteditor.js"></script>-->
+	<style>
+		div.editable
+		{
+			border: solid 2px transparent;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+
+		div.border:hover
+		{
+			border-color: black;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="content">
+		<h1>CKEditor Sample</h1>
+		<div>
+			<p>
+				This sample shows how to automatically replace &lt;div&gt; elements with a CKEditor instance. The content that was previously placed inside the &lt;div&gt; element will now be moved into CKEditor editing area.
+			</p>
+			<p>
+				Edit the text below.
+			</p>
+		</div>
+		<div id="editable" contenteditable="true">
+			<p>
+				Edit this text
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras et ipsum quis mi
+				semper accumsan. Integer pretium dui id massa. Suspendisse in nisl sit amet urna
+				rutrum imperdiet. Nulla eu tellus. Donec ante nisi, ullamcorper quis, fringilla
+				nec, sagittis eleifend, pede. Nulla commodo interdum massa. Donec id metus. Fusce
+				eu ipsum. Suspendisse auctor. Phasellus fermentum porttitor risus.
+			</p>
+		</div>
+		<div>
+			<p>
+				CKEditor - The text editor for the Internet - <a class="samples" href="http://ckeditor.com/">http://ckeditor.com</a>
+			</p>
+			<p id="copy">
+				Copyright &copy; 2003-2015, <a class="samples" href="http://cksource.com/">CKSource</a> - Frederico
+				Knabben. All rights reserved.
+			</p>
+		</div>
+	</div>
+	<script>
+		// We need to turn off the automatic editor creation first.
+		CKEDITOR.disableAutoInline = true;
+
+		var editor = CKEDITOR.inline( 'editable' );
+	</script>
+</body>
+</html>

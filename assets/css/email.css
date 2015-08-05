@@ -1,0 +1,151 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+
+
+#header{
+	background-color:#000;
+	color: #FFF;
+	margin: 0;
+	font-size: 1.2em;
+	height: 50px;
+	width: 100%;
+	min-width: 600px;
+}
+
+#header p{
+	display: block;
+	margin-left: 20px;
+	padding-top: 10px;
+	font-size: 1.3em;
+	float: left;
+}
+
+#header img{
+	display:block;
+	float: right;
+}
+
+/*Sidebar*/
+#sidebar{
+	width: 225px;
+	float:left;
+	text-align: left;
+	margin: 10px;
+	padding-top: 15px;
+}
+
+#sidebar h1{ 
+	margin-bottom: 20px;
+	font-size: 1.2em;
+	padding-left: 10px;
+}
+
+#sidebar li{ display: inline; }
+
+#sidebar a{ 
+	cursor: pointer;
+	font-size: 0.9em;
+}
+
+/*Options*/
+#one{ text-align: right; }
+
+#one li{ margin: 0px; }
+
+#one a{
+	display: block;
+	float:right;
+	padding: 2px 5px;
+	margin-bottom: 5px;
+}
+
+#one a:hover{
+	color: #2424b2;
+	background-color: #c6c6c6;
+}
+
+#two a{
+	display: block;
+	width: 225px;
+	float:left;
+	padding: 5px;
+}
+
+#two a:hover{ background-color: #c6c6c6; }
+
+#content{
+	padding-top: 15px;
+	float:left;
+	border-left: 1px dotted #000;
+	padding-left: 15px;
+}
+
+.option{
+	text-align: right;
+	display:block;
+	/*background-color: #ff0000;*/
+	border-bottom: 1px solid #0066FF;
+	height: 25px;
+}
+
+.option li{
+	margin: 0px;
+	display: inline;
+}
+
+.option a{
+	color: #000;
+	background-color: #FFF;
+	width: 80px;
+	height: 20px;
+	display: block;
+	float: right;
+	text-align: center;
+	cursor: pointer;
+	padding-top: 5px;
+}
+
+.option a:hover{
+	color: #0066FF;
+	background-color: #c6c6c6;
+}
+
+.option a:visited{
+	color: #000;
+	background-color: #FFF;
+}
+
+.option a:active{
+	color: #FFF;
+	background-color: #7b7b7b;
+}
+
+#link{
+	color: #0000FF;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.email{
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+.email p{
+	margin: 10px auto;
+}
+
+.selected{
+	color: #0066FF;
+}
+
+.content{
+	width: 400px;
+}
+
+.info{
+	padding-bottom: 15px;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}

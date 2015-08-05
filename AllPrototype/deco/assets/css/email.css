@@ -1,0 +1,187 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+	min-width: 625px;
+}
+
+ul{
+	list-style-type: none;
+}
+
+h1{
+	font-size: 1.8em;
+	margin: 5px auto;
+}
+
+strong{
+	font-weight: bold;
+}
+
+#header{
+	background-color:#000;
+	color: #FFF;
+	margin: 0;
+	font-size: 1.2em;
+	height: 50px;
+	width: 100%;
+	min-width: 600px;
+}
+
+#header p{
+	display: block;
+	margin-left: 20px;
+	padding-top: 10px;
+	font-size: 1.3em;
+	float: left;
+}
+
+#header img{
+	display:block;
+	float: right;
+}
+
+/*Sidebar*/
+#sidebar{
+	width: 225px;
+	float:left;
+	text-align: left;
+	margin: 10px;
+	padding-top: 15px;
+}
+
+#sidebar h1{ 
+	margin-bottom: 20px;
+	font-size: 1.2em;
+	padding-left: 10px;
+}
+
+#sidebar li{ display: inline; }
+
+#sidebar a{ 
+	cursor: pointer;
+	font-size: 0.9em;
+}
+
+/*Options*/
+#one{ text-align: right; }
+
+#one li{ margin: 0px; }
+
+#one a{
+	display: block;
+	float:right;
+	padding: 2px 5px;
+	margin-bottom: 5px;
+}
+
+#one a:hover{
+	color: #2424b2;
+	background-color: #c6c6c6;
+}
+
+#two a{
+	display: block;
+	width: 225px;
+	float:left;
+	padding: 5px;
+}
+
+#two a:hover{ background-color: #c6c6c6; }
+
+#content{
+	padding-top: 15px;
+	float:left;
+	border-left: 1px dotted #000;
+	padding-left: 15px;
+}
+
+#options{
+	text-align: right;
+	display:block;
+	background-color: #ff0000;
+	border-top: 1px solid #0066FF;
+}
+
+#options li{
+	margin: 0px;
+	display: inline;
+}
+
+#options a{
+	color: #000;
+	background-color: #FFF;
+	width: 120px;
+	height: 25px;
+	display: block;
+	float: right;
+	text-align: center;
+	cursor: pointer;
+	padding-top: 8px;
+}
+
+#options a:hover{
+	color: #0066FF;
+	background-color: #c6c6c6;
+}
+
+#options a:visited{
+	color: #000;
+	background-color: #FFF;
+}
+
+#options a:active{
+	color: #FFF;
+	background-color: #7b7b7b;
+}
+
+.email{
+	padding-top: 40px;
+	padding-left: 10px;
+}
+
+.email p{
+	margin: 10px auto;
+}
+
+#title{
+	margin-bottom: 20px;
+}
+
+#delete a{
+	color: #000;
+	background-color: #FFF;
+	width: 120px;
+	height: 25px;
+	display: block;
+	float: right;
+	text-align: center;
+	cursor: pointer;
+	padding-top: 8px;
+}
+
+#delete a:hover{
+	color: #0066FF;
+	background-color: #c6c6c6;
+}
+
+#delete a:visited{
+	color: #000;
+	background-color: #FFF;
+}
+
+#delete a:active{
+	color: #FFF;
+	background-color: #7b7b7b;
+}
+
+.selected{
+	color: #0066FF;
+}
+
+.content{
+	width: 400px;
+}
