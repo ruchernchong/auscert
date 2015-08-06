@@ -24,7 +24,7 @@ class Learning extends CI_Controller {
                          }
                          //var_dump($slides);
 			 $this->load->view('header',$data);
-			 $this->load->view('learning_view',$data);
+			 $this->load->view('view_learning',$data);
 		   }
 		   else
 		   {
