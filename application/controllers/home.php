@@ -8,7 +8,7 @@ class Home extends CI_Controller {
 
 	}
 	public function index(){
-		
+
 		if($this->session->userdata('logged_in'))
 		{
 			$session_data = $this->session->userdata('logged_in');
@@ -24,15 +24,15 @@ class Home extends CI_Controller {
 			redirect('welcome', 'refresh');
 		}
 	}
-	
+
 	function logout()
 	{
-		
+
 		$this->session->unset_userdata('logged_in');
 		redirect('home','refresh');
 		session_destroy();
 	}
-	
+
 	
 	function mygrade()
 	{
@@ -42,18 +42,18 @@ class Home extends CI_Controller {
 			$data['username'] = $session_data['username'];
 			$data['menu'] = "mygrade";
 			$this->load->view('header',$data);
-			$this->load->view('mygrade_view');
+			$this->load->view('view_myGrade');
 		}
 		else
 		{
 			 //If no session, redirect to login page
 			redirect('welcome', 'refresh');
 		} 
-		
-	}
-	
 
-	
+	}
+
+
+
 	function adminpage()
 	{
 		if($this->session->userdata('logged_in'))
@@ -74,7 +74,7 @@ class Home extends CI_Controller {
 		 //If no session, redirect to login page
 			redirect('welcome', 'refresh');
 		} 
-		
+
 	}
 
 }
