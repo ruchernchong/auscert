@@ -1,34 +1,7 @@
 /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 
-@import url(http://fonts.googleapis.com/css?family=Lato);
 
-body {
-	font-family: 'Lato';
-	margin-top: 100px;
-	background-color: #fff;
-}
-
-@media(min-width:768px) {
-	body {
-		margin-top: 50px;
-	}
-}
-
-ul{
-	list-style-type: none;
-}
-
-h1{
-	font-size: 1.8em;
-	margin: 5px auto;
-}
-
-strong{
-	font-weight: bold;
-}
-
-#header1{
+#header{
 	background-color:#000;
 	color: #FFF;
 	margin: 0;
@@ -38,7 +11,7 @@ strong{
 	min-width: 600px;
 }
 
-#header1 p{
+#header p{
 	display: block;
 	margin-left: 20px;
 	padding-top: 10px;
@@ -46,13 +19,13 @@ strong{
 	float: left;
 }
 
-#header1 img{
+#header img{
 	display:block;
 	float: right;
 }
 
 /*Sidebar*/
-#sidebar1{
+#sidebar{
 	width: 225px;
 	float:left;
 	text-align: left;
@@ -60,135 +33,119 @@ strong{
 	padding-top: 15px;
 }
 
-#sidebar1 h1{ 
+#sidebar h1{ 
 	margin-bottom: 20px;
 	font-size: 1.2em;
 	padding-left: 10px;
 }
 
-#sidebar1 li{ display: inline; }
+#sidebar li{ display: inline; }
 
-#sidebar1 a{ 
+#sidebar a{ 
 	cursor: pointer;
 	font-size: 0.9em;
 }
 
 /*Options*/
-#one1{ text-align: right; }
+#one{ text-align: right; }
 
-#one1 li{ margin: 0px; }
+#one li{ margin: 0px; }
 
-#one1 a{
+#one a{
 	display: block;
 	float:right;
 	padding: 2px 5px;
 	margin-bottom: 5px;
 }
 
-#one1 a:hover{
+#one a:hover{
 	color: #2424b2;
 	background-color: #c6c6c6;
 }
 
-#two1 a{
+#two a{
 	display: block;
 	width: 225px;
 	float:left;
 	padding: 5px;
 }
 
-#two1 a:hover{ background-color: #c6c6c6; }
+#two a:hover{ background-color: #c6c6c6; }
 
-#content1{
+#content{
 	padding-top: 15px;
 	float:left;
 	border-left: 1px dotted #000;
 	padding-left: 15px;
 }
 
-#options1{
+.option{
 	text-align: right;
 	display:block;
-	background-color: #ff0000;
-	border-top: 1px solid #0066FF;
+	/*background-color: #ff0000;*/
+	border-bottom: 1px solid #0066FF;
+	height: 25px;
 }
 
-#options1 li{
+.option li{
 	margin: 0px;
 	display: inline;
 }
 
-#options1 a{
+.option a{
 	color: #000;
 	background-color: #FFF;
-	width: 120px;
-	height: 25px;
+	width: 80px;
+	height: 20px;
 	display: block;
 	float: right;
 	text-align: center;
 	cursor: pointer;
-	padding-top: 8px;
+	padding-top: 5px;
 }
 
-#options1 a:hover{
+.option a:hover{
 	color: #0066FF;
 	background-color: #c6c6c6;
 }
 
-#options1 a:visited{
+.option a:visited{
 	color: #000;
 	background-color: #FFF;
 }
 
-#options1 a:active{
+.option a:active{
 	color: #FFF;
 	background-color: #7b7b7b;
 }
 
-.email1{
-	padding-top: 40px;
+#link{
+	color: #0000FF;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.email{
+	padding-top: 10px;
 	padding-left: 10px;
 }
 
-.email1 p{
+.email p{
 	margin: 10px auto;
 }
 
-#title1{
-	margin-bottom: 20px;
-}
-
-#delete1 a{
-	color: #000;
-	background-color: #FFF;
-	width: 120px;
-	height: 25px;
-	display: block;
-	float: right;
-	text-align: center;
-	cursor: pointer;
-	padding-top: 8px;
-}
-
-#delete1 a:hover{
-	color: #0066FF;
-	background-color: #c6c6c6;
-}
-
-#delete1 a:visited{
-	color: #000;
-	background-color: #FFF;
-}
-
-#delete1 a:active{
-	color: #FFF;
-	background-color: #7b7b7b;
-}
-
-.selected1{
+.selected{
 	color: #0066FF;
 }
 
-.content1{
+.content{
 	width: 400px;
+}
+
+.info{
+	padding-bottom: 15px;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
 }
