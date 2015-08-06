@@ -15,16 +15,16 @@
     <link href="<?php echo base_url('assets/csstest/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/csstest/css/sb-admin.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/csstest/css/sb-admin-rtl.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/csstest/css/quiz.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/csstest/js/ui/jquery-ui.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/email.css'); ?>" rel="stylesheet">
-	<script src="<?php echo base_url('assets/csstest/ckeditor/ckeditor.js'); ?>"></script>
+    <link href="<?php echo base_url('assets/csstest/css/quiz.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/csstest/js/ui/jquery-ui.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/email.css'); ?>" rel="stylesheet">
+    <script src="<?php echo base_url('assets/csstest/ckeditor/ckeditor.js'); ?>"></script>
     <link href="<?php echo base_url('assets/csstest/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
-	<script src="<?php echo base_url('assets/csstest/js/jquery.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/csstest/js/quiz.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/csstest/js/ui/jquery-ui.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/csstest/js/dash.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/csstest/js/email.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/csstest/js/jquery.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/csstest/js/quiz.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/csstest/js/ui/jquery-ui.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/csstest/js/dash.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/csstest/js/email.js'); ?>"></script>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
             <div class="navbar-header">
                 
                 <div><img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo"></div>
-				
+                
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -58,22 +58,22 @@
                         <li>
                             <a href="<?php echo site_url('home/logout') ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
-						
+                        
                     </ul>
                 </li>
             </ul>
- <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             
             <div  id="sidebar-wrapper">
-			
+             
                 <ul class="nav navbar-nav side-nav">
-					<li class="side-user hidden-xs">
-						<div class="photo">
-						<img class="img-circle" alt="" src="<?php echo base_url('assets/img/batman.jpg'); ?>"></img>
-						<p class="welcome">Logged in as</p>
-						<p class="name"><?php echo $username;?></p>
-						</div>
-					</li>
+                   <li class="side-user hidden-xs">
+                      <div class="photo">
+                          <img class="img-circle" alt="" src="<?php echo base_url('assets/img/batman.jpg'); ?>"></img>
+                          <p class="welcome">Logged in as</p>
+                          <p class="name"><?php echo $username;?></p>
+                      </div>
+                  </li>
 					<!--<li class="side-nav-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
@@ -85,7 +85,7 @@
                             </div>
                             
                         </li>
-						--><!-- /input-group -->
+                    --><!-- /input-group -->
                     <li class="<?php if ($menu=="home"){ echo "active"; } ?>">
                         <a href="<?php echo site_url('home') ?>"><i class="fa fa-fw fa-home"></i>  Home</a>
                     </li>
@@ -97,12 +97,12 @@
                     <li class="<?php if ($menu=="course"){ echo "active"; } ?>">
                         <a href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i>  Course </a>
                     </li>
-					<?php if ($username=="admin"){?>
-					<li class="<?php if ($menu=="adminpage"){ echo "active"; } ?>">
+                    <?php if ($username=="admin"){?>
+                    <li class="<?php if ($menu=="adminpage"){ echo "active"; } ?>">
                         <a href="<?php echo site_url('home/adminpage')?>"><i class="fa fa-fw fa-folder-open"></i>  Admin Page </a>	
                     </li>
-					<?php } ?>
+                    <?php } ?>
                 </ul>
-           
-           </div>
+                
+            </div>
         </nav>
