@@ -16,7 +16,7 @@ class Home extends CI_Controller {
 			$data['menu'] = "home";
 			$this->load->view('header',$data);
 			$this->load->view('dashboard');
-			$this->load->view("footer");
+			// $this->load->view("footer");
 		}
 		else
 		{
