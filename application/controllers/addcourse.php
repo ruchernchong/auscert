@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Addcourse extends CI_Controller {
+class addCourse extends CI_Controller {
 	function __construct(){
         parent::__construct();
 		
@@ -15,7 +15,7 @@ class Addcourse extends CI_Controller {
 			 $data['username'] = $session_data['username'];
 			 $data['menu'] = "adminpage";
 			 $this->load->view('header',$data);
-			 $this->load->view('addCourse_view');
+			 $this->load->view('view_addCourse');
 		   }
 		   else
 		   {
