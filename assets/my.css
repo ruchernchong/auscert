@@ -64,7 +64,7 @@ input:focus {-webkit-appearance:none;-webkit-box-shadow: none;outline:none;}
 .form-group input.text-input { width:205px;margin:5px 22px;height:36px;border-radius: 0px;border:2px solid white;font-family:"Lato";font-size:16px;font-weight: 600;padding:4px 4px 4px 35px;color:#777;}
 .form-group input.text-input:focus {border-color:#49075e;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,color ease-in-out .15s;color:#49075e;}
 .form-group input.text-input:focus + label {color:#49075e}
-.login_icon {width:20px;height:20px;position:absolute;top:15px;left:33px;font-family:Flat-UI-Pro-Icons;color:#BFC9CA; transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,color ease-in-out .15s;}
+.login_icon {width:20px;height:20px;position:absolute;top:20px;left:35px;font-family:Flat-UI-Pro-Icons;color:#BFC9CA; transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,color ease-in-out .15s;}
 .icon-lock:before {content:"\e633";}
 .icon-person:before {content:"\e631";}
 .form-group input[type="submit"] {width:250px;height:40px;border: 0 none; padding:4px;margin:5px 22px;border-radius: 0px;}
