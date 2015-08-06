@@ -37,20 +37,20 @@
 			<!-- Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $username;?> <b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&emsp;<?php echo $username;?> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+							<a href="#"><i class="fa fa-fw fa-user"></i>&emsp;Profile</a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+							<a href="#"><i class="fa fa-fw fa-envelope"></i>&emsp;Inbox</a>
 						</li>
 						<li>
-							<a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+							<a href="#"><i class="fa fa-fw fa-gear"></i>&emsp;Settings</a>
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="<?php echo site_url('home/logout') ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+							<a href="<?php echo site_url('home/logout') ?>"><i class="fa fa-fw fa-power-off"></i>&emsp;Log Out</a>
 						</li>
 					</ul>
 				</li>
@@ -79,17 +79,17 @@
 					</li>
 				-->
 				<li class="<?php if ($menu=="home") { echo "active"; } ?>">
-					<a href="<?php echo site_url('home') ?>"><i class="fa fa-fw fa-home"></i> Home</a>
+					<a href="<?php echo site_url('home') ?>"><i class="fa fa-fw fa-home"></i>&emsp;Home</a>
 				</li>
 				<li class="<?php if ($menu=="mygrade") { echo "active"; } ?>">
-					<a href="<?php echo site_url('home/mygrade') ?>"><i class="fa fa-fw fa-check-square"></i> My Grade</a>
+					<a href="<?php echo site_url('home/mygrade') ?>"><i class="fa fa-fw fa-check-square"></i>&emsp;My Grade</a>
 				</li>
 				<li class="<?php if ($menu=="course") { echo "active"; } ?>">
-					<a href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i> Course </a>
+					<a href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i>&emsp;Course </a>
 				</li>
 				<?php if ($username=="admin") { ?>
 				<li class="<?php if ($menu=="admin") { echo "active"; } ?>">
-					<a href="<?php echo site_url('home/admin')?>"><i class="fa fa-fw fa-folder-open"></i> Admin Page </a>	
+					<a href="<?php echo site_url('home/admin')?>"><i class="fa fa-fw fa-folder-open"></i>&emsp;Admin Page </a>	
 				</li>
 				<?php 
 			} 
