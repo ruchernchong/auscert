@@ -10,10 +10,10 @@
 	<title>AusCert | Dashboard</title>
 
 	<!-- Bootstrap Core CSS -->
-	<link href="<?php echo base_url('assets/csstest/css/bootstrap.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/csstest/css/sb-admin.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/csstest/css/sb-admin-rtl.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/csstest/css/quiz.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/sb-admin.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/sb-admin-rtl.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/quiz.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/csstest/js/ui/jquery-ui.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/email.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
