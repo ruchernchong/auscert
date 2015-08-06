@@ -14,16 +14,16 @@
 	<link href="<?php echo base_url('assets/css/sb-admin.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/sb-admin-rtl.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/quiz.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/csstest/js/ui/jquery-ui.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/jquery-ui.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/email.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
 
-	<script src="<?php echo base_url('assets/csstest/ckeditor/ckeditor.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/csstest/js/jquery.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/csstest/js/quiz.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/csstest/js/ui/jquery-ui.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/csstest/js/dash.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/csstest/js/email.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/dash.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/email.js'); ?>"></script>
 </head>
 
 <body>
@@ -88,8 +88,8 @@
 					<a href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i> Course </a>
 				</li>
 				<?php if ($username=="admin") { ?>
-				<li class="<?php if ($menu=="adminpage") { echo "active"; } ?>">
-					<a href="<?php echo site_url('home/adminpage')?>"><i class="fa fa-fw fa-folder-open"></i> Admin Page </a>	
+				<li class="<?php if ($menu=="admin") { echo "active"; } ?>">
+					<a href="<?php echo site_url('home/admin')?>"><i class="fa fa-fw fa-folder-open"></i> Admin Page </a>	
 				</li>
 				<?php 
 			} 
