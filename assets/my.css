@@ -23,7 +23,7 @@
     src: url(../assets/font/lato/lato-regular.woff);
 }
 
-html, body { height: 100%; margin: 0; padding: 0;}
+html, body { margin: 0; padding: 0;}
 input:focus {-webkit-appearance:none;-webkit-box-shadow: none;outline:none;}
 .content,.footer {width:1080px;margin:0 auto;padding:0 5px;}
 .content-inner {float:left;padding:0 5px;margin-bottom:25px;width:1080px;}
