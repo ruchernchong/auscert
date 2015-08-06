@@ -5,8 +5,10 @@
 */
 
 /* Global Styles */
+@import url(http://fonts.googleapis.com/css?family=Lato);
 
-body {
+html, body {
+	font-family: 'Lato';
 	margin-top: 100px;
 	background-color: #fff;
 }
