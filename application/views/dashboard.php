@@ -111,16 +111,16 @@
 					<div class="tile dark-blue checklist-tile" style="height: 370px">
 						<h4><i class="fa fa-check-square-o"></i> To-Do List</h4>
 						<div class="checklist">
-							<label class="selected">
-								<input checked="" type="checkbox"> <i class="fa fa-wrench fa-fw text-faded"></i> Software Update 2.1
+							<label class="strikeout">
+								<input type="checkbox" checked> <i class="fa fa-wrench fa-fw text-faded"></i> Software Update 2.1
 								<span class="task-time text-faded pull-right">Yesterday</span>
 							</label>
-							<label class="selected">
-								<input checked="" type="checkbox"> <i class="fa fa-wrench fa-fw text-faded"></i> Server #2 Hardward Upgrade
+							<label class="strikeout">
+								<input type="checkbox" checked> <i class="fa fa-wrench fa-fw text-faded"></i> Server #2 Hardward Upgrade
 								<span class="task-time text-faded pull-right">9:39 AM</span>
 							</label>
-							<label class="selected">
-								<input checked="" type="checkbox"> <i class="fa fa-warning fa-fw text-orange"></i> Call Ticket #2032
+							<label class="strikeout">
+								<input type="checkbox" checked> <i class="fa fa-warning fa-fw text-orange"></i> Call Ticket #2032
 								<span class="task-time text-faded pull-right">9:53 AM</span>
 							</label>
 							<label>

@@ -1351,7 +1351,7 @@
   	cursor: pointer;
   }
 
-  .selected {
+  .strikeout {
   	text-decoration: line-through;
   }
 
