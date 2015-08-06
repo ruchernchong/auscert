@@ -128,7 +128,8 @@ ul.alert-dropdown {
 	height: 100%;
 	margin-left: -225px;
 	overflow-y: auto;
-	background-color: #49075e;
+	/*background-color: #49075e;*/
+	background-color: #1B1B1B;
 	-webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
