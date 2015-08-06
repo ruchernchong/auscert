@@ -34,7 +34,7 @@ class Home extends CI_Controller {
 	}
 
 	
-	function mygrade()
+	function myGrade()
 	{
 		if($this->session->userdata('logged_in'))
 		{
@@ -52,9 +52,7 @@ class Home extends CI_Controller {
 
 	}
 
-
-
-	function adminpage()
+	function admin()
 	{
 		if($this->session->userdata('logged_in'))
 		{
@@ -67,17 +65,13 @@ class Home extends CI_Controller {
 			}
 
 			$this->load->view('header',$data);
-			$this->load->view('adminpage_view',$data);
+			$this->load->view('view_adminPage',$data);
 		}
 		else
 		{
 		 //If no session, redirect to login page
 			redirect('welcome', 'refresh');
-		} 
-
+		}
 	}
-
 }
-
-
 ?>
