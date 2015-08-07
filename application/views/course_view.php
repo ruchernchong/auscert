@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-lg-12">
 					<h1 class="page-header">
-                             Course <small>GUYS</small>
+                             Course
                         </h1>
                         </div>
                 </div>
@@ -46,7 +46,7 @@
                                         <td class="project-title">
                                             <a href="<?php echo site_url('learning?lid='.$l->lessonID) ?>"><?php echo $l->lName; ?></a>
                                             <br>
-                                            <small>Created 14.08.2014</small>
+                                            <small>Category: <?php echo $l->category; ?></small>
                                         </td>
                                         <td class="project-completion">
                                                 <small>Completion with: 48%</small>
