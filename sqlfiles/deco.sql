@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.10
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 14, 2015 at 12:16 PM
--- Server version: 5.6.19
--- PHP Version: 5.5.16
+-- Host: 127.0.0.1
+-- Generation Time: Aug 07, 2015 at 08:07 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `lessons` (
-  `lessonID` int(11) NOT NULL,
+`lessonID` int(11) NOT NULL,
   `lName` varchar(100) NOT NULL,
   `category` varchar(30) DEFAULT NULL,
   `material` text NOT NULL,
@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS `lessons` (
 --
 
 INSERT INTO `lessons` (`lessonID`, `lName`, `category`, `material`, `description`) VALUES
-(1, 'Phising Email', NULL, 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven''t heard of them accusamus labore sustainable VHS.', NULL),
-(2, 'Choosing Safe Password', NULL, 'Testing Data', 'description Data');
+(1, 'Phising Email', 'Security', 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven''t heard of them accusamus labore sustainable VHS.', NULL),
+(2, 'Choosing Safe Password', 'Privacy', 'Testing Data', 'description Data');
 
 -- --------------------------------------------------------
 
@@ -62,12 +62,12 @@ CREATE TABLE IF NOT EXISTS `quiz` (
 --
 
 CREATE TABLE IF NOT EXISTS `slide` (
-  `sid` int(11) NOT NULL,
+`sid` int(11) NOT NULL,
   `sOrder` int(3) NOT NULL,
   `sContent` text,
   `sTitle` varchar(50) NOT NULL,
   `lessonID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `slide`
@@ -75,7 +75,8 @@ CREATE TABLE IF NOT EXISTS `slide` (
 
 INSERT INTO `slide` (`sid`, `sOrder`, `sContent`, `sTitle`, `lessonID`) VALUES
 (1, 1, 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus\r\n                  terry richardson ad squid. 3 wolf moon officia aute, non cupidatat\r\n                  skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.\r\n                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid\r\n                  single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh\r\n                  helvetica, craft beer labore wes anderson cred nesciunt sapiente ea\r\n                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft\r\n                  beer farm-to-table, raw denim aesthetic synth nesciunt you probably\r\n                  haven''t heard of them accusamus labore sustainable VHS.', 'Introduction to Phishing Email', 1),
-(2, 2, 'Testing Content of Further Study', 'Special Phishing Emails', 1);
+(2, 2, 'Testing Content of Further Study', 'Special Phishing Emails', 1),
+(3, 1, 'Added by leon!', 'Introduction to Lightsabers', 2);
 
 -- --------------------------------------------------------
 
@@ -117,25 +118,25 @@ CREATE TABLE IF NOT EXISTS `user_lesson` (
 -- Indexes for table `lessons`
 --
 ALTER TABLE `lessons`
-  ADD PRIMARY KEY (`lessonID`);
+ ADD PRIMARY KEY (`lessonID`);
 
 --
 -- Indexes for table `slide`
 --
 ALTER TABLE `slide`
-  ADD PRIMARY KEY (`sid`), ADD KEY `lessonID` (`lessonID`);
+ ADD PRIMARY KEY (`sid`), ADD KEY `lessonID` (`lessonID`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`userID`);
+ ADD PRIMARY KEY (`userID`);
 
 --
 -- Indexes for table `user_lesson`
 --
 ALTER TABLE `user_lesson`
-  ADD PRIMARY KEY (`userID`,`lessonID`), ADD KEY `fk_lesson` (`lessonID`);
+ ADD PRIMARY KEY (`userID`,`lessonID`), ADD KEY `fk_lesson` (`lessonID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -145,12 +146,12 @@ ALTER TABLE `user_lesson`
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `lessonID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `lessonID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `slide`
 --
 ALTER TABLE `slide`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --

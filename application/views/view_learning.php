@@ -27,7 +27,7 @@
 									<div class="panel panel-default">
 										<div class="panel-heading">
 											<h4 class="panel-title"><a class="accordion-toggle" data-toggle=
-												"collapse" href="#collapseOne<?php if($i>0){echo ($i+1);} ?>">Reading</a></h4>
+												"collapse" href="#collapseOne<?php if($i>0){echo ($i+1);} ?>">Readings</a></h4>
 											</div>
 
 											<div id="collapseOne<?php if($i>0){echo ($i+1);} ?>" class="panel-collapse collapse in">
@@ -47,7 +47,7 @@
 													<div class="panel-body">
 														<div id="container">
 															<div id="title">
-																<h1>$courseName Quiz</h1>
+																<h1><?php echo $lessons[0]->lName; ?> Quiz</h1>
 															</div><br />
 
 															<div id="quiz" style="display: block;">
@@ -87,7 +87,7 @@
                                         <div class="panel panel-default">
                                         	<div class="panel-heading">
                                         		<h4 class="panel-title"><a class="accordion-toggle collapsed"
-                                        			data-toggle="collapse" href="#collapseThree<?php if($i>0){echo ($i+1);} ?>">Addition Task</a></h4>
+                                        			data-toggle="collapse" href="#collapseThree<?php if($i>0){echo ($i+1);} ?>">Interactive Task</a></h4>
                                         		</div>
 
                                         		<div id="collapseThree<?php if($i>0){echo ($i+1);} ?>" class="panel-collapse collapse" style=
@@ -218,12 +218,9 @@
                                     </div>
                                 </div>
                                 <?php } ?>
-
-
-
+                                
                             </div>
                         </div>
-
                     </div>
                 </div>
                 
