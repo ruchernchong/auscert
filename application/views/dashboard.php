@@ -9,12 +9,12 @@
 						<small>Content Overview</small>
 					</h1>
 					<ol class="breadcrumb">
-						<li class="active"><i class="fa fa-dashboard"></i>&emsp;Dashboard</li>
+						<li class="active"><i class="fa fa-dashboard"></i>&emsp;Welcome, <?php echo $username;?></li>
 						<li class="pull-right">
 							<div id="reportrange" class="btn btn-green btn-square date-picker">
 								<i class="fa fa-calendar"></i>
 								<!-- Hardcoded stuff; To be changed -->
-								<span class="date-range">&emsp;April 28, 2015 - May 27, 2015</span> <i class="fa fa-caret-down"></i>
+								<span class="date-range">&emsp;<?php echo date('l\, jS \of F Y'); ?></span> <i class="fa fa-caret-down"></i>
 							</div>
 						</li>
 					</ol>
