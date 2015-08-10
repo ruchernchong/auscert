@@ -44,7 +44,7 @@
                                             <span class="label label-default">Not finished</span>
                                         </td>
                                         <td class="project-title">
-                                            <a href="<?php echo site_url('learning?lid='.$l->lessonID) ?>"><?php echo $l->lName; ?></a>
+                                            <a href="<?php echo site_url('learning?lid='.$l->lessonID) ?>"><?php echo $l->lessonName; ?></a>
                                             <br>
                                             <small>Category: <?php echo $l->category; ?></small>
                                         </td>

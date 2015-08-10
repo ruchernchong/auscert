@@ -1,3 +1,8 @@
+-- Create a database called auscertdb
+-- Create a super user called auscert.
+-- Grant all privilages to auscert
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -14,7 +19,8 @@ CREATE TABLE IF NOT EXISTS `lessons` (
 
 INSERT INTO `lessons` (`lessonName`, `category`, `creator`, `material`, `description`) VALUES
 ('Phising Email', 'Online Safety', 'Tartiner Studios', 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven''t heard of them accusamus labore sustainable VHS.', NULL),
-('Choosing Safe Password', 'Account Security', 'Redones', 'Testing Data', 'description Data');
+('Choosing Safe Password', 'Account Security', 'Redones', 'Testing Data', 'description Data'),
+('Tartiner Studios Training', 'Introduction to the team', 'Tartiner Studios', 'Material goes here', 'description Data');
 
 
 

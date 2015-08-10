@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					<?php echo $lessons[0]->lName; ?>
+					<?php echo $lessons[0]->lessonName; ?>
 				</h1>
 			</div>
 		</div>
@@ -21,7 +21,7 @@
 						<div id="tab-<?php echo ($i+1); ?>" class="tab-pane <?php if($i==0){echo 'active';} ?>">
 							<div class="col-lg-12">
 								<h2>
-									<small><?php echo $slides[$i]->sTitle; ?></small>
+									<small><?php echo $slides[$i]->slideTitle; ?></small>
 								</h2>
 								<div class="panel-group" id="accordion">
 									<div class="panel panel-default">
@@ -32,7 +32,7 @@
 
 											<div id="collapseOne<?php if($i>0){echo ($i+1);} ?>" class="panel-collapse collapse in">
 												<div class="panel-body">
-													<?php echo $slides[$i]->sContent; ?>
+													<?php echo $slides[$i]->slideContent; ?>
 												</div>
 											</div>
 										</div>
@@ -47,7 +47,7 @@
 													<div class="panel-body">
 														<div id="container">
 															<div id="title">
-																<h1><?php echo $lessons[0]->lName; ?> Quiz</h1>
+																<h1><?php echo $lessons[0]->lessonName; ?> Quiz</h1>
 															</div><br />
 
 															<div id="quiz" style="display: block;">
