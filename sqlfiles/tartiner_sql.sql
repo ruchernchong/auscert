@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`userID`, `password`, `email`, `userType`) VALUES
 ('admin', 'admin', 'admin@gmail.com', 'admin'),
 ('Leon', 'admin', 'leonxenarax@gmail.com', 'creator'),
-('ruchern', 'admin', 'rc@gmail.com', 'user');
+('ruchern', 'admin', 'rc@gmail.com', 'admin');
 
 
 
