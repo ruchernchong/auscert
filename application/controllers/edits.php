@@ -15,9 +15,9 @@ class Edits extends CI_Controller {
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "adminpage";
-			
+
 			$this->load->view('header',$data);
-			$this->load->view('edits_view');
+			$this->load->view('view_editCourse');
 		} else {
 			 //If no session, redirect to login page
 			redirect('welcome', 'refresh');
