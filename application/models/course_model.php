@@ -11,8 +11,7 @@ Class course_model extends CI_Model {
 
 		$query = $this->db->get('user');
         //var_dump($query->num_rows);
-		if ($query->num_rows == 1)
-		{
+		if ($query->num_rows == 1) {
 			return $query->result();
 		}
 		return false;
@@ -21,8 +20,7 @@ Class course_model extends CI_Model {
 	public function GetCourse() {
 		$query = $this->db->get('lessons');
         //var_dump($query->num_rows);
-		if ($query->num_rows >= 1)
-		{
+		if ($query->num_rows >= 1) {
 			return $query->result();
 		}
 		return false;
@@ -31,7 +29,7 @@ Class course_model extends CI_Model {
 	public function GetCourseById() {
 		$this->db->where('lessonID',$this->input->get('lid'));
 		$query = $this->db->get('lessons');
-		if ($query->num_rows == 1){
+		if ($query->num_rows == 1) {
 			return $query->result();
 		}
 		return false;
