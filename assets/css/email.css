@@ -1,6 +1,3 @@
-/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
-
-
 #header{
 	background-color:#000;
 	color: #FFF;
@@ -147,5 +144,5 @@
 }
 
 .no-close .ui-dialog-titlebar-close {
-  display: none;
+	display: none;
 }
