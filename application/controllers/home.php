@@ -9,25 +9,22 @@ class Home extends CI_Controller {
 	}
 	public function index() {
 
-		if($this->session->userdata('logged_in'))
-		{
+		if($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "home";
+
 			$this->load->view('header',$data);
 			$this->load->view('dashboard');
 			// $this->load->view("footer");
-		}
-		else
-		{
+		} else {
 			 //If no session, redirect to login page
 			redirect('welcome', 'refresh');
 		}
 	}
 
-	function logout()
-	{
+	function logout() {
 
 		$this->session->unset_userdata('logged_in');
 		redirect('home','refresh');
@@ -35,41 +32,38 @@ class Home extends CI_Controller {
 	}
 
 	
-	function myGrade()
-	{
-		if($this->session->userdata('logged_in'))
-		{
+	function myGrade() {
+		if($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
+			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "mygrade";
+
 			$this->load->view('header',$data);
 			$this->load->view('view_myGrade');
-		}
-		else
-		{
+		} else {
 			 //If no session, redirect to login page
 			redirect('welcome', 'refresh');
 		} 
 
 	}
 
-	function admin()
-	{
-		if($this->session->userdata('logged_in'))
-		{
+	function admin() {
+		if($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
+			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "adminpage";
+			
 			$query = $this->course_model->GetCourse();
-			if ($query){
+
+			if ($query) {
 				$data['lessons'] = $query;
 			}
 
 			$this->load->view('header',$data);
 			$this->load->view('view_adminPage',$data);
-		}
-		else
-		{
+		} else {
 		 //If no session, redirect to login page
 			redirect('welcome', 'refresh');
 		}
