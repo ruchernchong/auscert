@@ -66,34 +66,34 @@
 							<p class="name"><?php echo $username;?></p>
 						</div>
 					</li>
-					<!--
+					
 					<li class="side-nav-search">
-					<div class="input-group custom-search-form">
-					<input type="text" class="form-control" placeholder="Search...">
-					<span class="input-group-btn">
-					<button class="btn btn-default" type="button">
-					<i class="fa fa-search"></i>
-					</button>
-					</span>
-					</div>
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Search...">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div>
 					</li>
-				-->
-				<li class="<?php if ($menu=="home") { echo "active"; } ?>">
-					<a href="<?php echo site_url('home') ?>"><i class="fa fa-fw fa-home"></i>&emsp;Home</a>
-				</li>
-				<li class="<?php if ($menu=="mygrade") { echo "active"; } ?>">
-					<a href="<?php echo site_url('home/mygrade') ?>"><i class="fa fa-fw fa-check-square"></i>&emsp;My Grade</a>
-				</li>
-				<li class="<?php if ($menu=="course") { echo "active"; } ?>">
-					<a href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i>&emsp;Course </a>
-				</li>
-				<?php if ($username=="admin") { ?>
-				<li class="<?php if ($menu=="admin") { echo "active"; } ?>">
-					<a href="<?php echo site_url('home/admin')?>"><i class="fa fa-fw fa-folder-open"></i>&emsp;Admin Page </a>	
-				</li>
-				<?php 
-			} 
-			?>
-		</ul>
-	</div>
-</nav>
+					
+					<li class="<?php if ($menu=="home") { echo "active"; } ?>">
+						<a href="<?php echo site_url('home') ?>"><i class="fa fa-fw fa-home"></i>&emsp;Home</a>
+					</li>
+					<li class="<?php if ($menu=="mygrade") { echo "active"; } ?>">
+						<a href="<?php echo site_url('home/mygrade') ?>"><i class="fa fa-fw fa-check-square"></i>&emsp;My Grade</a>
+					</li>
+					<li class="<?php if ($menu=="course") { echo "active"; } ?>">
+						<a href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i>&emsp;Course </a>
+					</li>
+					<?php if ($username=="admin") { ?>
+					<li class="<?php if ($menu=="admin") { echo "active"; } ?>">
+						<a href="<?php echo site_url('home/admin')?>"><i class="fa fa-fw fa-folder-open"></i>&emsp;Admin Page </a>	
+					</li>
+					<?php 
+				} 
+				?>
+			</ul>
+		</div>
+	</nav>
