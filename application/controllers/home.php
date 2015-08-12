@@ -7,12 +7,13 @@ class Home extends CI_Controller {
 		$this->load->model('course_model');
 
 	}
-	public function index(){
+	public function index() {
 
 		if($this->session->userdata('logged_in'))
 		{
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
+			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "home";
 			$this->load->view('header',$data);
 			$this->load->view('dashboard');
