@@ -108,7 +108,7 @@
 
 			<div class="col-lg-9">
 				<div class="row">
-					<div class="tile dark-blue checklist-tile" style="height: 370px">
+					<div class="tile dark-blue checklist-tile">
 						<h4><i class="fa fa-check-square-o"></i> To-Do List</h4>
 						<div class="checklist">
 							<label class="strikeout">
