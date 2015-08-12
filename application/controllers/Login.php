@@ -19,7 +19,7 @@ class Login extends CI_Controller {
 
 			foreach($query as $row)
 			{
-				$sess_array = array('username' => $row->userID);
+				$sess_array = array('username' => $row->username, 'usertype' => $row->userType);
 				$this->session->set_userdata('logged_in', $sess_array);
 			}
 			redirect('home', 'refresh');
