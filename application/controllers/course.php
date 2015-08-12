@@ -22,7 +22,7 @@ class Course extends CI_Controller {
 			$data['menu'] = "course";
 
 			$this->load->view('header',$data);
-			$this->load->view('course_view',$data);
+			$this->load->view('view_course',$data);
 		}
 		else
 		{
