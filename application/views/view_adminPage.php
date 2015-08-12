@@ -74,7 +74,7 @@
 											<tbody>
 												<?php foreach ($lessons as $l) {?>
 												<tr>
-													<td><a href="<?php echo site_url('learning?lid='.$l->lessonID) ?>" class="client-link"><?php echo $l->lName; ?></a></td>
+													<td><a href="<?php echo site_url('learning?lid='.$l->lessonID) ?>" class="client-link"><?php echo $l->lessonName; ?></a></td>
 													<td>Last edit :15/06/2015</td>
 
 													<td class="project-actions">
