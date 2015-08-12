@@ -37,7 +37,7 @@
 													<span class="label label-default">Not finished</span>
 												</td>
 												<td class="project-title">
-													<a href="<?php echo site_url('learning?lid='.$l->lessonID) ?>"><?php echo $l->lName; ?></a>
+													<a href="<?php echo site_url('learning?lid='.$l->lessonID) ?>"><?php echo $l->lessonName; ?></a>
 													<br>
 													<small>Created 14.08.2014</small>
 												</td>
@@ -86,7 +86,8 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/email.js'); ?>"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>

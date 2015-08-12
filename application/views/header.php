@@ -18,12 +18,11 @@
 	<link href="<?php echo base_url('assets/css/email.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
 
+	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/dash.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/js/email.js'); ?>"></script>
 </head>
 
 <body>
