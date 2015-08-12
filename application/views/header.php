@@ -77,7 +77,7 @@
 							</span>
 						</div>
 					</li>
-					
+
 					<li class="<?php if ($menu=="home") { echo "active"; } ?>">
 						<a href="<?php echo site_url('home') ?>"><i class="fa fa-fw fa-home"></i>&emsp;Home</a>
 					</li>
@@ -87,7 +87,7 @@
 					<li class="<?php if ($menu=="course") { echo "active"; } ?>">
 						<a href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i>&emsp;Course </a>
 					</li>
-					<?php if ($username=="admin") { ?>
+					<?php if ($usertype=="admin") { ?>
 					<li class="<?php if ($menu=="admin") { echo "active"; } ?>">
 						<a href="<?php echo site_url('home/admin')?>"><i class="fa fa-fw fa-folder-open"></i>&emsp;Admin Page </a>	
 					</li>
