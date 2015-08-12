@@ -7,30 +7,27 @@ class Learning extends CI_Controller {
 		$this->load->model('course_model');
 		$this->load->model('slide_model');
 	}
+	public function index(){
 
-	public function index() {
-
-		if($this->session->userdata('logged_in')) {
+		if($this->session->userdata('logged_in'))
+		{
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
-			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "course";
-			
 			$query = $this->course_model->GetCourseById();
-
-			if ($query) {
+			if ($query){
 				$data['lessons'] = $query;
 			}
-
 			$slides = $this->slide_model->GetSlide();
-
-			if ($slides) {
+			if ($slides){
 				$data['slides'] = $slides;
 			}
-			//var_dump($slides);
+                         //var_dump($slides);
 			$this->load->view('header',$data);
 			$this->load->view('view_learning',$data);
-		} else {
+		}
+		else
+		{
 			 //If no session, redirect to login page
 			redirect('welcome', 'refresh');
 		}
