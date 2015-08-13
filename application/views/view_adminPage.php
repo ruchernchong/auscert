@@ -38,7 +38,7 @@
 										<table class="table table-striped table-hover">
 											<tbody>
 												<tr>
-													<td class="client-avatar"><img alt="image" src="<?php echo base_url('assets/img/batman.jpg'); ?>"> </td>
+													<td class="client-avatar"><img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>"> </td>
 													<td><a data-toggle="tab" href="#contact-1" class="client-link">DECO1</a></td>
 													<td> Staff</td>
 													<td class="contact-type"><i class="fa fa-envelope"> </i></td>
@@ -47,7 +47,7 @@
 												</tr>
 
 												<tr>
-													<td class="client-avatar"><img alt="image" src="<?php echo base_url('assets/img/batman.jpg'); ?>"> </td>
+													<td class="client-avatar"><img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>"> </td>
 													<td><a data-toggle="tab" href="#contact-3" class="client-link">DECO2</a></td>
 													<td>Staff</td>
 													<td class="contact-type"><i class="fa fa-phone"> </i></td>
@@ -55,7 +55,7 @@
 													<td class="client-status"><span class="label label-primary">Complete 1 Task</span></td>
 												</tr>
 												<tr>
-													<td class="client-avatar"><a href=""><img alt="image" src="<?php echo base_url('assets/img/batman.jpg'); ?>"></a> </td>
+													<td class="client-avatar"><a href=""><img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>"></a> </td>
 													<td><a data-toggle="tab" href="#contact-4" class="client-link">DECO3</a></td>
 													<td>Member</td>
 													<td class="contact-type"><i class="fa fa-phone"> </i></td>
