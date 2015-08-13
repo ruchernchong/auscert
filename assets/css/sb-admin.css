@@ -513,6 +513,7 @@ ul.alert-dropdown {
 
 #container {
 	margin-top: 10px;
-
-
+}
+body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
+	width: 0;
 }
