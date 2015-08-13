@@ -19,7 +19,7 @@ class Learning extends CI_Controller {
 			$query = $this->course_model->GetCourseById();
 
 			if ($query) {
-				$data['lessons'] = $query;
+				$data['courses'] = $query;
 			}
 
 			$slides = $this->slide_model->GetSlide();

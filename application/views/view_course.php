@@ -31,13 +31,13 @@
 								<div class="project-list">
 									<table class="table table-hover">
 										<tbody>
-											<?php foreach ($lessons as $l) { ?>
+											<?php foreach ($courses as $l) { ?>
 											<tr>
 												<td class="project-status">
 													<span class="label label-default">Not finished</span>
 												</td>
 												<td class="project-title">
-													<a href="<?php echo site_url('learning?lid='.$l->lessonID) ?>"><?php echo $l->lessonName; ?></a>
+													<a href="<?php echo site_url('learning?lid='.$l->courseID) ?>"><?php echo $l->courseName; ?></a>
 													<br>
 													<small>Created 14.08.2014</small>
 												</td>

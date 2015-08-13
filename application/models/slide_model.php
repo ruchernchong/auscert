@@ -6,7 +6,7 @@ Class slide_model extends CI_Model {
 	}
 
 	public function GetSlideById() {
-		$this->db->where('lessonID',$this->input->get('lid'));
+		$this->db->where('courseID',$this->input->get('lid'));
 		$this->db->where('slideID',$this->input->get('sid'));
 		$query = $this->db->get('slide');
 		//var_dump($query->num_rows);
@@ -18,7 +18,7 @@ Class slide_model extends CI_Model {
 	}
 
 	public function GetSlide() {
-		$this->db->where('lessonID',$this->input->get('lid'));
+		$this->db->where('courseID',$this->input->get('lid'));
 
 		//$this->db->where('sid',$this->input->get('sid'));
 		$query = $this->db->get('slide');

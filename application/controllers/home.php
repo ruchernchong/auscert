@@ -16,7 +16,7 @@ class Home extends CI_Controller {
 			$data['menu'] = "home";
 
 			$this->load->view('header',$data);
-			$this->load->view('dashboard');
+			$this->load->view('view_dashboard');
 			// $this->load->view("footer");
 		} else {
 			 //If no session, redirect to login page
@@ -58,7 +58,7 @@ class Home extends CI_Controller {
 			$query = $this->course_model->GetCourse();
 
 			if ($query) {
-				$data['lessons'] = $query;
+				$data['courses'] = $query;
 			}
 
 			$this->load->view('header',$data);

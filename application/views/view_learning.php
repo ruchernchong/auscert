@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					<?php echo $lessons[0]->lessonName; ?>
+					<?php echo $courses[0]->courseName; ?>
 				</h1>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 													<div class="panel-body">
 														<div id="container">
 															<div id="title">
-																<h1><?php echo $lessons[0]->lessonName; ?> Quiz</h1>
+																<h1><?php echo $courses[0]->courseName; ?> Quiz</h1>
 															</div>
 
 															<div id="quiz" style="display: block;">

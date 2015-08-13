@@ -13,7 +13,7 @@ class Course extends CI_Controller {
 		{
 			$query = $this->course_model->GetCourse();
 			if ($query){
-				$data['lessons'] = $query;
+				$data['courses'] = $query;
 			}
 
 			$session_data = $this->session->userdata('logged_in');
