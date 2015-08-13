@@ -72,9 +72,9 @@
 									<div class="table-responsive">
 										<table class="table table-striped table-hover">
 											<tbody>
-												<?php foreach ($lessons as $l) {?>
+												<?php foreach ($courses as $course) {?>
 												<tr>
-													<td><a href="<?php echo site_url('learning?lid='.$l->lessonID) ?>" class="client-link"><?php echo $l->lessonName; ?></a></td>
+													<td><a href="<?php echo site_url('learning?lid='.$course->courseID) ?>" class="client-link"><?php echo $course->courseName; ?></a></td>
 													<td>Last edit :15/06/2015</td>
 
 													<td class="project-actions">
