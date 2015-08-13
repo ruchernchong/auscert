@@ -99,26 +99,30 @@
 										</tbody>
 									</table>
 								</div>
-							</div><div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
+							</div>
+							<div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);">
+							</div>
+							<div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);">
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- /#page-wrapper -->
-
 		</div>
-		<!-- /#wrapper -->
+		<!-- /#page-wrapper -->
+	</div>
+	<!-- /#wrapper -->
 
-		<!-- jQuery -->
-		<script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
+	<!-- jQuery -->
+	<script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-		<script>
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#wrapper").toggleClass("toggled");
-		});
-		</script>
-	</body>
-	</html>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+	<script>
+	$("#menu-toggle").click(function(e) {
+		e.preventDefault();
+		$("#wrapper").toggleClass("toggled");
+	});
+	</script>
+</body>
+</html>
