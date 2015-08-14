@@ -1,7 +1,5 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
-		<!-- begin PAGE TITLE AREA -->
-		<!-- Use this section for each page's title and breadcrumb layout. In this example a date range picker is included within the breadcrumb. -->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="page-title">
@@ -13,19 +11,14 @@
 						<li class="pull-right">
 							<div id="reportrange" class="btn btn-green btn-square date-picker">
 								<i class="fa fa-calendar"></i>
-								<!-- Hardcoded stuff; To be changed -->
 								<span class="date-range">&emsp;<?php echo date('l\, jS \of F Y'); ?></span> <i class="fa fa-caret-down"></i>
 							</div>
 						</li>
 					</ol>
 				</div>
 			</div>
-			<!-- /.col-lg-12 -->
 		</div>
-		<!-- /.row -->
-		<!-- end PAGE TITLE AREA -->
 
-		<!-- begin DASHBOARD CIRCLE TILES -->
 		<div class="row">
 			<div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
@@ -39,7 +32,8 @@
 							Courses Enrolled
 						</div>
 						<div class="circle-tile-number text-faded">
-							<?php echo $number_of_courses ?>
+							<!-- <?php if(isset($number_of_courses) == "") { echo "0"; } else { echo $number_of_courses; } ?> -->
+							<?php echo isset($number_of_courses) == "" ? "0" : $number_of_courses ?>
 						</div>
 						<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
 					</div>
@@ -85,7 +79,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- end DASHBOARD CIRCLE TILES -->
 
 		<div class="row">
 
