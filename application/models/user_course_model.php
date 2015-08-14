@@ -18,13 +18,13 @@ Class user_course_model extends CI_Model {
 	}
 
 	public function GetUserCourses() {
-		$this->db->where('userID', $this->session->userdata("logged_in"));
+		$this->db->where('userID', $this->session->userdata['logged_in']['userID']);
 		$query = $this->db->get('user_courses');
 		return $query->result();
 	}
 
 	public function GetNumberOfCourses() {
-		$this->db->where('userID', $this->session->userdata($config['item']));
+		$this->db->where('userID', $this->session->userdata['logged_in']['userID']);
 		$query = $this->db->get('user_courses');
 		return $query->num_rows;
 	}
