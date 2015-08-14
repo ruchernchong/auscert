@@ -18,7 +18,7 @@ Class user_course_model extends CI_Model {
 	}
 
 	public function GetUserCourses() {
-		$this->db->where('userID', 2);
+		$this->db->where('userID', $this->session->userdata("logged_in"));
 		$query = $this->db->get('user_courses');
 		return $query->result();
 	}
