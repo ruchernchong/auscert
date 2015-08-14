@@ -3,7 +3,6 @@
 Class user_course_model extends CI_Model {
 	function __construct() {
 		parent::__construct();
-		
 	}
 
 	public function validate() {
@@ -25,7 +24,7 @@ Class user_course_model extends CI_Model {
 	}
 
 	public function GetNumberOfCourses() {
-		$this->db->where('userID', 2);
+		$this->db->where('userID', $this->session->userdata($config['item']));
 		$query = $this->db->get('user_courses');
 		return $query->num_rows;
 	}

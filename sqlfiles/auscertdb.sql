@@ -58,6 +58,9 @@ CREATE TABLE IF NOT EXISTS `user_courses` (
   FOREIGN KEY (`courseID`) REFERENCES courses(`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `user_courses` (`userID`, `courseID`,`completion`, `description`, `grading`, `mandatory`) VALUES
+(2, 1, '20.00', '', '80', 1),
+(2, 3, '100.00', '', '90', 0);
 
 
 CREATE TABLE IF NOT EXISTS `usergroups` (
