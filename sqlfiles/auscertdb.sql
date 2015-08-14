@@ -17,15 +17,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(65) NOT NULL,
   `userType` varchar(24) NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (`userID`, `username`, `password`, `email`, `userType`) VALUES
 (1, 'admin', 'admin', 'admin@gmail.com', 'admin'),
 (2, 'leon', 'admin', 'leonxenarax@gmail.com', 'creator'),
-(3, 'mal', 'admin', 'iruchern@gmail.com', 'user'),
+(3, 'ruchern', 'admin', 'iruchern@gmail.com', 'admin'),
 (4, 'helen', 'admin', 'helen@gmail.com', 'user'),
 (5, 'cameron', 'admin', 'cameron@gmail.com', 'user'),
-(6, 'ravi', 'admin', 'ravi@gmail.com', 'user');
+(6, 'ravi', 'admin', 'ravi@gmail.com', 'user'),
+(7, 'mal', 'admin', 'mal.joseland@live.com', 'user');
 
 
 
@@ -101,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `slide` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 INSERT INTO `slide` (`courseID`, `slideID`, `slideOrder`, `slideContent`, `slideTitle`) VALUES
-(1, 1, 1, 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus\r\n                  terry richardson ad squid. 3 wolf moon officia aute, non cupidatat\r\n                  skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.\r\n                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid\r\n                  single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh\r\n                  helvetica, craft beer labore wes anderson cred nesciunt sapiente ea\r\n                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft\r\n                  beer farm-to-table, raw denim aesthetic synth nesciunt you probably\r\n                  haven''t heard of them accusamus labore sustainable VHS.', 'Introduction to Phishing Email'),
+(1, 1, 1, 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus\r\nterry richardson ad squid. 3 wolf moon officia aute, non cupidatat\r\n                  skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.\r\n                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid\r\n                  single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh\r\n                  helvetica, craft beer labore wes anderson cred nesciunt sapiente ea\r\n                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft\r\n                  beer farm-to-table, raw denim aesthetic synth nesciunt you probably\r\n                  haven''t heard of them accusamus labore sustainable VHS.', 'Introduction to Phishing Email'),
 (1, 2, 2, 'Team Tartiner Testing Content of Further Study', 'Special Phishing Emails'),
 (2, 3, 1, 'course 2 Page 1', 'Course 2 Page 1'),
 (2, 4, 2, 'Course 2 Page 2', 'Course 2 Page 2');
