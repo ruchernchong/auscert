@@ -87,38 +87,62 @@
 					<div class="tile dark-blue checklist-tile">
 						<h4><i class="fa fa-check-square-o"></i>Course List</h4>
 						<div class="checklist">
-							<label class="strikeout">
-								<input type="checkbox" checked> <i class="fa fa-wrench fa-fw text-faded"></i> Software Update 2.1
+							<div class="form-group">
+								<input type="checkbox" class="isChecked" checked>
+								<label class="strikeout">
+									<i class="fa fa-wrench fa-fw text-faded"></i>Software Update 2.1
+								</label>
 								<span class="task-time text-faded pull-right">Yesterday</span>
-							</label>
-							<label class="strikeout">
-								<input type="checkbox" checked> <i class="fa fa-wrench fa-fw text-faded"></i> Server #2 Hardward Upgrade
+							</div>
+							<div class="form-group">
+								<input type="checkbox" class="isChecked" checked>
+								<label class="strikeout">
+									<i class="fa fa-wrench fa-fw text-faded"></i> Server #2 Hardward Upgrade
+								</label>
 								<span class="task-time text-faded pull-right">9:39 AM</span>
-							</label>
-							<label class="strikeout">
-								<input type="checkbox" checked> <i class="fa fa-warning fa-fw text-orange"></i> Call Ticket #2032
+							</div>
+							<div class="form-group">
+								<input type="checkbox" class="isChecked" checked>
+								<label class="strikeout">
+									<i class="fa fa-warning fa-fw text-orange"></i> Call Ticket #2032
+								</label>
 								<span class="task-time text-faded pull-right">9:53 AM</span>
-							</label>
-							<label>
-								<input type="checkbox"> <i class="fa fa-warning fa-fw text-orange"></i> Emergency Maintenance
+							</div>
+							<div class="form-group">
+								<input type="checkbox" class="isChecked">
+								<label class="strikeout">
+									<i class="fa fa-warning fa-fw text-orange"></i> Emergency Maintenance
+								</label>
 								<span class="task-time text-faded pull-right">10:14 AM</span>
-							</label>
-							<label>
-								<input type="checkbox"> <i class="fa fa-file fa-fw text-faded"></i> Purchase Order #439
+							</div>
+							<div class="form-group">
+								<input type="checkbox" class="isChecked">
+								<label class="strikeout">
+									<i class="fa fa-file fa-fw text-faded"></i> Purchase Order #439
+								</label>
 								<span class="task-time text-faded pull-right">10:20 AM</span>
-							</label>
-							<label>
-								<input type="checkbox"> <i class="fa fa-pencil fa-fw text-faded"></i> March Content Update
+							</div>
+							<div class="form-group">
+								<input type="checkbox" class="isChecked">
+								<label class="strikeout">
+									<i class="fa fa-pencil fa-fw text-faded"></i> March Content Update
+								</label>
 								<span class="task-time text-faded pull-right">10:48 AM</span>
-							</label>
-							<label>
-								<input type="checkbox"> <i class="fa fa-magic fa-fw text-faded"></i> Client #42 Data Scrubbing
+							</div>
+							<div class="form-group">
+								<input type="checkbox" class="isChecked">
+								<label class="strikeout">
+									<i class="fa fa-magic fa-fw text-faded"></i> Client #42 Data Scrubbing
+								</label>
 								<span class="task-time text-faded pull-right">11:09 AM</span>
-							</label>
-							<label>
-								<input type="checkbox"> <i class="fa fa-wrench fa-fw text-faded"></i> PHP Upgrade Server #6
+							</div>
+							<div class="form-group">
+								<input type="checkbox" class="isChecked">
+								<label class="strikeout">
+									<i class="fa fa-wrench fa-fw text-faded"></i> PHP Upgrade Server #6
+								</label>
 								<span class="task-time text-faded pull-right">11:17 AM</span>
-							</label>
+							</div>
 						</div>
 					</div>
 				</div>
