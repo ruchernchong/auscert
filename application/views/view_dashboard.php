@@ -6,7 +6,7 @@
 			<div class="col-lg-12">
 				<div class="page-title">
 					<h1>Dashboard
-						<small>Content Overview</small>
+						<small>Content Overview</small><br>
 					</h1>
 					<ol class="breadcrumb">
 						<li class="active"><i class="fa fa-dashboard"></i>&emsp;Welcome, <?php echo $username;?></li>
@@ -36,10 +36,10 @@
 					</a>
 					<div class="circle-tile-content orange">
 						<div class="circle-tile-description text-faded">
-							Alerts
+							Courses Enrolled
 						</div>
 						<div class="circle-tile-number text-faded">
-							9 New
+							<?php echo $number_of_courses ?>
 						</div>
 						<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
 					</div>
@@ -54,10 +54,10 @@
 					</a>
 					<div class="circle-tile-content blue">
 						<div class="circle-tile-description text-faded">
-							Tasks
+							New Courses Assigned to you
 						</div>
 						<div class="circle-tile-number text-faded">
-							10
+							2 (dummy data)
 							<span id="sparklineB"><canvas height="24" width="24" style="display: inline-block; width: 24px; height: 24px; vertical-align: top;"></canvas></span>
 						</div>
 						<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
@@ -74,10 +74,10 @@
 					</a>
 					<div class="circle-tile-content purple">
 						<div class="circle-tile-description text-faded">
-							Message
+							Groups
 						</div>
 						<div class="circle-tile-number text-faded">
-							96
+							2
 							<span id="sparklineD"><canvas height="24" width="36" style="display: inline-block; width: 36px; height: 24px; vertical-align: top;"></canvas></span>
 						</div>
 						<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
@@ -88,28 +88,11 @@
 		<!-- end DASHBOARD CIRCLE TILES -->
 
 		<div class="row">
-			<div class="col-lg-3">
-				<div class="tile red checklist-tile" style="height: 200px">
-					<p class="time-widget">
-						<span class="time-widget-heading">It Is Currently</span>
-						<br>
-						<strong>
-							<span id="datetime">
-								<?php date_default_timezone_set("Australia/Brisbane"); ?>
-								<?php echo date("l M d, Y"); ?>
-								<br>
-								<?php echo date("h:i:s A"); ?>
-							</span>
-						</strong>
-					</p>
-				</div>
-
-			</div>
 
 			<div class="col-lg-9">
 				<div class="row">
 					<div class="tile dark-blue checklist-tile">
-						<h4><i class="fa fa-check-square-o"></i> To-Do List</h4>
+						<h4><i class="fa fa-check-square-o"></i>Course List</h4>
 						<div class="checklist">
 							<label class="strikeout">
 								<input type="checkbox" checked> <i class="fa fa-wrench fa-fw text-faded"></i> Software Update 2.1
@@ -147,6 +130,24 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="col-lg-3">
+				<div class="tile red checklist-tile" style="height: 200px">
+					<p class="time-widget">
+						<span class="time-widget-heading">It Is Currently</span>
+						<br>
+						<strong>
+							<span id="datetime">
+								<?php date_default_timezone_set("Australia/Brisbane"); ?>
+								<?php echo date("l M d, Y"); ?>
+								<br>
+								<?php echo date("h:i:s A"); ?>
+							</span>
+						</strong>
+					</p>
+				</div>
+			</div>
+
 		</div>
 		<!-- /.row -->
 	</div>

@@ -5,14 +5,26 @@ class Home extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('course_model');
-
+		$this->load->model('user_course_model');
 	}
 	public function index() {
+		if($this->session->userdata('logged_in')) 
+		{
+			$query = $this->user_course_model->GetUserCourses();
+			if ($query){
+				$data['user_courses'] = $query;
+			}
 
-		if($this->session->userdata('logged_in')) {
+			$count = $this->user_course_model->GetNumberOfCourses();
+			if ($count){
+				$data['number_of_courses'] = $count;
+			}
+
 			$session_data = $this->session->userdata('logged_in');
+			$data['userID'] = $session_data['userID'];
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
+			$data['email'] = $session_data['email'];
 			$data['menu'] = "home";
 
 			$this->load->view('header',$data);
@@ -25,7 +37,6 @@ class Home extends CI_Controller {
 	}
 
 	function logout() {
-
 		$this->session->unset_userdata('logged_in');
 		redirect('home','refresh');
 		session_destroy();
