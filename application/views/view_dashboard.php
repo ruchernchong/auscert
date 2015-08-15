@@ -83,7 +83,7 @@
 		<div class="row">
 
 			<div class="col-lg-9">
-				<div class="row">
+				<div>
 					<div class="tile dark-blue checklist-tile">
 						<h4><i class="fa fa-check-square-o"></i>Course List</h4>
 						<div class="checklist">

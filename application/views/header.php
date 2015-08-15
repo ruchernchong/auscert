@@ -28,13 +28,13 @@
 <body>
 	<div id="wrapper">
 		<!-- Navigation -->
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<!-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> -->
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
+			<!-- <div class="navbar-header">
 				<img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo">
 			</div>
 			<!-- Top Menu Items -->
-			<ul class="nav navbar-right top-nav">
+		<!-- 	<ul class="nav navbar-right top-nav">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&emsp;<?php echo $username;?> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
@@ -53,16 +53,19 @@
 						</li>
 					</ul>
 				</li>
-			</ul>
+			</ul> --> 
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<div id="sidebar-wrapper">
 				<ul class="nav navbar-nav side-nav">
 					<li class="side-user hidden-xs">
 						<div class="photo">
-							<!-- <img class="img-circle" alt="" src="<?php echo base_url('assets/img/batman.jpg'); ?>" /> -->
-							<img class="img-circle" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>" />
-							<p class="welcome">Logged in as</p>
-							<p class="name"><?php echo $username;?></p>
+							<img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo">
+
+							<!-- Original User Login Ver. -->
+							<img class="img-circle" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>" /> 
+							<!-- <p class="welcome">Logged in as</p> -->
+							<!-- <p class="name"><?php echo $username;?></p> -->
+							<p><a href="#" class="name" data-toggle="dropdown"><?php echo $username;?> <b class="caret"></b></a></p>
 						</div>
 					</li>
 					
@@ -95,4 +98,4 @@
 				?>
 			</ul>
 		</div>
-	</nav>
+	<!-- </nav> -->

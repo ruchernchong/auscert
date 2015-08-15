@@ -16,10 +16,10 @@
   </head>
 
   <body>
-    <div class="header">
+<!--     <div class="header">
         <div class="logo"></div>
     </div> 
-    <div class="nav"></div>
+    <div class="nav"></div> -->
     <div class="content">
         <div class="content-inner">
             <div class="topic-list">
