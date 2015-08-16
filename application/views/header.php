@@ -34,8 +34,8 @@
 			<!-- <div class="navbar-header">
 				<img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo">
 			</div>
-			<!-- Top Menu Items -->
-		<!-- 	<ul class="nav navbar-right top-nav">
+
+			<ul class="nav navbar-right top-nav">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&emsp;<?php echo $username;?> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
