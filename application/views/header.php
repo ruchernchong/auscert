@@ -26,6 +26,7 @@
 </head>
 
 <body>
+	<?php date_default_timezone_set("Australia/Brisbane"); ?>
 	<div id="wrapper">
 		<!-- Navigation -->
 		<!-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> -->

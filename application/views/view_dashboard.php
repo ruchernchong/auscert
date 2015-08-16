@@ -1,4 +1,5 @@
 <div id="page-wrapper">
+	<?php date_default_timezone_set("Australia/Brisbane"); ?>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
@@ -155,7 +156,6 @@
 						<br>
 						<strong>
 							<span id="datetime">
-								<?php date_default_timezone_set("Australia/Brisbane"); ?>
 								<?php echo date("l M d, Y"); ?>
 								<br>
 								<?php echo date("h:i:s A"); ?>
