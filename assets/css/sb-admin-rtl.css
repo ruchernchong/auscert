@@ -559,7 +559,7 @@
 }
 
 .page-title .breadcrumb {
-	margin-bottom: 0;
+	margin-bottom: 40px;
 	background-color: #e0e7e8;
 }
 
@@ -774,6 +774,7 @@
 	color: #fff;
 	transition: all ease-in-out .3s;
 }
+
 
 .circle-tile-heading .fa {
 	line-height: 80px;
@@ -1206,7 +1207,19 @@ a.google-plus-link:hover {
 
 .checklist-tile {
 	overflow: auto;
+	
 }
+
+.courseL{
+	overflow: auto;
+	background-color: #307473;
+}
+
+.cal{
+	overflow: auto;
+	background-color: #113d7f;
+}
+
 
 .checklist {
 	margin-top: 15px;

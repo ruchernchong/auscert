@@ -163,7 +163,7 @@ ul.alert-dropdown {
 
 	.side-nav li a:hover {
 		outline: none;
-		background-color: #8DCD8D !important;
+		background-color: #fff !important;
 	}
 }
 .side-nav .side-nav-search {
@@ -179,12 +179,17 @@ ul.alert-dropdown {
 
 }
 
+.side-nav-font 
+{
+	color: #fff;
+}
+
 .side-nav>li>ul>li>a {
 	display: block;
 	padding: 10px 15px 10px 38px;
 	text-decoration: none;
 	color: #999;
-	background-color:#6D397E;
+	background-color:#fff;
 
 
 
@@ -194,7 +199,7 @@ ul.alert-dropdown {
 	padding: 10px 15px 10px 48px;
 	text-decoration: none;
 	color: black;
-	background-color:#C8B5CF;
+	background-color:#fff;
 
 
 }
@@ -362,7 +367,7 @@ ul.alert-dropdown {
 
 	font-size: 20px;
 	font-weight: 300;
-	color: #5cb85c;
+	color: #fff;
 }
 
 .topic

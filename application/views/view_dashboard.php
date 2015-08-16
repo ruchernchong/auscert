@@ -23,11 +23,11 @@
 			<div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
-						<div class="circle-tile-heading orange">
+						<div class="circle-tile-heading dark-blue">
 							<i class="fa fa-bell fa-fw fa-3x"></i>
 						</div>
 					</a>
-					<div class="circle-tile-content orange">
+					<div class="circle-tile-content dark-blue">
 						<div class="circle-tile-description text-faded">
 							Courses Enrolled
 						</div>
@@ -42,11 +42,11 @@
 			<div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
-						<div class="circle-tile-heading blue">
+						<div class="circle-tile-heading green">
 							<i class="fa fa-tasks fa-fw fa-3x"></i>
 						</div>
 					</a>
-					<div class="circle-tile-content blue">
+					<div class="circle-tile-content green">
 						<div class="circle-tile-description text-faded">
 							New Courses Assigned to you
 						</div>
@@ -62,11 +62,11 @@
 			<div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
-						<div class="circle-tile-heading purple">
+						<div class="circle-tile-heading blue">
 							<i class="fa fa-comments fa-fw fa-3x"></i>
 						</div>
 					</a>
-					<div class="circle-tile-content purple">
+					<div class="circle-tile-content blue">
 						<div class="circle-tile-description text-faded">
 							Groups
 						</div>
@@ -84,7 +84,7 @@
 
 			<div class="col-lg-9">
 				<div>
-					<div class="tile dark-blue checklist-tile">
+					<div class="tile checklist-tile courseL">
 						<h4><i class="fa fa-check-square-o"></i>Course List</h4>
 						<div class="checklist">
 							<div class="form-group">
@@ -149,7 +149,7 @@
 			</div>
 
 			<div class="col-lg-3">
-				<div class="tile red checklist-tile" style="height: 200px">
+				<div class="tile checklist-tile cal" style="height: 200px">
 					<p class="time-widget">
 						<span class="time-widget-heading">It Is Currently</span>
 						<br>
