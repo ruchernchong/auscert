@@ -29,7 +29,7 @@
 	<div id="wrapper">
 		<!-- Navigation -->
 		<!-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> -->
-			<!-- Brand and toggle get grouped for better mobile display -->
+		<!-- Brand and toggle get grouped for better mobile display -->
 			<!-- <div class="navbar-header">
 				<img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo">
 			</div>
@@ -100,21 +100,24 @@
 					</li>
 
 					<li class="<?php if ($menu=="home") { echo "active"; } ?>">
-						<a class= "side-nav-font" href="<?php echo site_url('home') ?>"><i class="fa fa-fw fa-home"></i>&emsp;Home</a>
+						<a class="side-nav-font" href="<?php echo site_url('home') ?>"><i class="fa fa-fw fa-home"></i>&emsp;Home</a>
 					</li>
 					<li class="<?php if ($menu=="mygrade") { echo "active"; } ?>">
-						<a class= "side-nav-font" href="<?php echo site_url('home/mygrade') ?>"><i class="fa fa-fw fa-check-square"></i>&emsp;My Grade</a>
+						<a class="side-nav-font" href="<?php echo site_url('home/mygrade') ?>"><i class="fa fa-fw fa-check-square"></i>&emsp;My Grade</a>
 					</li>
 					<li class="<?php if ($menu=="course") { echo "active"; } ?>">
-						<a class= "side-nav-font" href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i>&emsp;Course </a>
+						<a class="side-nav-font" href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i>&emsp;Course </a>
 					</li>
 					<?php if ($usertype=="admin") { ?>
 					<li class="<?php if ($menu=="admin") { echo "active"; } ?>">
-						<a class= "side-nav-font" href="<?php echo site_url('home/admin')?>"><i class="fa fa-fw fa-folder-open"></i>&emsp;Admin Page </a>	
+						<a class="side-nav-font" href="<?php echo site_url('home/admin')?>"><i class="fa fa-fw fa-folder-open"></i>&emsp;Admin Page </a>	
+					</li>
+					<li>
+						<a class="side-nav-font" href="<?php echo site_url('home/logout') ?>"><i class="fa fa-fw fa-power-off"></i>&emsp;Log Out</a>
 					</li>
 					<?php 
 				} 
 				?>
 			</ul>
 		</div>
-	<!-- </nav> -->
+		<!-- </nav> -->
