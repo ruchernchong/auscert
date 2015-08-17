@@ -84,7 +84,6 @@
 										<a href="<?php echo site_url('home/logout') ?>"><i class="fa fa-fw fa-power-off"></i>&emsp;Log Out</a>
 									</li>
 								</ul> -->
-								
 							</p>
 						</div>
 					</li>
@@ -93,7 +92,7 @@
 						<div class="input-group custom-search-form">
 							<input type="text" class="form-control" placeholder="Search...">
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
+								<button class="btn btn-default form-control" type="button">
 									<i class="fa fa-search"></i>
 								</button>
 							</span>
@@ -121,4 +120,3 @@
 				</li>
 			</ul>
 		</div>
-		<!-- </nav> -->
