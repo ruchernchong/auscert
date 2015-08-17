@@ -85,13 +85,22 @@
 				<div class="tile checklist-tile courseL">
 					<h4><i class="fa fa-check-square-o"></i>Course List</h4>
 					<div class="checklist">
+						
 						<?php 
-						foreach ($user_courses as $usercourse) {
+						if (isset($user_courses[0]->courseName) == 0) {
 							?>
 							<div class="form-group">
-								<label><i class="fa fa-list"></i>&emsp;<?php echo $usercourse->courseName; ?></label>
+								<label>You have enrolled in 0 courses.</label>
 							</div>
 							<?php
+						} else {
+							foreach ($user_courses as $usercourse) {
+								?>
+								<div class="form-group">
+									<label><i class="fa fa-list"></i>&emsp;<?php echo $usercourse->courseName; ?></label>
+								</div>
+								<?php
+							}
 						}
 						?>
 					</div>

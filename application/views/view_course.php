@@ -31,40 +31,48 @@
 								<div class="project-list">
 									<table class="table table-hover">
 										<tbody>
-											<?php foreach ($user_courses as $user_course) { ?>
-											<tr>
-												<td class="project-status">
-													<?php
-													if ($user_course->completion == "100") {
-														?>
-														<span class="label label-success">Completed</span>
-														<?php
-													} else if ($user_course->completion == "0") {
-														?>
-														<span class="label label-danger">Not Started</span>
-														<?php
-													} else {
-														?>
-														<span class="label label-warning">In Progress</span>
-														<?php 
-													} 
-													?>
-												</td>
-												<td class="project-title">
-													<a href="<?php echo site_url('learning?lid='.$user_course->courseID) ?>"><?php echo $user_course->courseName; ?></a>
-													<br>
-													<small>Created: <?php echo $user_course->date_created; ?></small>
-												</td>
-												<td class="project-completion">
-													<small>Percentage completed: <?php echo $user_course->completion; ?>%</small>
-													<div class="progress progress-mini">
-														<div style="width: <?php echo $user_course->completion; ?>%" class="progress-bar"></div>
-													</div>
-												</td>
-											</tr>
 											<?php 
-										} 
-										?>
+											if (isset($user_courses[0]->completion) == "") {
+												?>
+												<label>You do not have any courses enrolled.</label>
+												<?php
+											} else {
+												foreach ($user_courses as $user_course) { 
+													?>
+													<tr>
+														<td class="project-status">
+															<?php
+															if ($user_course->completion == "100") {
+																?>
+																<span class="label label-success">Completed</span>
+																<?php
+															} else if ($user_course->completion == "0") {
+																?>
+																<span class="label label-danger">Not Started</span>
+																<?php
+															} else {
+																?>
+																<span class="label label-warning">In Progress</span>
+																<?php 
+															} 
+															?>
+														</td>
+														<td class="project-title">
+															<a href="<?php echo site_url('learning?lid='.$user_course->courseID) ?>"><?php echo $user_course->courseName; ?></a>
+															<br>
+															<small>Created: <?php echo $user_course->date_created; ?></small>
+														</td>
+														<td class="project-completion">
+															<small>Percentage completed: <?php echo $user_course->completion; ?>%</small>
+															<div class="progress progress-mini">
+																<div style="width: <?php echo $user_course->completion; ?>%" class="progress-bar"></div>
+															</div>
+														</td>
+													</tr>
+													<?php 
+												}
+											}
+											?>
 										<!--
 										<tr>
 										<td class="project-status">
