@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2015 at 09:00 AM
+-- Generation Time: Aug 17, 2015 at 09:11 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -131,16 +131,15 @@ INSERT INTO `user` (`userID`, `usergroupID`, `username`, `password`, `email`, `c
 
 CREATE TABLE IF NOT EXISTS `usergroups` (
 `usergroupID` int(11) NOT NULL,
-  `organisation` varchar(255) NOT NULL,
-  `members` varchar(255) DEFAULT NULL
+  `organisation` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `usergroups`
 --
 
-INSERT INTO `usergroups` (`usergroupID`, `organisation`, `members`) VALUES
-(1, 'Tartiner Studios', NULL);
+INSERT INTO `usergroups` (`usergroupID`, `organisation`) VALUES
+(1, 'Tartiner Studios');
 
 -- --------------------------------------------------------
 
