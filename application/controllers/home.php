@@ -12,13 +12,13 @@ class Home extends CI_Controller {
 		if($this->session->userdata('logged_in')) 
 		{
 			$query = $this->user_course_model->GetUserCourses();
-			if ($query){
+			if ($query) {
 				$data['user_courses'] = $query;
 			}
 
 			$count = $this->user_course_model->GetNumberOfCourses();
-			if ($count){
-				$data['number_of_courses'] = $count;
+			if ($count) {
+				$data['NoOfCourses'] = $count;
 			}
 
 			$session_data = $this->session->userdata('logged_in');

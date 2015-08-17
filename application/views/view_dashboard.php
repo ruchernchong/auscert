@@ -1,5 +1,4 @@
 <div id="page-wrapper">
-	<?php date_default_timezone_set("Australia/Brisbane"); ?>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
@@ -33,10 +32,10 @@
 							Courses Enrolled
 						</div>
 						<div class="circle-tile-number text-faded">
-							<!-- <?php if(isset($number_of_courses) == "") { echo "0"; } else { echo $number_of_courses; } ?> -->
-							<?php echo isset($number_of_courses) == "" ? "0" : $number_of_courses ?>
+							<!-- <?php if(isset($NoOfCourses) == "") { echo "0"; } else { echo $NoOfCourses; } ?> -->
+							<?php echo isset($NoOfCourses) == "" ? "0" : $NoOfCourses ?>
 						</div>
-						<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+						<a href="#" class="circle-tile-footer" onclick="toggler('courseList');">More Info<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -82,70 +81,78 @@
 		</div>
 
 		<div class="row">
-
-			<div class="col-lg-9">
-				<div>
-					<div class="tile checklist-tile courseL">
-						<h4><i class="fa fa-check-square-o"></i>Course List</h4>
-						<div class="checklist">
+			<div class="col-lg-9" id="courseList">
+				<div class="tile checklist-tile courseL">
+					<h4><i class="fa fa-check-square-o"></i>Course List</h4>
+					<div class="checklist">
+						<?php 
+						foreach ($user_courses as $usercourse) {
+							?>
 							<div class="form-group">
-								<input type="checkbox" class="isChecked" checked>
-								<label class="strikeout">
-									<i class="fa fa-wrench fa-fw text-faded"></i>Software Update 2.1
-								</label>
-								<span class="task-time text-faded pull-right">Yesterday</span>
+								<label><i class="fa fa-list"></i>&emsp;<?php echo $usercourse->courseName; ?></label>
 							</div>
-							<div class="form-group">
-								<input type="checkbox" class="isChecked" checked>
-								<label class="strikeout">
-									<i class="fa fa-wrench fa-fw text-faded"></i> Server #2 Hardward Upgrade
-								</label>
-								<span class="task-time text-faded pull-right">9:39 AM</span>
-							</div>
-							<div class="form-group">
-								<input type="checkbox" class="isChecked" checked>
-								<label class="strikeout">
-									<i class="fa fa-warning fa-fw text-orange"></i> Call Ticket #2032
-								</label>
-								<span class="task-time text-faded pull-right">9:53 AM</span>
-							</div>
-							<div class="form-group">
-								<input type="checkbox" class="isChecked">
-								<label class="strikeout">
-									<i class="fa fa-warning fa-fw text-orange"></i> Emergency Maintenance
-								</label>
-								<span class="task-time text-faded pull-right">10:14 AM</span>
-							</div>
-							<div class="form-group">
-								<input type="checkbox" class="isChecked">
-								<label class="strikeout">
-									<i class="fa fa-file fa-fw text-faded"></i> Purchase Order #439
-								</label>
-								<span class="task-time text-faded pull-right">10:20 AM</span>
-							</div>
-							<div class="form-group">
-								<input type="checkbox" class="isChecked">
-								<label class="strikeout">
-									<i class="fa fa-pencil fa-fw text-faded"></i> March Content Update
-								</label>
-								<span class="task-time text-faded pull-right">10:48 AM</span>
-							</div>
-							<div class="form-group">
-								<input type="checkbox" class="isChecked">
-								<label class="strikeout">
-									<i class="fa fa-magic fa-fw text-faded"></i> Client #42 Data Scrubbing
-								</label>
-								<span class="task-time text-faded pull-right">11:09 AM</span>
-							</div>
-							<div class="form-group">
-								<input type="checkbox" class="isChecked">
-								<label class="strikeout">
-									<i class="fa fa-wrench fa-fw text-faded"></i> PHP Upgrade Server #6
-								</label>
-								<span class="task-time text-faded pull-right">11:17 AM</span>
-							</div>
-						</div>
+							<?php
+						}
+						?>
 					</div>
+<!-- 					<div class="checklist">
+						<div class="form-group">
+							<input type="checkbox" class="isChecked" checked>
+							<label class="strikeout">
+								<i class="fa fa-wrench fa-fw text-faded"></i>Software Update 2.1
+							</label>
+							<span class="task-time text-faded pull-right">Yesterday</span>
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="isChecked" checked>
+							<label class="strikeout">
+								<i class="fa fa-wrench fa-fw text-faded"></i> Server #2 Hardward Upgrade
+							</label>
+							<span class="task-time text-faded pull-right">9:39 AM</span>
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="isChecked" checked>
+							<label class="strikeout">
+								<i class="fa fa-warning fa-fw text-orange"></i> Call Ticket #2032
+							</label>
+							<span class="task-time text-faded pull-right">9:53 AM</span>
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="isChecked">
+							<label class="strikeout">
+								<i class="fa fa-warning fa-fw text-orange"></i> Emergency Maintenance
+							</label>
+							<span class="task-time text-faded pull-right">10:14 AM</span>
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="isChecked">
+							<label class="strikeout">
+								<i class="fa fa-file fa-fw text-faded"></i> Purchase Order #439
+							</label>
+							<span class="task-time text-faded pull-right">10:20 AM</span>
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="isChecked">
+							<label class="strikeout">
+								<i class="fa fa-pencil fa-fw text-faded"></i> March Content Update
+							</label>
+							<span class="task-time text-faded pull-right">10:48 AM</span>
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="isChecked">
+							<label class="strikeout">
+								<i class="fa fa-magic fa-fw text-faded"></i> Client #42 Data Scrubbing
+							</label>
+							<span class="task-time text-faded pull-right">11:09 AM</span>
+						</div>
+						<div class="form-group">
+							<input type="checkbox" class="isChecked">
+							<label class="strikeout">
+								<i class="fa fa-wrench fa-fw text-faded"></i> PHP Upgrade Server #6
+							</label>
+							<span class="task-time text-faded pull-right">11:17 AM</span>
+						</div>
+					</div> -->
 				</div>
 			</div>
 
@@ -182,6 +189,9 @@ $("#menu-toggle").click(function(e) {
 	e.preventDefault();
 	$("#wrapper").toggleClass("toggled");
 });
+function toggler(courseList) {
+	$("#" + courseList).toggle();
+}
 </script>
 </body>
 </html>
