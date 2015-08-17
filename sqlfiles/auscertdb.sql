@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2015 at 08:47 AM
+-- Generation Time: Aug 17, 2015 at 09:00 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -102,6 +102,7 @@ INSERT INTO `slide` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slide
 
 CREATE TABLE IF NOT EXISTS `user` (
 `userID` int(11) NOT NULL,
+  `usergroupID` int(11) NOT NULL,
   `username` varchar(65) NOT NULL,
   `password` varchar(65) NOT NULL,
   `email` varchar(65) NOT NULL,
@@ -113,14 +114,14 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
-(1, 'admin', 'admin', 'admin@gmail.com', '000', 'admin'),
-(2, 'leon', 'admin', 'leonxenarax@gmail.com', '000', 'creator'),
-(3, 'ruchern', 'admin', 'iruchern@gmail.com', '0451 519 513', 'admin'),
-(4, 'helen', 'admin', 'helen@gmail.com', '000', 'user'),
-(5, 'cameron', 'admin', 'cameron@gmail.com', '000', 'user'),
-(6, 'ravi', 'admin', 'ravi@gmail.com', '000', 'user'),
-(7, 'mal', 'admin', 'mal.joseland@live.com', '000', 'user');
+INSERT INTO `user` (`userID`, `usergroupID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
+(1, 1, 'admin', 'admin', 'admin@gmail.com', '000', 'admin'),
+(2, 1, 'leon', 'admin', 'leonxenarax@gmail.com', '000', 'creator'),
+(3, 1, 'ruchern', 'admin', 'iruchern@gmail.com', '0451 519 513', 'admin'),
+(4, 1, 'helen', 'admin', 'helen@gmail.com', '000', 'user'),
+(5, 1, 'cameron', 'admin', 'cameron@gmail.com', '000', 'user'),
+(6, 1, 'ravi', 'admin', 'ravi@gmail.com', '000', 'user'),
+(7, 1, 'mal', 'admin', 'mal.joseland@live.com', '000', 'user');
 
 -- --------------------------------------------------------
 
@@ -132,7 +133,14 @@ CREATE TABLE IF NOT EXISTS `usergroups` (
 `usergroupID` int(11) NOT NULL,
   `organisation` varchar(255) NOT NULL,
   `members` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `usergroups`
+--
+
+INSERT INTO `usergroups` (`usergroupID`, `organisation`, `members`) VALUES
+(1, 'Tartiner Studios', NULL);
 
 -- --------------------------------------------------------
 
@@ -190,13 +198,13 @@ ALTER TABLE `slide`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
- ADD PRIMARY KEY (`userID`);
+ ADD PRIMARY KEY (`userID`), ADD KEY `userGroupID` (`usergroupID`);
 
 --
 -- Indexes for table `usergroups`
 --
 ALTER TABLE `usergroups`
- ADD PRIMARY KEY (`usergroupID`);
+ ADD PRIMARY KEY (`usergroupID`), ADD KEY `usergroupID` (`usergroupID`);
 
 --
 -- Indexes for table `user_courses`
@@ -237,7 +245,7 @@ MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `usergroups`
 --
 ALTER TABLE `usergroups`
-MODIFY `usergroupID` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `usergroupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
@@ -259,6 +267,12 @@ ADD CONSTRAINT `quiz_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`cou
 --
 ALTER TABLE `slide`
 ADD CONSTRAINT `slide_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`usergroupID`) REFERENCES `usergroups` (`usergroupID`);
 
 --
 -- Constraints for table `user_courses`
