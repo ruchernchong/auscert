@@ -31,20 +31,34 @@
 								<div class="project-list">
 									<table class="table table-hover">
 										<tbody>
-											<?php foreach ($courses as $l) { ?>
+											<?php foreach ($user_courses as $user_course) { ?>
 											<tr>
 												<td class="project-status">
-													<span class="label label-default">Not finished</span>
+													<?php
+													if ($user_course->completion == "100") {
+														?>
+														<span class="label label-success">Completed</span>
+														<?php
+													} else if ($user_course->completion == "0") {
+														?>
+														<span class="label label-danger">Not Started</span>
+														<?php
+													} else {
+														?>
+														<span class="label label-warning">In Progress</span>
+														<?php 
+													} 
+													?>
 												</td>
 												<td class="project-title">
-													<a href="<?php echo site_url('learning?lid='.$l->courseID) ?>"><?php echo $l->courseName; ?></a>
+													<a href="<?php echo site_url('learning?lid='.$user_course->courseID) ?>"><?php echo $user_course->courseName; ?></a>
 													<br>
-													<small>Created 14.08.2014</small>
+													<small>Created: <?php echo $user_course->date_created; ?></small>
 												</td>
 												<td class="project-completion">
-													<small>Completion with: 48%</small>
+													<small>Percentage completed: <?php echo $user_course->completion; ?>%</small>
 													<div class="progress progress-mini">
-														<div style="width: 48%;" class="progress-bar"></div>
+														<div style="width: <?php echo $user_course->completion; ?>%" class="progress-bar"></div>
 													</div>
 												</td>
 											</tr>
