@@ -35,7 +35,7 @@
 							<!-- <?php if(isset($NoOfCourses) == "") { echo "0"; } else { echo $NoOfCourses; } ?> -->
 							<?php echo isset($NoOfCourses) == "" ? "0" : $NoOfCourses ?>
 						</div>
-						<a href="#" class="circle-tile-footer" onclick="toggler('courseList');">More Info<i class="fa fa-chevron-circle-right"></i></a>
+						<a href="#" class="circle-tile-footer" onclick="toggler('courseList');">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 							2 (dummy data)
 							<span id="sparklineB"><canvas height="24" width="24" style="display: inline-block; width: 24px; height: 24px; vertical-align: top;"></canvas></span>
 						</div>
-						<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+						<a href="#" class="circle-tile-footer">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 							2
 							<span id="sparklineD"><canvas height="24" width="36" style="display: inline-block; width: 36px; height: 24px; vertical-align: top;"></canvas></span>
 						</div>
-						<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+						<a href="#" class="circle-tile-footer">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
