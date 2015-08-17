@@ -1,35 +1,32 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
-		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">
-					Admin Page <small>GUYS</small>
-				</h1>
+				<h1 class="page-header">Admin Page</h1>
 			</div>
 		</div>
 		<div class="row">
-			<div class="ibox">
-				<div class="ibox-title">
-					<div class="ibox-tools">
-						<a href="<?php echo site_url('addCourse') ?>" class="btn btn-lg btn-primary">Create new course</a>
-					</div>
-				</div>
-				<div class="ibox-content">
-					<span class="text-muted small pull-right">Last modification: <i class="fa fa-clock-o"></i> 2:10 pm - 12.06.2014</span>
-					<h2>Report</h2>
+			<a href="<?php echo site_url('addCourse') ?>" class="btn btn-lg btn-primary pull-right">Create new course</a>
+			<div class="ibox-content">
+				<span class="text-muted small pull-right" data-toggle="tooltip" title="No idea what is this for.">Last modification: <i class="fa fa-clock-o"></i>&emsp;2:10 pm - 12.06.2014</span>
+				<h2>Report</h2>
 
-					<div class="input-group">
-						<input type="text" placeholder="Search client" class="input form-control">
-						<span class="input-group-btn">
-							<button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
+				<div class="input-group">
+					<input type="text" placeholder="Search client" class="input form-control">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn btn-primary">
+							<i class="fa fa-search"></i>&emsp;Search</button>
 						</span>
 					</div>
 					<div class="clients-list">
 						<p class="pull-right small text-muted" data-toggle="tooltip" title="I have no idea what is this for.">1406 Elements</p>
 						<ul class="nav nav-tabs">
-							<li class="active"><a data-toggle="tab" href="#tab-members"><i class="fa fa-user"></i> Members</a></li>
-							<li class=""><a data-toggle="tab" href="#tab-courses"><i class="fa fa-briefcase"></i> Courses</a></li>
+							<li class="active">
+								<a data-toggle="tab" href="#tab-members"><i class="fa fa-user"></i>&emsp;Members</a>
+							</li>
+							<li>
+								<a data-toggle="tab" href="#tab-courses"><i class="fa fa-briefcase"></i>&emsp;Courses</a>
+							</li>
 						</ul>
 						<div class="tab-content">
 							<div id="tab-members" class="tab-pane active">
@@ -102,8 +99,8 @@
 													<td>Last edit: <?php echo $course->last_edited; ?></td>
 
 													<td class="project-actions">
-														<a href="<?php echo site_url('edits') ?>" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i>&emsp;Edit </a>
-														<a href="#" class="btn btn-white btn-sm"><i class="fa fa-trash"></i>&emsp;Remove</a>
+														<a href="<?php echo site_url('edits') ?>" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i>&emsp;Edit</a>
+														<a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Remove</a>
 													</td>
 												</tr>
 												<?php 
