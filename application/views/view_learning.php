@@ -1,11 +1,8 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
-		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">
-					<?php echo $courses[0]->courseName; ?>
-				</h1>
+				<h1 class="page-header"><?php echo $courses[0]->courseName; ?></h1>
 			</div>
 		</div>
 
@@ -235,7 +232,7 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/dash.js'); ?>"></script>

@@ -28,8 +28,8 @@ class Learning extends CI_Controller {
 				$data['slides'] = $slides;
 			}
 			//var_dump($slides);
-			$this->load->view('header',$data);
-			$this->load->view('view_learning',$data);
+			$this->load->view('header', $data);
+			$this->load->view('view_learning', $data);
 		} else {
 			 //If no session, redirect to login page
 			redirect('welcome', 'refresh');

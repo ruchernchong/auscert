@@ -18,8 +18,12 @@ Class user_course_model extends CI_Model {
 	}
 
 	public function GetUserCourses() {
+		$this->db->select('*');
+		// $this->db->from('user_courses');
+		$this->db->join('courses', 'courses.courseID = user_courses.courseID', "INNER");
 		$this->db->where('userID', $this->session->userdata['logged_in']['userID']);
 		$query = $this->db->get('user_courses');
+		// $query = $this->db->get();
 		return $query->result();
 	}
 
