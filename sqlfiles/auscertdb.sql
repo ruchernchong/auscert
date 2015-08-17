@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2015 at 09:11 AM
+-- Generation Time: Aug 17, 2015 at 12:34 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `creator` varchar(255) DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `description` longtext,
+  `date_created` varchar(255) NOT NULL,
   `last_edited` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -40,10 +41,10 @@ CREATE TABLE IF NOT EXISTS `courses` (
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`, `description`, `last_edited`) VALUES
-(1, 'Phising Email', 'Online Safety', 'Tartiner Studios', 0, 'Introduciton to the phishing emails. What they are and what you can do to avoid being a victim', '8/03/2015'),
-(2, 'Choosing A Safe Password', 'Account Security', 'Redones', 1, 'This course will guide you through how a password works as well as steps to take to ensure a strong and secure password', '19/7/2015'),
-(3, 'Tartiner Studios Training', 'Introduction to the team', 'Tartiner Studios', 1, 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', '17/8/2015');
+INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`, `description`, `date_created`, `last_edited`) VALUES
+(1, 'Phising Email', 'Online Safety', 'Tartiner Studios', 0, 'Introduciton to the phishing emails. What they are and what you can do to avoid being a victim', '8/3/2015', '8/3/2015'),
+(2, 'Choosing A Safe Password', 'Account Security', 'Redones', 1, 'This course will guide you through how a password works as well as steps to take to ensure a strong and secure password', '15/7/2015', '19/7/2015'),
+(3, 'Tartiner Studios Training', 'Introduction to the team', 'Tartiner Studios', 1, 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', '12/8/2015', '17/8/2015');
 
 -- --------------------------------------------------------
 
@@ -162,6 +163,7 @@ CREATE TABLE IF NOT EXISTS `user_courses` (
 
 INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `grading`, `mandatory`) VALUES
 (2, 1, '20.00', '', '80', 1),
+(2, 2, '0.00', 'Not started.', '0', 1),
 (2, 3, '100.00', '', '90', 0),
 (3, 1, '100.00', 'Testing 1', '100', 1);
 
