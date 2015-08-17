@@ -60,10 +60,10 @@
 				<ul class="nav navbar-nav side-nav">
 					<li class="side-user hidden-xs">
 						<div class="photo">
-							<img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo">
+							<img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo" alt="UQ Logo">
 
 							<!-- Original User Login Ver. -->
-							<img class="img-circle" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>" /> 
+							<img class="img-circle" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>" alt="User Placeholder Image" /> 
 							<!-- <p class="welcome">Logged in as</p> -->
 							<!-- <p class="name"><?php echo $username;?></p> -->
 							<p>
