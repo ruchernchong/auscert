@@ -16,5 +16,14 @@ Class user_model extends CI_Model {
 		}
 		return false;
 	}
+
+	public function GetUsers() {
+		$query = $this->db->get('user');
+
+		if ($query->num_rows > 0) {
+			return $query->result();
+		}
+		return false;
+	}
 }
 ?>

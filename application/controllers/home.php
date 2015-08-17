@@ -5,6 +5,7 @@ class Home extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('course_model');
+		$this->load->model('user_model');
 		$this->load->model('user_course_model');
 	}
 	public function index() {
@@ -66,10 +67,15 @@ class Home extends CI_Controller {
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "adminpage";
 			
-			$query = $this->course_model->GetCourse();
+			$getCourse = $this->course_model->GetCourse();
+			$getUsers = $this->user_model->GetUsers();
 
-			if ($query) {
-				$data['courses'] = $query;
+			if ($getCourse) {
+				$data['courses'] = $getCourse;
+			}
+
+			if ($getUsers) {
+				$data['users'] = $getUsers;
 			}
 
 			$this->load->view('header',$data);
