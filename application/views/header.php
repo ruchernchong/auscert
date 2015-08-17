@@ -113,12 +113,12 @@
 					<li class="<?php if ($menu=="admin") { echo "active"; } ?>">
 						<a class="side-nav-font" href="<?php echo site_url('home/admin')?>"><i class="fa fa-fw fa-folder-open"></i>&emsp;Admin Page </a>	
 					</li>
-					<li>
-						<a class="side-nav-font" href="<?php echo site_url('home/logout') ?>"><i class="fa fa-fw fa-power-off"></i>&emsp;Log Out</a>
-					</li>
 					<?php 
 				} 
 				?>
+				<li>
+					<a class="side-nav-font" href="<?php echo site_url('home/logout') ?>"><i class="fa fa-fw fa-power-off"></i>&emsp;Log Out</a>
+				</li>
 			</ul>
 		</div>
 		<!-- </nav> -->
