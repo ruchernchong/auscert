@@ -81,7 +81,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-lg-9" id="courseList">
+			<div class="col-lg-12" id="courseList">
 				<div class="tile checklist-tile courseL">
 					<h4><i class="fa fa-check-square-o"></i>Course List</h4>
 					<div class="checklist">
@@ -166,7 +166,11 @@
 					</div> -->
 				</div>
 			</div>
-
+			<div class="col-lg-12" id="auscert-logo">
+				<div class="tile checklist-tile">
+					<img class="logo" src="<?php echo base_url('assets/img/logoAusCert.png'); ?>" alt="AusCert Logo" />
+				</div>
+			</div>
 			<!-- <div class="col-lg-3">
 				<div class="tile checklist-tile cal" style="height: 200px">
 					<p class="time-widget">
@@ -198,6 +202,7 @@ $("#menu-toggle").click(function(e) {
 });
 function toggler(courseList) {
 	$("#" + courseList).toggle("slow");
+	$("#auscert-logo").toggle("slow");
 }
 </script>
 </body>

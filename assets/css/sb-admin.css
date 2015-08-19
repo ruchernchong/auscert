@@ -535,3 +535,9 @@ body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 .courseLink, .courseLink:link, .courseLink:visited {
 	color: inherit;
 }
+#auscert-logo {
+	text-align: center;
+}
+.logo {
+	margin: 0 auto;
+}
