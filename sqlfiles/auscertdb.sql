@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
 -- Table structure for table `quiz`
 --
 
-CREATE TABLE IF NOT EXISTS `quiz` (
+CREATE TABLE IF NOT EXISTS `quizzes` (
 `quizID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `quiz` (
 -- Table structure for table `slide`
 --
 
-CREATE TABLE IF NOT EXISTS `slide` (
+CREATE TABLE IF NOT EXISTS `slides` (
 `slideID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
   `slideOrder` int(3) NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `slide` (
 -- Dumping data for table `slide`
 --
 
-INSERT INTO `slide` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slideTitle`) VALUES
+INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slideTitle`) VALUES
 (1, 1, 1, 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus\r\nterry richardson ad squid. 3 wolf moon officia aute, non cupidatat\r\n                  skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.\r\n                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid\r\n                  single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh\r\n                  helvetica, craft beer labore wes anderson cred nesciunt sapiente ea\r\n                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft\r\n                  beer farm-to-table, raw denim aesthetic synth nesciunt you probably\r\n                  haven''t heard of them accusamus labore sustainable VHS.', 'Introduction to Phishing Email'),
 (2, 1, 2, 'Team Tartiner Testing Content of Further Study', 'Special Phishing Emails'),
 (3, 2, 1, 'course 2 Page 1', 'Course 2 Page 1'),
@@ -101,7 +101,7 @@ INSERT INTO `slide` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slide
 -- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `users` (
 `userID` int(11) NOT NULL,
   `usergroupID` int(11) NOT NULL,
   `username` varchar(65) NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `usergroupID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
+INSERT INTO `users` (`userID`, `usergroupID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
 (1, 1, 'admin', 'admin', 'admin@gmail.com', '000', 'admin'),
 (2, 1, 'leon', 'admin', 'leonxenarax@gmail.com', '000', 'creator'),
 (3, 1, 'ruchern', 'admin', 'iruchern@gmail.com', '0451 519 513', 'admin'),
@@ -130,7 +130,7 @@ INSERT INTO `user` (`userID`, `usergroupID`, `username`, `password`, `email`, `c
 -- Table structure for table `usergroups`
 --
 
-CREATE TABLE IF NOT EXISTS `usergroups` (
+CREATE TABLE IF NOT EXISTS `user_groups` (
 `usergroupID` int(11) NOT NULL,
   `organisation` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `usergroups` (
 -- Dumping data for table `usergroups`
 --
 
-INSERT INTO `usergroups` (`usergroupID`, `organisation`) VALUES
+INSERT INTO `user_groups` (`usergroupID`, `organisation`) VALUES
 (1, 'Tartiner Studios');
 
 -- --------------------------------------------------------
@@ -186,25 +186,25 @@ ALTER TABLE `questions`
 --
 -- Indexes for table `quiz`
 --
-ALTER TABLE `quiz`
+ALTER TABLE `quizzes`
  ADD PRIMARY KEY (`quizID`), ADD KEY `courseID` (`courseID`);
 
 --
 -- Indexes for table `slide`
 --
-ALTER TABLE `slide`
+ALTER TABLE `slides`
  ADD PRIMARY KEY (`slideID`), ADD KEY `courseID` (`courseID`);
 
 --
 -- Indexes for table `user`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
  ADD PRIMARY KEY (`userID`), ADD KEY `userGroupID` (`usergroupID`);
 
 --
 -- Indexes for table `usergroups`
 --
-ALTER TABLE `usergroups`
+ALTER TABLE `user_groups`
  ADD PRIMARY KEY (`usergroupID`), ADD KEY `usergroupID` (`usergroupID`);
 
 --
@@ -230,22 +230,22 @@ MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `quiz`
 --
-ALTER TABLE `quiz`
+ALTER TABLE `quizzes`
 MODIFY `quizID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `slide`
 --
-ALTER TABLE `slide`
+ALTER TABLE `slides`
 MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
 MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `usergroups`
 --
-ALTER TABLE `usergroups`
+ALTER TABLE `user_groups`
 MODIFY `usergroupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
@@ -255,31 +255,31 @@ MODIFY `usergroupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- Constraints for table `questions`
 --
 ALTER TABLE `questions`
-ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`quizID`) REFERENCES `quiz` (`quizID`);
+ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`quizID`) REFERENCES `quizzes` (`quizID`);
 
 --
 -- Constraints for table `quiz`
 --
-ALTER TABLE `quiz`
-ADD CONSTRAINT `quiz_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+ALTER TABLE `quizzes`
+ADD CONSTRAINT `quizzes_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 --
 -- Constraints for table `slide`
 --
-ALTER TABLE `slide`
-ADD CONSTRAINT `slide_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+ALTER TABLE `slides`
+ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 --
 -- Constraints for table `user`
 --
-ALTER TABLE `user`
-ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`usergroupID`) REFERENCES `usergroups` (`usergroupID`);
+ALTER TABLE `users`
+ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`usergroupID`) REFERENCES `user_groups` (`usergroupID`);
 
 --
 -- Constraints for table `user_courses`
 --
 ALTER TABLE `user_courses`
-ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
+ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
 ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
