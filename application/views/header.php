@@ -2,22 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Cyber Security online training system for a business context." />
+	<meta name="author" content="Tartiner Studios" />
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" />
 
 	<title>AusCert | Dashboard</title>
 
 	<!-- Bootstrap Core CSS -->
-	<link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/sb-admin.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/sb-admin-rtl.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/quiz.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/jquery-ui.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/email.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
-	<link href="<?php echo base_url('assets/css/course.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo base_url('assets/css/sb-admin.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo base_url('assets/css/sb-admin-rtl.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo base_url('assets/css/quiz.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo base_url('assets/css/jquery-ui.min.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo base_url('assets/css/email.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo base_url('assets/css/course.css'); ?>" rel="stylesheet" />
 
 
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js') ?>"></script>
