@@ -167,7 +167,7 @@
 				</div>
 			</div>
 
-			<div class="col-lg-3">
+			<!-- <div class="col-lg-3">
 				<div class="tile checklist-tile cal" style="height: 200px">
 					<p class="time-widget">
 						<span class="time-widget-heading">It Is Currently</span>
@@ -181,14 +181,10 @@
 						</strong>
 					</p>
 				</div>
-			</div>
-
+			</div> -->
 		</div>
-		<!-- /.row -->
 	</div>
-	<!-- /#page-wrapper -->
 </div>
-<!-- /#wrapper -->
 
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
