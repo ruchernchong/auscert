@@ -529,6 +529,15 @@ ul.alert-dropdown {
 body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 	width: 0;
 }
-#courseList {
+#courseList, #availableCourses, #availableGroups {
 	display: none;
+}
+.courseLink, .courseLink:link, .courseLink:visited {
+	color: inherit;
+}
+#auscert-logo {
+	text-align: center;
+}
+.logo {
+	margin: 0 auto;
 }

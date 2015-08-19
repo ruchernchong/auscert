@@ -96,7 +96,7 @@
 												<tr>
 													<td><a href="<?php echo site_url('learning?lid='.$course->courseID) ?>" class="client-link"><?php echo $course->courseName; ?></a></td>
 													<!-- <td>Last edit: <?php echo date("d/m/Y"); ?></td> -->
-													<td>Last edit: <?php echo $course->last_edited; ?></td>
+													<td>Last edit: <?php echo empty($course->last_edited) ? "None" : $course->last_edited; ?></td>
 
 													<td class="project-actions">
 														<a href="<?php echo site_url('edits') ?>" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i>&emsp;Edit</a>

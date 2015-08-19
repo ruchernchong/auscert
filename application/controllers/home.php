@@ -12,6 +12,11 @@ class Home extends CI_Controller {
 	public function index() {
 		if($this->session->userdata('logged_in')) 
 		{
+			$courses = $this->model_course->GetCourse();
+			if ($courses) {
+				$data['courses'] = $courses;
+			}
+
 			$query = $this->model_userCourse->GetUserCourses();
 			if ($query) {
 				$data['user_courses'] = $query;
@@ -30,6 +35,11 @@ class Home extends CI_Controller {
 			$count = $this->model_group->GetNumberofGroups();
 			if ($count) {
 				$data['NoOfGroups'] = $count;
+			}
+
+			$groups = $this->model_group->GetGroups();
+			if ($groups) {
+				$data['userGroups'] = $groups;
 			}
 
 
