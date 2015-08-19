@@ -37,7 +37,7 @@
 											} else {
 												foreach ($user_courses as $user_course) { 
 													?>
-													<tr data-href= "<?php echo site_url('learning?lid='.$user_course->courseID) ?>">
+													<tr data-href= "<?php echo site_url('learning?courseID='.$user_course->courseID) ?>">
 														<td class="project-status">
 															<?php
 															if ($user_course->completion == "100") {

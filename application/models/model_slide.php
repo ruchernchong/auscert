@@ -17,7 +17,8 @@ Class model_slide extends CI_Model {
 	}
 
 	public function GetSlide() {
-		$this->db->where('courseID', $this->input->get('lid'));
+		// $this->db->where('courseID', $this->input->get('lid'));
+		$this->db->where('courseID',$this->input->get('courseID'));
 
 		$query = $this->db->get('slides');
 

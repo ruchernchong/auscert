@@ -23,17 +23,16 @@
 			<div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
-						<div class="circle-tile-heading dark-blue">
-							<i class="fa fa-bell fa-fw fa-3x"></i>
+						<div class="circle-tile-heading orange">
+							<i class="fa fa-bar-chart fa-fw fa-3x"></i>
 						</div>
 					</a>
-					<div class="circle-tile-content dark-blue">
+					<div class="circle-tile-content orange">
 						<div class="circle-tile-description text-faded">
 							Courses Enrolled
 						</div>
 						<div class="circle-tile-number text-faded">
-							<!-- <?php if(isset($NoOfCourses) == "") { echo "0"; } else { echo $NoOfCourses; } ?> -->
-							<?php echo isset($NoOfCourses) == "" ? "0" : $NoOfCourses ?>
+							<?php echo isset($NoOfUserCourses) == "" ? "0" : $NoOfUserCourses ?>
 						</div>
 						<a href="#" class="circle-tile-footer" onclick="toggler('courseList');">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
@@ -43,16 +42,15 @@
 				<div class="circle-tile">
 					<a href="#">
 						<div class="circle-tile-heading green">
-							<i class="fa fa-tasks fa-fw fa-3x"></i>
+							<i class="fa fa-search fa-fw fa-3x"></i>
 						</div>
 					</a>
 					<div class="circle-tile-content green">
 						<div class="circle-tile-description text-faded">
-							New Courses Assigned to you
+							Browse Available Courses
 						</div>
 						<div class="circle-tile-number text-faded">
-							2 (dummy data)
-							<span id="sparklineB"><canvas height="24" width="24" style="display: inline-block; width: 24px; height: 24px; vertical-align: top;"></canvas></span>
+							<?php echo isset($NoOfCourses) == "" ? "0" : $NoOfCourses ?>
 						</div>
 						<a href="#" class="circle-tile-footer">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
@@ -63,16 +61,15 @@
 				<div class="circle-tile">
 					<a href="#">
 						<div class="circle-tile-heading blue">
-							<i class="fa fa-comments fa-fw fa-3x"></i>
+							<i class="fa fa-group fa-fw fa-3x"></i>
 						</div>
 					</a>
 					<div class="circle-tile-content blue">
 						<div class="circle-tile-description text-faded">
-							Groups
+							Groups Available
 						</div>
 						<div class="circle-tile-number text-faded">
-							2
-							<span id="sparklineD"><canvas height="24" width="36" style="display: inline-block; width: 36px; height: 24px; vertical-align: top;"></canvas></span>
+							<?php echo isset($NoOfGroups) == "" ? "0" : $NoOfGroups ?>
 						</div>
 						<a href="#" class="circle-tile-footer">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
@@ -106,64 +103,6 @@
 						}
 						?>
 					</div>
-<!-- 					<div class="checklist">
-						<div class="form-group">
-							<input type="checkbox" class="isChecked" checked>
-							<label class="strikeout">
-								<i class="fa fa-wrench fa-fw text-faded"></i>Software Update 2.1
-							</label>
-							<span class="task-time text-faded pull-right">Yesterday</span>
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="isChecked" checked>
-							<label class="strikeout">
-								<i class="fa fa-wrench fa-fw text-faded"></i> Server #2 Hardward Upgrade
-							</label>
-							<span class="task-time text-faded pull-right">9:39 AM</span>
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="isChecked" checked>
-							<label class="strikeout">
-								<i class="fa fa-warning fa-fw text-orange"></i> Call Ticket #2032
-							</label>
-							<span class="task-time text-faded pull-right">9:53 AM</span>
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="isChecked">
-							<label class="strikeout">
-								<i class="fa fa-warning fa-fw text-orange"></i> Emergency Maintenance
-							</label>
-							<span class="task-time text-faded pull-right">10:14 AM</span>
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="isChecked">
-							<label class="strikeout">
-								<i class="fa fa-file fa-fw text-faded"></i> Purchase Order #439
-							</label>
-							<span class="task-time text-faded pull-right">10:20 AM</span>
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="isChecked">
-							<label class="strikeout">
-								<i class="fa fa-pencil fa-fw text-faded"></i> March Content Update
-							</label>
-							<span class="task-time text-faded pull-right">10:48 AM</span>
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="isChecked">
-							<label class="strikeout">
-								<i class="fa fa-magic fa-fw text-faded"></i> Client #42 Data Scrubbing
-							</label>
-							<span class="task-time text-faded pull-right">11:09 AM</span>
-						</div>
-						<div class="form-group">
-							<input type="checkbox" class="isChecked">
-							<label class="strikeout">
-								<i class="fa fa-wrench fa-fw text-faded"></i> PHP Upgrade Server #6
-							</label>
-							<span class="task-time text-faded pull-right">11:17 AM</span>
-						</div>
-					</div> -->
 				</div>
 			</div>
 			<div class="col-lg-12" id="auscert-logo">
