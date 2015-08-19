@@ -532,3 +532,6 @@ body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 #courseList {
 	display: none;
 }
+.courseLink, .courseLink:link, .courseLink:visited {
+	color: inherit;
+}
