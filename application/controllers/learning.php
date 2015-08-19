@@ -4,8 +4,8 @@
 class Learning extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('course_model');
-		$this->load->model('slide_model');
+		$this->load->model('model_course');
+		$this->load->model('model_slide');
 	}
 
 	public function index() {
@@ -16,13 +16,13 @@ class Learning extends CI_Controller {
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "course";
 			
-			$query = $this->course_model->GetCourseById();
+			$query = $this->model_course->GetCourseById();
 
 			if ($query) {
 				$data['courses'] = $query;
 			}
 
-			$slides = $this->slide_model->GetSlide();
+			$slides = $this->model_slide->GetSlide();
 
 			if ($slides) {
 				$data['slides'] = $slides;

@@ -3,16 +3,17 @@
 class Login extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('user_model');
+		
+		$this->load->model('model_user');
 	}
 
-	public function Index() {
+	public function index() {
 		$this->load->view('login');
 	}
 
 	public function validateLogin() {
 		$username = $this->input->post('username');
-		$query = $this->user_model->validate();
+		$query = $this->model_user->validate();
 		
 		if ($query) {
 			$sess_array = array();

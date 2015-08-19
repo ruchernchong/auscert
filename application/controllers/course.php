@@ -4,15 +4,15 @@ class Course extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('course_model');
-		$this->load->model('user_course_model');
-		$this->load->model('slide_model');
+		$this->load->model('model_course');
+		$this->load->model('model_userCourse');
+		$this->load->model('model_slide');
 	}
 	
 	public function index() {
 		if($this->session->userdata('logged_in')) {
-			$query = $this->course_model->GetCourse();
-			$getCompletion = $this->user_course_model->GetUserCourses();
+			$query = $this->model_course->GetCourse();
+			$getCompletion = $this->model_userCourse->GetUserCourses();
 
 			if ($query) {
 				$data['courses'] = $query;
