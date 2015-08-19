@@ -164,8 +164,8 @@ CREATE TABLE IF NOT EXISTS `user_courses` (
 INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `grading`, `mandatory`) VALUES
 (2, 1, '20.00', '', '80', 1),
 (2, 2, '0.00', 'Not started.', '0', 1),
-(2, 3, '100.00', '', '90', 0),
-(3, 1, '100.00', 'Testing 1', '100', 1);
+(2, 3, '35.00', '', '90', 0),
+(3, 1, '65.00', 'Testing 1', '100', 1);
 
 --
 -- Indexes for dumped tables
