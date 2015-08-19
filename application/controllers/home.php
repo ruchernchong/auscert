@@ -7,6 +7,7 @@ class Home extends CI_Controller {
 		$this->load->model('model_course');
 		$this->load->model('model_user');
 		$this->load->model('model_userCourse');
+		$this->load->model('model_group');
 	}
 	public function index() {
 		if($this->session->userdata('logged_in')) 
@@ -16,10 +17,21 @@ class Home extends CI_Controller {
 				$data['user_courses'] = $query;
 			}
 
-			$count = $this->model_userCourse->GetNumberOfCourses();
+			$count = $this->model_userCourse->GetNumberOfUserCourses();
+			if ($count) {
+				$data['NoOfUserCourses'] = $count;
+			}
+
+			$count = $this->model_course->GetNumberOfCourses();
 			if ($count) {
 				$data['NoOfCourses'] = $count;
 			}
+
+			$count = $this->model_group->GetNumberofGroups();
+			if ($count) {
+				$data['NoOfGroups'] = $count;
+			}
+
 
 			$session_data = $this->session->userdata('logged_in');
 			$data['userID'] = $session_data['userID'];

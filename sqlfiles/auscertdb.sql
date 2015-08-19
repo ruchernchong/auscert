@@ -5,7 +5,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-DROP DATABASE `auscertdb`;
+DROP DATABASE IF EXISTS `auscertdb`;
 CREATE DATABASE IF NOT EXISTS `auscertdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `auscertdb`;
 
@@ -22,9 +22,12 @@ CREATE TABLE IF NOT EXISTS `courses` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`, `description`, `date_created`, `last_edited`) VALUES
-(1, 'Phising Email', 'Online Safety', 'Tartiner Studios', 0, 'Introduciton to the phishing emails. What they are and what you can do to avoid being a victim', '8/3/2015', '8/3/2015'),
+(1, 'Phising Emails', 'Online Safety', 'Tartiner Studios', 0, 'Introduciton to the phishing emails. What they are and what you can do to avoid being a victim', '8/3/2015', '8/3/2015'),
 (2, 'Choosing A Safe Password', 'Account Security', 'Redones', 1, 'This course will guide you through how a password works as well as steps to take to ensure a strong and secure password', '15/7/2015', '19/7/2015'),
-(3, 'Tartiner Studios Training', 'Introduction to the team', 'Tartiner Studios', 1, 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', '12/8/2015', '17/8/2015');
+(3, 'Tartiner Studios Training', 'Introduction to the team', 'Tartiner Studios', 1, 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', '12/8/2015', '17/8/2015'),
+(4, 'SQL Injection Attacks', 'Cyber Attacks', 'AusCert', 1, 'Introduction to what SQL Injection Attacks are and how to avoid them', '19/6/2015', '25/8/2015'),
+(5, 'Data Encryption', 'Data Security', 'UQ ITEE', 1, 'Detailed course on the various methods of data encyyption', '12/8/2015', '17/8/2015'),
+(6, 'UQ Staff Security Basics', 'Staff Introductory Courses', 'UQ BEL', 1, 'A compulsory online security course for uq staff', '12/8/2015', '17/8/2015');
 
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
@@ -59,7 +62,7 @@ INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slid
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
 	`userID` int(11) NOT NULL,
-	`usergroupID` int(11) NOT NULL,
+	`groupID` int(11) NOT NULL,
 	`username` varchar(65) NOT NULL,
 	`password` varchar(65) NOT NULL,
 	`email` varchar(65) NOT NULL,
@@ -67,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 	`userType` varchar(24) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`userID`, `usergroupID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
+INSERT INTO `users` (`userID`, `groupID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
 (1, 1, 'admin', 'admin', 'admin@gmail.com', '000', 'admin'),
 (2, 1, 'leon', 'admin', 'leonxenarax@gmail.com', '000', 'creator'),
 (3, 1, 'ruchern', 'admin', 'iruchern@gmail.com', '+61 451 519 513', 'admin'),
@@ -92,14 +95,20 @@ INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `
 (2, 3, '35.00', '', '90', 0),
 (3, 1, '65.00', 'Testing 1', '100', 1);
 
-DROP TABLE IF EXISTS `user_groups`;
-CREATE TABLE IF NOT EXISTS `user_groups` (
-	`usergroupID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `groups`;
+CREATE TABLE IF NOT EXISTS `groups` (
+	`groupID` int(11) NOT NULL,
 	`organisation` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-INSERT INTO `user_groups` (`usergroupID`, `organisation`) VALUES
-(1, 'Tartiner Studios');
+INSERT INTO `groups` (`groupID`, `organisation`) VALUES
+(1, 'Tartiner Studios'),
+(2, 'AusCert'),
+(3, 'UQ ITEE'),
+(4, 'BEL Faculty'),
+(5, 'UQ Engineering'),
+(6, 'UQ Staff'),
+(7, 'UQ Union');
 
 
 ALTER TABLE `courses`
@@ -115,13 +124,13 @@ ALTER TABLE `slides`
 ADD PRIMARY KEY (`slideID`), ADD KEY `courseID` (`courseID`);
 
 ALTER TABLE `users`
-ADD PRIMARY KEY (`userID`), ADD KEY `userGroupID` (`usergroupID`);
+ADD PRIMARY KEY (`userID`), ADD KEY `groupID` (`groupID`);
 
 ALTER TABLE `user_courses`
 ADD PRIMARY KEY (`userID`,`courseID`), ADD KEY `courseID` (`courseID`);
 
-ALTER TABLE `user_groups`
-ADD PRIMARY KEY (`usergroupID`), ADD KEY `usergroupID` (`usergroupID`);
+ALTER TABLE `groups`
+ADD PRIMARY KEY (`groupID`), ADD KEY `groupID` (`groupID`);
 
 
 ALTER TABLE `courses`
@@ -134,8 +143,8 @@ ALTER TABLE `slides`
 MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 ALTER TABLE `users`
 MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
-ALTER TABLE `user_groups`
-MODIFY `usergroupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE `groups`
+MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 
 ALTER TABLE `questions`
 ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
@@ -147,7 +156,7 @@ ALTER TABLE `slides`
 ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 ALTER TABLE `users`
-ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`usergroupID`) REFERENCES `user_groups` (`usergroupID`);
+ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`);
 
 ALTER TABLE `user_courses`
 ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
