@@ -34,7 +34,7 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo isset($NoOfUserCourses) == "" ? "0" : $NoOfUserCourses ?>
 						</div>
-						<a href="#" class="circle-tile-footer" onclick="toggler('courseList');">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+						<a class="circle-tile-footer courseList">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo isset($NoOfCourses) == "" ? "0" : $NoOfCourses ?>
 						</div>
-						<a href="#" class="circle-tile-footer">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+						<a class="circle-tile-footer availableCourses">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo isset($NoOfGroups) == "" ? "0" : $NoOfGroups ?>
 						</div>
-						<a href="#" class="circle-tile-footer">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+						<a class="circle-tile-footer availableGroups">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -79,12 +79,11 @@
 
 		<div class="row">
 			<div class="col-lg-12" id="courseList">
-				<div class="tile checklist-tile courseL">
-					<h4><i class="fa fa-check-square-o"></i>Course List</h4>
+				<div class="tile checklist-tile orange">
+					<h4><i class="fa fa-list"></i>&emsp;Course List</h4>
 					<div class="checklist">
-						
 						<?php 
-						if (isset($user_courses[0]->courseName) == 0) {
+						if (empty($user_courses[0]->courseName)) {
 							?>
 							<div class="form-group">
 								<label>You have enrolled in 0 courses.</label>
@@ -105,11 +104,68 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-12" id="auscert-logo">
+			<div class="col-lg-12" id="availableCourses">
+				<div class="tile checklist-tile green">
+					<h4><i class="fa fa-list"></i>&emsp;Available Courses</h4>
+					<div class="checklist">
+						<?php
+						if (empty($courses[0]->courseName)) {
+							?>
+							<div class="form-group">
+								<label>There are 0 courses available.</label>
+							</div>
+							<?php
+						} else {
+							?>
+							<?php
+							foreach ($courses as $course) {
+								?>
+								<div class="form-group">
+									<a href="learning/?courseID=<?php echo $course->courseID; ?>" class="courseLink">
+										<label><i class="fa fa-list"></i>&emsp;<?php echo $course->courseName; ?></label>
+									</a>
+								</div>
+								<?php
+							}
+						}
+						?>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12" id="availableGroups">
+				<div class="tile checklist-tile blue">
+					<h4><i class="fa fa-users"></i>&emsp;Available Groups</h4>
+					<div class="checklist">
+						<?php
+						if (empty($userGroups[0]->organisation)) {
+							?>
+							<div class="form-group">
+								<label>There are 0 user groups available.</label>
+							</div>
+							<?php
+						} else {
+							?>
+							<?php
+							foreach ($userGroups as $userGroup) {
+								?>
+								<div class="form-group">
+									<a href="#" class="courseLink">
+										<label><i class="fa fa-users"></i>&emsp;<?php echo $userGroup->organisation; ?></label>
+									</a>
+								</div>
+								<?php
+							}
+						}
+						?>
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class="col-lg-12" id="auscert-logo">
 				<div class="tile checklist-tile">
 					<img class="logo" src="<?php echo base_url('assets/img/logoAusCert.png'); ?>" alt="AusCert Logo" />
 				</div>
-			</div>
+			</div> -->
 			<!-- <div class="col-lg-3">
 				<div class="tile checklist-tile cal" style="height: 200px">
 					<p class="time-widget">
@@ -135,14 +191,44 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 <script>
+$(document).ready(function() {
+	$(".courseList").click(function() {
+		$("#courseList").toggle("slow");
+		$("#availableCourses").fadeOut("fast");
+		$("#availableGroups").fadeOut("fast");
+
+		// $("#auscert-logo").toggle("slow");
+	});
+
+	$(".availableCourses").click(function() {
+		$("#availableCourses").toggle("slow");
+		$("#courseList").fadeOut("fast");
+		$("#availableGroups").fadeOut("fast");
+
+		// $("#auscert-logo").toggle("slow");
+	});
+
+	$(".availableGroups").click(function() {
+		$("#availableGroups").toggle("slow");
+		$("#courseList").fadeOut("fast");
+		$("#availableCourses").fadeOut("fast");
+
+		// $("#auscert-logo").toggle("slow");
+	});
+});
+
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
 	$("#wrapper").toggleClass("toggled");
 });
-function toggler(courseList) {
-	$("#" + courseList).toggle("slow");
-	$("#auscert-logo").toggle("slow");
-}
+
+// function toggler(courseList, availableCourses) {
+// 	$(".courseList").click(function() {
+// 		$("#courseList").show("slow")
+// 		$("#availableCourses").hide();
+// 	});
+// 	$("#" + availableCourses).toggle("slow");	
+// }
 </script>
 </body>
 </html>
