@@ -529,3 +529,6 @@ ul.alert-dropdown {
 body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 	width: 0;
 }
+#courseList {
+	display: none;
+}
