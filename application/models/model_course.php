@@ -10,7 +10,7 @@ Class model_course extends CI_Model {
 		$this->db->where('password',$this->input->post('password'));
 
 		$query = $this->db->get('user');
-        //var_dump($query->num_rows);
+		
 		if ($query->num_rows == 1) {
 			return $query->result();
 		}
@@ -19,7 +19,6 @@ Class model_course extends CI_Model {
 
 	public function GetCourse() {
 		$query = $this->db->get('courses');
-		var_dump($query->num_rows);
 
 		if ($query->num_rows >= 1) {
 			return $query->result();
