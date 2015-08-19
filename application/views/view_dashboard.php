@@ -83,7 +83,7 @@
 		<div class="row">
 			<div class="col-lg-12" id="courseList">
 				<div class="tile checklist-tile orange">
-					<h4><i class="fa fa-list"></i>&emsp;Courses Enrolled</h4>
+					<h4><i class="fa fa-tasks"></i>&emsp;Courses Enrolled</h4>
 					<div class="checklist">
 						<?php 
 						if (empty($user_courses[0]->courseName)) {
@@ -97,7 +97,7 @@
 								?>
 								<div class="form-group">
 									<a href="learning/?courseID=<?php echo $usercourse->courseID; ?>" class="courseLink">
-										<label><i class="fa fa-list"></i>&emsp;<?php echo $usercourse->courseName; ?></label>
+										<label><i class="fa fa-tasks"></i>&emsp;<?php echo $usercourse->courseName; ?></label>
 									</a>
 								</div>
 								<?php
@@ -109,7 +109,7 @@
 			</div>
 			<div class="col-lg-12" id="availableCourses">
 				<div class="tile checklist-tile green">
-					<h4><i class="fa fa-list"></i>&emsp;Available Courses</h4>
+					<h4><i class="fa fa-database"></i>&emsp;Available Courses</h4>
 					<div class="checklist">
 						<?php
 						if (empty($courses[0]->courseName)) {
@@ -125,7 +125,7 @@
 								?>
 								<div class="form-group">
 									<a href="learning/?courseID=<?php echo $course->courseID; ?>" class="courseLink">
-										<label><i class="fa fa-list"></i>&emsp;<?php echo $course->courseName; ?></label>
+										<label><i class="fa fa-database"></i>&emsp;<?php echo $course->courseName; ?></label>
 									</a>
 								</div>
 								<?php
