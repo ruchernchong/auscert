@@ -29,17 +29,17 @@ INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
 	`questionID` int(11) NOT NULL,
-	`quizID` int(11) NOT NULL,
+	`courseID` int(11) NOT NULL,
 	`questionText` text NOT NULL,
 	`options` text NOT NULL,
 	`answer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `quizzes`;
-CREATE TABLE IF NOT EXISTS `quizzes` (
-	`quizID` int(11) NOT NULL,
-	`courseID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- DROP TABLE IF EXISTS `quizzes`;
+-- CREATE TABLE IF NOT EXISTS `quizzes` (
+-- 	`quizID` int(11) NOT NULL,
+-- 	`courseID` int(11) NOT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `slides`;
 CREATE TABLE IF NOT EXISTS `slides` (
@@ -106,10 +106,10 @@ ALTER TABLE `courses`
 ADD PRIMARY KEY (`courseID`);
 
 ALTER TABLE `questions`
-ADD PRIMARY KEY (`questionID`), ADD KEY `quizID` (`quizID`);
+ADD PRIMARY KEY (`questionID`), ADD KEY `courseID` (`courseID`);
 
-ALTER TABLE `quizzes`
-ADD PRIMARY KEY (`quizID`), ADD KEY `courseID` (`courseID`);
+-- ALTER TABLE `quizzes`
+-- ADD PRIMARY KEY (`quizID`), ADD KEY `courseID` (`courseID`);
 
 ALTER TABLE `slides`
 ADD PRIMARY KEY (`slideID`), ADD KEY `courseID` (`courseID`);
@@ -128,8 +128,8 @@ ALTER TABLE `courses`
 MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 ALTER TABLE `questions`
 MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `quizzes`
-MODIFY `quizID` int(11) NOT NULL AUTO_INCREMENT;
+-- ALTER TABLE `quizzes`
+-- MODIFY `quizID` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `slides`
 MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 ALTER TABLE `users`
@@ -138,10 +138,10 @@ ALTER TABLE `user_groups`
 MODIFY `usergroupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 
 ALTER TABLE `questions`
-ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`quizID`) REFERENCES `quizzes` (`quizID`);
+ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
-ALTER TABLE `quizzes`
-ADD CONSTRAINT `quizzes_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+-- ALTER TABLE `quizzes`
+-- ADD CONSTRAINT `quizzes_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 ALTER TABLE `slides`
 ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
