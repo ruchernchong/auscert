@@ -30,7 +30,7 @@
 									<table class="table table-hover">
 										<tbody>
 											<?php 
-											if (isset($user_courses[0]->completion) == "") {
+											if (empty($user_courses[0]->completion)) {
 												?>
 												<label>You do not have any courses enrolled.</label>
 												<?php
