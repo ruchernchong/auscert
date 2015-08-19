@@ -94,7 +94,7 @@
 							foreach ($user_courses as $usercourse) {
 								?>
 								<div class="form-group">
-									<a href="learning/?lid=<?php echo $usercourse->courseID; ?>" class="courseLink">
+									<a href="learning/?courseID=<?php echo $usercourse->courseID; ?>" class="courseLink">
 										<label><i class="fa fa-list"></i>&emsp;<?php echo $usercourse->courseName; ?></label>
 									</a>
 								</div>
