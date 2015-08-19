@@ -34,7 +34,7 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo isset($NoOfUserCourses) == "" ? "0" : $NoOfUserCourses ?>
 						</div>
-						<a href="#" class="circle-tile-footer" onclick="toggler('courseList');">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+						<a href="#" class="circle-tile-footer" onclick="toggler('courseList', 'allCourseList','allGroupsList');">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -52,11 +52,10 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo isset($NoOfCourses) == "" ? "0" : $NoOfCourses ?>
 						</div>
-						<a href="#" class="circle-tile-footer">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+						<a href="#" class="circle-tile-footer" onclick="toggler('allCourseList','allGroupsList','courseList');">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
-
 			<div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
@@ -71,16 +70,69 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo isset($NoOfGroups) == "" ? "0" : $NoOfGroups ?>
 						</div>
-						<a href="#" class="circle-tile-footer">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+						<a href="#" class="circle-tile-footer" onclick="toggler('allGroupsList', 'courseList', 'allCourseList');">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
 		</div>
 
+<!-- Hidden Boxes -->
 		<div class="row">
 			<div class="col-lg-9" id="courseList">
 				<div class="tile checklist-tile courseL">
 					<h4><i class="fa fa-check-square-o"></i>Course List</h4>
+					<div class="checklist">
+						
+						<?php 
+						if (isset($user_courses[0]->courseName) == 0) {
+							?>
+							<div class="form-group">
+								<label>You have enrolled in 0 courses.</label>
+							</div>
+							<?php
+						} else {
+							foreach ($user_courses as $usercourse) {
+								?>
+								<div class="form-group">
+									<label><i class="fa fa-list"></i>&emsp;<?php echo $usercourse->courseName; ?></label>
+								</div>
+								<?php
+							}
+						}
+						?>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-9" id="allCourseList">
+				<div class="tile checklist-tile courseL">
+					<h4><i class="fa fa-check-square-o"></i>Available Courses</h4>
+					<div class="checklist">
+						
+						<?php 
+						if (isset($user_courses[0]->courseName) == 0) {
+							?>
+							<div class="form-group">
+								<label>You have enrolled in 0 courses.</label>
+							</div>
+							<?php
+						} else {
+							foreach ($user_courses as $usercourse) {
+								?>
+								<div class="form-group">
+									<label><i class="fa fa-list"></i>&emsp;<?php echo $usercourse->courseName; ?></label>
+								</div>
+								<?php
+							}
+						}
+						?>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-9" id="allGroupsList">
+				<div class="tile checklist-tile courseL">
+					<h4><i class="fa fa-check-square-o"></i>Active Groups</h4>
 					<div class="checklist">
 						
 						<?php 
@@ -133,12 +185,14 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 <script>
-$("#menu-toggle").click(function(e) {
-	e.preventDefault();
-	$("#wrapper").toggleClass("toggled");
-});
-function toggler(courseList) {
-	$("#" + courseList).toggle("slow");
+// $("#menu-toggle").click(function(e) {
+// 	e.preventDefault();
+// 	$("#wrapper").toggleClass("toggled");
+// });
+function toggler(show, hide, hide) {
+	$("#" + hide).hide("fast");
+	$("#" + hide).hide("fast");
+	$("#" + show).show("slow");
 }
 </script>
 </body>
