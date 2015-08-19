@@ -17,12 +17,16 @@
 		<link href="<?php echo base_url('assets/css/jquery-ui.min.css'); ?>" rel="stylesheet">
 		<link href="<?php echo base_url('assets/css/email.css'); ?>" rel="stylesheet">
 		<link href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
+	    <link href="<?php echo base_url('assets/css/course.css'); ?>" rel="stylesheet">
+
 
 		<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js') ?>"></script>
 		<script src="<?php echo base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/js/dash.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/js/course.js'); ?>"></script>
+
 	</head>
 
 	<body>
