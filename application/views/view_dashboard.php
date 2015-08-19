@@ -83,7 +83,7 @@
 		<div class="row">
 			<div class="col-lg-12" id="courseList">
 				<div class="tile checklist-tile orange">
-					<h4><i class="fa fa-list"></i>&emsp;Course List</h4>
+					<h4><i class="fa fa-list"></i>&emsp;Courses Enrolled</h4>
 					<div class="checklist">
 						<?php 
 						if (empty($user_courses[0]->courseName)) {
