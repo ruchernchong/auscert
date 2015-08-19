@@ -1,6 +1,6 @@
 <?php
 
-Class user_course_model extends CI_Model {
+Class model_userCourse extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
@@ -9,7 +9,7 @@ Class user_course_model extends CI_Model {
 		$this->db->where('username',$this->input->post('username'));
 		$this->db->where('password',$this->input->post('password'));
 
-		$query = $this->db->get('user');
+		$query = $this->db->get('users');
 
 		if ($query->num_rows == 1) {
 			return $query->result();
