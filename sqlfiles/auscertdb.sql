@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2015 at 12:34 PM
+-- Generation Time: Aug 19, 2015 at 04:58 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `auscertdb`
 --
+CREATE DATABASE IF NOT EXISTS `auscertdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `auscertdb`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `courses`
 --
 
+DROP TABLE IF EXISTS `courses`;
 CREATE TABLE IF NOT EXISTS `courses` (
 `courseID` int(11) NOT NULL,
   `courseName` varchar(255) NOT NULL,
@@ -52,6 +55,7 @@ INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`
 -- Table structure for table `questions`
 --
 
+DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
 `questionID` int(11) NOT NULL,
   `quizID` int(11) NOT NULL,
@@ -63,9 +67,10 @@ CREATE TABLE IF NOT EXISTS `questions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quiz`
+-- Table structure for table `quizzes`
 --
 
+DROP TABLE IF EXISTS `quizzes`;
 CREATE TABLE IF NOT EXISTS `quizzes` (
 `quizID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL
@@ -74,9 +79,10 @@ CREATE TABLE IF NOT EXISTS `quizzes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slide`
+-- Table structure for table `slides`
 --
 
+DROP TABLE IF EXISTS `slides`;
 CREATE TABLE IF NOT EXISTS `slides` (
 `slideID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
@@ -86,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `slides` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `slide`
+-- Dumping data for table `slides`
 --
 
 INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slideTitle`) VALUES
@@ -98,9 +104,10 @@ INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slid
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
 `userID` int(11) NOT NULL,
   `usergroupID` int(11) NOT NULL,
@@ -112,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`userID`, `usergroupID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
@@ -127,27 +134,10 @@ INSERT INTO `users` (`userID`, `usergroupID`, `username`, `password`, `email`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usergroups`
---
-
-CREATE TABLE IF NOT EXISTS `user_groups` (
-`usergroupID` int(11) NOT NULL,
-  `organisation` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `usergroups`
---
-
-INSERT INTO `user_groups` (`usergroupID`, `organisation`) VALUES
-(1, 'Tartiner Studios');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user_courses`
 --
 
+DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE IF NOT EXISTS `user_courses` (
   `userID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
@@ -167,6 +157,25 @@ INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `
 (2, 3, '35.00', '', '90', 0),
 (3, 1, '65.00', 'Testing 1', '100', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_groups`
+--
+
+DROP TABLE IF EXISTS `user_groups`;
+CREATE TABLE IF NOT EXISTS `user_groups` (
+`usergroupID` int(11) NOT NULL,
+  `organisation` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_groups`
+--
+
+INSERT INTO `user_groups` (`usergroupID`, `organisation`) VALUES
+(1, 'Tartiner Studios');
+
 --
 -- Indexes for dumped tables
 --
@@ -184,34 +193,34 @@ ALTER TABLE `questions`
  ADD PRIMARY KEY (`questionID`), ADD KEY `quizID` (`quizID`);
 
 --
--- Indexes for table `quiz`
+-- Indexes for table `quizzes`
 --
 ALTER TABLE `quizzes`
  ADD PRIMARY KEY (`quizID`), ADD KEY `courseID` (`courseID`);
 
 --
--- Indexes for table `slide`
+-- Indexes for table `slides`
 --
 ALTER TABLE `slides`
  ADD PRIMARY KEY (`slideID`), ADD KEY `courseID` (`courseID`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
  ADD PRIMARY KEY (`userID`), ADD KEY `userGroupID` (`usergroupID`);
-
---
--- Indexes for table `usergroups`
---
-ALTER TABLE `user_groups`
- ADD PRIMARY KEY (`usergroupID`), ADD KEY `usergroupID` (`usergroupID`);
 
 --
 -- Indexes for table `user_courses`
 --
 ALTER TABLE `user_courses`
  ADD PRIMARY KEY (`userID`,`courseID`), ADD KEY `courseID` (`courseID`);
+
+--
+-- Indexes for table `user_groups`
+--
+ALTER TABLE `user_groups`
+ ADD PRIMARY KEY (`usergroupID`), ADD KEY `usergroupID` (`usergroupID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -228,22 +237,22 @@ MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 ALTER TABLE `questions`
 MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `quiz`
+-- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
 MODIFY `quizID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `slide`
+-- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
 MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
 MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `usergroups`
+-- AUTO_INCREMENT for table `user_groups`
 --
 ALTER TABLE `user_groups`
 MODIFY `usergroupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
@@ -258,19 +267,19 @@ ALTER TABLE `questions`
 ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`quizID`) REFERENCES `quizzes` (`quizID`);
 
 --
--- Constraints for table `quiz`
+-- Constraints for table `quizzes`
 --
 ALTER TABLE `quizzes`
 ADD CONSTRAINT `quizzes_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 --
--- Constraints for table `slide`
+-- Constraints for table `slides`
 --
 ALTER TABLE `slides`
 ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 --
--- Constraints for table `user`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
 ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`usergroupID`) REFERENCES `user_groups` (`usergroupID`);
