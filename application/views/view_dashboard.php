@@ -4,7 +4,7 @@
 			<div class="col-lg-12">
 				<div class="page-title">
 					<h1>Dashboard
-						<small>Content Overview</small><br>
+						<small>Content Overview</small>
 					</h1>
 					<ol class="breadcrumb">
 						<li class="active"><i class="fa fa-dashboard"></i>&emsp;Welcome, <?php echo $username;?></li>
@@ -32,11 +32,11 @@
 							Courses Enrolled
 						</div>
 						<div class="circle-tile-number text-faded">
-							<?php echo isset($NoOfUserCourses) == "" ? "0" : $NoOfUserCourses ?>
+							<?php echo empty($NoOfUserCourses) ? "0" : $NoOfUserCourses ?>
 						</div>
 						<a class="circle-tile-footer courseList">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
-<!-- 						<a class="circle-tile-footer" onclick="toggle('courseList', 'avaliableCourses', 'availableGroups')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>					
- -->					</div>
+						<!-- <a class="circle-tile-footer" onclick="toggle('courseList', 'avaliableCourses', 'availableGroups')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
+					</div>
 				</div>
 			</div>
 			<div class="col-lg-4 col-sm-6">
@@ -51,11 +51,11 @@
 							Browse Available Courses
 						</div>
 						<div class="circle-tile-number text-faded">
-							<?php echo isset($NoOfCourses) == "" ? "0" : $NoOfCourses ?>
+							<?php echo empty($NoOfCourses) ? "0" : $NoOfCourses ?>
 						</div>
 						<a class="circle-tile-footer availableCourses">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
-<!-- 						<a class="circle-tile-footer" onClick="toggle('avaliableCourses', 'courseList', 'availableGroups')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
- -->					</div>
+						<!-- <a class="circle-tile-footer" onClick="toggle('avaliableCourses', 'courseList', 'availableGroups')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
+					</div>
 				</div>
 			</div>
 			<div class="col-lg-4 col-sm-6">
@@ -70,16 +70,15 @@
 							Groups Available
 						</div>
 						<div class="circle-tile-number text-faded">
-							<?php echo isset($NoOfGroups) == "" ? "0" : $NoOfGroups ?>
+							<?php echo empty($NoOfGroups) ? "0" : $NoOfGroups ?>
 						</div>
 						<a class="circle-tile-footer availableGroups">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
-<!-- 						<a class="circle-tile-footer" onClick="toggle('availableGroups', 'courseList', 'avaliableCourses')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
- -->						</div>
+						<!-- <a class="circle-tile-footer" onClick="toggle('availableGroups', 'courseList', 'avaliableCourses')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
+					</div>
 				</div>
 			</div>
 		</div>
 
-<!-- Hidden Boxes -->
 		<div class="row">
 			<div class="col-lg-12" id="courseList">
 				<div class="tile checklist-tile orange">
@@ -167,13 +166,9 @@
 	</div>
 </div>
 
-<!-- jQuery -->
 <script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
-<!-- Bootstrap Core JavaScript -->
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 <script>
-
-
 // function toggler(show, hide, hide) {
 // 	$("#" + hide).hide("fast");
 // 	$("#" + hide).hide("fast");
@@ -182,7 +177,7 @@
 
 $(document).ready(function() {
 	$(".courseList").click(function() {
-		$("#courseList").show("slow");
+		$("#courseList").toggle("slow");
 		$("#availableCourses").fadeOut("fast");
 		$("#availableGroups").fadeOut("fast");
 
@@ -190,7 +185,7 @@ $(document).ready(function() {
 	});
 
 	$(".availableCourses").click(function() {
-		$("#availableCourses").show("slow");
+		$("#availableCourses").toggle("slow");
 		$("#courseList").fadeOut("fast");
 		$("#availableGroups").fadeOut("fast");
 
@@ -198,15 +193,13 @@ $(document).ready(function() {
 	});
 
 	$(".availableGroups").click(function() {
-		$("#availableGroups").show("slow");
+		$("#availableGroups").toggle("slow");
 		$("#courseList").fadeOut("fast");
 		$("#availableCourses").fadeOut("fast");
 
 		// $("#auscert-logo").toggle("slow");
 	});
 });
-
-
 </script>
 </body>
 </html>
