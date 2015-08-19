@@ -35,7 +35,8 @@
 							<?php echo isset($NoOfUserCourses) == "" ? "0" : $NoOfUserCourses ?>
 						</div>
 						<a class="circle-tile-footer courseList">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
-					</div>
+<!-- 						<a class="circle-tile-footer" onclick="toggle('courseList', 'avaliableCourses', 'availableGroups')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>					
+ -->					</div>
 				</div>
 			</div>
 			<div class="col-lg-4 col-sm-6">
@@ -53,7 +54,8 @@
 							<?php echo isset($NoOfCourses) == "" ? "0" : $NoOfCourses ?>
 						</div>
 						<a class="circle-tile-footer availableCourses">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
-					</div>
+<!-- 						<a class="circle-tile-footer" onClick="toggle('avaliableCourses', 'courseList', 'availableGroups')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+ -->					</div>
 				</div>
 			</div>
 			<div class="col-lg-4 col-sm-6">
@@ -71,7 +73,8 @@
 							<?php echo isset($NoOfGroups) == "" ? "0" : $NoOfGroups ?>
 						</div>
 						<a class="circle-tile-footer availableGroups">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
-					</div>
+<!-- 						<a class="circle-tile-footer" onClick="toggle('availableGroups', 'courseList', 'avaliableCourses')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+ -->						</div>
 				</div>
 			</div>
 		</div>
@@ -179,7 +182,7 @@
 
 $(document).ready(function() {
 	$(".courseList").click(function() {
-		$("#courseList").toggle("slow");
+		$("#courseList").show("slow");
 		$("#availableCourses").fadeOut("fast");
 		$("#availableGroups").fadeOut("fast");
 
@@ -187,7 +190,7 @@ $(document).ready(function() {
 	});
 
 	$(".availableCourses").click(function() {
-		$("#availableCourses").toggle("slow");
+		$("#availableCourses").show("slow");
 		$("#courseList").fadeOut("fast");
 		$("#availableGroups").fadeOut("fast");
 
@@ -195,7 +198,7 @@ $(document).ready(function() {
 	});
 
 	$(".availableGroups").click(function() {
-		$("#availableGroups").toggle("slow");
+		$("#availableGroups").show("slow");
 		$("#courseList").fadeOut("fast");
 		$("#availableCourses").fadeOut("fast");
 
@@ -203,10 +206,6 @@ $(document).ready(function() {
 	});
 });
 
-$("#menu-toggle").click(function(e) {
-	e.preventDefault();
-	$("#wrapper").toggleClass("toggled");
-});
 
 </script>
 </body>
