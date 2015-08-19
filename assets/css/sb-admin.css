@@ -532,12 +532,12 @@ body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 #courseList, #availableCourses, #availableGroups {
 	display: none;
 }
+.courseList, .availableCourses, .availableGroups {
+	cursor: pointer;
+}
 .courseLink, .courseLink:link, .courseLink:visited {
 	color: inherit;
 }
 #auscert-logo {
 	text-align: center;
-}
-.logo {
-	margin: 0 auto;
 }
