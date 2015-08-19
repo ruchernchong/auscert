@@ -18,6 +18,7 @@ Class model_course extends CI_Model {
 	}
 
 	public function GetCourse() {
+		$this->db->order_By("courseName", "ASC");
 		$query = $this->db->get('courses');
 
 		if ($query->num_rows >= 1) {

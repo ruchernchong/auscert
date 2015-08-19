@@ -6,6 +6,7 @@ Class model_group extends CI_Model {
 	}
 
 	public function GetGroups() {
+		$this->db->order_by("organisation", "ASC");
 		$query = $this->db->get('groups');
 
 		if ($query->num_rows >= 1) {
