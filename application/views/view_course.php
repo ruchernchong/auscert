@@ -3,9 +3,7 @@
 		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">
-					Course
-				</h1>
+				<h1 class="page-header">Course <small>Learn.UQ</small></h1>
 			</div>
 		</div>
 
@@ -13,10 +11,10 @@
 			<div class="col-lg-12">
 				<div class="wrapper wrapper-content animated fadeInUp">
 					<div class="ibox">
-						<div class="ibox-title">
+						<!-- <div class="ibox-title">
 							<div class="ibox-tools">
 							</div>
-						</div>
+						</div> -->
 						<div class="ibox-content">
 							<div class="row m-b-sm m-t-sm">
 								<div class="col-md-1">
