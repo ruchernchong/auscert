@@ -79,31 +79,26 @@
 
 								<div id="tab-courses" class="tab-pane">
 									<div class="table-responsive">
-										<table class="table table-striped table-hover">
+										<table class="table table-hover">
 											<tbody>
 												<?php foreach ($courses as $course) {?>
-												<tr>
-													<td><a href="<?php echo site_url('learning?courseID='.$course->courseID) ?>" class="client-link"><?php echo $course->courseName; ?></a></td>
-													<!-- <td>Last edit: <?php echo date("d/m/Y"); ?></td> -->
+												<tr data-href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>">
+													<td><?php echo $course->courseName; ?></td>
 													<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
 
 													<td class="project-actions">
-														<a href="<?php echo site_url('edits') ?>" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i>&emsp;Edit</a>
-														<a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Remove</a>
+														<a href="<?php echo site_url('edits'); ?>" class="btn btn-sm btn-success">
+															<i class="fa fa-pencil"></i>&emsp;Edit
+														</a>
+														&emsp;
+														<a href="#" class="btn btn-sm btn-danger">
+															<i class="fa fa-trash"></i>&emsp;Remove
+														</a>
 													</td>
 												</tr>
 												<?php 
 											} 
 											?>
-											<!-- <tr>
-												<td><a data-toggle="tab" href="#company-2" class="client-link">Choosing Password</a></td>
-												<td>Added :15/06/2015</td>
-
-												<td class="project-actions">
-													<a href="<?php echo site_url('edits') ?>" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-													<a href="#" class="btn btn-white btn-sm"><i class="fa fa-trash"></i> Remove </a>
-												</td>
-											</tr> -->
 										</tbody>
 									</table>
 								</div>
