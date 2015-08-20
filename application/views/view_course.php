@@ -60,7 +60,7 @@
 													<td class="project-title">
 														<?php echo $user_course->courseName; ?></a>
 														<br>
-														<small>Created: <?php echo $user_course->date_created; ?></small>
+														<small>Created: <?php echo $user_course->dateCreated; ?></small>
 													</td>
 													<td class="project-completion">
 														<small>Percentage completed: <?php echo $user_course->completion; ?>%</small>

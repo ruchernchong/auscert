@@ -5,7 +5,7 @@ class addCourse extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_add_course');
+		$this->load->model('model_addCourse');
 	}
 
 	public function index() {

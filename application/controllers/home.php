@@ -11,21 +11,17 @@ class home extends CI_Controller {
 		$this->load->model('model_group');
 	}
 	public function index() {
-		if($this->session->userdata('logged_in')) 
-		{
-			$userCourses = $this->model_userCourse->GetUserCourses();
-			$i = 0;
-			$untaken = [];
-			if ($userCourses) {
-				foreach ($userCourses as $thiscourse) {
-					$courseList = $this->model_course->GetCourseIDList();
-					if (in_array($thiscourse->courseID, $courseList)) {
-						array_push($untaken, $thiscourse);
-					}
-				}
-				// print_r($untaken);
-				$courseList = $this->model_course->GetCourse();
-				$data['courses'] = $courseList;
+		if ($this->session->userdata('logged_in')) {
+			$courses = $this->model_course->GetCourse();
+			if ($courses) {
+			// 	//remove courses that are already enrolled
+			// 	foreach ($courses as $course) {
+			// 		$taken = $this->model_userCourse->GetUserCourses();
+			// 		if (in_array($courses, $taken)) {
+			// 			$course += $course;
+			// 		}
+			// 	}
+				$data['courses'] = $courses;
 			}
 
 			$query = $this->model_userCourse->GetUserCourses();
@@ -73,6 +69,8 @@ class home extends CI_Controller {
 		$session_data = $this->session->userdata('logged_in');
 		$courseID = $this->input->get('id', TRUE);
 		$this->model_userCourse->RegisterToCourse($session_data['userID'], $courseID);
+
+		redirect('home', 'refresh');
 	}
 
 	function logout() {
