@@ -177,24 +177,16 @@ ul.alert-dropdown {
 
 .side-nav>li>ul {
 	padding: 0;
-
-
 }
-
-.side-nav-font 
-{
-	color: #fff;
+.side-nav {
+	color: #FFFFFF;
 }
-
 .side-nav>li>ul>li>a {
 	display: block;
 	padding: 10px 15px 10px 38px;
 	text-decoration: none;
 	color: #999;
 	background-color:#fff;
-
-
-
 }
 .side-nav>li>ul>li>ul>li>a {
 	display: block;
@@ -202,8 +194,6 @@ ul.alert-dropdown {
 	text-decoration: none;
 	color: black;
 	background-color:#fff;
-
-
 }
 .side-nav>li>ul>li>ul {
 
@@ -538,6 +528,8 @@ body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 .courseLink, .courseLink:link, .courseLink:visited {
 	color: inherit;
 }
-#auscert-logo {
-	text-align: center;
+.side-nav .active {
+	text-decoration: none;
+	color: #337ab7;
+	background-color: #FFFFFF;
 }
