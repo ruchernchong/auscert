@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class login extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		
@@ -8,7 +8,7 @@ class Login extends CI_Controller {
 	}
 
 	public function index() {
-		$this->load->view('login');
+		$this->load->view("view_login");
 	}
 
 	public function validateLogin() {
@@ -30,7 +30,7 @@ class Login extends CI_Controller {
 			}
 			redirect('home', 'refresh');
 		} else {
-			redirect('welcome','refresh');
+			redirect('login','refresh');
 		}
 	}
 }
