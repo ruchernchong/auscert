@@ -13,17 +13,20 @@ class home extends CI_Controller {
 	public function index() {
 		if($this->session->userdata('logged_in')) 
 		{
-			// $courses = $this->model_course->GetCourse();
-			// if ($courses) {
-			// 	//remove courses that are already enrolled
-			// 	foreach ($courses as $course) {
-			// 		$taken = $this->model_userCourse->GetUserCourses();
-			// 		if (in_array($courses, $taken)) {
-			// 			$course += $course;
-			// 		}
-			// 	}
-			// 	$data['courses'] = $course;
-			// }
+			$userCourses = $this->model_userCourse->GetUserCourses();
+			$i = 0;
+			$untaken = [];
+			if ($userCourses) {
+				foreach ($userCourses as $thiscourse) {
+					$courseList = $this->model_course->GetCourseIDList();
+					if (in_array($thiscourse->courseID, $courseList)) {
+						array_push($untaken, $thiscourse);
+					}
+				}
+				// print_r($untaken);
+				$courseList = $this->model_course->GetCourse();
+				$data['courses'] = $courseList;
+			}
 
 			$query = $this->model_userCourse->GetUserCourses();
 			if ($query) {
