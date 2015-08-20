@@ -29,7 +29,9 @@ class addCourse extends CI_Controller {
 		$category = $this->input->post('category');
 		$description = $this->input->post('description');
 
-		$this->model_add_course->save_course($name, $category, 0, $description, 'text date? really?', 'today');
+		$this->model_add_course->save_course($name, $category, 0, $description);
+
+		redirect('edits','refresh');
 	}
 }
 ?>

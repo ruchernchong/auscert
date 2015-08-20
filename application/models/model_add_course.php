@@ -5,7 +5,7 @@ Class model_add_course extends CI_Model {
 		parent::__construct();
 	}
 
-	 public function save_course($title, $category, $active, $description, $date_created, $last_edited) {
+	 public function save_course($title, $category, $active, $description) {
 	   
 
 	 	$data = array(
@@ -14,8 +14,6 @@ Class model_add_course extends CI_Model {
                'creator' => $this->session->userdata['logged_in']['username'],
                'active' =>  $active,
                'description' => $description,
-               'dateCreated' => $date_created, 
-               'lastEdited' => $last_edited
             );
 
 		$this->db->insert('courses', $data); 
