@@ -75,11 +75,5 @@ class home extends CI_Controller {
 
 		redirect('home', 'refresh');
 	}
-
-	function logout() {
-		$this->session->unset_userdata('logged_in');
-		redirect('home','refresh');
-		session_destroy();
-	}
 }
 ?>
