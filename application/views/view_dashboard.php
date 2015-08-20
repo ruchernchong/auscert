@@ -34,8 +34,10 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo empty($NoOfUserCourses) ? "0" : $NoOfUserCourses ?>
 						</div>
-						<a class="circle-tile-footer courseList">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
-						<!-- <a class="circle-tile-footer" onclick="toggle('courseList', 'avaliableCourses', 'availableGroups')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
+						<!-- <a class="circle-tile-footer courseList">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
+						<a class="circle-tile-footer" onclick="toggler('courseList', 'availableCourses', 'availableGroups');">More Info&nbsp;
+							<i class="fa fa-chevron-circle-right"></i>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -53,8 +55,12 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo empty($count_coursesAvail) ? "0" : $count_coursesAvail ?>
 						</div>
-						<a class="circle-tile-footer availableCourses">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
-						<!-- <a class="circle-tile-footer" onClick="toggle('avaliableCourses', 'courseList', 'availableGroups')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
+						<!-- <a class="circle-tile-footer availableCourses">More Info&nbsp;
+							<i class="fa fa-chevron-circle-right"></i>
+						</a> -->
+						<a class="circle-tile-footer" onclick="toggler('availableCourses', 'courseList', 'availableGroups');">More Info&nbsp;
+							<i class="fa fa-chevron-circle-right"></i>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -72,8 +78,10 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo empty($NoOfGroups) ? "0" : $NoOfGroups ?>
 						</div>
-						<a class="circle-tile-footer availableGroups">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
-						<!-- <a class="circle-tile-footer" onClick="toggle('availableGroups', 'courseList', 'avaliableCourses')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
+						<!-- <a class="circle-tile-footer availableGroups">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
+						<a class="circle-tile-footer" onclick="toggler('availableGroups', 'courseList', 'availableCourses');">More Info&nbsp;
+							<i class="fa fa-chevron-circle-right"></i>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -96,8 +104,11 @@
 								?>
 								<div class="form-group">
 									<a href="learning/?courseID=<?php echo $usercourse->courseID; ?>" class="courseLink">
-										<label><i class="fa fa-tasks"></i>&emsp;<?php echo $usercourse->courseName; ?></label>
+										<label>
+											<i class="fa fa-tasks"></i>&emsp;<?php echo $usercourse->courseName; ?>
+										</label>
 									</a>
+									<a class="btn btn-danger pull-right" data-toggle="tooltip" title="You will still be able to enrol in this course later." href="home/dropCourse?id=<?php echo $usercourse->courseID; ?>">Drop Course</a>
 								</div>
 								<?php
 							}
@@ -126,8 +137,8 @@
 									<a href="learning/?courseID=<?php echo $courseAvail->courseID; ?>" class="courseLink">
 										<label><i class="fa fa-database"></i>&emsp;<?php echo $courseAvail->courseName; ?></label>
 									</a>
-									<!-- <button class='btn btn-primary' href="home/registerCourses">Enrol</button> -->
-									<button class='btn btn-primary' onclick="window.location.href='home/EnrolToCourse?id=<?php echo $courseAvail->courseID ?>'">Enrol</button>
+									<!-- <button class='btn btn-primary' onclick="window.location.href='home/EnrolToCourse?id=<?php echo $courseAvail->courseID ?>'">Enrol</button> -->
+									<a class="btn btn-default pull-right" href="home/EnrolToCourse?id=<?php echo $courseAvail->courseID; ?>">Enrol Course</a>
 								</div>
 								<?php
 							}
@@ -172,36 +183,33 @@
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 <script>
 
-// function toggler(show, hide, hide) {
-// 	$("#" + hide).hide("fast");
-// 	$("#" + hide).hide("fast");
-// 	$("#" + show).show("slow");
-// }
+function toggler(toggle, hideOne, hideTwo) {
+	$("#" + toggle).toggle("slow");
+	$("#" + hideOne).hide("slow")
+	$("#" + hideTwo).hide("slow")
+}
 
 $(document).ready(function() {
-	$(".courseList").click(function() {
-		$("#courseList").toggle("slow");
-		$("#availableCourses").fadeOut("fast");
-		$("#availableGroups").fadeOut("fast");
+	// $(".courseList").click(function() {
+	// 	$("#courseList").toggle("slow");
+	// 	$("#availableCourses").fadeOut("fast");
+	// 	$("#availableGroups").fadeOut("fast");
+	// });
 
-		// $("#auscert-logo").toggle("slow");
-	});
+	// $(".availableCourses").click(function() {
+	// 	$("#availableCourses").toggle("slow");
+	// 	$("#courseList").fadeOut("fast");
+	// 	$("#availableGroups").fadeOut("fast");
+	// });
 
-	$(".availableCourses").click(function() {
-		$("#availableCourses").toggle("slow");
-		$("#courseList").fadeOut("fast");
-		$("#availableGroups").fadeOut("fast");
+	// $(".availableGroups").click(function() {
+	// 	$("#availableGroups").toggle("slow");
+	// 	$("#courseList").fadeOut("fast");
+	// 	$("#availableCourses").fadeOut("fast");
+	// });
 
-		// $("#auscert-logo").toggle("slow");
-	});
-
-	$(".availableGroups").click(function() {
-		$("#availableGroups").toggle("slow");
-		$("#courseList").fadeOut("fast");
-		$("#availableCourses").fadeOut("fast");
-
-		// $("#auscert-logo").toggle("slow");
-	});
+$('[data-toggle="tooltip"]').tooltip();
+$('#pageHome').removeAttr('href');
 });
 </script>
 </body>
