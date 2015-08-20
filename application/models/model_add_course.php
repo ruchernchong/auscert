@@ -1,10 +1,25 @@
 <?php
 
-Class model_userCourse extends CI_Model {
+Class model_add_course extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
 
+	 public function save_course($title, $category, $active, $description) {
+	   
+
+	 	$data = array(
+               'courseName' => $title,
+               'category' => $category,
+               'creator' => $this->session->userdata['logged_in']['username'],
+               'active' =>  $active,
+               'description' => $description,
+            );
+
+		$this->db->insert('courses', $data); 
+	 }
+
+	/*
 	public function validate() {
 		$this->db->where('username',$this->input->post('username'));
 		$this->db->where('password',$this->input->post('password'));
@@ -31,12 +46,11 @@ Class model_userCourse extends CI_Model {
 		$query = $this->db->get('user_courses');
 		return $query->num_rows;
 	}
-
-	public function RegisterToCourse($userID, $courseID) {
-		$data = array('userID' => $userID, 'courseID' => $courseID); 
-		$query = $this->db->insert('user_courses', $data);
-	}
+	*/
 }
 ?>
+
+
+
 
 

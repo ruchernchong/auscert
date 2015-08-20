@@ -13,10 +13,17 @@ class home extends CI_Controller {
 	public function index() {
 		if($this->session->userdata('logged_in')) 
 		{
-			$courses = $this->model_course->GetCourse();
-			if ($courses) {
-				$data['courses'] = $courses;
-			}
+			// $courses = $this->model_course->GetCourse();
+			// if ($courses) {
+			// 	//remove courses that are already enrolled
+			// 	foreach ($courses as $course) {
+			// 		$taken = $this->model_userCourse->GetUserCourses();
+			// 		if (in_array($courses, $taken)) {
+			// 			$course += $course;
+			// 		}
+			// 	}
+			// 	$data['courses'] = $course;
+			// }
 
 			$query = $this->model_userCourse->GetUserCourses();
 			if ($query) {
@@ -43,7 +50,6 @@ class home extends CI_Controller {
 				$data['userGroups'] = $groups;
 			}
 
-
 			$session_data = $this->session->userdata('logged_in');
 			$data['userID'] = $session_data['userID'];
 			$data['username'] = $session_data['username'];
@@ -60,53 +66,16 @@ class home extends CI_Controller {
 		}
 	}
 
+	function EnrolToCourse() {
+		$session_data = $this->session->userdata('logged_in');
+		$courseID = $this->input->get('id', TRUE);
+		$this->model_userCourse->RegisterToCourse($session_data['userID'], $courseID);
+	}
+
 	function logout() {
 		$this->session->unset_userdata('logged_in');
 		redirect('home','refresh');
 		session_destroy();
-	}
-
-	
-	function myGrade() {
-		if($this->session->userdata('logged_in')) {
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$data['usertype'] = $session_data['usertype'];
-			$data['menu'] = "mygrade";
-
-			$this->load->view('header',$data);
-			$this->load->view('view_myGrade');
-		} else {
-			 //If no session, redirect to login page
-			redirect('welcome', 'refresh');
-		} 
-
-	}
-
-	function admin() {
-		if($this->session->userdata('logged_in')) {
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$data['usertype'] = $session_data['usertype'];
-			$data['menu'] = "adminpage";
-			
-			$getCourse = $this->model_course->GetCourse();
-			$getUsers = $this->model_user->GetUsers();
-
-			if ($getCourse) {
-				$data['courses'] = $getCourse;
-			}
-
-			if ($getUsers) {
-				$data['users'] = $getUsers;
-			}
-
-			$this->load->view('header',$data);
-			$this->load->view('view_adminPage',$data);
-		} else {
-		 //If no session, redirect to login page
-			redirect('welcome', 'refresh');
-		}
 	}
 }
 ?>

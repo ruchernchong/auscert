@@ -4,6 +4,8 @@
 class addCourse extends CI_Controller {
 	function __construct() {
 		parent::__construct();
+
+		$this->load->model('model_add_course');
 	}
 
 	public function index() {
@@ -20,6 +22,16 @@ class addCourse extends CI_Controller {
 			 //If no session, redirect to login page
 			redirect('welcome', 'refresh');
 		}
+	}
+
+	public function add_course() {
+		$name = $this->input->post('name');
+		$category = $this->input->post('category');
+		$description = $this->input->post('description');
+
+		$this->model_add_course->save_course($name, $category, 0, $description);
+
+		redirect('edits','refresh');
 	}
 }
 ?>
