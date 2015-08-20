@@ -47,12 +47,12 @@ CREATE TABLE IF NOT EXISTS `courses` (
 --
 
 INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`, `description`, `dateCreated`, `lastEdited`) VALUES
-(1, 'Phising Emails', 'Online Safety', 'Tartiner Studios', 0, 'Introduciton to the phishing emails. What they are and what you can do to avoid being a victim', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'Choosing A Safe Password', 'Account Security', 'Redones', 1, 'This course will guide you through how a password works as well as steps to take to ensure a strong and secure password', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'Tartiner Studios Training', 'Introduction to the team', 'Tartiner Studios', 1, 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'SQL Injection Attacks', 'Cyber Attacks', 'AusCert', 1, 'Introduction to what SQL Injection Attacks are and how to avoid them', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'Data Encryption', 'Data Security', 'UQ ITEE', 1, 'Detailed course on the various methods of data encyyption', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'UQ Staff Security Basics', 'Staff Introductory Courses', 'UQ BEL', 1, 'A compulsory online security course for uq staff', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, 'Phising Emails', 'Online Safety', 'Tartiner Studios', 0, 'Introduciton to the phishing emails. What they are and what you can do to avoid being a victim', '2015-03-08 00:00:00', '2015-03-08 00:00:00'),
+(2, 'Choosing A Safe Password', 'Account Security', 'Redones', 1, 'This course will guide you through how a password works as well as steps to take to ensure a strong and secure password', '2015-07-15 00:00:00', '2015-07-19 00:00:00'),
+(3, 'Tartiner Studios Training', 'Introduction to the team', 'Tartiner Studios', 1, 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', '2015-08-12 00:00:00', '2015-08-17 00:00:00'),
+(4, 'SQL Injection Attacks', 'Cyber Attacks', 'AusCert', 1, 'Introduction to what SQL Injection Attacks are and how to avoid them', '2015-06-19 00:00:00', '2015-08-25 00:00:00'),
+(5, 'Data Encryption', 'Data Security', 'UQ ITEE', 1, 'Detailed course on the various methods of data encyyption', '2015-08-12 00:00:00', '2015-08-17 00:00:00'),
+(6, 'UQ Staff Security Basics', 'Staff Introductory Courses', 'UQ BEL', 1, 'A compulsory online security course for uq staff', '2015-08-12 00:00:00', '2015-08-17 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -185,42 +185,42 @@ INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
-  ADD PRIMARY KEY (`courseID`);
+ADD PRIMARY KEY (`courseID`);
 
 --
 -- Indexes for table `groups`
 --
 ALTER TABLE `groups`
-  ADD PRIMARY KEY (`groupID`),
-  ADD KEY `groupID` (`groupID`);
+ADD PRIMARY KEY (`groupID`),
+ADD KEY `groupID` (`groupID`);
 
 --
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
-  ADD PRIMARY KEY (`questionID`),
-  ADD KEY `courseID` (`courseID`);
+ADD PRIMARY KEY (`questionID`),
+ADD KEY `courseID` (`courseID`);
 
 --
 -- Indexes for table `slides`
 --
 ALTER TABLE `slides`
-  ADD PRIMARY KEY (`slideID`),
-  ADD KEY `courseID` (`courseID`);
+ADD PRIMARY KEY (`slideID`),
+ADD KEY `courseID` (`courseID`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`userID`),
-  ADD KEY `groupID` (`groupID`);
+ADD PRIMARY KEY (`userID`),
+ADD KEY `groupID` (`groupID`);
 
 --
 -- Indexes for table `user_courses`
 --
 ALTER TABLE `user_courses`
-  ADD PRIMARY KEY (`userID`,`courseID`),
-  ADD KEY `courseID` (`courseID`);
+ADD PRIMARY KEY (`userID`,`courseID`),
+ADD KEY `courseID` (`courseID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -230,27 +230,27 @@ ALTER TABLE `user_courses`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
-  MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --
@@ -259,26 +259,26 @@ ALTER TABLE `users`
 -- Constraints for table `questions`
 --
 ALTER TABLE `questions`
-  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 --
 -- Constraints for table `slides`
 --
 ALTER TABLE `slides`
-  ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 --
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`);
+ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`);
 
 --
 -- Constraints for table `user_courses`
 --
 ALTER TABLE `user_courses`
-  ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
-  ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
+ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
