@@ -11,6 +11,26 @@
 
 		<div class="row">	
 			<div class="col-lg-12">
+				<div class="form-group">
+					<form name ="userinput" action="addCourse/add_course" method="post">
+					
+						<label>Course Name</label>
+						<input class="form-control" name="name">
+						<p class="help-block">Must be filled</p>
+
+						<label>Category</label>
+						<input class="form-control" name="category">
+						<p class="help-block">Must be filled</p>
+
+						<label>Description</label>
+						<textarea class="form-control" rows="5" name="description"></textarea>
+						<p class="help-block">Must be filled</p>
+
+						<input type="submit" value="Submit">
+						<button type="reset" class="btn btn-default">Reset</button>
+					</form>
+				</div>
+				<!--
 				<div class="panel panel-default">
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#contact_01" data-toggle="tab">Test 1</a></li>
@@ -73,19 +93,20 @@
 											</div>
 										</div>
 									</div>
+									<input type="button" onclick="location.href='<?php echo site_url('addCourse/add_course')?>'" value="Go to Google"' />
 									<button type="submit" class="btn btn-default">Submit</button>
 									<button type="reset" class="btn btn-default">Reset</button>
 								</form>
 							</div>
 							<!-- /.col-lg-6 (nested) -->
 
-							<!-- /.col-lg-6 (nested) -->
+							<!-- /.col-lg-6 (nested) --
 						</div>
-						<!-- /.row (nested) -->
+						<!-- /.row (nested) --
 					</div>
-					<!-- /.panel-body -->
+					<!-- /.panel-body --
 				</div>
-				<!-- /.panel -->
+				<!-- /.panel --
 
 				<!-- /.col-lg-12 -->
 			</div>
