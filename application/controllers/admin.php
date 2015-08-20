@@ -31,7 +31,7 @@ class admin extends CI_Controller {
 			$this->load->view('view_adminPage',$data);
 		} else {
 		 //If no session, redirect to login page
-			redirect('welcome', 'refresh');
+			redirect('login', 'refresh');
 		}
 	}
 }	

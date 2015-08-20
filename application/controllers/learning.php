@@ -31,7 +31,7 @@ class learning extends CI_Controller {
 			$this->load->view('header', $data);
 			$this->load->view('view_learning', $data);
 		} else {
-			redirect('welcome', 'refresh');
+			redirect('login', 'refresh');
 		}
 	}
 }
