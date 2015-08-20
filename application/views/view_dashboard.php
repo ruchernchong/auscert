@@ -124,10 +124,13 @@
 								?>
 								<div class="form-group">
 									<a href="learning/?courseID=<?php echo $course->courseID; ?>" class="courseLink">
-										<label><i class="fa fa-database"></i>&emsp;<?php echo $course->courseName; ?></label>
+										<label><?php echo $course->courseName; ?></label>
 									</a>
-									<!-- <button class='btn btn-primary' href="home/registerCourses">Enrol</button> -->
 									<button class='btn btn-primary' onclick="window.location.href='home/EnrolToCourse?id=<?php echo $course->courseID ?>'">Enrol</button>
+									<br><label><?php echo $course->description; ?></label>
+									<br><label>&emsp;<i class="fa fa-tags"></i>  Category: <?php echo $course->category; ?></label>
+									<br><label>&emsp;<i class="fa fa-user"></i>  Creator: <?php echo $course->creator; ?></label>
+									<!-- <button class='btn btn-primary' href="home/registerCourses">Enrol</button> -->
 								</div>
 								<?php
 							}
