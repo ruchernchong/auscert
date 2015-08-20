@@ -126,6 +126,8 @@
 									<a href="learning/?courseID=<?php echo $course->courseID; ?>" class="courseLink">
 										<label><i class="fa fa-database"></i>&emsp;<?php echo $course->courseName; ?></label>
 									</a>
+									<!-- <button class='btn btn-primary' href="home/registerCourses">Enrol</button> -->
+									<button class='btn btn-primary' onclick="window.location.href='home/registerCourse'">Enrol</button>
 								</div>
 								<?php
 							}
