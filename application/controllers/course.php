@@ -19,7 +19,7 @@ class course extends CI_Controller {
 			}
 
 			if ($getCompletion) {
-				$data['user_courses'] = $getCompletion;
+				$data['userCourses'] = $getCompletion;
 			}
 
 			$session_data = $this->session->userdata('logged_in');
