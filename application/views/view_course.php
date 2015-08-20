@@ -32,21 +32,21 @@
 								<table class="table table-hover">
 									<tbody>
 										<?php 
-										if (empty($user_courses[0]->completion)) {
+										if (empty($userCourses[0]->completion)) {
 											?>
 											<label>You do not have any courses enrolled.</label>
 											<?php
 										} else {
-											foreach ($user_courses as $user_course) { 
+											foreach ($userCourses as $userCourse) { 
 												?>
-												<tr data-href= "<?php echo site_url('learning?courseID='.$user_course->courseID) ?>">
+												<tr data-href="<?php echo site_url('learning?courseID=' . $userCourse->courseID); ?>">
 													<td class="project-status">
 														<?php
-														if ($user_course->completion == "100") {
+														if ($userCourse->completion == "100") {
 															?>
 															<span class="label label-success">Completed</span>
 															<?php
-														} else if ($user_course->completion == "0") {
+														} else if ($userCourse->completion == "0") {
 															?>
 															<span class="label label-danger">Not Started</span>
 															<?php
@@ -58,13 +58,12 @@
 														?>
 													</td>
 													<td class="project-title">
-														<?php echo $user_course->courseName; ?></a>
-														<br>
+														<h4><?php echo $userCourse->courseName; ?></h4>
 													</td>
 													<td class="project-completion">
-														<small>Percentage completed: <?php echo $user_course->completion; ?>%</small>
+														<p>Percentage completed: <?php echo $userCourse->completion; ?>%</p>
 														<div class="progress progress-mini">
-															<div style="width: <?php echo $user_course->completion; ?>%" class="progress-bar"></div>
+															<div style="width: <?php echo $userCourse->completion; ?>%" class="progress-bar"></div>
 														</div>
 													</td>
 												</tr>
