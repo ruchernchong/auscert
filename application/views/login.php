@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
 	<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" /> -->
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
+	<link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" />
 </head>
 
 <body class="login_bg">
