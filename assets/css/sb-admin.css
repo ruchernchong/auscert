@@ -519,10 +519,12 @@ ul.alert-dropdown {
 body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 	width: 0;
 }
-#courseList, #availableCourses, #availableGroups {
+#courseList, 
+#availableCourses, 
+#availableGroups {
 	display: none;
 }
-.courseList, .availableCourses, .availableGroups {
+.circle-tile-footer {
 	cursor: pointer;
 }
 .courseLink, .courseLink:link, .courseLink:visited {
