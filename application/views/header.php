@@ -20,7 +20,6 @@
 	<link href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url('assets/css/course.css'); ?>" rel="stylesheet" />
 
-
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
@@ -87,23 +86,12 @@
 						</div>
 					</li>
 
-					<!-- <li class="side-nav-search">
-						<div class="input-group custom-search-form">
-							<input type="text" class="form-control" placeholder="Search...">
-							<span class="input-group-btn">
-								<button class="btn btn-default form-control" type="button">
-									<i class="fa fa-search"></i>
-								</button>
-							</span>
-						</div>
-					</li> -->
-
 					<li class="<?php if ($menu=="home") { echo "active"; } ?>">
 						<a class="side-nav-font" href="<?php echo site_url('home') ?>"><i class="fa fa-fw fa-home"></i>&emsp;Home</a>
 					</li>
-					<li class="<?php if ($menu=="mygrade") { echo "active"; } ?>">
+<!-- 					<li class="<?php if ($menu=="mygrade") { echo "active"; } ?>">
 						<a class="side-nav-font" href="<?php echo site_url('home/mygrade') ?>"><i class="fa fa-fw fa-check-square"></i>&emsp;My Grade</a>
-					</li>
+					</li> -->
 					<li class="<?php if ($menu=="course") { echo "active"; } ?>">
 						<a class="side-nav-font" href="<?php echo site_url('course') ?>"><i class="fa fa-fw fa-briefcase"></i>&emsp;Course </a>
 					</li>

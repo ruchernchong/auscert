@@ -43,7 +43,6 @@ class home extends CI_Controller {
 				$data['userGroups'] = $groups;
 			}
 
-
 			$session_data = $this->session->userdata('logged_in');
 			$data['userID'] = $session_data['userID'];
 			$data['username'] = $session_data['username'];
@@ -60,27 +59,17 @@ class home extends CI_Controller {
 		}
 	}
 
+	// function registerCourses() {
+	// 	$registerCourses = $this->model_userCourse->RegisterToCourse();
+	// 		if ($registerCourses) {
+	// 			$data['registerCourses'] = $registerCourses;
+	// 		}
+	// }
+
 	function logout() {
 		$this->session->unset_userdata('logged_in');
 		redirect('home','refresh');
 		session_destroy();
-	}
-
-	
-	function myGrade() {
-		if($this->session->userdata('logged_in')) {
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$data['usertype'] = $session_data['usertype'];
-			$data['menu'] = "mygrade";
-
-			$this->load->view('header',$data);
-			$this->load->view('view_myGrade');
-		} else {
-			 //If no session, redirect to login page
-			redirect('welcome', 'refresh');
-		} 
-
 	}
 
 	function admin() {

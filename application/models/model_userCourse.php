@@ -31,6 +31,11 @@ Class model_userCourse extends CI_Model {
 		$query = $this->db->get('user_courses');
 		return $query->num_rows;
 	}
+
+	public function RegisterToCourse() {
+		$data = 
+		$query = $this->db->insert('user_courses', $data);
+	}
 }
 ?>
 
