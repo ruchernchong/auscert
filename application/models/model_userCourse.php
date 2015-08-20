@@ -44,6 +44,11 @@ Class model_userCourse extends CI_Model {
 		$data = array('userID' => $userID, 'courseID' => $courseID); 
 		$query = $this->db->insert('user_courses', $data);
 	}
+
+	public function DropFromCourse($userID, $courseID) {
+		$data = array('userID' => $userID, 'courseID' => $courseID);
+		$query = $this->db->delete('user_courses', $data);
+	}
 }
 ?>
 
