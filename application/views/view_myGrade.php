@@ -1,6 +1,6 @@
 <?php //$userID = 1; 
 
-$query = $this->db->query('SELECT courseID, completion, grading FROM user_courses WHERE userID = 2 AND enrolled = 1');
+$query = $this->db->query('SELECT courseID, completion, grading FROM user_courses WHERE userID = 2');
 $coursesQuery = $this->db->query('SELECT courseID, courseName FROM courses');
 
 /*foreach ($query->result() as $row)
