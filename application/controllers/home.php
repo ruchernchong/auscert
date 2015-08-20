@@ -75,5 +75,13 @@ class home extends CI_Controller {
 
 		redirect('home', 'refresh');
 	}
+
+	function dropCourse() {
+		$session_data = $this->session->userdata('logged_in');
+		$courseID = $this->input->get('id', TRUE);
+		$this->model_userCourse->DropFromCourse($session_data['userID'], $courseID);
+
+		redirect('home', 'refresh');
+	}
 }
 ?>
