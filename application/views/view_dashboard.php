@@ -51,7 +51,7 @@
 							Browse Available Courses
 						</div>
 						<div class="circle-tile-number text-faded">
-							<?php echo empty($NoOfCourses) ? "0" : $NoOfCourses ?>
+							<?php echo empty($count_coursesAvail) ? "0" : $count_coursesAvail ?>
 						</div>
 						<a class="circle-tile-footer availableCourses">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
 						<!-- <a class="circle-tile-footer" onClick="toggle('avaliableCourses', 'courseList', 'availableGroups')">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
@@ -120,14 +120,14 @@
 						} else {
 							?>
 							<?php
-							foreach ($courses as $course) {
+							foreach ($coursesAvail as $courseAvail) {
 								?>
 								<div class="form-group">
-									<a href="learning/?courseID=<?php echo $course->courseID; ?>" class="courseLink">
-										<label><i class="fa fa-database"></i>&emsp;<?php echo $course->courseName; ?></label>
+									<a href="learning/?courseID=<?php echo $courseAvail->courseID; ?>" class="courseLink">
+										<label><i class="fa fa-database"></i>&emsp;<?php echo $courseAvail->courseName; ?></label>
 									</a>
 									<!-- <button class='btn btn-primary' href="home/registerCourses">Enrol</button> -->
-									<button class='btn btn-primary' onclick="window.location.href='home/EnrolToCourse?id=<?php echo $course->courseID ?>'">Enrol</button>
+									<button class='btn btn-primary' onclick="window.location.href='home/EnrolToCourse?id=<?php echo $courseAvail->courseID ?>'">Enrol</button>
 								</div>
 								<?php
 							}

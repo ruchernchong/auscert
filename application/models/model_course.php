@@ -43,12 +43,10 @@ Class model_course extends CI_Model {
 	}
 
 	public function GetCourseIDList() {
-		$query = $this->db->get('courses');
-		$cidlist = [];
-		foreach ($query->result() as $q) {
-			array_push($cidlist, $q->courseID);
-		}
-		return $cidlist;
+		$this->db->select('courseID, courseName');
+		$this->db->from('courses');
+		$query = $this->db->get();
+		return $query->result();
 	}
 }
 ?>

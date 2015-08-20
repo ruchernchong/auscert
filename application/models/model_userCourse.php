@@ -26,6 +26,14 @@ Class model_userCourse extends CI_Model {
 		return $query->result();
 	}
 
+	public function GetUserCoursesID() {
+		$this->db->select('courseID');
+		$this->db->from('user_courses');
+		$this->db->where('userID', $this->session->userdata['logged_in']['userID']);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function GetNumberOfUserCourses() {
 		$this->db->where('userID', $this->session->userdata['logged_in']['userID']);
 		$query = $this->db->get('user_courses');
