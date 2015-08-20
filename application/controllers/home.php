@@ -2,7 +2,7 @@
 
 
 class home extends CI_Controller {
-	function __construct(){
+	function __construct() {
 		parent::__construct();
 		
 		$this->load->model('model_course');
@@ -10,18 +10,21 @@ class home extends CI_Controller {
 		$this->load->model('model_userCourse');
 		$this->load->model('model_group');
 	}
+
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
-			$courses = $this->model_course->GetCourse();
+
+			$courses = $this->model_course->GetCourseIDList();
+			$userCourses = $this->model_userCourse->GetUserCoursesID();
+
 			if ($courses) {
-			// 	//remove courses that are already enrolled
-			// 	foreach ($courses as $course) {
-			// 		$taken = $this->model_userCourse->GetUserCourses();
-			// 		if (in_array($courses, $taken)) {
-			// 			$course += $course;
-			// 		}
-			// 	}
+				$coursesAvail = array_udiff($courses, $userCourses, function ($courses, $userCourses) {
+					return $courses->courseID - $userCourses->courseID;
+				});
+
 				$data['courses'] = $courses;
+				$data['coursesAvail'] = $coursesAvail;
+				$data['count_coursesAvail'] = count($coursesAvail);
 			}
 
 			$query = $this->model_userCourse->GetUserCourses();
