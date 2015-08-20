@@ -14,7 +14,7 @@ class admin extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
-			$data['menu'] = "adminpage";
+			$data['menu'] = "admin";
 			
 			$getCourse = $this->model_course->GetCourse();
 			$getUsers = $this->model_user->GetUsers();

@@ -120,8 +120,9 @@ $("#menu-toggle").click(function(e) {
 	$("#wrapper").toggleClass("toggled");
 });
 
-$(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip(); 
+$(document).ready(function() {
+	$('[data-toggle="tooltip"]').tooltip();
+	$('#pageAdmin').removeAttr('href');
 });
 </script>
 </body>
