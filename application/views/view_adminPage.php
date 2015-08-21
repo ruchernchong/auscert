@@ -82,16 +82,16 @@
 										<table class="table table-hover">
 											<tbody>
 												<?php foreach ($courses as $course) {?>
-												<tr data-href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>">
-													<td><?php echo $course->courseName; ?></td>
+												<tr>
+													<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
 													<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
 
 													<td class="project-actions">
 														<a href="<?php echo site_url('edits'); ?>" class="btn btn-sm btn-success">
 															<i class="fa fa-pencil"></i>&emsp;Edit
 														</a>
-														&emsp;
-														<a href="#" class="btn btn-sm btn-danger">
+														&nbsp;
+														<a href="admin/dropCourse?id=<?php echo $course->courseID; ?>" class="btn btn-sm btn-danger">
 															<i class="fa fa-trash"></i>&emsp;Remove
 														</a>
 													</td>

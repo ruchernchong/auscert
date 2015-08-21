@@ -48,5 +48,10 @@ Class model_course extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function DropFromCourse($courseID) {
+		$data = array('courseID' => $courseID);
+		$query = $this->db->delete('courses', $data);
+	}
 }
 ?>
