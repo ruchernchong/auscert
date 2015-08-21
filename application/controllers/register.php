@@ -15,11 +15,18 @@ class register extends CI_Controller {
 		$registerEmail = $this->input->post('registerEmail');
 		$registerContact = $this->input->post('registerContact');
 
-		$this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
+		if ($registerPassword == $registerRepeatPassword) {
 
-		echo "<script>alert('Successfully registered.');</script>";
+			$this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
 
-		redirect('login', 'refresh');
+			echo "<script>alert('Successfully registered.');</script>";
+
+			redirect('login', 'refresh');
+		} else {
+			echo "<script>alert('Passwords do not match. Please try again.');</script>";
+
+			$this->load->view('view_login');
+		}
 	}
 }
 ?>
