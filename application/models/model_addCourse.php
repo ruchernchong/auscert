@@ -5,23 +5,18 @@ Class model_addCourse extends CI_Model {
 		parent::__construct();
 	}
 
-	public function save_course($title, $category, $active, $description) {
+	public function saveCourse($courseTitle, $courseCategory, $courseActive, $courseDescription) {
 		
 
 		$data = array(
-			'courseName' => $title,
-			'category' => $category,
+			'courseName' => $courseTitle,
+			'category' => $courseCategory,
 			'creator' => $this->session->userdata['logged_in']['username'],
-			'active' =>  $active,
-			'description' => $description,
+			'active' =>  $courseActive,
+			'description' => $courseDescription,
 			);
 
 		$this->db->insert('courses', $data); 
 	}
 }
 ?>
-
-
-
-
-

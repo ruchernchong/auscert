@@ -11,21 +11,21 @@
 		<div class="row">	
 			<div class="col-lg-12">
 				<div class="form-group">
-					<form name ="userinput" action="addCourse/addCourse" method="post">
-						<label>Course Name</label>
-						<input class="form-control" name="name">
+					<form name ="userInput" id="userInput" action="addCourse/createCourse" method="post">
+						<label for="courseName">Course Name</label>
+						<input class="form-control" name="courseName" required>
 						<p class="help-block">Must be filled</p>
 
-						<label>Category</label>
-						<input class="form-control" name="category">
+						<label for="courseCategory">Category</label>
+						<input class="form-control" name="courseCategory" required>
 						<p class="help-block">Must be filled</p>
 
-						<label>Description</label>
-						<textarea class="form-control" rows="5" name="description"></textarea>
+						<label for="courseDescription">Description</label>
+						<textarea class="form-control" rows="5" name="courseDescription" required></textarea>
 						<p class="help-block">Must be filled</p>
 
-						<button type="reset" class="btn btn-danger pull-right">Reset</button>
-						<input type="submit" class="btn btn-success pull-right" value="Submit" />
+						<input type="submit" class="btn btn-success" value="Submit" />
+						<button type="reset" class="btn btn-danger">Reset</button>
 					</form>
 				</div>
 			</div>
