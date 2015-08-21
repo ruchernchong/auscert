@@ -14,7 +14,7 @@ class addCourse extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
-			$data['menu'] = "adminpage";
+			$data['menu'] = "admin";
 			
 			$this->load->view('header',$data);
 			$this->load->view('view_addCourse');
@@ -24,14 +24,14 @@ class addCourse extends CI_Controller {
 		}
 	}
 
-	public function add_course() {
-		$name = $this->input->post('name');
-		$category = $this->input->post('category');
-		$description = $this->input->post('description');
+	public function createCourse() {
+		$courseName = $this->input->post('courseName');
+		$courseCategory = $this->input->post('courseCategory');
+		$courseDescription = $this->input->post('courseDescription');
 
-		$this->model_add_course->save_course($name, $category, 0, $description);
+		$this->model_addCourse->saveCourse($courseName, $courseCategory, 0, $courseDescription);
 
-		redirect('edits','refresh');
+		redirect('admin#tab-courses','refresh');
 	}
 }
 ?>
