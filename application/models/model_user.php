@@ -6,15 +6,36 @@ Class model_user extends CI_Model {
 	}
 
 	public function validate() {
-		$this->db->where('username',$this->input->post('username'));
-		$this->db->where('password',$this->input->post('password'));
+		$this->db->where('username', $this->input->post('loginUsername'));
+		$this->db->where('password', $this->input->post('loginPassword'));
 
 		$query = $this->db->get('users');
-		//var_dump($query->num_rows);
+
 		if ($query->num_rows == 1) {
 			return $query->result();
 		}
 		return false;
+	}
+
+	public function registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact) {
+		$registerUsername = $this->input->post('registerUsername');
+		$registerPassword = $this->input->post('registerPassword');
+		$registerRepeatPassword = $this->input->post('registerRepeatPassword');
+		$registerEmail = $this->input->post('registerEmail');
+		$registerContact = $this->input->post('registerContact');
+
+		if ($registerPassword == $registerRepeatPassword) {
+			$data = array(
+				'username' => $registerUsername,
+				'groupID' => 8, // Hardcoded to assume as student for now.
+				'password' => $registerPassword,
+				'email' => $registerEmail,
+				'contact' => $registerContact,
+				'userType' => 'Student'
+				);
+
+			$this->db->insert('users', $data);
+		}
 	}
 
 	public function GetUsers() {

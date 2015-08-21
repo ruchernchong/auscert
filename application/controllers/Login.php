@@ -12,7 +12,7 @@ class login extends CI_Controller {
 	}
 
 	public function validateLogin() {
-		$username = $this->input->post('username');
+		$username = $this->input->post('loginUsername');
 		$query = $this->model_user->validate();
 		
 		if ($query) {
