@@ -58,7 +58,10 @@
 														?>
 													</td>
 													<td class="project-title">
-														<h4><?php echo $userCourse->courseName; ?></h4>
+														<h4>
+															<?php echo $userCourse->courseName; ?><br>
+															<small>Grade: <?php echo (empty($userCourse->grading)) ? 'Not Graded' : $userCourse->grading; ?></small>
+														</h4>
 													</td>
 													<td class="project-completion">
 														<p>Percentage completed: <?php echo $userCourse->completion; ?>%</p>
