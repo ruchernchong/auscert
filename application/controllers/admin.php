@@ -3,10 +3,11 @@
 class admin extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-			$this->load->model('model_course');
-			$this->load->model('model_user');
-			$this->load->model('model_userCourse');
-			$this->load->model('model_group');
+		
+		$this->load->model('model_course');
+		$this->load->model('model_user');
+		$this->load->model('model_userCourse');
+		$this->load->model('model_group');
 	}
 
 	function index() {
@@ -33,5 +34,12 @@ class admin extends CI_Controller {
 		 //If no session, redirect to login page
 			redirect('login', 'refresh');
 		}
+	}
+
+	function dropCourse() {
+		$courseID = $this->input->get('id', TRUE);
+		$this->model_course->DropFromCourse($courseID);
+
+		redirect('admin#tab-courses', 'refresh');
 	}
 }	
