@@ -87,7 +87,7 @@
 													<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
 
 													<td class="project-actions">
-														<a href="<?php echo site_url('edits'); ?>" class="btn btn-sm btn-success">
+														<a href="<?php echo site_url(sprintf('edits?courseID=%d', $course->courseID)); ?>" class="btn btn-sm btn-success">
 															<i class="fa fa-pencil"></i>&emsp;Edit
 														</a>
 														&nbsp;

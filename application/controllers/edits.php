@@ -15,6 +15,18 @@ class Edits extends CI_Controller {
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "adminpage";
+            
+            $query = $this->model_course->GetCourseById();
+
+            if ($query) {
+                $data['courses'] = $query;
+            }
+
+            $slides = $this->model_slide->GetSlide();
+
+            if ($slides) {
+                $data['slides'] = $slides;
+            }
 
 			$this->load->view('header',$data);
 			$this->load->view('view_editCourse');
