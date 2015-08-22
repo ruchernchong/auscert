@@ -6,11 +6,12 @@
 			</div>
 		</div>
 		<div class="row">
-			<a href="<?php echo site_url('addCourse') ?>" class="btn btn-lg btn-primary pull-right">Create new course</a>
-			<div class="ibox-content">
-				<span class="text-muted pull-right">
-					Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
-				</span>
+			<div class="col-lg-12">
+				<a href="<?php echo site_url('addCourse') ?>" class="btn btn-primary">Create new course</a>&emsp;
+				<!-- <div class="ibox-content"> -->
+				<!-- <span class="text-muted pull-right"> -->
+				Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
+				<!-- </span> -->
 
 				<h2>Report</h2>
 				<div class="input-group">
@@ -21,7 +22,6 @@
 						</span>
 					</div>
 					<div class="clients-list">
-						<!-- <p class="pull-right small text-muted" data-toggle="tooltip" title="I have no idea what is this for.">1406 Elements</p> -->
 						<ul class="nav nav-tabs">
 							<li class="active">
 								<a data-toggle="tab" href="#tab-members"><i class="fa fa-user"></i>&emsp;Members</a>
@@ -49,68 +49,51 @@
 												<td>
 													<i class="fa fa-phone"></i>&emsp;<a href="tel:<?php echo $user->contact; ?>"><?php echo $user->contact; ?></a>
 												</td>
-												<td class="client-status">
+												<!-- <td class="client-status">
 													<span class="label label-success" data-toggle="tooltip" title="I have no idea what is this.">Complete All Task</span>
-												</td>
+												</td> -->
 											</tr>
-
-														<!-- <tr>
-														<td class="client-avatar"><img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>"> </td>
-														<td><a data-toggle="tab" href="#contact-3" class="client-link">DECO2</a></td>
-														<td>Staff</td>
-														<td class="contact-type"><i class="fa fa-phone"> </i></td>
-														<td> +432 955 908</td>
-														<td class="client-status"><span class="label label-primary">Complete 1 Task</span></td>
-														</tr>
-
-														<tr>
-														<td class="client-avatar"><img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>"></a> </td>
-														<td><a data-toggle="tab" href="#contact-4" class="client-link">DECO3</a></td>
-														<td>Member</td>
-														<td class="contact-type"><i class="fa fa-phone"> </i></td>
-														<td> +422 600 213</td>
-														<td class="client-status"><span class="label label-warning">Not Complete</span></td>
-													</tr> -->
-													<?php 
-												}
-												?>
-											</tbody>
-										</table>
-									</div>
-								</div>
-
-								<div id="tab-courses" class="tab-pane fade">
-									<div class="table-responsive">
-										<table class="table table-hover">
-											<tbody>
-												<?php foreach ($courses as $course) {?>
-												<tr>
-													<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
-													<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
-
-													<td class="project-actions">
-														<a href="<?php echo site_url(sprintf('edits?courseID=%d', $course->courseID)); ?>" class="btn btn-sm btn-success">
-															<i class="fa fa-pencil"></i>&emsp;Edit
-														</a>
-														&nbsp;
-														<a href="admin/dropCourse?id=<?php echo $course->courseID; ?>" class="btn btn-sm btn-danger">
-															<i class="fa fa-trash"></i>&emsp;Remove
-														</a>
-													</td>
-												</tr>
-												<?php 
-											} 
-											?>
-										</tbody>
-									</table>
-								</div>
+											<?php 
+										}
+										?>
+									</tbody>
+								</table>
 							</div>
+						</div>
+
+						<div id="tab-courses" class="tab-pane fade">
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<tbody>
+										<?php foreach ($courses as $course) {?>
+										<tr>
+											<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
+											<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
+
+											<td class="project-actions">
+												<a href="<?php echo site_url(sprintf('edits?courseID=%d', $course->courseID)); ?>" class="btn btn-sm btn-success">
+													<i class="fa fa-pencil"></i>&emsp;Edit
+												</a>
+												&nbsp;
+												<a href="admin/dropCourse?id=<?php echo $course->courseID; ?>" class="btn btn-sm btn-danger">
+													<i class="fa fa-trash"></i>&emsp;Remove
+												</a>
+											</td>
+										</tr>
+										<?php 
+									} 
+									?>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- </div> -->
 		</div>
 	</div>
+</div>
+</div>
 </div>
 </div>
 
