@@ -23,19 +23,17 @@ Class model_user extends CI_Model {
 		$registerRepeatPassword = $this->input->post('registerRepeatPassword');
 		$registerEmail = $this->input->post('registerEmail');
 		$registerContact = $this->input->post('registerContact');
+		
+		$data = array(
+			'username' => $registerUsername,
+			'groupID' => 8, // Hardcoded to assume as student for now.
+			'password' => $registerPassword,
+			'email' => $registerEmail,
+			'contact' => $registerContact,
+			'userType' => 'Student'
+			);
 
-		if ($registerPassword == $registerRepeatPassword) {
-			$data = array(
-				'username' => $registerUsername,
-				'groupID' => 8, // Hardcoded to assume as student for now.
-				'password' => $registerPassword,
-				'email' => $registerEmail,
-				'contact' => $registerContact,
-				'userType' => 'Student'
-				);
-
-			$this->db->insert('users', $data);
-		}
+		$this->db->insert('users', $data);
 	}
 
 	public function GetUsers() {
