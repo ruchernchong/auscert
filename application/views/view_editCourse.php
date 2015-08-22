@@ -10,21 +10,21 @@
 				<div class="panel panel-default">
 					<ul class="nav nav-tabs">
 						<li class="active">
-							<a href="#course_details" data-toggle="tab">Course Details</a>
+							<a href="#course_details" data-toggle="tab"><i class="fa fa-database"></i>&emsp;Course Details</a>
 						</li>
 						<li>
-							<a href="#course_quiz" data-toggle="tab">Quiz</a>
+							<a href="#course_quiz" data-toggle="tab"><i class="fa fa-graduation-cap"></i>&emsp;Quiz</a>
 						</li>
 						<?php for($i=0; $i < sizeof($slides); $i++) {
 							?>
 							<li>
 								<a href="#slide_<?php echo $slides[$i]->slideOrder; ?>" data-toggle="tab">
-									<?php echo $slides[$i]->slideOrder . " &mdash; " . $slides[$i]->slideTitle; ?>
+									<i class="fa fa-book"></i>&emsp;<?php echo $slides[$i]->slideOrder . " &mdash; " . $slides[$i]->slideTitle; ?>
 								</a>
 							</li>
 							<?php } ?>
 							<li>
-								<a href="#" class="add-contact" data-toggle="tab">+ Add Chapter</a>
+								<a href="#" class="add-contact" data-toggle="tab"><i class="fa fa-plus"></i>&emsp;Add Chapter</a>
 							</li>
 						</ul>
 						<div class="panel-body">
