@@ -21,67 +21,74 @@
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div class="tab-pane active in" id="login">
-				<form name="formLogin" id="formLogin" class="formLogin" action="<?php echo base_url('login/validateLogin'); ?>" method="POST">
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-						<input type="text" id="loginUsername" name="loginUsername" placeholder="Username" class="form-control text-input">
-					</div>
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-						<input type="password" id="loginPassword" name="loginPassword" placeholder="Password" class="form-control text-input">
-					</div>
-
-					<div class="form-group">
-						<button class="btn-UQ">Login</button>
-					</div>
-				</form>
-			</div>
-
-			<div class="tab-pane fade" id="register">
-				<?php 
-				$attributes = array(
-					'id' => 'formRegister',
-					'name' => 'formRegister',
-					'class' => 'formRegister'
+				<?php $attributes = array(
+					'id' => 'formLogin',
+					'name' => 'formLogin',
+					'class' => 'formLogin'
 					);
-				echo form_open('register/registerUsers', $attributes); 
+				echo form_open('login/validateLogin', $attributes);
 				?>
+				<!-- <form name="formLogin" id="formLogin" class="formLogin" action="<?php echo base_url('login/validateLogin'); ?>" method="POST"> -->
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-					<input type="text" id="registerUsername" name="registerUsername" placeholder="Username" class="form-control text-input" value="<?php echo set_value('registerUsername'); ?>">
+					<input type="text" id="loginUsername" name="loginUsername" placeholder="Username" class="form-control text-input">
 				</div>
-				<span class="register_errorMessage"><?php echo form_error('registerUsername'); ?></span>
-
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-					<input type="password" id="registerPassword" name="registerPassword" placeholder="Password" class="form-control text-input">
+					<input type="password" id="loginPassword" name="loginPassword" placeholder="Password" class="form-control text-input">
 				</div>
-				<span class="register_errorMessage"><?php echo form_error('registerPassword'); ?></span>
-
-				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-					<input type="password" id="registerRepeatPassword" name="registerRepeatPassword" placeholder="Confirm Password" class="form-control text-input">
-				</div>
-				<span class="register_errorMessage"><?php echo form_error('registerRepeatPassword'); ?></span>
-
-				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-					<input type="text" id="registerEmail" name="registerEmail" placeholder="Email Address" class="form-control text-input" value="<?php echo set_value('registerEmail'); ?>">
-				</div>
-				<span class="register_errorMessage"><?php echo form_error('registerEmail'); ?></span>
-
-				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
-					<input type="tel" id="registerContact" name="registerContact" placeholder="Contact No." class="form-control text-input" value="<?php echo set_value('registerContact'); ?>">
-				</div>
-				<span class="register_errorMessage"><?php echo form_error('registerContact'); ?></span>
 
 				<div class="form-group">
-					<button class="btn-UQ">Register</button>
+					<button class="btn-UQ">Login</button>
 				</div>
 			</form>
 		</div>
+
+		<div class="tab-pane fade" id="register">
+			<?php 
+			$attributes = array(
+				'id' => 'formRegister',
+				'name' => 'formRegister',
+				'class' => 'formRegister'
+				);
+			echo form_open('register/registerUsers', $attributes); 
+			?>
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+				<input type="text" id="registerUsername" name="registerUsername" placeholder="Username" class="form-control text-input" value="<?php echo set_value('registerUsername'); ?>">
+			</div>
+			<span class="register_errorMessage"><?php echo form_error('registerUsername'); ?></span>
+
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+				<input type="password" id="registerPassword" name="registerPassword" placeholder="Password" class="form-control text-input">
+			</div>
+			<span class="register_errorMessage"><?php echo form_error('registerPassword'); ?></span>
+
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+				<input type="password" id="registerRepeatPassword" name="registerRepeatPassword" placeholder="Confirm Password" class="form-control text-input">
+			</div>
+			<span class="register_errorMessage"><?php echo form_error('registerRepeatPassword'); ?></span>
+
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+				<input type="text" id="registerEmail" name="registerEmail" placeholder="Email Address" class="form-control text-input" value="<?php echo set_value('registerEmail'); ?>">
+			</div>
+			<span class="register_errorMessage"><?php echo form_error('registerEmail'); ?></span>
+
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+				<input type="tel" id="registerContact" name="registerContact" placeholder="Contact No." class="form-control text-input" value="<?php echo set_value('registerContact'); ?>">
+			</div>
+			<span class="register_errorMessage"><?php echo form_error('registerContact'); ?></span>
+
+			<div class="form-group">
+				<button class="btn-UQ">Register</button>
+			</div>
+		</form>
 	</div>
+</div>
 </div>
 </body>
 </html>

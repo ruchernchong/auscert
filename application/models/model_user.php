@@ -30,7 +30,7 @@ Class model_user extends CI_Model {
 			'password' => $registerPassword,
 			'email' => $registerEmail,
 			'contact' => $registerContact,
-			'userType' => 'Student'
+			'userType' => 'student'
 			);
 
 		$this->db->insert('users', $data);
