@@ -47,7 +47,7 @@
 													</div>
 												</div>
 
-												<div class="panel panel-default">
+												<!-- <div class="panel panel-default">
 													<div class="panel-heading">
 														<h4 class="panel-title"><a class="accordion-toggle collapsed"
 															data-toggle="collapse" href="#collapseTwo<?php if($i>0){echo ($i+1);} ?>">Quiz</a></h4>
@@ -84,7 +84,7 @@
 																</div>
 															</div>
 														</div>
-													</div>
+													</div> -->
 
 													<div class="panel panel-default">
 														<div class="panel-heading">
