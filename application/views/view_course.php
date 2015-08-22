@@ -59,8 +59,11 @@
 											</td>
 											<td class="project-title">
 												<h4>
-													<?php echo $userCourse->courseName; ?><br>
-													<small>Grade: <?php echo (empty($userCourse->grading)) ? 'Not Graded' : $userCourse->grading; ?></small>
+													<i class="fa fa-tasks"></i>&emsp;<?php echo $userCourse->courseName; ?><br>
+													<small>
+														<i class="fa fa-line-chart"></i>&emsp;
+														Grade: <?php echo (empty($userCourse->grading)) ? 'Not Graded' : $userCourse->grading; ?>
+													</small>
 												</h4>
 											</td>
 											<td class="project-completion">
