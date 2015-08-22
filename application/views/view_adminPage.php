@@ -29,7 +29,7 @@
 							</li>
 						</ul>
 						<div class="tab-content">
-							<div id="tab-members" class="tab-pane active">
+							<div id="tab-members" class="tab-pane fade in active">
 								<div class="table-responsive">
 									<table class="table table-striped table-hover">
 										<tbody>
@@ -77,7 +77,7 @@
 									</div>
 								</div>
 
-								<div id="tab-courses" class="tab-pane">
+								<div id="tab-courses" class="tab-pane fade">
 									<div class="table-responsive">
 										<table class="table table-hover">
 											<tbody>
