@@ -78,7 +78,6 @@
 						<div class="circle-tile-number text-faded">
 							<?php echo empty($NoOfGroups) ? "0" : $NoOfGroups ?>
 						</div>
-						<!-- <a class="circle-tile-footer availableGroups">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
 						<a class="circle-tile-footer" onclick="toggler('availableGroups', 'courseList', 'availableCourses');">More Info&nbsp;
 							<i class="fa fa-chevron-circle-right"></i>
 						</a>
@@ -137,7 +136,6 @@
 									<a href="learning/?courseID=<?php echo $courseAvail->courseID; ?>" class="courseLink">
 										<label><i class="fa fa-database"></i>&emsp;<?php echo $courseAvail->courseName; ?></label>
 									</a>
-									<!-- <button class='btn btn-primary' onclick="window.location.href='home/EnrolToCourse?id=<?php echo $courseAvail->courseID ?>'">Enrol</button> -->
 									<a class="btn btn-default pull-right" href="home/EnrolToCourse?id=<?php echo $courseAvail->courseID; ?>">Enrol Course</a>
 								</div>
 								<?php
@@ -190,26 +188,8 @@ function toggler(toggle, hideOne, hideTwo) {
 }
 
 $(document).ready(function() {
-	// $(".courseList").click(function() {
-	// 	$("#courseList").toggle("slow");
-	// 	$("#availableCourses").fadeOut("fast");
-	// 	$("#availableGroups").fadeOut("fast");
-	// });
-
-	// $(".availableCourses").click(function() {
-	// 	$("#availableCourses").toggle("slow");
-	// 	$("#courseList").fadeOut("fast");
-	// 	$("#availableGroups").fadeOut("fast");
-	// });
-
-	// $(".availableGroups").click(function() {
-	// 	$("#availableGroups").toggle("slow");
-	// 	$("#courseList").fadeOut("fast");
-	// 	$("#availableCourses").fadeOut("fast");
-	// });
-
-$('[data-toggle="tooltip"]').tooltip();
-$('#pageHome').removeAttr('href');
+	$('[data-toggle="tooltip"]').tooltip();
+	$('#pageHome').removeAttr('href');
 });
 </script>
 </body>
