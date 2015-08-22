@@ -14,27 +14,28 @@ class register extends CI_Controller {
 			array(
 				'field' => 'registerUsername',
 				'label' => 'Username',
-				'rules' => 'required|is_unique[users.username]'
+				'rules' => 'required|is_unique[users.username]|xss_clean'
 				),
 			array(
 				'field' => 'registerPassword',
 				'label' => 'Password',
-				'rules' => 'required|matches[registerRepeatPassword]'
+				'rules' => 'required|matches[registerRepeatPassword]|xss_clean'
 				),
 			array(
 				'field' => 'registerRepeatPassword',
 				'label' => 'Confirm Password',
-				'rules' => 'required'
+				'rules' => 'required|xss_clean'
 				),
 			array(
 				'field' => 'registerEmail',
 				'label' => 'Email',
-				'rules' => 'required|valid_email|is_unique[users.email]'
+				'rules' => 'required|valid_email|is_unique[users.email]|xss_clean'
 				),
 			array(
 				'field' => 'registerContact',
 				'label' => 'Contact No.',
-				'rules' => 'required|regex_match[/^[0-9().-]+$/]'
+				// 'rules' => 'required|regex_match[/^[0-9().-]+$/]|xss_clean'
+				'rules' => 'required|regex_match[/^[\d+ ]+$/]|xss_clean'
 				)
 			);
 
