@@ -21,7 +21,7 @@ Class model_course extends CI_Model {
 		$this->db->order_By("courseName", "ASC");
 		$query = $this->db->get('courses');
 
-		if ($query->num_rows >= 1) {
+		if ($query->num_rows > 0) {
 			return $query->result();
 		}
 		return false;
@@ -52,6 +52,16 @@ Class model_course extends CI_Model {
 	public function DropFromCourse($courseID) {
 		$data = array('courseID' => $courseID);
 		$query = $this->db->delete('courses', $data);
+	}
+
+	public function GetCourseLastEdited() {
+		$this->db->order_By('lastEdited', 'DESC');
+		$query = $this->db->get('courses');
+
+		if ($query->num_rows > 0) {
+			return $query->result();
+		}
+		return false;
 	}
 }
 ?>

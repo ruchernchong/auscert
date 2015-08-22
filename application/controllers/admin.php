@@ -18,10 +18,15 @@ class admin extends CI_Controller {
 			$data['menu'] = "admin";
 			
 			$getCourse = $this->model_course->GetCourse();
+			$getLastEdited = $this->model_course->GetCourseLastEdited();
 			$getUsers = $this->model_user->GetUsers();
 
 			if ($getCourse) {
 				$data['courses'] = $getCourse;
+			}
+
+			if ($getLastEdited) {
+				$data['courseLastEdited'] = $getLastEdited;
 			}
 
 			if ($getUsers) {

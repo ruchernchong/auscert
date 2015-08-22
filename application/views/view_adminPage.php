@@ -8,9 +8,11 @@
 		<div class="row">
 			<a href="<?php echo site_url('addCourse') ?>" class="btn btn-lg btn-primary pull-right">Create new course</a>
 			<div class="ibox-content">
-				<span class="text-muted small pull-right" data-toggle="tooltip" title="No idea what is this for.">Last modification: <i class="fa fa-clock-o"></i>&emsp;2:10 pm - 12.06.2014</span>
-				<h2>Report</h2>
+				<span class="text-muted pull-right">
+					Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
+				</span>
 
+				<h2>Report</h2>
 				<div class="input-group">
 					<input type="text" placeholder="Search client" class="input form-control">
 					<span class="input-group-btn">
@@ -19,7 +21,7 @@
 						</span>
 					</div>
 					<div class="clients-list">
-						<p class="pull-right small text-muted" data-toggle="tooltip" title="I have no idea what is this for.">1406 Elements</p>
+						<!-- <p class="pull-right small text-muted" data-toggle="tooltip" title="I have no idea what is this for.">1406 Elements</p> -->
 						<ul class="nav nav-tabs">
 							<li class="active">
 								<a data-toggle="tab" href="#tab-members"><i class="fa fa-user"></i>&emsp;Members</a>
