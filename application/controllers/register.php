@@ -24,8 +24,7 @@ class register extends CI_Controller {
 			redirect('login', 'refresh');
 		} else {
 			echo "<script>alert('Passwords do not match. Please try again.');</script>";
-
-			// $this->load->view('view_login');
+			
 			redirect('#', 'refresh');
 		}
 	}
