@@ -34,7 +34,7 @@
 	<div id="wrapper">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="navbar-header">
-				<img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo">
+				<img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo" alt="UQ Logo">
 			</div>
 
 			<ul class="nav navbar-right top-nav pull-right">
