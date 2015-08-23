@@ -8,6 +8,14 @@ class settings extends CI_Controller {
 	}
 
 	public function index() {
+		$session_data = $this->session->userdata('logged_in');
+		$data['userID'] = $session_data['userID'];
+		$data['username'] = $session_data['username'];
+		$data['usertype'] = $session_data['usertype'];
+		$data['email'] = $session_data['email'];
+		$data['menu'] = "settings";
+
+		$this->load->view('header', $data);
 		$this->load->view('view_settings');
 	}
 }

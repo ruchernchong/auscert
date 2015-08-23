@@ -538,9 +538,6 @@ body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 	color: #337ab7;
 	background-color: #FFFFFF;
 }
-.navbar-white {
-	color: white;
-}
-.navbar-white:hover {
-
+#reportrange {
+	padding: 0;
 }

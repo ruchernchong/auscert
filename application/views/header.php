@@ -126,11 +126,11 @@
 					<?php 
 				} 
 				?>
-				<!-- <li>
+				<li>
 					<a id="pageSettings" class="side-nav <?php echo $menu=='settings' ? 'active' : '' ?>" href="<?php echo site_url('settings'); ?>">
 						<i class="fa fa-fw fa-gear"></i>&emsp;Settings
 					</a>
-				</li> -->
+				</li>
 				<li>
 					<a id="pageLogout" class="side-nav <?php echo $menu=='logout' ? 'active' : '' ?>" href="<?php echo site_url('logout'); ?>">
 						<i class="fa fa-fw fa-power-off"></i>&emsp;Log Out
