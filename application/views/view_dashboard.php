@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="page-title">
+				<div class="page-header">
 					<h1>Dashboard
 						<small>Content Overview</small>
 					</h1>
