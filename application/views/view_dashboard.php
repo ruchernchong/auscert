@@ -2,59 +2,58 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="page-header">
-					<h1>Dashboard
-						<small>Content Overview</small>
-					</h1>
-					<ol class="breadcrumb">
-						<li class="active"><i class="fa fa-dashboard"></i>&emsp;Welcome, <?php echo $username;?></li>
-						<li class="pull-right">
-							<div id="reportrange" class="btn btn-green btn-square date-picker">
-								<i class="fa fa-calendar"></i>
-								<span class="date-range">&emsp;<?php echo date('l\, jS \of F Y'); ?></span> <i class="fa fa-caret-down"></i>
-							</div>
-						</li>
-					</ol>
+				<h1 class="page-header">Dashboard
+					<small>Content Overview</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li class="active"><i class="fa fa-dashboard"></i>&emsp;Welcome, <?php echo $username;?></li>
+					<li class="pull-right">
+						<div id="reportrange" class="btn btn-green btn-square date-picker">
+							<i class="fa fa-calendar"></i>
+							<span class="date-range">&emsp;<?php echo date('l\, jS \of F Y'); ?></span> <i class="fa fa-caret-down"></i>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-4 col-sm-6">
+			<div class="circle-tile">
+				<a href="#">
+					<div class="circle-tile-heading orange">
+						<i class="fa fa-bar-chart fa-fw fa-3x"></i>
+					</div>
+				</a>
+				<div class="circle-tile-content orange">
+					<div class="circle-tile-description text-faded">
+						Courses Enrolled
+					</div>
+					<div class="circle-tile-number text-faded">
+						<?php echo empty($NoOfUserCourses) ? "0" : $NoOfUserCourses ?>
+					</div>
+					<!-- <a class="circle-tile-footer courseList">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
+					<a class="circle-tile-footer" onclick="toggler('courseList', 'availableCourses', 'availableGroups');">More Info&nbsp;
+						<i class="fa fa-chevron-circle-right"></i>
+					</a>
 				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-lg-4 col-sm-6">
-				<div class="circle-tile">
-					<a href="#">
-						<div class="circle-tile-heading orange">
-							<i class="fa fa-bar-chart fa-fw fa-3x"></i>
-						</div>
-					</a>
-					<div class="circle-tile-content orange">
-						<div class="circle-tile-description text-faded">
-							Courses Enrolled
-						</div>
-						<div class="circle-tile-number text-faded">
-							<?php echo empty($NoOfUserCourses) ? "0" : $NoOfUserCourses ?>
-						</div>
-						<!-- <a class="circle-tile-footer courseList">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
-						<a class="circle-tile-footer" onclick="toggler('courseList', 'availableCourses', 'availableGroups');">More Info&nbsp;
-							<i class="fa fa-chevron-circle-right"></i>
-						</a>
+		<div class="col-lg-4 col-sm-6">
+			<div class="circle-tile">
+				<a href="#">
+					<div class="circle-tile-heading green">
+						<i class="fa fa-search fa-fw fa-3x"></i>
 					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6">
-				<div class="circle-tile">
-					<a href="#">
-						<div class="circle-tile-heading green">
-							<i class="fa fa-search fa-fw fa-3x"></i>
-						</div>
-					</a>
-					<div class="circle-tile-content green">
-						<div class="circle-tile-description text-faded">
-							Browse Available Courses
-						</div>
-						<div class="circle-tile-number text-faded">
-							<?php echo empty($count_coursesAvail) ? "0" : $count_coursesAvail ?>
-						</div>
+				</a>
+				<div class="circle-tile-content green">
+					<div class="circle-tile-description text-faded">
+						Browse Available Courses
+					</div>
+					<div class="circle-tile-number text-faded">
+						<?php echo empty($count_coursesAvail) ? "0" : $count_coursesAvail ?>
+					</div>
 						<!-- <a class="circle-tile-footer availableCourses">More Info&nbsp;
 							<i class="fa fa-chevron-circle-right"></i>
 						</a> -->
