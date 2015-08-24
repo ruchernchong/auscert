@@ -8,10 +8,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<a href="<?php echo site_url('addCourse') ?>" class="btn btn-primary">Create new course</a>&emsp;
-				<!-- <div class="ibox-content"> -->
-				<!-- <span class="text-muted pull-right"> -->
 				Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
-				<!-- </span> -->
 
 				<h2>Report</h2>
 				<div class="input-group">
