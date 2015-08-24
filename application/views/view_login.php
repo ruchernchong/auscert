@@ -28,7 +28,6 @@
 					);
 				echo form_open('login/validateLogin', $attributes);
 				?>
-				<!-- <form name="formLogin" id="formLogin" class="formLogin" action="<?php echo base_url('login/validateLogin'); ?>" method="POST"> -->
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 					<input type="text" id="loginUsername" name="loginUsername" placeholder="Username" class="form-control text-input">
