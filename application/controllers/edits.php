@@ -34,7 +34,7 @@ class Edits extends CI_Controller {
 				redirect('home', 'refresh');
 			} else {
 				$this->load->view('header', $data);
-				$this->load->view('view_edit_course');
+				$this->load->view('view_editCourse');
 			}
 		} else {
 			 //If no session, redirect to login page

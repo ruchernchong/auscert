@@ -11,7 +11,7 @@
 		<div class="row">	
 			<div class="col-lg-12">
 				<div class="form-group">
-					<form name ="userInput" id="userInput" action="add_course/createCourse" method="post">
+					<form name ="userInput" id="userInput" action="addCourse/createCourse" method="post">
 						<label for="courseName">Course Name</label>
 						<input class="form-control" name="courseName" required>
 						<p class="help-block">Must be filled</p>
