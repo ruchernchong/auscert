@@ -47,7 +47,7 @@ $(".nav-tabs").on("click", "a", function(e){
         e.preventDefault();
         var id = $(".nav-tabs").children().length-2; //think about it ;)
 		var editorx="editor"+id;
-        $(this).closest('li').before('<li><a href="#chapter_'+id+'">Chapter '+id+'</a><span>x</span></li>');         
+        $(this).closest('li').before('<li><a href="#chapter_'+id+'"><i class="fa fa-book"></i>&emsp;Chapter '+id+'</a><span>x</span></li>');         
         $('.tab-content').append('<div class="tab-pane fade" id="chapter_'+id+'"><div class="form-group"><label>Chapter title </label><input class="form-control" name="title_'+id+'"><br /><label>Chapter contents</label><textarea name="editor'+id+'" id="editor'+id+'" rows="10" cols="80"></textarea></div></div>');
 		CKEDITOR.replace( editorx );
 		});
