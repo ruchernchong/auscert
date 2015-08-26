@@ -144,12 +144,29 @@ if (!empty($this->session->flashdata('denied'))) {
 									<a href="learning/?courseID=<?php echo $courseAvail->courseID; ?>" class="courseLink">
 										<label><i class="fa fa-database"></i>&emsp;<?php echo $courseAvail->courseName; ?></label>
 									</a>
-									<a class="btn btn-default pull-right" href="home/EnrolToCourse?id=<?php echo $courseAvail->courseID; ?>">Enrol Course</a>
+									<a class="btn btn-default pull-right" data-href="home/EnrolToCourse?id=<?php echo $courseAvail->courseID; ?>" data-toggle="modal" data-target="#confirmEnrol">Enrol Course</a>
 								</div>
 								<?php
 							}
 						}
 						?>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="confirmEnrol" tabindex="-1" role="dialog" aria-hidden="false">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+							<a class="btn btn-success btn-ok">Confirm</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -185,8 +202,10 @@ if (!empty($this->session->flashdata('denied'))) {
 	</div>
 </div>
 
+<!-- 
 <script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+-->
 <script>
 
 function toggler(toggle, hideOne, hideTwo) {
@@ -198,6 +217,9 @@ function toggler(toggle, hideOne, hideTwo) {
 $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
 	$('#pageHome').removeAttr('href');
+	$('#confirmEnrol').on('show.bs.modal', function(e) {
+		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+	});
 });
 </script>
 </body>
