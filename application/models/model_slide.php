@@ -6,8 +6,9 @@ Class model_slide extends CI_Model {
 	}
 
 	public function GetSlideById() {
-		$this->db->where('courseID',$this->input->get('courseID'));
-		$this->db->where('slideID',$this->input->get('slideID'));
+		$this->db->where('courseID', $this->input->get('courseID'));
+		$this->db->where('slideID', $this->input->get('slideID'));
+
 		$query = $this->db->get('slides');
 		
 		if ($query->num_rows == 1) {
@@ -17,14 +18,13 @@ Class model_slide extends CI_Model {
 	}
 
 	public function GetSlide() {
-		// $this->db->where('courseID', $this->input->get('lid'));
-		$this->db->where('courseID',$this->input->get('courseID'));
+		$this->db->where('courseID', $this->input->get('courseID'));
 
 		$query = $this->db->get('slides');
 
-		if ($query->num_rows >= 1) {
+		if ($query->num_rows > 0) {
 			return $query->result();
-		}
+		} 
 		return false;
 	}
 }

@@ -51,6 +51,6 @@ class admin extends CI_Controller {
 		$courseID = $this->input->get('id', TRUE);
 		$this->model_course->DropFromCourse($courseID);
 
-		redirect('admin#tab-courses', 'refresh');
+		redirect('admin', 'refresh');
 	}
 }	

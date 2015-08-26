@@ -21,7 +21,7 @@
 	<link href="<?php echo base_url('assets/css/course.css'); ?>" rel="stylesheet" />
 
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
-	<!-- <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> -->
+	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
