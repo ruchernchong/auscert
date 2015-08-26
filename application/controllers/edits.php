@@ -29,7 +29,7 @@ class Edits extends CI_Controller {
             }
 
 			$this->load->view('header',$data);
-			$this->load->view('view_editCourse');
+			$this->load->view('view_edit_course');
 		} else {
 			 //If no session, redirect to login page
 			redirect('login', 'refresh');
