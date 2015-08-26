@@ -62,13 +62,13 @@
 							<div class="table-responsive">
 								<table class="table table-hover">
 									<tbody>
-										<?php foreach ($courses as $course) {?>
+										<?php foreach ($courses as $course) { ?>
 										<tr>
 											<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
 											<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
 
 											<td class="project-actions">
-												<a href="<?php echo site_url(sprintf('edits?courseID=%d', $course->courseID)); ?>" class="btn btn-sm btn-success">
+												<a href="<?php echo site_url('edits?courseID=' . $course->courseID); ?>" class="btn btn-sm btn-success">
 													<i class="fa fa-pencil"></i>&emsp;Edit
 												</a>
 												&nbsp;
