@@ -115,7 +115,7 @@ if (!empty($this->session->flashdata('denied'))) {
 											<i class="fa fa-tasks"></i>&emsp;<?php echo $usercourse->courseName; ?>
 										</label>
 									</a>
-									<a class="btn btn-danger pull-right" data-toggle="tooltip" title="You will still be able to enrol in this course later." href="home/dropCourse?id=<?php echo $usercourse->courseID; ?>">Drop Course</a>
+									<a class="btn btn-danger pull-right" href="home/dropCourse?id=<?php echo $usercourse->courseID; ?>">Drop Course</a>
 								</div>
 								<?php
 							}
