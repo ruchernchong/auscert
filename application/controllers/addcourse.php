@@ -5,7 +5,7 @@ class addCourse extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_addCourse');
+		$this->load->model('model_course');
 	}
 
 	public function index() {
@@ -29,7 +29,7 @@ class addCourse extends CI_Controller {
 		$courseCategory = $this->input->post('courseCategory');
 		$courseDescription = $this->input->post('courseDescription');
 
-		$this->model_addCourse->saveCourse($courseName, $courseCategory, 0, $courseDescription);
+		$this->model_course->saveCourse($courseName, $courseCategory, 0, $courseDescription);
 
 		redirect('admin#tab-courses','refresh');
 	}

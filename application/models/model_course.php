@@ -63,5 +63,18 @@ Class model_course extends CI_Model {
 		}
 		return false;
 	}
+	
+	public function SaveCourse($courseTitle, $courseCategory, $courseActive, $courseDescription) {
+		
+		$data = array(
+			'courseName' => $courseTitle,
+			'category' => $courseCategory,
+			'creator' => $this->session->userdata['logged_in']['username'],
+			'active' =>  $courseActive,
+			'description' => $courseDescription,
+			);
+
+		$this->db->insert('courses', $data); 
+	}
 }
 ?>
