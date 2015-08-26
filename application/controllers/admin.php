@@ -33,8 +33,14 @@ class admin extends CI_Controller {
 				$data['users'] = $getUsers;
 			}
 
-			$this->load->view('header',$data);
-			$this->load->view('view_adminPage',$data);
+			if ($data['usertype'] != "admin") {
+				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
+				redirect('home', 'refresh');
+			} else {
+
+				$this->load->view('header',$data);
+				$this->load->view('view_adminPage',$data);
+			}
 		} else {
 		 //If no session, redirect to login page
 			redirect('login', 'refresh');

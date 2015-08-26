@@ -15,21 +15,27 @@ class Edits extends CI_Controller {
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "adminpage";
-            
-            $query = $this->model_course->GetCourseById();
 
-            if ($query) {
-                $data['courses'] = $query;
-            }
+			$query = $this->model_course->GetCourseById();
 
-            $slides = $this->model_slide->GetSlide();
+			if ($query) {
+				$data['courses'] = $query;
+			}
 
-            if ($slides) {
-                $data['slides'] = $slides;
-            }
+			$slides = $this->model_slide->GetSlide();
 
-			$this->load->view('header',$data);
-			$this->load->view('view_edit_course');
+			if ($slides) {
+				$data['slides'] = $slides;
+			}
+
+			// If user is not admin, redirect to dashboard.
+			if ($data['usertype'] != "admin") {
+				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
+				redirect('home', 'refresh');
+			} else {
+				$this->load->view('header', $data);
+				$this->load->view('view_edit_course');
+			}
 		} else {
 			 //If no session, redirect to login page
 			redirect('login', 'refresh');

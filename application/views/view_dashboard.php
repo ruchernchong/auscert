@@ -1,3 +1,12 @@
+<?php
+if (!empty($this->session->flashdata('denied'))) {
+	?>
+	<script>
+	alert("<?php echo $this->session->flashdata('denied'); ?>");
+</script>;
+<?php
+}
+?>
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
