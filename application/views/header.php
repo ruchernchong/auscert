@@ -59,10 +59,7 @@
 									<a href="#"><i class="fa fa-fw fa-user"></i>&emsp;Profile</a>
 								</li>
 								<li>
-									<a href="#"><i class="fa fa-fw fa-envelope"></i>&emsp;Inbox</a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-fw fa-gear"></i>&emsp;Settings</a>
+									<a href="<?php echo site_url('settings') ?>"><i class="fa fa-fw fa-gear"></i>&emsp;Settings</a>
 								</li>
 								<li class="divider"></li>
 								<li>
@@ -74,6 +71,7 @@
 						</li>
 					</ul>
 				</div>
+
 			</div>
 		</nav>
 
