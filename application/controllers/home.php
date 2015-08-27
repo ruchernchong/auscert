@@ -14,8 +14,8 @@ class home extends CI_Controller {
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 
-			$courses = $this->model_course->GetCourseIDList();
-			$userCourses = $this->model_userCourse->GetUserCoursesID();
+			$courses = $this->model_course->GetAllCourses();
+			$userCourses = $this->model_userCourse->GetUserCourses();
 
 			if ($courses) {
 				$coursesAvail = array_udiff($courses, $userCourses, function ($courses, $userCourses) {
