@@ -32,7 +32,7 @@ Class model_course extends CI_Model {
 		$query = $this->db->get('courses');
 
 		if ($query->num_rows == 1) {
-			return $query->result();
+			return $query->result()[0];
 		}
 		return false;
 	}
@@ -75,6 +75,18 @@ Class model_course extends CI_Model {
 			);
 
 		$this->db->insert('courses', $data); 
+	}
+	
+	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
+		
+		$data = array(
+		'courseName' => $courseTitle,
+		'category' => $courseCategory,
+		'description' => $courseDescription,
+		);
+		
+		$this->db->where('courseID', $courseID);
+		$this->db->update('courses', $data);			
 	}
 }
 ?>
