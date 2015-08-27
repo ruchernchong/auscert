@@ -36,22 +36,17 @@
 								<div class="tab-content">
 									<div class="tab-pane fade in active" id="course_details">
 										<?php
-											?>
-												<label>Course Name</label>
-												<input class="form-control" name="courseName" value="<?php echo $course->courseName; ?>" required><br />
-												<label for="courseCategory">Category</label>
-												<input class="form-control" name="courseCategory" id="courseCategory" value="<?php echo $course->category; ?>" required><br />
-												<label for="courseDescription">Description</label>
-												<textarea class="form-control" rows="5" name="courseDescription" id="courseDescription" required>
-													<?php echo $course->description; ?>
-												</textarea>
-			
-											
-											<?php
-
-											echo '<script>CKEDITOR.replace("courseDescription");</script>'/*, $slides[$i]->slideOrder*/;
-										
 										?>
+										<label>Course Name</label>
+										<input class="form-control" name="courseName" value="<?php echo $course->courseName; ?>" required><br />
+										<label for="courseCategory">Category</label>
+										<input class="form-control" name="courseCategory" id="courseCategory" value="<?php echo $course->category; ?>" required><br />
+										<label for="courseDescription">Description</label>
+										<textarea class="form-control" rows="5" name="courseDescription" id="courseDescription" required>
+											<?php echo $course->description; ?>
+										</textarea>
+										<script>CKEDITOR.replace("courseDescription");</script>
+										<!-- , $slides[$i]->slideOrder*/; -->
 									</div>
 									<div class="tab-pane fade" id="course_quiz">
 										<label>Quiz (Non functional)</label>
@@ -108,8 +103,9 @@
 											</textarea>
 										</div>
 									</div>
+									<script>CKEDITOR.replace(editor_<?php echo ($i); ?>);</script>
+									<!-- '/*, $slides[$i]->slideOrder*/; -->
 									<?php 
-									echo '<script>CKEDITOR.replace(editor_' . ($i) . ');</script>'/*, $slides[$i]->slideOrder*/;
 								}
 								?>
 							</div>
@@ -123,7 +119,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 </div>
 </div>
