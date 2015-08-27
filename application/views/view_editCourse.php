@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Edit Course <small>Need a change?</small></h1>
+			<h1 class="page-header">Edit Course</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -133,9 +133,9 @@
 
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 <script>
-$(document).ready(function() {
-	$("#pageAdmin").addClass("active").removeAttr("href");
-});
+// $(document).ready(function() {
+// 	$("#pageAdmin").addClass("active").removeAttr("href");
+// });
 
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
