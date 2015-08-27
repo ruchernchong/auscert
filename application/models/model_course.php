@@ -75,6 +75,10 @@ Class model_course extends CI_Model {
 			);
 
 		$this->db->insert('courses', $data); 
+		$insert_id = $this->db->insert_id();
+
+		return  $insert_id;
+		
 	}
 	
 	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
@@ -83,6 +87,7 @@ Class model_course extends CI_Model {
 		'courseName' => $courseTitle,
 		'category' => $courseCategory,
 		'description' => $courseDescription,
+		'lastEdited' => date("Y-m-d H:i:s", time())
 		);
 		
 		$this->db->where('courseID', $courseID);

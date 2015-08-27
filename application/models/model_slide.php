@@ -27,5 +27,18 @@ Class model_slide extends CI_Model {
 		} 
 		return false;
 	}
+	
+	public function GetSlidesByCourse($courseID) {
+		$this->db->where('courseID', $courseID);
+		$this->db->order_by("slideOrder", "asc"); 
+
+		$query = $this->db->get('slides');
+		
+		if ($query->num_rows > 0) {
+			return $query->result();
+		} else {
+			return array();
+		}		
+	}
 }
 ?>
