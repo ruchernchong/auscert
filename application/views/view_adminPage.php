@@ -31,6 +31,14 @@
 							<div id="tab-members" class="tab-pane fade in active">
 								<div class="table-responsive">
 									<table class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>Username</th>
+												<th>User Type</th>
+												<th>Email Address</th>
+												<th>Contact No.</th>
+											</tr>
+										</thead>
 										<tbody>
 											<?php foreach ($users as $user) { ?>
 											<tr>
@@ -50,6 +58,7 @@
 													<span class="label label-success" data-toggle="tooltip" title="I have no idea what is this.">Complete All Task</span>
 												</td> -->
 											</tr>
+
 											<?php 
 										}
 										?>
@@ -61,6 +70,11 @@
 						<div id="tab-courses" class="tab-pane fade">
 							<div class="table-responsive">
 								<table class="table table-hover">
+									<thead>
+										<th>Course List</th>
+										<th>Last Edited</th>
+										<th>Actions</th>
+									</thead>
 									<tbody>
 										<?php foreach ($courses as $course) { ?>
 										<tr>
