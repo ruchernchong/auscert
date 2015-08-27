@@ -25,7 +25,6 @@
 	<script src="<?php echo base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/course.js'); ?>"></script>
 
 </head>
