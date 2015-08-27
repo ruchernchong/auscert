@@ -28,7 +28,7 @@
 						} else {
 							for($i=0; $i < sizeof($slides); $i++) { ?>
 							<div class="tab-content">
-								<div id="tab-<?php echo ($i+1); ?>" class="tab-pane <?php if($i==0){echo 'active';} ?>">
+								<div id="tab-<?php echo ($i+1); ?>" class="tab-pane <?php echo(($i == 0) ? 'active' : ''); ?>">
 									<div class="col-lg-12">
 										<h2>
 											<small><?php echo $slides[$i]->slideTitle; ?></small>
@@ -36,16 +36,17 @@
 										<div class="panel-group" id="accordion">
 											<div class="panel panel-default">
 												<div class="panel-heading">
-													<h4 class="panel-title"><a class="accordion-toggle" data-toggle=
-														"collapse" href="#collapseOne<?php if($i>0){echo ($i+1);} ?>">Readings</a></h4>
-													</div>
+													<h4 class="panel-title">
+														<a class="accordion-toggle" data-toggle="collapse" href="#collapseOne<?php echo (($i > 0) ?  $i+1 : ""); ?>">Readings</a>
+													</h4>
+												</div>
 
-													<div id="collapseOne<?php if($i>0){echo ($i+1);} ?>" class="panel-collapse collapse in">
-														<div class="panel-body">
-															<?php echo $slides[$i]->slideContent; ?>
-														</div>
+												<div id="collapseOne<?php echo (($i > 0) ? $i+1 : ""); ?>" class="panel-collapse collapse in">
+													<div class="panel-body">
+														<?php echo $slides[$i]->slideContent; ?>
 													</div>
 												</div>
+											</div>
 
 												<!-- <div class="panel panel-default">
 													<div class="panel-heading">
@@ -88,10 +89,12 @@
 
 													<div class="panel panel-default">
 														<div class="panel-heading">
-															<h4 class="panel-title"><a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseThree<?php if($i>0){echo ($i+1);} ?>">Interactive Task</a></h4>
+															<h4 class="panel-title">
+																<a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseThree<?php if($i>0){echo ($i+1);} ?>">Interactive Task</a>
+															</h4>
 														</div>
 
-														<div id="collapseThree<?php if($i>0){echo ($i+1);} ?>" class="panel-collapse collapse" style="height: 0px;">
+														<div id="collapseThree<?php echo (($i > 0) ? $i+1 : ""); ?>" class="panel-collapse collapse">
 															<div class="panel-body">
 																<!-- <div id="header">
 																	<p>Your Email Client</p>
@@ -224,19 +227,24 @@
 													</div>
 												</div>
 
-												<?php if ($i == sizeof($slides)-1) { ?>
-												<a href="<?php echo site_url('course') ?>" class="btn btn-default btn-success">Finish</a>
-												<?php } else { ?>
-												<a data-toggle="tab" href="#tab-<?php echo ($i+2);?>" class="btn btn-default btn-warning">Next</a>
-												<?php
-											}
-											?>
+												<?php 
+												if ($i == sizeof($slides) - 1) { 
+													?>
+													<a href="<?php echo site_url('course') ?>" class="btn btn-default btn-success">Finish</a>
+													<?php 
+												} else { 
+													?>
+													<a data-toggle="tab" href="#tab-<?php echo ($i+2);?>" class="btn btn-default btn-warning">Next</a>
+													<?php
+												}
+												?>
+											</div>
 										</div>
-									</div>
-									<?php
+										<?php
+									}
 								}
-							}
-							?>
+								?>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -244,19 +252,6 @@
 		</div>
 	</div>
 </div>
-<!-- /#page-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-
-<!-- jQuery -->
-<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/dash.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/email.js'); ?>"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 </body>
 </html>
