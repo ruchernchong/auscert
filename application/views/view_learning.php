@@ -91,8 +91,9 @@
 															<h4 class="panel-title"><a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseThree<?php if($i>0){echo ($i+1);} ?>">Interactive Task</a></h4>
 														</div>
 
-														<div id="collapseThree<?php if($i>0){echo ($i+1);} ?>" class="panel-collapse collapse" style="height: 0px;">
+														<div id="collapseThree<?php if($i>0){echo ($i+1);} ?>" class="panel-toggle collapse" style="height: 0px;">
 															<div class="panel-body">
+																Hello, Here's some text
 																<!-- <div id="header">
 																	<p>Your Email Client</p>
 																	<img src="<?php echo base_url('assets/img/dummy-pic.png'); ?>" height="50"/>

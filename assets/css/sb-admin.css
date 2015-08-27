@@ -13,13 +13,14 @@ body {
 	/*margin-top: 100px;*/
 	background-color: #fff;
 }
-@media(min-width:768px) {
+/*mobile-width*/
+@media(min-width:768px) { 
 	body {
 		/*margin-top: 50px;*/
-		padding-top: 90px;
+		/*padding-top: 90px;*/
 	}
 	#dropdownMenu {
-		display: none;
+		/*display: none;*/
 	}
 }
 
