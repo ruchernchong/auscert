@@ -18,7 +18,7 @@ class edits extends CI_Controller {
 			$query = $this->model_course->GetCourseById();
 
 			if ($query) {
-				$data['courses'] = $query;
+				$data['course'] = $query;
 			}
 
 			$slides = $this->model_slide->GetSlide();
@@ -42,5 +42,17 @@ class edits extends CI_Controller {
 			redirect('login', 'refresh');
 		}
 	}
+	
+	public function save() {
+		$courseID = $this->input->get('courseID');
+		$courseName = $this->input->post('courseName');
+		$courseCategory = $this->input->post('courseCategory');
+		$courseDescription = $this->input->post('courseDescription');
+
+		$this->model_course->UpdateCourse($courseID, $courseName, $courseCategory, $courseDescription);
+
+		redirect('admin#tab-courses','refresh');
+	}
+	
 }
 ?>
