@@ -96,7 +96,7 @@ if (!empty($this->session->flashdata('denied'))) {
 		<div class="row">
 			<div class="col-lg-12" id="courseList">
 				<div class="tile checklist-tile orange">
-					<h4><i class="fa fa-tasks"></i>&emsp;Courses Enrolled</h4>
+					<h4 class="moreInfo-title">Courses Enrolled</h4>
 					<div class="checklist">
 						<?php 
 						if (empty($user_courses[0]->courseName)) {
@@ -125,7 +125,7 @@ if (!empty($this->session->flashdata('denied'))) {
 			</div>
 			<div class="col-lg-12" id="availableCourses">
 				<div class="tile checklist-tile green">
-					<h4><i class="fa fa-database"></i>&emsp;Available Courses</h4>
+					<h4 class="moreInfo-title">Available Courses</h4>
 					<div class="checklist">
 						<?php
 						if (empty($courses[0]->courseName)) {
@@ -141,15 +141,12 @@ if (!empty($this->session->flashdata('denied'))) {
 								?>
 								<div class="form-group">
 									<a href="learning/?courseID=<?php echo $courseAvail->courseID; ?>" class="courseLink">
-										<label><i class="fa fa-database"></i>&emsp;<?php echo $courseAvail->courseName; ?></label>
+										<label><?php echo $courseAvail->courseName; ?></label>
 									</a>
-
-									<br><label><i class="fa fa-list"></i>&emsp;<?php echo $courseAvail->description; ?></label>
-									<br><label><i class="fa fa-list"></i>&emsp;<?php echo $courseAvail->category; ?></label>
-									<br><label><i class="fa fa-user"></i>&emsp;<?php echo $courseAvail->creator; ?></label>
-									
-
-									<a class="btn btn-default pull-right" data-href="home/EnrolToCourse?id=<?php echo $courseAvail->courseID; ?>" data-toggle="modal" data-target="#confirmEnrol">Enrol Course</a>
+									<p>&emsp;<?php echo $courseAvail->description; ?></p>
+									&emsp;&emsp;&emsp;<label><i class="fa fa-list"></i>&nbsp;Category: <?php echo $courseAvail->category; ?></label>
+									&emsp;<label><i class="fa fa-users"></i>&nbsp;Creator: <?php echo $courseAvail->creator; ?></label>
+									<a class="btn btn-warning pull-right" data-href="home/EnrolToCourse?id=<?php echo $courseAvail->courseID; ?>" data-toggle="modal" data-target="#confirmEnrol">Enrol to Course</a>
 								</div>
 								<?php
 							}
@@ -177,7 +174,7 @@ if (!empty($this->session->flashdata('denied'))) {
 			</div>
 			<div class="col-lg-12" id="availableGroups">
 				<div class="tile checklist-tile blue">
-					<h4><i class="fa fa-users"></i>&emsp;Available Groups</h4>
+					<h4 class="moreInfo-title">Available Groups</h4>
 					<div class="checklist">
 						<?php
 						if (empty($userGroups[0]->organisation)) {

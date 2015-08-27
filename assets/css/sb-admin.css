@@ -542,3 +542,7 @@ body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 #reportrange {
 	padding: 0;
 }
+
+.moreInfo-title { 
+	text-align: center;
+}
