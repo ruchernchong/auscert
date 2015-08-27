@@ -25,6 +25,8 @@ class edits extends CI_Controller {
 
 			if ($slides) {
 				$data['slides'] = $slides;
+			} else {
+				$data['slides'] = array();
 			}
 
 			// If user is not admin, redirect to dashboard.
