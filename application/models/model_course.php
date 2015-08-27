@@ -8,7 +8,6 @@ Class model_course extends CI_Model {
 	public function validate() {
 		$this->db->where('username',$this->input->post('username'));
 		$this->db->where('password',$this->input->post('password'));
-
 		$query = $this->db->get('users');
 
 		if ($query->num_rows == 1) {
@@ -17,16 +16,14 @@ Class model_course extends CI_Model {
 		return false;
 	}
 
-	public function GetCourse() {
-		$this->db->order_By("courseName", "ASC");
-		$query = $this->db->get('courses');
-
-		if ($query->num_rows > 0) {
-			return $query->result();
-		}
-		return false;
+	//returns a list of all courses available
+	public function GetAllCourses() {
+		$this->db->from('courses');
+		$query = $this->db->get();
+		return $query->result();
 	}
 
+	//returns a course based on an ID
 	public function GetCourseById() {
 		$this->db->where('courseID', $this->input->get('courseID'));
 		$query = $this->db->get('courses');
@@ -37,35 +34,14 @@ Class model_course extends CI_Model {
 		return false;
 	}
 
+	//returns the number of courses available
 	public function GetNumberOfCourses() {
 		$query = $this->db->get('courses');
 		return $query->num_rows;
 	}
 
-	public function GetCourseIDList() {
-		$this->db->select('courseID, courseName');
-		$this->db->from('courses');
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	public function DropFromCourse($courseID) {
-		$data = array('courseID' => $courseID);
-		$query = $this->db->delete('courses', $data);
-	}
-
-	public function GetCourseLastEdited() {
-		$this->db->order_By('lastEdited', 'DESC');
-		$query = $this->db->get('courses');
-
-		if ($query->num_rows > 0) {
-			return $query->result();
-		}
-		return false;
-	}
-	
-	public function SaveCourse($courseTitle, $courseCategory, $courseActive, $courseDescription) {
-		
+	//Add a new course to the courses table
+	public function AddCourse($courseTitle, $courseCategory, $courseActive, $courseDescription) {
 		$data = array(
 			'courseName' => $courseTitle,
 			'category' => $courseCategory,
@@ -76,5 +52,24 @@ Class model_course extends CI_Model {
 
 		$this->db->insert('courses', $data); 
 	}
+
+	//Delete an existing course from the courses table
+	public function DeleteCourse($courseID) {
+		$data = array('courseID' => $courseID);
+		$query = $this->db->delete('courses', $data);
+	}
+
+	//Get the date of the last edited course
+	public function GetCourseLastEdited() {
+		$this->db->order_By('lastEdited', 'DESC');
+		$query = $this->db->get('courses');
+
+		if ($query->num_rows > 0) {
+			return $query->result();
+		}
+		return false;
+	}
+	
+
 }
 ?>
