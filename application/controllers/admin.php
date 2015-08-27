@@ -17,12 +17,12 @@ class admin extends CI_Controller {
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "admin";
 			
-			$getCourse = $this->model_course->GetCourse();
+			$getAllCourses = $this->model_course->GetAllCourses();
 			$getLastEdited = $this->model_course->GetCourseLastEdited();
 			$getUsers = $this->model_user->GetUsers();
 
-			if ($getCourse) {
-				$data['courses'] = $getCourse;
+			if ($getAllCourses) {
+				$data['courses'] = $getAllCourses;
 			}
 
 			if ($getLastEdited) {

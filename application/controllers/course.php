@@ -11,7 +11,7 @@ class course extends CI_Controller {
 	
 	public function index() {
 		if($this->session->userdata('logged_in')) {
-			$query = $this->model_course->GetCourse();
+			$query = $this->model_userCourse->GetUserCourses();
 			$getCompletion = $this->model_userCourse->GetUserCourses();
 
 			if ($query) {

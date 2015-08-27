@@ -15,7 +15,6 @@ if (!empty($this->session->flashdata('denied'))) {
 					<small>Content Overview</small>
 				</h1>
 				<ol class="breadcrumb">
-					<li class="active"><i class="fa fa-dashboard"></i>&emsp;Welcome, <?php echo $username;?></li>
 					<li class="pull-right">
 						<div id="reportrange" class="btn btn-green btn-square date-picker">
 							<i class="fa fa-calendar"></i>
@@ -144,6 +143,12 @@ if (!empty($this->session->flashdata('denied'))) {
 									<a href="learning/?courseID=<?php echo $courseAvail->courseID; ?>" class="courseLink">
 										<label><i class="fa fa-database"></i>&emsp;<?php echo $courseAvail->courseName; ?></label>
 									</a>
+
+									<br><label><i class="fa fa-list"></i>&emsp;<?php echo $courseAvail->description; ?></label>
+									<br><label><i class="fa fa-list"></i>&emsp;<?php echo $courseAvail->category; ?></label>
+									<br><label><i class="fa fa-user"></i>&emsp;<?php echo $courseAvail->creator; ?></label>
+									
+
 									<a class="btn btn-default pull-right" data-href="home/EnrolToCourse?id=<?php echo $courseAvail->courseID; ?>" data-toggle="modal" data-target="#confirmEnrol">Enrol Course</a>
 								</div>
 								<?php
