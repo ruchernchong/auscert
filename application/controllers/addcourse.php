@@ -29,9 +29,10 @@ class addCourse extends CI_Controller {
 		$courseCategory = $this->input->post('courseCategory');
 		$courseDescription = $this->input->post('courseDescription');
 
-		$this->model_course->saveCourse($courseName, $courseCategory, 0, $courseDescription);
+		$courseID = $this->model_course->AddCourse($courseName, $courseCategory, 0, $courseDescription);
 
-		redirect('admin#tab-courses','refresh');
+		$this->session->set_flashdata('courseID', $courseID);
+		redirect('admin','refresh');
 	}
 }
 ?>

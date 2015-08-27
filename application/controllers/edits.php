@@ -19,9 +19,8 @@ class edits extends CI_Controller {
 
 			if ($query) {
 				$data['course'] = $query;
+				$slides = $this->model_slide->GetSlidesByCourse($data['course']->courseID);
 			}
-
-			$slides = $this->model_slide->GetSlide();
 
 			if ($slides) {
 				$data['slides'] = $slides;

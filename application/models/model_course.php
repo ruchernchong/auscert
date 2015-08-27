@@ -19,6 +19,7 @@ Class model_course extends CI_Model {
 	//returns a list of all courses available
 	public function GetAllCourses() {
 		$this->db->from('courses');
+		$this->db->order_by("courseName", "asc"); 
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -50,7 +51,10 @@ Class model_course extends CI_Model {
 			'description' => $courseDescription,
 			);
 
-		$this->db->insert('courses', $data); 
+		$this->db->insert('courses', $data);
+		$insert_id = $this->db->insert_id();
+
+		return  $insert_id;
 	}
 
 	//Delete an existing course from the courses table
@@ -71,11 +75,14 @@ Class model_course extends CI_Model {
 	}
 	
 	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
+		
 		$data = array(
-			'courseName' => $courseTitle,
-			'category' => $courseCategory,
-			'description' => $courseDescription,
+		'courseName' => $courseTitle,
+		'category' => $courseCategory,
+		'description' => $courseDescription,
+		'lastEdited' => date("Y-m-d H:i:s", time())
 		);
+		
 		$this->db->where('courseID', $courseID);
 		$this->db->update('courses', $data);			
 	}
