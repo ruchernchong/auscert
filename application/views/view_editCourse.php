@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Edit Course <small>Need a change?</small></h1>
+			<h1 class="page-header">Edit Course</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -32,30 +32,25 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form>
+							<form name ="userInput" id="userInput" action="<?php echo site_url('edits/save?courseID=' . $course->courseID); ?>" method="post">
 								<div class="tab-content">
 									<div class="tab-pane fade in active" id="course_details">
 										<?php
-										foreach ($courses as $course) {
 											?>
-											<div class="form-group">
 												<label>Course Name</label>
-												<input class="form-control" name="courseName" value="<?php echo $course->courseName; ?>" required>
-											</div>
-											<div class="form-group">
+												<input class="form-control" name="courseName" value="<?php echo $course->courseName; ?>" required><br />
 												<label for="courseCategory">Category</label>
-												<input class="form-control" name="courseCategory" id="courseCategory" value="<?php echo $course->category; ?>" required>
-											</div>
-											<div class="form-group">
+												<input class="form-control" name="courseCategory" id="courseCategory" value="<?php echo $course->category; ?>" required><br />
 												<label for="courseDescription">Description</label>
 												<textarea class="form-control" rows="5" name="courseDescription" id="courseDescription" required>
 													<?php echo $course->description; ?>
 												</textarea>
-											</div>
+			
+											
 											<?php
 
 											echo '<script>CKEDITOR.replace("courseDescription");</script>'/*, $slides[$i]->slideOrder*/;
-										}
+										
 										?>
 									</div>
 									<div class="tab-pane fade" id="course_quiz">
@@ -138,9 +133,9 @@
 
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 <script>
-$(document).ready(function() {
-	$("#pageAdmin").addClass("active").removeAttr("href");
-});
+// $(document).ready(function() {
+// 	$("#pageAdmin").addClass("active").removeAttr("href");
+// });
 
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
