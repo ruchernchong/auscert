@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Course 
+				<h1 class="page-header">Courses
 					<small>Learn.AusCert</small>
 				</h1>
 			</div>
@@ -11,17 +11,18 @@
 			<div class="col-lg-12">
 				<div class="wrapper wrapper-content animated fadeInUp">
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-lg-8"></div>
+						<div class="col-lg-4">
 							<div class="input-group">
 								<div class="input-group-btn">
-									<button type="button" class="btn btn-info">
+									<!--<button type="button" class="btn btn-info">
 										<i class="fa fa-refresh"></i>&emsp;Refresh
-									</button>
+									</button> -->
 								</div>
-								<input type="search" placeholder="Search" class="form-control">
+								<input type="search" placeholder="Search Courses" class="form-control">
 								<div class="input-group-btn">
 									<button type="button" class="btn btn-primary">
-										<i class="fa fa-search"></i>&emsp;Search
+										<i class="fa fa-search"></i> <!--&emsp;Search -->
 									</button>
 								</div>
 							</div>
