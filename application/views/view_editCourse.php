@@ -17,9 +17,9 @@
 					<?php
 					for ($i=0; $i < sizeof($slides); $i++) {
 						?>
-						<li>
-							<a href="#slide_<?php echo $slides[$i]->slideOrder; ?>" data-toggle="tab">
-								<i class="fa fa-book"></i>&emsp;<?php echo $slides[$i]->slideOrder . " &mdash; " . $slides[$i]->slideTitle; ?>
+						<li id = <?php echo $i; ?>>
+							<a href="#slide_<?php echo $i; ?>" data-toggle="tab">
+								<i class="fa fa-book"></i>&emsp;<?php echo $i+1 . " &mdash; " . $slides[$i]->slideTitle; ?>
 							</a>
 						</li>
 						<?php 
@@ -96,20 +96,20 @@
 									</div>
 
 									<?php for($i=0; $i < sizeof($slides); $i++) { ?>
-									<div class="tab-pane fade" id="slide_<?php echo $slides[$i]->slideOrder; ?>">
+									<div class="tab-pane fade" id="slide_<?php echo $i; ?>">
 										<div class="form-group">
 											<label>Chapter title</label>
-											<input class="form-control" name="title_<?php echo $slides[$i]->slideOrder; ?>" value="<?php echo $slides[$i]->slideTitle; ?>">
+											<input class="form-control chapter-title" id ="title_<?php echo $i; ?>" name="title_<?php echo $i; ?>" value="<?php echo $slides[$i]->slideTitle; ?>">
 										</div>
 										<div class="form-group">
 											<label>Chapter contents</label>
-											<textarea class="form-control" name="editor_<?php echo $slides[$i]->slideOrder; ?>" id="editor_<?php echo $slides[$i]->slideOrder; ?>" rows="10" cols="80">
+											<textarea class="form-control" name="editor_<?php echo $i; ?>" id="editor_<?php echo $i; ?>" rows="10" cols="80">
 												<?php echo $slides[$i]->slideContent ?>
 											</textarea>
 										</div>
 									</div>
 									<?php 
-									echo '<script>CKEDITOR.replace(editor_' . ($i + 1) . ');</script>'/*, $slides[$i]->slideOrder*/;
+									echo '<script>CKEDITOR.replace(editor_' . ($i) . ');</script>'/*, $slides[$i]->slideOrder*/;
 								}
 								?>
 							</div>
