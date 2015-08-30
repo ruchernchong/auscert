@@ -40,5 +40,45 @@ Class model_slide extends CI_Model {
 			return array();
 		}		
 	}
+	
+	//Add a new slide to the slides table for a given course, or updates if it already exists 
+	public function SaveSlide($courseID, $slideOrder, $slideTitle, $slideContent) {
+		$data = array(
+			'slideTitle' => $slideTitle,
+			'slideContent' =>  $slideContent,
+		);
+		
+		$this->db->where('courseID', $courseID);
+		$this->db->where('slideOrder', $slideOrder);
+		$query = $this->db->get('slides');
+
+		if ($query->num_rows > 0) {
+			$data = array(
+				'slideTitle' => $slideTitle,
+				'slideContent' =>  $slideContent,
+			);
+		
+			$this->db->where('courseID', $courseID);
+			$this->db->where('slideOrder', $slideOrder);
+			$this->db->update('slides', $data);
+		} else {
+			$data = array(
+				'courseID' => $courseID,
+				'slideOrder' => $slideOrder,
+				'slideTitle' => $slideTitle,
+				'slideContent' =>  $slideContent,
+			);
+	
+			$this->db->insert('slides', $data);
+			$insert_id = $this->db->insert_id();
+		}
+	}
+	
+	//Delete a slide from a given course with a given ID
+	public function DeleteSlide($courseID, $slideOrder) {
+		$this->db->where('courseID', $courseID);
+		$this->db->where('slideOrder', $slideOrder);
+		$this->db->delete('slides');
+	}
 }
 ?>

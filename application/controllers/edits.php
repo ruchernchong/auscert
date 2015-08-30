@@ -42,6 +42,7 @@ class edits extends CI_Controller {
 		}
 	}
 	
+	// Updates the description for a course
 	public function save() {
 		$courseID = $this->input->get('courseID');
 		$courseName = $this->input->post('courseName');
@@ -49,8 +50,22 @@ class edits extends CI_Controller {
 		$courseDescription = $this->input->post('courseDescription');
 
 		$this->model_course->UpdateCourse($courseID, $courseName, $courseCategory, $courseDescription);
+		
+		$slideOrder = 0;
+		while(true) {
+			$slideTitle = $this->input->post(sprintf('title_%d', $slideOrder));
+			$slideContent = $this->input->post(sprintf('editor_%d', $slideOrder));
+			
+			if($slideTitle == NULL || $slideContent == NULL) {
+				break;
+			}
 
-		redirect('admin#tab-courses','refresh');
+			//$this->model_slide->DeleteSlide($courseID, $slideOrder);
+			$this->model_slide->SaveSlide($courseID, $slideOrder, $slideTitle, $slideContent);
+			$slideOrder++;
+		}
+		
+		redirect('admin','refresh');
 	}
 	
 }
