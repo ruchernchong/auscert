@@ -56,7 +56,7 @@ class edits extends CI_Controller {
 			$slideTitle = $this->input->post(sprintf('title_%d', $slideOrder));
 			$slideContent = $this->input->post(sprintf('editor_%d', $slideOrder));
 			
-			if($slideTitle == NULL || $slideContent == NULL) {
+			if($slideTitle == NULL) {
 				break;
 			}
 

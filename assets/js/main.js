@@ -28,9 +28,7 @@ $(".nav-tabs").on("click", "a", function(e){
 			$('#editor_' + (index + 1)).attr('id', 'editor_' + index);
 			$('#editor_' + index).attr('name', 'editor_' + index);
 
-
 			curr.html('<a href="#chapter_' + index + '"><i class="fa fa-book"></i>&emsp;' + (index + 1) + ' &mdash;' + $('.tab-content').find('#title_' + (index)).val() + '</a><span><i class="fa fa-times"></i></span>');
-
 		} else {
 			console.log('match');
 		}
@@ -43,7 +41,7 @@ $(".add-contact").click(function(e) {
 	
 	var editorx = "editor_" + id;
 	$(this).closest('li').before('<li id="'+id+'"><a href="#chapter_' + id + '" data-toggle="tab"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash; New Chapter</a><span><i class="fa fa-times"></i></span></li>');         
-	$(".tab-content").append('<div class="tab-pane fade" id="chapter_' + id + '"><div class="form-group"><label>Chapter title </label><input class="form-control chapter-title" name="title_' + id + '" id="title_' + id + '" value="New Chapter"><br /><label>Chapter contents</label><textarea name="editor_' + id + '" id="editor_' + id + '" rows="10" cols="80"></textarea></div></div>');
+	$(".tab-content").append('<div class="tab-pane fade" id="chapter_' + id + '"><div class="form-group"><label>Chapter title </label><input class="form-control chapter-title" name="title_' + id + '" id="title_' + id + '" value="New Chapter" required><br /><label>Chapter contents</label><textarea name="editor_' + id + '" id="editor_' + id + '" rows="10" cols="80"></textarea></div></div>');
 	CKEDITOR.replace(editorx);
 });
 
