@@ -42,7 +42,7 @@ class edits extends CI_Controller {
 		}
 	}
 	
-	// Updates the description for a course
+	// Updates the description for a course and saves slides. Deletes slides that no no longer existed if client deleted slides
 	public function save() {
 		$courseID = $this->input->get('courseID');
 		$courseName = $this->input->post('courseName');
@@ -60,10 +60,11 @@ class edits extends CI_Controller {
 				break;
 			}
 
-			//$this->model_slide->DeleteSlide($courseID, $slideOrder);
 			$this->model_slide->SaveSlide($courseID, $slideOrder, $slideTitle, $slideContent);
 			$slideOrder++;
 		}
+
+		$this->model_slide->DeleteHigherSlides($courseID, $slideOrder);
 		
 		redirect('admin','refresh');
 	}

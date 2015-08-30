@@ -80,5 +80,12 @@ Class model_slide extends CI_Model {
 		$this->db->where('slideOrder', $slideOrder);
 		$this->db->delete('slides');
 	}
+	
+	//Delete all slides for a given course with a slide order equal to or higher than that given 
+	public function DeleteHigherSlides($courseID, $slideOrder) {
+		$this->db->where('courseID', $courseID);
+		$this->db->where('slideOrder >=', $slideOrder);
+		$this->db->delete('slides');
+	}
 }
 ?>

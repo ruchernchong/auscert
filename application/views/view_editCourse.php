@@ -18,9 +18,12 @@
 					for ($i=0; $i < sizeof($slides); $i++) {
 						?>
 						<li id = <?php echo $i; ?>>
-							<a href="#slide_<?php echo $i; ?>" data-toggle="tab">
+							<a href="#chapter_<?php echo $i; ?>" data-toggle="tab">
 								<i class="fa fa-book"></i>&emsp;<?php echo $i+1 . " &mdash; " . $slides[$i]->slideTitle; ?>
 							</a>
+							<span>
+								<i class="fa fa-times"></i>
+							</span>
 						</li>
 						<?php 
 					} 
@@ -91,7 +94,7 @@
 									</div>
 
 									<?php for($i=0; $i < sizeof($slides); $i++) { ?>
-									<div class="tab-pane fade" id="slide_<?php echo $i; ?>">
+									<div class="tab-pane fade" id="chapter_<?php echo $i; ?>">
 										<div class="form-group">
 											<label>Chapter title</label>
 											<input class="form-control chapter-title" id ="title_<?php echo $i; ?>" name="title_<?php echo $i; ?>" value="<?php echo $slides[$i]->slideTitle; ?>">
