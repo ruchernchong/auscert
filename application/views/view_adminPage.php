@@ -21,14 +21,15 @@
 					<div class="clients-list">
 						<ul class="nav nav-tabs">
 							<li class="active">
-								<a data-toggle="tab" href="#tab-members"><i class="fa fa-user"></i>&emsp;Members</a>
-							</li>
-							<li>
 								<a data-toggle="tab" href="#tab-courses"><i class="fa fa-briefcase"></i>&emsp;Courses</a>
 							</li>
+							<li>
+								<a data-toggle="tab" href="#tab-members"><i class="fa fa-user"></i>&emsp;Members</a>
+							</li>
 						</ul>
+
 						<div class="tab-content">
-							<div id="tab-members" class="tab-pane fade in active">
+							<div id="tab-members" class="tab-pane fade">
 								<div class="table-responsive">
 									<table class="table table-striped table-hover">
 										<thead>
@@ -58,70 +59,67 @@
 													<span class="label label-success" data-toggle="tooltip" title="I have no idea what is this.">Complete All Task</span>
 												</td> -->
 											</tr>
-
-											<?php 
-										}
-										?>
-									</tbody>
-								</table>
+											<?php
+											}
+											?>
+										</tbody>
+									</table>
+								</div>
 							</div>
-						</div>
 
-						<div id="tab-courses" class="tab-pane fade">
-							<div class="table-responsive">
-								<table class="table table-hover">
-									<thead>
-										<th>Course List</th>
-										<th>Last Edited</th>
-										<th>Status</th>
-										<th>Actions</th>
-									</thead>
-									<tbody>
-										<?php foreach ($courses as $course) { ?>
-										<tr>
-											<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
-											<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
+							<div id="tab-courses" class="tab-pane fade in active">
+								<div class="table-responsive">
+									<table class="table table-hover">
+										<thead>
+											<th>Course List</th>
+											<th>Last Edited</th>
+											<th>Status</th>
+											<th>Actions</th>
+										</thead>
+										<tbody>
+											<?php foreach ($courses as $course) { ?>
+											<tr>
+												<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
+												<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
+												<td>
+													<!-- <a href="<?php echo site_url('')?>" class="btn btn-sm btn-default">
+														<i class="fa fa-check-square-o"></i>&emsp;Active
+													</a> -->
+													<!-- Prevents redirect to Login page -->
+													<a class="btn btn-sm btn-default courseActive">
+														<i class="fa fa-check-square-o"></i>&emsp;Active
+													</a>
+												</td>
 
-											<td>
-												<!-- <a href="<?php echo site_url('')?>" class="btn btn-sm btn-default">
-													<i class="fa fa-check-square-o"></i>&emsp;Active
-												</a> -->
-												<!-- Prevents redirect to Login page -->
-												<a class="btn btn-sm btn-default courseActive">
-													<i class="fa fa-check-square-o"></i>&emsp;Active
-												</a>
-											</td>
-
-											<td class="project-actions">
-												<a href="<?php echo site_url('edits?courseID=' . $course->courseID); ?>" class="btn btn-sm btn-success">
-													<i class="fa fa-pencil"></i>&emsp;Edit
-												</a>
-												&nbsp;
-												<a href="<?php echo site_url('analysis?courseID=' . $course->courseID); ?>" class="btn btn-sm btn-primary">
-													<i class="fa fa-bar-chart-o"></i>&emsp;Course Analytics
-												</a>
-												&nbsp;
-												<a href="<?php echo site_url('admin/dropCourse?id=' . $course->courseID); ?>" class="btn btn-sm btn-danger">
-													<i class="fa fa-trash"></i>&emsp;Remove
-												</a>
-											</td>
-										</tr>
-										<?php 
-									} 
-									?>
-								</tbody>
-							</table>
+												<td class="project-actions">
+													<a href="<?php echo site_url('edits?courseID=' . $course->courseID); ?>" class="btn btn-sm btn-success">
+														<i class="fa fa-pencil"></i>&emsp;Edit
+													</a>
+													&nbsp;
+													<a href="<?php echo site_url('analysis?courseID=' . $course->courseID); ?>" class="btn btn-sm btn-primary">
+														<i class="fa fa-bar-chart-o"></i>&emsp;Course Analytics
+													</a>
+													&nbsp;
+													<a href="<?php echo site_url('admin/dropCourse?id=' . $course->courseID); ?>" class="btn btn-sm btn-danger">
+														<i class="fa fa-trash"></i>&emsp;Remove
+													</a>
+												</td>
+											</tr>
+											<?php
+											}
+											?>
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- </div> -->
 		</div>
 	</div>
 </div>
-</div>
-</div>
-</div>
+
 <script>
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
