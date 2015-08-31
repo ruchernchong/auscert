@@ -59,8 +59,8 @@ Class model_course extends CI_Model {
 
 	//Delete an existing course from the courses table
 	public function DeleteCourse($courseID) {
-		$data = array('courseID' => $courseID);
-		$query = $this->db->delete('courses', $data);
+		$data = array('courses', 'user_courses'); //cascade deletion to user_courses table as well
+		$this->db->delete($data, $courseID);
 	}
 
 	//Get the date of the last edited course
