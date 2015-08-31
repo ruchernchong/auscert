@@ -51,5 +51,48 @@ $(".add-contact").click(function(e) {
 $(".tab-content").on("change", ".chapter-title", function() {
 	var id = ($(this).attr('id').match(/\d+/)[0])*1;
 	$('#' + id).html('<a href="#chapter_' + id + '"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash;' + $("#title_" + (id)).val() + '</a><span><i class="fa fa-times"></i></span>');
+	// Trying to set tab to inactive when user clicks on "Add Chapter".
 	$(".nav-tabs li").removeClass("active");
+});
+
+
+$("#course_quiz").on("click", ".add-answer", function(e){
+	e.preventDefault();
+	var count = $(this).parents(".form-group").find(".row").length;
+	var question = ($(this).parent().parent().attr('id').match(/\d+/)[0])*1;
+	console.log(count);
+	console.log(question);
+	$(this).parent().before('<div class="row"><div class="col-md-2"><label>Alternate '+count+':</label></div><div class="col-md-2"><input size="64" id="q'+question+'a'+count+'" name="q'+question+'a'+count+'"></div></div>');
+});
+
+$("#add-question").click(function(e) {
+	e.preventDefault();
+	questionCount = $(this).parent().siblings('.form-group').length;
+	$(this).parent().before(
+		'<div class="form-group" id="q' + questionCount + '">'+
+		'	<h3>Question ' + questionCount + '</h3><br>'+
+		'	<textarea class="form-control" name="question_' + questionCount + '" id="question_' + questionCount + '" rows="10" cols="80"></textarea><br>'+
+		'	<div class="row">'+
+		'		<div class="col-md-2">'+
+		'			<label>Correct answer:</label>'+
+		'		</div>'+
+		'		<div class="col-md-2">'+
+		'		<input size="64" id="q' + questionCount + 'a0" name="q' + questionCount + 'a0">'+
+		'		</div>'+
+		'	</div>'+
+		'	<div class="row">'+
+		'		<div class="col-md-2">'+
+		'			<label>Alternate 1:</label>'+
+		'		</div>'+
+		'		<div class="col-md-2">'+
+		'			<input size="64" id="q' + questionCount + 'a1" name="q' + questionCount + 'a1">'+
+		'		</div>'+
+		'		</div>'+
+		'		<div class="form-group">'+
+		'		<a href="#" class="add-answer">Add another Answer</a>'+
+		'	</div>'+
+		'</div><hr>'
+		);
+	
+	CKEDITOR.replace('question_' + questionCount);
 });

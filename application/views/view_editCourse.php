@@ -52,44 +52,26 @@
 										<!-- , $slides[$i]->slideOrder*/; -->
 									</div>
 									<div class="tab-pane fade" id="course_quiz">
-										<label>Quiz (Non functional)</label>
-										<div class="panel-body quiz">
-											<div class="form-group">
-												<label> Question 1: </label>
-												<input class="form-control" id="url_1" value="What is it?">
+										<div class="form-group" id="q0">
+											<h3>Question 0</h3><br>
+											<textarea class="form-control" name="question_0" id="question_0" rows="10" cols="80">
+											</textarea><br>
+											<script>CKEDITOR.replace(question_0);</script>
+											<div class="row">
+											  <div class="col-md-2"><label>Correct answer:</label></div>
+											  <div class="col-md-2"><input size="64" id="q0a0" name="q0a0"></div>
+											</div>
+											<div class="row">
+											  <div class="col-md-2"><label>Alternate 1:</label></div>
+											  <div class="col-md-2"><input size="64" id="q0a1" name="q0a1"></div>
 											</div>
 											<div class="form-group">
-												<label> Option a:
-													<input class="form-control" id="url_1" value="Wrong">
-												</label>
-												<label> Option b:
-													<input class="form-control" id="url_1" value="Wrong">
-												</label>
-												<label> Option c:
-													<input class="form-control" id="url_1" value="Wrong">
-												</label>
-												<label> Option d:
-													<input class="form-control" id="url_1" value="Correct">
-												</label>
+												<a href="#" class="add-answer">Add another Answer</a>
 											</div>
-											<div class="form-group">
-												<label>Answer 1: </label>
-												<label class="radio-inline_1">
-													<input type="radio" name="optionsRadiosInline" id="options0" value="0">a
-												</label>
-												<label class="radio-inline_1">
-													<input type="radio" name="optionsRadiosInline" id="options1" value="1">b
-												</label>
-												<label class="radio-inline_1">
-													<input type="radio" name="optionsRadiosInline" id="options2" value="2">c
-												</label>
-												<label class="radio-inline_1">
-													<input type="radio" name="optionsRadiosInline" id="options3" value="3" checked>d
-												</label>
-											</div>
-											<div class="form-group">
-												<a href="#" id="add">Add another Question</a>
-											</div>
+										</div>
+										<hr>
+										<div>
+											<a href="#" id="add-question">Add another Question</a>
 										</div>
 									</div>
 
