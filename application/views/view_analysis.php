@@ -15,14 +15,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            foreach ($courseUsers as $courseUser) { ?>
-                                <tr>
-                                    <td><?php echo $courseUser->userID?></td>
-                                    <td><?php echo $courseUser->username?></td>
-                                    <td><?php echo $courseUser->completion?></td>
-                                </tr>
-                            <?php }; ?>
+                    <?php
+                    if (is_array($courseUsers)) {
+                        foreach ($courseUsers as $courseUser) { ?>
+                            <tr>
+                                <td><?php echo $courseUser->userID ?></td>
+                                <td><?php echo $courseUser->username ?></td>
+                                <td><?php echo $courseUser->completion ?></td>
+                            </tr>
+                            <?php
+                        };
+                    } else {
+                        echo "<tr><td>" . $courseUsers . "</td></tr>";
+                    }
+                    ?>
                     </tbody>
                 </table>
 
@@ -32,22 +38,22 @@
                     <tr>
                         <th>UserID</th>
                         <th>User Name</th>
-                        <th>Completion</th>
+                        <th>Score</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    try {
+                    if (is_array($completedUsers)) {
                         foreach ($completedUsers as $completedUser) { ?>
                             <tr>
                                 <td><?php echo $completedUser->userID ?></td>
                                 <td><?php echo $completedUser->username ?></td>
-                                <td><?php echo $completedUser->completion ?></td>
+                                <td><?php echo 'Score here' ?></td>
                             </tr>
                             <?php
                         };
-                    } catch (exception $e) {
-                        echo $completedUsers;
+                    } else {
+                        echo "<tr><td>" . $completedUsers . "</td></tr>";
                     }
                     ?>
                     </tbody>
