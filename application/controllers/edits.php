@@ -37,7 +37,6 @@ class edits extends CI_Controller {
 				$this->load->view('view_editCourse');
 			}
 		} else {
-			 //If no session, redirect to login page
 			redirect('login', 'refresh');
 		}
 	}
@@ -52,7 +51,7 @@ class edits extends CI_Controller {
 		$this->model_course->UpdateCourse($courseID, $courseName, $courseCategory, $courseDescription);
 		
 		$slideOrder = 0;
-		while(true) {
+		while (true) {
 			$slideTitle = $this->input->post(sprintf('title_%d', $slideOrder));
 			$slideContent = $this->input->post(sprintf('editor_%d', $slideOrder));
 			
@@ -68,6 +67,5 @@ class edits extends CI_Controller {
 		
 		redirect('admin','refresh');
 	}
-	
 }
 ?>

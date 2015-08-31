@@ -34,7 +34,6 @@ class register extends CI_Controller {
 			array(
 				'field' => 'registerContact',
 				'label' => 'Contact No.',
-				// 'rules' => 'required|regex_match[/^[0-9().-]+$/]|xss_clean'
 				'rules' => 'required|regex_match[/^[\d+ ]+$/]|xss_clean'
 				)
 			);
@@ -56,7 +55,6 @@ class register extends CI_Controller {
 
 			echo "<script>alert('Successfully registered. Please proceed to login.');</script>";
 			
-			// redirect('#', 'refresh');
 			$this->load->view('view_login');
 		}
 	}
