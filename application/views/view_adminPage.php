@@ -87,7 +87,7 @@
 													<i class="fa fa-check-square-o"></i>&emsp;Active
 												</a> -->
 												<!-- Prevents redirect to Login page -->
-												<a class="btn btn-sm btn-default" id="courseActive">
+												<a class="btn btn-sm btn-default courseActive">
 													<i class="fa fa-check-square-o"></i>&emsp;Active
 												</a>
 											</td>
@@ -128,7 +128,7 @@ $("#menu-toggle").click(function(e) {
 	$("#wrapper").toggleClass("toggled");
 });
 
-$('#courseActive').click(function(e) {
+$('.courseActive').click(function(e) {
 	// e.preventDefault();
 	$(this).find('i').toggleClass('fa-check-square-o fa-square-o');
 });
