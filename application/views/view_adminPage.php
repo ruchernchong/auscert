@@ -73,6 +73,7 @@
 									<thead>
 										<th>Course List</th>
 										<th>Last Edited</th>
+										<th>Status</th>
 										<th>Actions</th>
 									</thead>
 									<tbody>
@@ -81,9 +82,19 @@
 											<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
 											<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
 
+											<td>
+												<a href="<?php echo site_url('')?>" class="btn btn-sm btn-default">
+													<i class="fa fa-check-square-o"></i>&emsp;Active
+												</a>
+											</td>
+
 											<td class="project-actions">
 												<a href="<?php echo site_url('edits?courseID=' . $course->courseID); ?>" class="btn btn-sm btn-success">
 													<i class="fa fa-pencil"></i>&emsp;Edit
+												</a>
+												&nbsp;
+												<a href="<?php echo site_url('admin/analysis?cid=' . $course->courseID); ?>" class="btn btn-sm btn-primary">
+													<i class="fa fa-bar-chart-o"></i>&emsp;Course Analytics
 												</a>
 												&nbsp;
 												<a href="<?php echo site_url('admin/dropCourse?id=' . $course->courseID); ?>" class="btn btn-sm btn-danger">

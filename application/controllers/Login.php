@@ -18,7 +18,7 @@ class login extends CI_Controller {
 		$query = $this->model_user->validate();
 		
 		if ($query) {
-			$sess_array = array();
+//			$sess_array = array();
 
 			foreach($query as $row)
 			{
