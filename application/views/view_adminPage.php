@@ -83,7 +83,11 @@
 											<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
 
 											<td>
-												<a href="<?php echo site_url('')?>" class="btn btn-sm btn-default">
+												<!-- <a href="<?php echo site_url('')?>" class="btn btn-sm btn-default">
+													<i class="fa fa-check-square-o"></i>&emsp;Active
+												</a> -->
+												<!-- Prevents redirect to Login page -->
+												<a href="#" class="btn btn-sm btn-default">
 													<i class="fa fa-check-square-o"></i>&emsp;Active
 												</a>
 											</td>
