@@ -545,3 +545,6 @@ body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 .moreInfo-title { 
 	text-align: center;
 }
+.breadcrumb {
+	padding: 8px 15px 30px 8px;
+}
