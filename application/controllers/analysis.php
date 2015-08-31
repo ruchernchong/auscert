@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class admin extends CI_Controller {
+class analysis extends CI_Controller {
     function __construct() {
         parent::__construct();
 
@@ -8,7 +8,6 @@ class admin extends CI_Controller {
         $this->load->model('model_userCourse');
         $this->load->model('model_course');
         $this->load->model('model_group');
-        $this->load->model('model_question');
         $this->load->model('model_slide');
     }
 
@@ -19,21 +18,27 @@ class admin extends CI_Controller {
             $data['usertype'] = $session_data['usertype'];
             $data['menu'] = "admin";
 
-            $getAllCourses = $this->model_course->GetAllCourses();
-            $getCourseUsers = $this->model_userCourses->GetUsersFromCourse();
+            if ($getCourse = $this->model_course->GetCourseByID($this->input->get('courseID'))) {
+                $data['course'] = $getCourse;
+            }
+
+            if ($getCourseUsers = $this->model_userCourse->GetUsersFromCourse($this->input->get('courseID'))) {
+                $data['courseUsers'] = $getCourseUsers;
+            }
+
+            if ($getCompletedCourseUsers = $this->model_userCourse->GetCompletedUsers($this->input->get('courseID'))) {
+                $data['completedUsers'] = $getCompletedCourseUsers;
+            } else {
+                $data['completedUsers'] = "No users have completed the course yet";
+            }
 
             if ($data['usertype'] != "admin") {
                 $this->session->set_flashdata('denied', 'You do not have permission to view this page.');
                 redirect('home', 'refresh');
             } else {
                 $this->load->view('header',$data);
-                $this->load->view('view_adminPage',$data);
+                $this->load->view('view_analysis',$data);
             }
-
-            if ($getCourseUsers) {
-                $data['courseUsers'] = $getCourseUsers;
-            }
-
         } else {
             redirect('login', 'refresh');
         }
