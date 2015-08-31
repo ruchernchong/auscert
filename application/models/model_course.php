@@ -25,8 +25,8 @@ Class model_course extends CI_Model {
 	}
 
 	//returns a course based on an ID
-	public function GetCourseById() {
-		$this->db->where('courseID', $this->input->get('courseID'));
+	public function GetCourseById($courseID) {
+		$this->db->where('courseID', $courseID);
 		$query = $this->db->get('courses');
 
 		if ($query->num_rows == 1) {
