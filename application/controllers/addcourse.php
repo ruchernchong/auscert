@@ -19,7 +19,6 @@ class addCourse extends CI_Controller {
 			$this->load->view('header',$data);
 			$this->load->view('view_addCourse');
 		} else {
-			 //If no session, redirect to login page
 			redirect('login', 'refresh');
 		}
 	}

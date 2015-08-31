@@ -37,7 +37,6 @@ class edits extends CI_Controller {
 				$this->load->view('view_editCourse');
 			}
 		} else {
-			 //If no session, redirect to login page
 			redirect('login', 'refresh');
 		}
 	}
@@ -68,6 +67,5 @@ class edits extends CI_Controller {
 		
 		redirect('admin','refresh');
 	}
-	
 }
 ?>
