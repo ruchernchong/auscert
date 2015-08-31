@@ -87,7 +87,7 @@
 													<i class="fa fa-check-square-o"></i>&emsp;Active
 												</a> -->
 												<!-- Prevents redirect to Login page -->
-												<a href="#" class="btn btn-sm btn-default">
+												<a class="btn btn-sm btn-default" id="courseActive">
 													<i class="fa fa-check-square-o"></i>&emsp;Active
 												</a>
 											</td>
@@ -126,6 +126,11 @@
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
 	$("#wrapper").toggleClass("toggled");
+});
+
+$('#courseActive').click(function(e) {
+	// e.preventDefault();
+	$(this).find('i').toggleClass('fa-check-square-o fa-square-o');
 });
 
 $(document).ready(function() {
