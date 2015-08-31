@@ -80,7 +80,7 @@
 											<?php foreach ($courses as $course) { ?>
 											<tr>
 												<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
-												<td>Last edit: <?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
+												<td><?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
 												<td>
 													<!-- <a href="<?php echo site_url('')?>" class="btn btn-sm btn-default">
 														<i class="fa fa-check-square-o"></i>&emsp;Active
