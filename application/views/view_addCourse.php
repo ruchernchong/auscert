@@ -16,33 +16,41 @@
 					</div> -->
 					<div class="panel panel-body">
 						<div class="form-group">
-							<form name ="userInput" id="userInput" action="addCourse/createCourse" method="post">
-								<label for="courseName">Course Name</label>
-								<input class="form-control" name="courseName" required>
-								<p class="help-block">Must be filled</p>
+							<?php
+							$attributes = array(
+								'id' => 'userInput',
+								'name' => 'userInput',
+								'class' => 'userInput'
+								);
+							echo form_open('addCourse/createCourse', $attributes);
+							?>
+							<!-- <form name ="userInput" id="userInput" action="addCourse/createCourse" method="post"> -->
+							<label for="createCourseName">Course Name</label>
+							<input class="form-control" id="createCourseName" name="createCourseName">
+							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseName')) ? "Must be filled" : form_error('createCourseName'); ?></span>
 
-								<label for="courseCategory">Category</label>
-								<select class="form-control" name="courseCategory" required>
-									<!-- Example options. Will change to dynamic. -->
-									<option value="Introductory">Introductory Courses</option>
-									<option value="Safety">Safety</option>
-									<option value="Security">Security</option>
-								</select>
-								<p class="help-block">Must be filled</p>
+							<label for="createCourseCategory">Category</label>
+							<select class="form-control" id="createCourseCategory" name="createCourseCategory">
+								<!-- Example options. Will change to dynamic. -->
+								<option value="Introductory">Introductory Courses</option>
+								<option value="Safety">Safety</option>
+								<option value="Security">Security</option>
+							</select>
+							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseCategory')) ? "Must be filled" : form_error('createCourseCategory'); ?></span>
 
-								<label for="courseDescription">Description</label>
-								<textarea class="form-control" rows="5" name="courseDescription" required></textarea>
-								<p class="help-block">Must be filled</p>
+							<label for="createCourseDescription">Description</label>
+							<textarea class="form-control" rows="5" id="createCourseDescription" name="createCourseDescription"></textarea>
+							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseDescription')) ? "Must be filled" : form_error('createCourseDescription'); ?></span>
 
-								<input type="submit" class="btn btn-success" value="Submit" />
-								<button type="reset" class="btn btn-danger">Reset</button>
-							</form>
-						</div>
+							<input type="submit" class="btn btn-success" value="Submit" />
+							<button type="reset" class="btn btn-danger">Reset</button>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <script src="<?php echo base_url('assets/js/dash.js'); ?>"></script>
 <script>

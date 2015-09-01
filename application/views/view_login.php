@@ -57,31 +57,31 @@
 				<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 				<input type="text" id="registerUsername" name="registerUsername" placeholder="Username" class="form-control text-input" value="<?php echo set_value('registerUsername'); ?>">
 			</div>
-			<span class="register_errorMessage"><?php echo form_error('registerUsername'); ?></span>
+			<span class="errorMessage"><?php echo form_error('registerUsername'); ?></span>
 
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
 				<input type="password" id="registerPassword" name="registerPassword" placeholder="Password" class="form-control text-input">
 			</div>
-			<span class="register_errorMessage"><?php echo form_error('registerPassword'); ?></span>
+			<span class="errorMessage"><?php echo form_error('registerPassword'); ?></span>
 
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
 				<input type="password" id="registerRepeatPassword" name="registerRepeatPassword" placeholder="Confirm Password" class="form-control text-input">
 			</div>
-			<span class="register_errorMessage"><?php echo form_error('registerRepeatPassword'); ?></span>
+			<span class="errorMessage"><?php echo form_error('registerRepeatPassword'); ?></span>
 
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
 				<input type="text" id="registerEmail" name="registerEmail" placeholder="Email Address" class="form-control text-input" value="<?php echo set_value('registerEmail'); ?>">
 			</div>
-			<span class="register_errorMessage"><?php echo form_error('registerEmail'); ?></span>
+			<span class="errorMessage"><?php echo form_error('registerEmail'); ?></span>
 
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
 				<input type="tel" id="registerContact" name="registerContact" placeholder="Contact No." class="form-control text-input" value="<?php echo set_value('registerContact'); ?>">
 			</div>
-			<span class="register_errorMessage"><?php echo form_error('registerContact'); ?></span>
+			<span class="errorMessage"><?php echo form_error('registerContact'); ?></span>
 
 			<div class="form-group">
 				<button class="btn-UQ">Register</button>

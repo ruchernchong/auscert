@@ -549,3 +549,7 @@ body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 .breadcrumb {
 	padding: 8px 15px 30px 8px;
 }
+.errorMessage {
+	font-weight: bold;
+	color: #FF0000;
+}
