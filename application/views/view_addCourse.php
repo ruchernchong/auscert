@@ -15,41 +15,48 @@
 						<h4 class="panel-title">Add Course</h4>
 					</div> -->
 					<div class="panel panel-body">
+						<?php
+						$attributes = array(
+							'id' => 'userInput',
+							'name' => 'userInput',
+							'class' => 'userInput'
+							);
+						echo form_open('addCourse/createCourse', $attributes);
+						?>
 						<div class="form-group">
-							<?php
-							$attributes = array(
-								'id' => 'userInput',
-								'name' => 'userInput',
-								'class' => 'userInput'
-								);
-							echo form_open('addCourse/createCourse', $attributes);
-							?>
-							<!-- <form name ="userInput" id="userInput" action="addCourse/createCourse" method="post"> -->
 							<label for="createCourseName">Course Name</label>
 							<input class="form-control" id="createCourseName" name="createCourseName">
 							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseName')) ? "Must be filled" : form_error('createCourseName'); ?></span>
+						</div>
 
+						<div class="form-group">
 							<label for="createCourseCategory">Category</label>
 							<select class="form-control" id="createCourseCategory" name="createCourseCategory">
 								<!-- Example options. Will change to dynamic. -->
+								<option disabled selected> -- Please select a Category -- </option>
 								<option value="Introductory">Introductory Courses</option>
 								<option value="Safety">Safety</option>
 								<option value="Security">Security</option>
 							</select>
 							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseCategory')) ? "Must be filled" : form_error('createCourseCategory'); ?></span>
+						</div>
 
+						<div class="form-group">
 							<label for="createCourseDescription">Description</label>
 							<textarea class="form-control" rows="5" id="createCourseDescription" name="createCourseDescription"></textarea>
 							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseDescription')) ? "Must be filled" : form_error('createCourseDescription'); ?></span>
+						</div>
 
+						<div class="input-group">
 							<input type="submit" class="btn btn-success" value="Submit" />
 							<button type="reset" class="btn btn-danger">Reset</button>
-						</form>
-					</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 </div>
 <script src="<?php echo base_url('assets/js/dash.js'); ?>"></script>

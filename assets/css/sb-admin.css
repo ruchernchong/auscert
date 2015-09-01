@@ -512,7 +512,7 @@ ul.alert-dropdown {
 	display:none;
 	padding:10px
 }
-.aw{
+.aw {
 	margin-top:10px;
 	margin-bottom:50px;
 }
@@ -520,7 +520,8 @@ ul.alert-dropdown {
 #container {
 	margin-top: 10px;
 }
-body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
+body::-webkit-scrollbar, 
+#sidebar-wrapper::-webkit-scrollbar {
 	width: 0;
 }
 #courseList, 
@@ -531,7 +532,9 @@ body::-webkit-scrollbar, #sidebar-wrapper::-webkit-scrollbar {
 .circle-tile-footer {
 	cursor: pointer;
 }
-.courseLink, .courseLink:link, .courseLink:visited {
+.courseLink, 
+.courseLink:link, 
+.courseLink:visited {
 	color: inherit;
 }
 .side-nav .active {
