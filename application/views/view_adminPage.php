@@ -9,7 +9,7 @@
 			<div class="col-lg-12">
 				<a href="<?php echo site_url('addCourse') ?>" class="btn btn-primary">Create new course</a>&emsp;
 				Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
-
+				<hr>
 				<h2>Report</h2>
 				<div class="row">
 					<div class="col-lg-8">
@@ -96,9 +96,21 @@
 														<i class="fa fa-check-square-o"></i>&emsp;Active
 													</a> -->
 													<!-- Prevents redirect to Login page -->
-													<a class="btn btn-sm btn-default courseActive">
-														<i class="fa fa-check-square-o"></i>&emsp;Active
-													</a>
+													<?php 
+													if ($course->active == 1) {
+														?>
+														<a class="btn btn-sm btn-default courseActive">
+															<i class="fa fa-check-square-o"></i>&emsp;Active
+														</a>
+														<?php 
+													} else { 
+														?>
+														<a class="btn btn-sm btn-default courseActive">
+															<i class="fa fa-square-o"></i>&emsp;Active
+														</a>
+														<?php 
+													}
+													?>
 												</td>
 
 												<td class="project-actions">
@@ -116,11 +128,10 @@
 												</td>
 											</tr>
 											<?php
-											}
-											?>
-										</tbody>
-									</table>
-								</div>
+										}
+										?>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -128,6 +139,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <script>
