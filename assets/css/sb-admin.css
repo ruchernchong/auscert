@@ -500,7 +500,8 @@ ul.alert-dropdown {
 	display:none;
 	cursor:pointer;
 	position:absolute;
-	right: 5px;
+	top: 0;
+	right: 10px;
 	color: red;
 }
 
