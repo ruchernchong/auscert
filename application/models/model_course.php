@@ -67,6 +67,10 @@ Class model_course extends CI_Model {
 		$this->db->delete($data);
 	}
 
+	public function ifActive($courseID) {
+		
+	}
+
 	//Get the date of the last edited course
 	public function GetCourseLastEdited() {
 		$this->db->order_By('lastEdited', 'DESC');
