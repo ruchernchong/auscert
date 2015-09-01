@@ -59,8 +59,12 @@ Class model_course extends CI_Model {
 
 	//Delete an existing course from the courses table
 	public function DeleteCourse($courseID) {
-		$data = array('courses', 'user_courses'); //cascade deletion to user_courses table as well
-		$this->db->delete($data, $courseID);
+		$data = array(
+			'courses',
+			'user_courses'
+		); //cascade deletion to user_courses table as well
+		$this->db->where('courseID', $courseID);
+		$this->db->delete($data);
 	}
 
 	//Get the date of the last edited course
@@ -77,11 +81,11 @@ Class model_course extends CI_Model {
 	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
 		
 		$data = array(
-		'courseName' => $courseTitle,
-		'category' => $courseCategory,
-		'description' => $courseDescription,
-		'lastEdited' => date("Y-m-d H:i:s", time())
-		);
+			'courseName' => $courseTitle,
+			'category' => $courseCategory,
+			'description' => $courseDescription,
+			'lastEdited' => date("Y-m-d H:i:s", time())
+			);
 		
 		$this->db->where('courseID', $courseID);
 		$this->db->update('courses', $data);			
