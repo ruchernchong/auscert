@@ -17,7 +17,12 @@
 						<p class="help-block">Must be filled</p>
 
 						<label for="courseCategory">Category</label>
-						<input class="form-control" name="courseCategory" required>
+						<select class="form-control" name="courseCategory" required>
+							<!-- Example options. Will change to dynamic. -->
+							<option value="Introductory">Introductory Courses</option>
+							<option value="Safety">Safety</option>
+							<option value="Security">Security</option>
+						</select>
 						<p class="help-block">Must be filled</p>
 
 						<label for="courseDescription">Description</label>
