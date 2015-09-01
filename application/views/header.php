@@ -27,9 +27,7 @@
 	<script src="<?php echo base_url('assets/js/course.js'); ?>"></script>
 
 </head>
-
 <body>
-	<?php date_default_timezone_set("Australia/Brisbane"); ?>
 	<div id="wrapper">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
