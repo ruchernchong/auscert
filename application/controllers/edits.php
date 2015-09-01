@@ -6,6 +6,8 @@ class edits extends CI_Controller {
 
 		$this->load->model('model_course');
 		$this->load->model('model_slide');
+		$this->load->library('form_validation');
+		$this->load->helper(array('form', 'url'));
 	}
 
 	public function index() {
