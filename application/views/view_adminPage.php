@@ -10,7 +10,7 @@
 				<a href="<?php echo site_url('addCourse') ?>" class="btn btn-primary">Create new course</a>&emsp;
 				Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
 				<hr>
-				<h2>Report</h2>
+				<!-- <h2>Report</h2> -->
 				<div class="row">
 					<div class="col-lg-8">
 					</div>
