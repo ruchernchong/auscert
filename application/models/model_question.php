@@ -8,7 +8,7 @@ Class model_question extends CI_Model {
 	// Returns all questions associated with a given course
 	public function GetQuestions($courseID) {
 		$this->db->where('courseID', $courseID);
-		$this->db->order_by("question", "asc"); 
+		$this->db->order_by("questionOrder", "asc"); 
 
 		$query = $this->db->get('questions');
 		

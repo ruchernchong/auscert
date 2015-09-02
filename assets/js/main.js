@@ -58,7 +58,7 @@ $(".tab-content").on("change", ".chapter-title", function() {
 
 $("#course_quiz").on("click", ".add-answer", function(e){
 	e.preventDefault();
-	var count = $(this).parents(".form-group").find(".row").length;
+	var count = $(this).parents(".form-group").find(".row").length/2;
 	var question = ($(this).parent().parent().attr('id').match(/\d+/)[0])*1;
 	console.log(count);
 	console.log(question);
@@ -70,8 +70,15 @@ $("#course_quiz").on("click", ".add-answer", function(e){
 		'</div>'+
 		'</div>'+
 		'<div class="col-md-2">'+
+		'<div class="row">'+
+		'<div class="col-md-2">'+
+		'<i class="fa fa-minus-square" style="color:red"></i>'+
+		'</div>'+
+		'<div class="col-md-2">'+
 		'<div class="form-group">'+
-		'<input size="64" id="q' + question + 'a' + count + '" name="q' + question + 'a' + count + '">'+
+		'<input size="64" id="q' + question + 'a' + count + '" name="q' + question + 'a' + count + '" required>'+
+		'</div>'+
+		'</div>'+
 		'</div>'+
 		'</div>'+
 		'</div>'
@@ -93,7 +100,7 @@ $("#add-question").click(function(e) {
 		'		</div>'+
 		'		<div class="col-md-2">'+
 		'		<div class="form-group">'+
-		'		<input size="64" id="q' + questionCount + 'a0" name="q' + questionCount + 'a0">'+
+		'		<input size="64" id="q' + questionCount + 'a0" name="q' + questionCount + 'a0" required>'+
 		'		</div>'+
 		'		</div>'+
 		'	</div>'+
@@ -105,7 +112,7 @@ $("#add-question").click(function(e) {
 		'		</div>'+
 		'		<div class="col-md-2">'+
 		'			<div class="form-group">'+
-		'			<input size="64" id="q' + questionCount + 'a1" name="q' + questionCount + 'a1">'+
+		'			<input size="64" id="q' + questionCount + 'a1" name="q' + questionCount + 'a1" required>'+
 		'			</div>'+
 		'		</div>'+
 		'		</div>'+

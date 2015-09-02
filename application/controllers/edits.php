@@ -24,6 +24,7 @@ class edits extends CI_Controller {
 			if ($query) {
 				$data['course'] = $query;
 				$slides = $this->model_slide->GetSlidesByCourse($data['course']->courseID);
+				$questions = $this->model_question->GetQuestions($data['course']->courseID);
 			}
 
 			if ($slides) {
@@ -31,7 +32,22 @@ class edits extends CI_Controller {
 			} else {
 				$data['slides'] = array();
 			}
-
+			
+			if ($questions) {
+				$data['questions'] = $questions;
+				for($i = 0; $i < sizeof($questions); $i++) {
+					$answers = $this->model_answer->GetAnswers($data['course']->courseID, $questions[$i]->questionOrder);
+					if ($answers) {
+						$data['answers'][$questions[$i]->questionOrder] = $answers;
+					} else {
+						$data['answers'][$questions[$i]->questionOrder] = array();
+					}
+				}
+				
+			} else {
+				$data['questions'] = array();
+			}
+			
 			// If user is not admin, redirect to dashboard.
 			if ($data['usertype'] != "admin") {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');

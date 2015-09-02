@@ -9,7 +9,7 @@ Class model_answer extends CI_Model {
 	public function GetAnswers($courseID, $questionOrder) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('questionOrder', $questionOrder);
-		$this->db->order_by("answer", "asc"); 
+		$this->db->order_by("answerOrder", "asc");
 
 		$query = $this->db->get('answers');
 		
