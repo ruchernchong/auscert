@@ -7,6 +7,7 @@ class edits extends CI_Controller {
 		$this->load->model('model_course');
 		$this->load->model('model_slide');
 		$this->load->model('model_question');
+		$this->load->model('model_answer');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form', 'url'));
 	}
@@ -77,6 +78,20 @@ class edits extends CI_Controller {
 			}
 
 			$this->model_question->SaveQuestion($courseID, $questionOrder, $questionText);
+			
+			$answerOrder = 0;
+			while (true) {
+				$answerText = $this->input->post(sprintf('q%da%d', $questionOrder, $answerOrder));
+				
+				if($answerText == NULL) {
+					break;
+				}
+	
+				$this->model_answer->SaveAnswer($courseID, $questionOrder, $answerOrder, $answerText);
+				$answerOrder++;
+			}
+			$this->model_answer->DeleteHigherAnswers($courseID, $questionOrder, $answerOrder);
+			
 			$questionOrder++;
 		}
 		$this->model_question->DeleteHigherQuestions($courseID, $questionOrder);

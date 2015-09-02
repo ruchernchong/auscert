@@ -22,8 +22,8 @@ Class model_question extends CI_Model {
 	//Delete all questions for a given course with a question order equal to or higher than that given 
 	public function DeleteHigherQuestions($courseID, $questionOrder) {
 		$this->db->where('courseID', $courseID);
-		$this->db->where('slideOrder >=', $slideOrder);
-		$this->db->delete('slides');
+		$this->db->where('questionOrder >=', $questionOrder);
+		$this->db->delete('questions');
 	}
 	
 	
