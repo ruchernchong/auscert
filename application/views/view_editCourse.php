@@ -66,44 +66,58 @@
 
 								</div>
 								<div class="tab-pane fade" id="course_quiz">
-									<div class="form-group" id="q0">
-										<h3>Question 0</h3>
-										<div class="form-group">
-											<textarea class="form-control" name="question_0" id="question_0" rows="10" cols="80">
-											</textarea>
-										</div>
-
-										<script>CKEDITOR.replace(question_0);</script>
-
-										<div class="row">
-											<div class="col-md-2">
-												<div class="form-group">
-													<label>Correct answer:</label>
+									<?php for ($i=0; $i < sizeof($questions); $i++) { 
+									?>
+										<div class="form-group" id="q<?php echo $i; ?>">
+											<h3>Question <?php echo $i+1; ?></h3>
+											<div class="form-group">
+												<textarea class="form-control" name="question_<?php echo $i; ?>" id="question_<?php echo $i; ?>" rows="10" cols="80">
+													<?php echo $questions[$i]->questionText; ?>
+												</textarea>
+											</div>
+	
+											<script>CKEDITOR.replace(question_<?php echo $i; ?>);</script>
+	
+											<?php for ($j=0; $j < sizeof($answers[$i]); $j++) { 
+											?>
+											<div class="row">
+												<div class="col-md-2">
+													<div class="form-group">
+														<?php
+															if($j == 0) {
+																echo '<label>Correct Answer:</label>';
+															} else {
+																echo sprintf('<label>Alternate %d:</label>', $j);
+															}
+														?>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<div class="row">
+														<div class="col-md-2">
+															<?php
+																if($j >=2) {
+																	echo '<i class="fa fa-minus-square" style="color:red"></i>';
+																}
+															?>
+														</div>
+														<div class="col-md-2">
+															<input size="64" id="q<?php echo $i; ?>a<?php echo $j; ?>" name="q<?php echo $i; ?>a<?php echo $j; ?>" value="<?php echo $answers[$i][$j]->answerText; ?>" required>
+														</div>
+													</div>
 												</div>
 											</div>
-											<div class="col-md-2">
-												<input size="64" id="q0a0" name="q0a0">
+											<?php }	?>
+											<div class="form-group">
+												<a href="#" class="add-answer">Add another Answer</a>
 											</div>
 										</div>
-
-										<div class="row">
-											<div class="col-md-2">
-												<div class="form-group">
-													<label>Alternate 1:</label>
-												</div>
-											</div>
-											<div class="col-md-2">
-												<input size="64" id="q0a1" name="q0a1">
-											</div>
-										</div>
-										<div class="form-group">
-											<a href="#" class="add-answer">Add another Answer</a>
-										</div>
+										<hr>
+									<?php }	?>
+									<div class="form-group">
+										<a href="#" id="add-question">Add a question</a>
 									</div>
 									<hr>
-									<div class="form-group">
-										<a href="#" id="add-question">Add another Question</a>
-									</div>
 								</div>
 
 								<?php for ($i=0; $i < sizeof($slides); $i++) { 

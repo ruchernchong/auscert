@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2015 at 02:48 AM
+-- Generation Time: Sep 02, 2015 at 08:26 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.5.27
 
@@ -23,16 +23,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `answer`
+-- Table structure for table `answers`
 --
 
-CREATE TABLE IF NOT EXISTS `answer` (
+CREATE TABLE IF NOT EXISTS `answers` (
   `courseID` int(11) NOT NULL,
-  `questionID` int(11) NOT NULL,
+  `questionOrder` int(11) NOT NULL,
   `answerOrder` int(11) NOT NULL,
-  `correct` tinyint(1) NOT NULL DEFAULT '0',
-  `questionText` text NOT NULL
+  `answerText` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`courseID`, `questionOrder`, `answerOrder`, `answerText`) VALUES
+(2, 0, 0, 'fgh'),
+(2, 0, 1, 'fgh');
 
 -- --------------------------------------------------------
 
@@ -57,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
 
 INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`, `description`, `dateCreated`, `lastEdited`) VALUES
 (1, 'Phising Emails', 'Online Safety', 'Tartiner Studios', 0, 'Introduciton to the phishing emails. What they are and what you can do to avoid being a victim', '2015-03-08 00:00:00', '2015-03-08 00:00:00'),
-(2, 'Choosing A Safe Password', 'Account Security', 'Redones', 1, '<p>This course will guide you through how a password works as well as steps to take to ensure a strong and secure password</p>\r\n', '2015-07-15 00:00:00', '2015-08-29 21:59:53'),
+(2, 'Choosing A Safe Password', 'Account Security', 'Redones', 1, '<p>This course will guide you through how a password works as well as steps to take to ensure a strong and secure password</p>\r\n', '2015-07-15 00:00:00', '2015-09-02 06:09:06'),
 (3, 'Tartiner Studios Training', 'Introduction to the team', 'Tartiner Studios', 1, 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', '2015-08-12 00:00:00', '2015-08-17 00:00:00'),
 (4, 'SQL Injection Attacks', 'Cyber Attacks', 'AusCert', 1, 'Introduction to what SQL Injection Attacks are and how to avoid them', '2015-06-19 00:00:00', '2015-08-25 00:00:00'),
 (5, 'Data Encryption', 'Data Security', 'UQ ITEE', 1, 'Detailed course on the various methods of data encyyption', '2015-08-12 00:00:00', '2015-08-17 00:00:00'),
@@ -98,13 +105,18 @@ INSERT INTO `groups` (`groupID`, `organisation`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `questions` (
-  `questionID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
   `questionOrder` int(11) NOT NULL,
-  `questionText` text NOT NULL,
-  `options` text NOT NULL,
-  `answer` int(11) NOT NULL
+  `passPercentage` tinyint(3) unsigned NOT NULL DEFAULT '50',
+  `questionText` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`courseID`, `questionOrder`, `passPercentage`, `questionText`) VALUES
+(2, 0, 50, '<p>fgh</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -118,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `slides` (
   `slideOrder` int(3) NOT NULL,
   `slideContent` text,
   `slideTitle` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `slides`
@@ -127,12 +139,12 @@ CREATE TABLE IF NOT EXISTS `slides` (
 INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slideTitle`) VALUES
 (1, 1, 1, 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus\r\nterry richardson ad squid. 3 wolf moon officia aute, non cupidatat\r\n                  skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.\r\n                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid\r\n                  single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh\r\n                  helvetica, craft beer labore wes anderson cred nesciunt sapiente ea\r\n                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft\r\n                  beer farm-to-table, raw denim aesthetic synth nesciunt you probably\r\n                  haven''t heard of them accusamus labore sustainable VHS.', 'Introduction to Phishing Email'),
 (2, 1, 2, 'Team Tartiner Testing Content of Further Study', 'Special Phishing Emails'),
-(3, 2, 1, 'So, how do you have a “strong” password that is easy to remember? While it may seem tough to do this, there are a few simple tips that can make it easy.Note: the examples below illustrate just the concepts being discussed.  No single technique should be used on its own, but rather should be used with other techniques. The combination of several will produce a strong password.', 'General Guidelines'),
-(4, 2, 2, 'You want to choose something that is easy to remember with a minimum of 8 characters that uses as many of the techniques above as possible. One way to do this is to pick a phrase you will remember, pick all the first or last letters from each word and then substitute some letters with numbers and symbols. You can then apply capitals to some letters (perhaps the first and last, or second to last, etc.) You could also perhaps keep or add punctuation.', 'Passwords to choose'),
-(5, 2, 3, 'If you only use words from a dictionary or a purely numeric password, a hacker only has to try a limited list of possibilities. A hacking program can try the full set in under one minute. If you use the full set of characters and the techniques above, you force a hacker to continue trying every possible combination to find yours. If we assume that the password is 8 characters long, this table shows how many times a hacker may have to before guessing your password. Most password crackers have rules that can try millions of word variants per second, so the more algorithmically complex your password, the better.', 'Passwords not to choose'),
+(3, 2, 1, '<p>You want to choose something that is easy to remember with a minimum of 8 characters that uses as many of the techniques above as possible. One way to do this is to pick a phrase you will remember, pick all the first or last letters from each word and then substitute some letters with numbers and symbols. You can then apply capitals to some letters (perhaps the first and last, or second to last, etc.) You could also perhaps keep or add punctuation.</p>\r\n', 'Passwords to choose'),
+(4, 2, 2, '<p>If you only use words from a dictionary or a purely numeric password, a hacker only has to try a limited list of possibilities. A hacking program can try the full set in under one minute. If you use the full set of characters and the techniques above, you force a hacker to continue trying every possible combination to find yours. If we assume that the password is 8 characters long, this table shows how many times a hacker may have to before guessing your password. Most password crackers have rules that can try millions of word variants per second, so the more algorithmically complex your password, the better.</p>\r\n', 'Passwords not to choose'),
 (25, 10, 0, '<p>fghgfhgfhfghgh</p>\r\n', '1'),
 (27, 10, 1, '<p>fghghh</p>\r\n', '2'),
-(29, 10, 2, '<p>fghghfh</p>\r\n', '4cdfgdfg');
+(29, 10, 2, '<p>fghghfh</p>\r\n', '4cdfgdfg'),
+(30, 2, 0, '<p>So, how do you have a &ldquo;strong&rdquo; password that is easy to remember? While it may seem tough to do this, there are a few simple tips that can make it easy.Note: the examples below illustrate just the concepts being discussed. No single technique should be used on its own, but rather should be used with other techniques. The combination of several will produce a strong password.</p>\r\n', 'General Guidelines');
 
 -- --------------------------------------------------------
 
@@ -200,10 +212,10 @@ INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `
 --
 
 --
--- Indexes for table `answer`
+-- Indexes for table `answers`
 --
-ALTER TABLE `answer`
-  ADD PRIMARY KEY (`courseID`,`questionID`,`answerOrder`);
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`courseID`,`questionOrder`,`answerOrder`);
 
 --
 -- Indexes for table `courses`
@@ -222,8 +234,7 @@ ALTER TABLE `groups`
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
-  ADD PRIMARY KEY (`questionID`),
-  ADD KEY `courseID` (`courseID`);
+  ADD PRIMARY KEY (`courseID`,`questionOrder`);
 
 --
 -- Indexes for table `slides`
@@ -261,15 +272,10 @@ ALTER TABLE `courses`
 ALTER TABLE `groups`
   MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `questions`
---
-ALTER TABLE `questions`
-  MODIFY `questionID` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
-  MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -280,10 +286,16 @@ ALTER TABLE `users`
 --
 
 --
+-- Constraints for table `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`, `questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `questions`
 --
 ALTER TABLE `questions`
-  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `slides`
