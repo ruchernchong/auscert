@@ -53,4 +53,14 @@ class admin extends CI_Controller {
 //		$this->model_userCourse->DeleteCourse($courseID);
 		redirect('admin', 'refresh');
 	}
+
+	function ifActive() {
+		$courseID = $this->input->post('courseID');
+		$courseIfActive = $this->model_course->ifActive($courseID);
+	}
+
+	function ifNotActive() {
+		$courseID = $this->input->post('courseID');
+		$courseIfNotActive = $this->model_course->ifNotActive($courseID);
+	}
 }	

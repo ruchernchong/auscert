@@ -68,7 +68,21 @@ Class model_course extends CI_Model {
 	}
 
 	public function ifActive($courseID) {
-		
+		$data = array(
+			'active' => 1
+			);
+
+		$this->db->where('courseID', $courseID);
+		$this->db->update('courses', $data);
+	}
+
+	public function ifNotActive($courseID) {
+		$data = array(
+			'active' => 0
+			);
+
+		$this->db->where('courseID', $courseID);
+		$this->db->update('courses', $data);
 	}
 
 	//Get the date of the last edited course
@@ -92,7 +106,7 @@ Class model_course extends CI_Model {
 			);
 		
 		$this->db->where('courseID', $courseID);
-		$this->db->update('courses', $data);			
+		$this->db->update('courses', $data);
 	}
 }
 ?>

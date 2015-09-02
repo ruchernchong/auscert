@@ -122,22 +122,34 @@ CKEDITOR.replace('question_' + questionCount);
 $(".courseActive").click(function() {
 	// console.log($(this).prop('checked'));
 	if ($(this).prop('checked') == true) {
-		var courseID = $(this).attr('id').match(/\d+/)[0])*1;
-	// Push value as 1;
-	$.ajax({
-		method: "POST",
-		url: "",
-		data: "",
-		success: function(response) {
-
-		}
-	});
-} else {
-	// get courseID
-	// Push value as 0;
-}
-	//var id = ($(this).attr('id').match(/\d+/)[0])*1;
-	//$('#' + id).html('<a href="#chapter_' + id + '"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash;' + $("#title_" + (id)).val() + '</a><span><i class="fa fa-times"></i></span>');
-	// Trying to set tab to inactive when user clicks on "Add Chapter".
-	//$(".nav-tabs li").removeClass("active");
+		var courseID = $(this).attr('id').match(/\d+/)[0]*1;
+		$.ajax({
+			method: "POST",
+			url: "admin/ifActive",
+			data: {
+				'courseID' : courseID
+			},
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		});
+	} else {
+		var courseID = $(this).attr('id').match(/\d+/)[0]*1;
+		$.ajax({
+			method: "POST",
+			url: "admin/ifNotActive",
+			data: {
+				'courseID' : courseID
+			},
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		});
+	}
 });
