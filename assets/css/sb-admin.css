@@ -556,3 +556,52 @@ body::-webkit-scrollbar,
 	font-weight: bold;
 	color: #FF0000;
 }
+
+input[type=radio].courseActive,
+input[type=checkbox].courseActive {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.activeLabel {
+	margin: 0;
+}
+
+input[type=radio].courseActive ~ label:before,
+input[type=checkbox].courseActive ~ label:before {
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f1db";
+	letter-spacing: 10px;
+	font-size: 1.2em;
+	color: #535353;
+	width: 1.4em;
+}
+
+input[type=radio].courseActive:checked ~ label:before,
+input[type=checkbox].courseActive:checked ~ label:before {
+	content: "\f00c";
+	font-size: 1.2em;
+	color: darkgreen;
+	letter-spacing: 5px;
+}
+input[type=checkbox].courseActive ~ label:before {
+	content: "\f096";
+}
+input[type=checkbox].courseActive:checked ~ label:before {
+	content: "\f046";
+	color: darkgreen;
+}
+input[type=radio].courseActive:focus ~ label:before,
+input[type=checkbox].courseActive:focus ~ label:before,
+input[type=radio].courseActive:focus ~ label,
+input[type=checkbox].courseActive:focus ~ label
+{                
+	color: green;
+}

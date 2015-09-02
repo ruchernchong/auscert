@@ -99,15 +99,17 @@
 													<?php 
 													if ($course->active == 1) {
 														?>
-														<a class="btn btn-sm btn-default courseActive">
-															<i class="fa fa-check-square-o"></i>&emsp;Active
-														</a>
+														<div class="btn btn-sm btn-default">
+															<input type="checkbox" id="activeChecked_<?php echo $course->courseID; ?>" class="courseActive" checked>
+															<label for="activeChecked_<?php echo $course->courseID; ?>" class="activeLabel">Active</label>
+														</div>
 														<?php 
 													} else { 
 														?>
-														<a class="btn btn-sm btn-default courseActive">
-															<i class="fa fa-square-o"></i>&emsp;Active
-														</a>
+														<div class="btn btn-sm btn-default">
+															<input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
+															<label for="activeNotChecked_<?php echo $course->courseID; ?>" class="activeLabel">Active</label>
+														</div>
 														<?php 
 													}
 													?>
@@ -148,10 +150,10 @@ $("#menu-toggle").click(function(e) {
 	$("#wrapper").toggleClass("toggled");
 });
 
-$('.courseActive').click(function(e) {
-	// e.preventDefault();
-	$(this).find('i').toggleClass('fa-check-square-o fa-square-o');
-});
+// $('.courseActive').click(function(e) {
+// 	// e.preventDefault();
+// 	$(this).find('i').toggleClass('fa-check-square-o fa-square-o');
+// });
 
 $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
