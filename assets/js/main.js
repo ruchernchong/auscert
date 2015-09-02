@@ -126,6 +126,7 @@ $(".courseActive").click(function() {
 	// Push value as 1;
 	$.ajax({
 		method: "POST",
+		url: "",
 		data: "",
 		success: function(response) {
 
