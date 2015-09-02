@@ -143,7 +143,7 @@
 	</div>
 </div>
 </div>
-
+<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 <script>
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
