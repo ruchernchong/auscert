@@ -6,6 +6,7 @@ class edits extends CI_Controller {
 
 		$this->load->model('model_course');
 		$this->load->model('model_slide');
+		$this->load->model('model_question');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form', 'url'));
 	}
@@ -43,7 +44,8 @@ class edits extends CI_Controller {
 		}
 	}
 	
-	// Updates the description for a course and saves slides. Deletes slides that no no longer existed if client deleted slides
+	// Updates the description for a course and saves slides, quiz questions and quiz answers.
+	// Deletes any excess content if the user has removed content
 	public function save() {
 		$courseID = $this->input->get('courseID');
 		$courseName = $this->input->post('courseName');
@@ -64,8 +66,20 @@ class edits extends CI_Controller {
 			$this->model_slide->SaveSlide($courseID, $slideOrder, $slideTitle, $slideContent);
 			$slideOrder++;
 		}
-
 		$this->model_slide->DeleteHigherSlides($courseID, $slideOrder);
+
+		$questionOrder = 0;
+		while (true) {
+			$questionText = $this->input->post(sprintf('question_%d', $questionOrder));
+			
+			if($questionText == NULL) {
+				break;
+			}
+
+			$this->model_question->SaveQuestion($courseID, $questionOrder, $questionText);
+			$questionOrder++;
+		}
+		$this->model_question->DeleteHigherQuestions($courseID, $questionOrder);
 		
 		redirect('admin','refresh');
 	}
