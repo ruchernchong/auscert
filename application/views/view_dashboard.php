@@ -11,7 +11,7 @@ if (!empty($this->session->flashdata('denied'))) {
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard
+				<h1 class="page-header">Dashboard - Leon was here
 					<small>Content Overview</small>
 				</h1>
 				<ol class="breadcrumb">
