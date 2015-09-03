@@ -30,8 +30,6 @@ $(".nav-tabs").on("click", "a", function(e){
 
 			curr.html('<a href="#chapter_' + index + '"><i class="fa fa-book"></i>&emsp;' + (index + 1) + ' &mdash;' + $('.tab-content').find('#title_' + (index)).val() + '</a><span><i class="fa fa-times"></i></span>');
 			$(".nav-tabs li").removeClass("active");
-		} else {
-			console.log('match');
 		}
 	}
 });
@@ -57,11 +55,10 @@ $(".tab-content").on("change", ".chapter-title", function() {
 
 // Delete question script, cascade order to following questions
 $("#course_quiz").on("click", ".delete_question", function() {
-	$(this).parent().parent().remove();
+	$target = $(this).closest(".form-group");
+	$target.hide('slow', function(){ $target.remove(); });
 	
-	//var curr = $(this).parent().parent().attr('id').match(/\d+/)[0]*1;
-	var children = $("#course_quiz").children(".form-group");
-	
+	var children = $("#course_quiz").children(	".form-group");
 	for(var i = 0; i < children.length; i++) {
 		var curr = children.eq(i);
 		
@@ -74,9 +71,9 @@ $("#course_quiz").on("click", ".delete_question", function() {
 			
 			count = 0;
 			while(true) {
-				if ($('#q'+ i + 'a' + count).length) {
- 					var $answer = $('#q'+(i+1)+'a'+count);
- 					console.log($answer);
+				if ($('#q'+ (i+1) + 'a' + count).length) {
+					var $answer = $('#q'+(i+1)+'a'+count);
+					console.log($answer);
 					$answer.attr('id', 'q'+i+'a'+count);
 					$answer.attr('name', 'q'+i+'a'+count);
 				} else {
@@ -84,31 +81,43 @@ $("#course_quiz").on("click", ".delete_question", function() {
 				}
 				count++;
 			}
-			
-			//$('#title_' + (index + 1)).attr('id', 'title_' + index);
-			//$('#title_' + index).attr('name', 'title_' + index);
-			//$('#editor_' + (index + 1)).attr('id', 'editor_' + index);
-			//$('#editor_' + index).attr('name', 'editor_' + index);
-
-			//curr.html('<a href="#chapter_' + index + '"><i class="fa fa-book"></i>&emsp;' + (index + 1) + ' &mdash;' + $('.tab-content').find('#title_' + (index)).val() + '</a><span><i class="fa fa-times"></i></span>');
-			//$(".nav-tabs li").removeClass("active");
-		} else {
-			console.log('match');
 		}
 	}
-	//var id = ($(this).attr('id').match(/\d+/)[0])*1;
-	//$('#' + id).html('<a href="#chapter_' + id + '"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash;' + $("#title_" + (id)).val() + '</a><span><i class="fa fa-times"></i></span>');
-	// Trying to set tab to inactive when user clicks on "Add Chapter".
-	//$(".nav-tabs li").removeClass("active");
 });
 
+// Delete answer script, cascade order to following answers
+$("#course_quiz").on("click", ".delete_answer", function() {
+	var $question = $(this).closest(".form-group");
+	var questionNumber = $(this).closest(".form-group").attr('id').match(/\d+/)[0]*1;
+	var answerNumber = $(this).closest('.row').find('input').attr('id').match(/\d+[^\d*](\d+)/)[1]*1;
+	//console.log(questionNumber);
+	//console.log(answerNumber);
+	$target = $(this).closest(".row").parent().closest(".row");
+	$target.hide('slow', function(){ $target.remove(); });
+
+
+	while(true) {
+		if ($('#q'+ questionNumber + 'a' + (answerNumber+1)).length) {
+			var $answer = $('#q'+ questionNumber + 'a' + (answerNumber+1));
+			//console.log($answer);
+			$answer.attr('id', 'q'+questionNumber+'a'+answerNumber);
+			$answer.attr('name', 'q'+questionNumber+'a'+answerNumber);
+			$answer.closest(".row").parent().closest(".row").find('label').text('Alternate ' + answerNumber);
+		} else {
+			break;
+		}
+		answerNumber++;
+	}
+
+});
+
+
+// Adds a new answer to a question
 $("#course_quiz").on("click", ".add-answer", function(e){
 	e.preventDefault();
-	var count = $(this).parents(".form-group").find(".row").length/2;
+	var count = ($(this).parents(".form-group").find(".row").length)/2;
 	var question = ($(this).parent().parent().attr('id').match(/\d+/)[0])*1;
-	console.log(count);
-	console.log(question);
-	$(this).parent().before(
+	var new_answer = $(
 		'<div class="row">'+
 		'<div class="col-md-2">'+
 		'<div class="form-group">'+
@@ -118,7 +127,7 @@ $("#course_quiz").on("click", ".add-answer", function(e){
 		'<div class="col-md-2">'+
 		'<div class="row">'+
 		'<div class="col-md-2">'+
-		'<i class="fa fa-minus-square" style="color:red"></i>'+
+		'<i class="fa fa-minus-square delete_answer" style="color:red"></i>'+
 		'</div>'+
 		'<div class="col-md-2">'+
 		'<div class="form-group">'+
@@ -128,16 +137,21 @@ $("#course_quiz").on("click", ".add-answer", function(e){
 		'</div>'+
 		'</div>'+
 		'</div>'
-		);
+	).hide();
+
+	$(this).parent().before(new_answer);
+	new_answer.show('slow');
 });
 
 $("#add-question").click(function(e) {
 	e.preventDefault();
 	questionCount = $(this).siblings('.form-group').length;
-	$(this).before(
+	var new_question = $(
 		'<div class="form-group" id="q' + questionCount + '">'+
 		'	<h3><i class="fa fa-minus-square delete_question" style="color:red"></i> &emsp; Question ' + (questionCount+1)  + '</h3>'+
-		'	<textarea class="form-control" name="question_' + questionCount + '" id="question_' + questionCount + '" rows="10" cols="80"></textarea><br>'+
+		'	<div class="form-group">'+
+		'		<textarea class="form-control" name="question_' + questionCount + '" id="question_' + questionCount + '" rows="10" cols="80"></textarea><br>'+
+		'	</div>'+
 		'	<div class="row">'+
 		'		<div class="col-md-2">'+
 		'			<div class="form-group">'+
@@ -146,7 +160,7 @@ $("#add-question").click(function(e) {
 		'		</div>'+
 		'		<div class="col-md-2">'+
 		'		<div class="form-group">'+
-		'		<input size="64" id="q' + questionCount + 'a0" name="q' + questionCount + 'a0" required>'+
+		'			<input size="64" id="q' + questionCount + 'a0" name="q' + questionCount + 'a0" required>'+
 		'		</div>'+
 		'		</div>'+
 		'	</div>'+
@@ -167,7 +181,9 @@ $("#add-question").click(function(e) {
 		'	</div>'+
 		'	<hr>'+
 		'</div>'
-		);
+	).hide();
+	$(this).before(new_question);
+	new_question.show('slow');
 
 CKEDITOR.replace('question_' + questionCount);
 });
