@@ -55,6 +55,52 @@ $(".tab-content").on("change", ".chapter-title", function() {
 	$(".nav-tabs li").removeClass("active");
 });
 
+// Delete question script, cascade order to following questions
+$("#course_quiz").on("click", ".delete_question", function() {
+	$(this).parent().parent().remove();
+	
+	//var curr = $(this).parent().parent().attr('id').match(/\d+/)[0]*1;
+	var children = $("#course_quiz").children(".form-group");
+	
+	for(var i = 0; i < children.length; i++) {
+		var curr = children.eq(i);
+		
+		if(curr.attr('id') != 'q'+i) {
+			curr.attr('id', 'q'+i);
+
+			curr.find('h3').html('<h3><i class="fa fa-minus-square delete_question" style="color:red"></i> &emsp; Question '+ (i+1) +'</h3>');
+			curr.find('textarea').attr('id', 'q'+i);
+			curr.find('textarea').attr('name', 'q'+i);
+			
+			count = 0;
+			while(true) {
+				if ($('#q'+ i + 'a' + count).length) {
+ 					var $answer = $('#q'+(i+1)+'a'+count);
+ 					console.log($answer);
+					$answer.attr('id', 'q'+i+'a'+count);
+					$answer.attr('name', 'q'+i+'a'+count);
+				} else {
+					break;
+				}
+				count++;
+			}
+			
+			//$('#title_' + (index + 1)).attr('id', 'title_' + index);
+			//$('#title_' + index).attr('name', 'title_' + index);
+			//$('#editor_' + (index + 1)).attr('id', 'editor_' + index);
+			//$('#editor_' + index).attr('name', 'editor_' + index);
+
+			//curr.html('<a href="#chapter_' + index + '"><i class="fa fa-book"></i>&emsp;' + (index + 1) + ' &mdash;' + $('.tab-content').find('#title_' + (index)).val() + '</a><span><i class="fa fa-times"></i></span>');
+			//$(".nav-tabs li").removeClass("active");
+		} else {
+			console.log('match');
+		}
+	}
+	//var id = ($(this).attr('id').match(/\d+/)[0])*1;
+	//$('#' + id).html('<a href="#chapter_' + id + '"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash;' + $("#title_" + (id)).val() + '</a><span><i class="fa fa-times"></i></span>');
+	// Trying to set tab to inactive when user clicks on "Add Chapter".
+	//$(".nav-tabs li").removeClass("active");
+});
 
 $("#course_quiz").on("click", ".add-answer", function(e){
 	e.preventDefault();
@@ -87,10 +133,10 @@ $("#course_quiz").on("click", ".add-answer", function(e){
 
 $("#add-question").click(function(e) {
 	e.preventDefault();
-	questionCount = $(this).parent().siblings('.form-group').length;
-	$(this).parent().before(
+	questionCount = $(this).siblings('.form-group').length;
+	$(this).before(
 		'<div class="form-group" id="q' + questionCount + '">'+
-		'	<h3>Question ' + questionCount + '</h3>'+
+		'	<h3><i class="fa fa-minus-square delete_question" style="color:red"></i> &emsp; Question ' + (questionCount+1)  + '</h3>'+
 		'	<textarea class="form-control" name="question_' + questionCount + '" id="question_' + questionCount + '" rows="10" cols="80"></textarea><br>'+
 		'	<div class="row">'+
 		'		<div class="col-md-2">'+
@@ -119,8 +165,8 @@ $("#add-question").click(function(e) {
 		'		<div class="form-group">'+
 		'		<a href="#" class="add-answer">Add another Answer</a>'+
 		'	</div>'+
-		'</div>'+
-		'<hr>'
+		'	<hr>'+
+		'</div>'
 		);
 
 CKEDITOR.replace('question_' + questionCount);

@@ -69,7 +69,7 @@
 									<?php for ($i=0; $i < sizeof($questions); $i++) { 
 									?>
 										<div class="form-group" id="q<?php echo $i; ?>">
-											<h3>Question <?php echo $i+1; ?></h3>
+											<h3><i class="fa fa-minus-square delete_question" style="color:red"></i> &emsp; Question <?php echo $i+1; ?></h3>
 											<div class="form-group">
 												<textarea class="form-control" name="question_<?php echo $i; ?>" id="question_<?php echo $i; ?>" rows="10" cols="80">
 													<?php echo $questions[$i]->questionText; ?>
@@ -111,12 +111,10 @@
 											<div class="form-group">
 												<a href="#" class="add-answer">Add another Answer</a>
 											</div>
+											<hr>
 										</div>
-										<hr>
 									<?php }	?>
-									<div class="form-group">
 										<a href="#" id="add-question">Add a question</a>
-									</div>
 									<hr>
 								</div>
 
