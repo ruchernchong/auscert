@@ -29,6 +29,7 @@ $(".nav-tabs").on("click", "a", function(e){
 			$('#editor_' + index).attr('name', 'editor_' + index);
 
 			curr.html('<a href="#chapter_' + index + '"><i class="fa fa-book"></i>&emsp;' + (index + 1) + ' &mdash;' + $('.tab-content').find('#title_' + (index)).val() + '</a><span><i class="fa fa-times"></i></span>');
+			$(".nav-tabs li").removeClass("active");
 		} else {
 			console.log('match');
 		}
@@ -40,12 +41,122 @@ $(".add-contact").click(function(e) {
 	var id = $(".nav-tabs").children().length-3;
 	
 	var editorx = "editor_" + id;
-	$(this).closest('li').before('<li id="'+id+'"><a href="#chapter_' + id + '" data-toggle="tab"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash; New Chapter</a><span><i class="fa fa-times"></i></span></li>');         
+	$(this).closest('li').before('<li id="' + id + '"><a href="#chapter_' + id + '" data-toggle="tab"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash; New Chapter</a><span><i class="fa fa-times"></i></span></li>');         
 	$(".tab-content").append('<div class="tab-pane fade" id="chapter_' + id + '"><div class="form-group"><label>Chapter title </label><input class="form-control chapter-title" name="title_' + id + '" id="title_' + id + '" value="New Chapter" required><br /><label>Chapter contents</label><textarea name="editor_' + id + '" id="editor_' + id + '" rows="10" cols="80"></textarea></div></div>');
+	// Trying to set tab to inactive when user clicks on "Add Chapter".
+	$(".nav-tabs li").removeClass("active");
 	CKEDITOR.replace(editorx);
 });
 
-$(".tab-content").on( "change", ".chapter-title", function() {
+$(".tab-content").on("change", ".chapter-title", function() {
 	var id = ($(this).attr('id').match(/\d+/)[0])*1;
 	$('#' + id).html('<a href="#chapter_' + id + '"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash;' + $("#title_" + (id)).val() + '</a><span><i class="fa fa-times"></i></span>');
+	// Trying to set tab to inactive when user clicks on "Add Chapter".
+	$(".nav-tabs li").removeClass("active");
+});
+
+
+$("#course_quiz").on("click", ".add-answer", function(e){
+	e.preventDefault();
+	var count = $(this).parents(".form-group").find(".row").length/2;
+	var question = ($(this).parent().parent().attr('id').match(/\d+/)[0])*1;
+	console.log(count);
+	console.log(question);
+	$(this).parent().before(
+		'<div class="row">'+
+		'<div class="col-md-2">'+
+		'<div class="form-group">'+
+		'<label>Alternate ' + count + ':</label>'+
+		'</div>'+
+		'</div>'+
+		'<div class="col-md-2">'+
+		'<div class="row">'+
+		'<div class="col-md-2">'+
+		'<i class="fa fa-minus-square" style="color:red"></i>'+
+		'</div>'+
+		'<div class="col-md-2">'+
+		'<div class="form-group">'+
+		'<input size="64" id="q' + question + 'a' + count + '" name="q' + question + 'a' + count + '" required>'+
+		'</div>'+
+		'</div>'+
+		'</div>'+
+		'</div>'+
+		'</div>'
+		);
+});
+
+$("#add-question").click(function(e) {
+	e.preventDefault();
+	questionCount = $(this).parent().siblings('.form-group').length;
+	$(this).parent().before(
+		'<div class="form-group" id="q' + questionCount + '">'+
+		'	<h3>Question ' + questionCount + '</h3>'+
+		'	<textarea class="form-control" name="question_' + questionCount + '" id="question_' + questionCount + '" rows="10" cols="80"></textarea><br>'+
+		'	<div class="row">'+
+		'		<div class="col-md-2">'+
+		'			<div class="form-group">'+
+		'			<label>Correct answer:</label>'+
+		'			</div>'+
+		'		</div>'+
+		'		<div class="col-md-2">'+
+		'		<div class="form-group">'+
+		'		<input size="64" id="q' + questionCount + 'a0" name="q' + questionCount + 'a0" required>'+
+		'		</div>'+
+		'		</div>'+
+		'	</div>'+
+		'	<div class="row">'+
+		'		<div class="col-md-2">'+
+		'			<div class="form-group">'+
+		'			<label>Alternate 1:</label>'+
+		'			</div>'+
+		'		</div>'+
+		'		<div class="col-md-2">'+
+		'			<div class="form-group">'+
+		'			<input size="64" id="q' + questionCount + 'a1" name="q' + questionCount + 'a1" required>'+
+		'			</div>'+
+		'		</div>'+
+		'		</div>'+
+		'		<div class="form-group">'+
+		'		<a href="#" class="add-answer">Add another Answer</a>'+
+		'	</div>'+
+		'</div>'+
+		'<hr>'
+		);
+
+CKEDITOR.replace('question_' + questionCount);
+});
+
+$(".courseActive").click(function() {
+	// console.log($(this).prop('checked'));
+	if ($(this).prop('checked') == true) {
+		var courseID = $(this).attr('id').match(/\d+/)[0]*1;
+		$.ajax({
+			method: "POST",
+			url: "admin/ifActive",
+			data: {
+				'courseID' : courseID
+			},
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		});
+	} else {
+		var courseID = $(this).attr('id').match(/\d+/)[0]*1;
+		$.ajax({
+			method: "POST",
+			url: "admin/ifNotActive",
+			data: {
+				'courseID' : courseID
+			},
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		});
+	}
 });

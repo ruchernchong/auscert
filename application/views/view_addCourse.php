@@ -10,32 +10,56 @@
 
 		<div class="row">	
 			<div class="col-lg-12">
-				<div class="form-group">
-					<form name ="userInput" id="userInput" action="addCourse/createCourse" method="post">
-						<label for="courseName">Course Name</label>
-						<input class="form-control" name="courseName" required>
-						<p class="help-block">Must be filled</p>
+				<div class="panel panel-default">
+					<!-- <div class="panel panel-heading">
+						<h4 class="panel-title">Add Course</h4>
+					</div> -->
+					<div class="panel panel-body">
+						<?php
+						$attributes = array(
+							'id' => 'userInput',
+							'name' => 'userInput',
+							'class' => 'userInput'
+							);
+						echo form_open('addCourse/createCourse', $attributes);
+						?>
+						<div class="form-group">
+							<label for="createCourseName">Course Name</label>
+							<input class="form-control" id="createCourseName" name="createCourseName">
+							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseName')) ? "Must be filled" : form_error('createCourseName'); ?></span>
+						</div>
 
-						<label for="courseCategory">Category</label>
-						<input class="form-control" name="courseCategory" required>
-						<p class="help-block">Must be filled</p>
+						<div class="form-group">
+							<label for="createCourseCategory">Category</label>
+							<select class="form-control" id="createCourseCategory" name="createCourseCategory">
+								<!-- Example options. Will change to dynamic. -->
+								<option disabled selected> -- Please select a Category -- </option>
+								<option value="Introductory">Introductory Courses</option>
+								<option value="Safety">Safety</option>
+								<option value="Security">Security</option>
+							</select>
+							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseCategory')) ? "Must be filled" : form_error('createCourseCategory'); ?></span>
+						</div>
 
-						<label for="courseDescription">Description</label>
-						<textarea class="form-control" rows="5" name="courseDescription" required></textarea>
-						<p class="help-block">Must be filled</p>
+						<div class="form-group">
+							<label for="createCourseDescription">Description</label>
+							<textarea class="form-control" rows="5" id="createCourseDescription" name="createCourseDescription"></textarea>
+							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseDescription')) ? "Must be filled" : form_error('createCourseDescription'); ?></span>
+						</div>
 
-						<input type="submit" class="btn btn-success" value="Submit" />
-						<button type="reset" class="btn btn-danger">Reset</button>
+						<div class="input-group">
+							<input type="submit" class="btn btn-success" value="Submit" />
+							<button type="reset" class="btn btn-danger">Reset</button>
+						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
+</div>
+</div>
 <script src="<?php echo base_url('assets/js/dash.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 <script>
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();

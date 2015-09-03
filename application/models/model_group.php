@@ -16,7 +16,7 @@ Class model_group extends CI_Model {
 	}
 
 	public function GetGroupByID() {
-		$query = $this->db->get();
+		$query = $this->db->get('groups');
 
 		if ($query->num_rows == 1) {
 			return $query->result();

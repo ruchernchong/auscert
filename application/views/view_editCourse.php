@@ -17,7 +17,7 @@
 					<?php
 					for ($i=0; $i < sizeof($slides); $i++) {
 						?>
-						<li id = <?php echo $i; ?>>
+						<li id="<?php echo $i; ?>">
 							<a href="#chapter_<?php echo $i; ?>" data-toggle="tab">
 								<i class="fa fa-book"></i>&emsp;<?php echo $i+1 . " &mdash; " . $slides[$i]->slideTitle; ?>
 							</a>
@@ -35,65 +35,93 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form name ="userInput" id="userInput" action="<?php echo site_url('edits/save?courseID=' . $course->courseID); ?>" method="post">
-								<div class="tab-content">
-									<div class="tab-pane fade in active" id="course_details">
-										<?php
-										?>
+							<?php 
+							$attributes = array(
+								'id' => 'userInput',
+								'name' => 'userInput'
+								);
+
+							echo form_open('edits/save?courseID=' . $course->courseID, $attributes);
+							?>
+							<div class="tab-content">
+								<div class="tab-pane fade in active" id="course_details">
+									<?php
+									?>
+									<div class="form-group">
 										<label>Course Name</label>
 										<input class="form-control" name="courseName" value="<?php echo $course->courseName; ?>" required><br />
+									</div>
+									<div class="form-group">
 										<label for="courseCategory">Category</label>
 										<input class="form-control" name="courseCategory" id="courseCategory" value="<?php echo $course->category; ?>" required><br />
+									</div>
+									<div class="form-group">
 										<label for="courseDescription">Description</label>
 										<textarea class="form-control" rows="5" name="courseDescription" id="courseDescription" required>
 											<?php echo $course->description; ?>
 										</textarea>
-										<script>CKEDITOR.replace("courseDescription");</script>
-										<!-- , $slides[$i]->slideOrder*/; -->
-									</div>
-									<div class="tab-pane fade" id="course_quiz">
-										<label>Quiz (Non functional)</label>
-										<div class="panel-body quiz">
-											<div class="form-group">
-												<label> Question 1: </label>
-												<input class="form-control" id="url_1" value="What is it?">
-											</div>
-											<div class="form-group">
-												<label> Option a:
-													<input class="form-control" id="url_1" value="Wrong">
-												</label>
-												<label> Option b:
-													<input class="form-control" id="url_1" value="Wrong">
-												</label>
-												<label> Option c:
-													<input class="form-control" id="url_1" value="Wrong">
-												</label>
-												<label> Option d:
-													<input class="form-control" id="url_1" value="Correct">
-												</label>
-											</div>
-											<div class="form-group">
-												<label>Answer 1: </label>
-												<label class="radio-inline_1">
-													<input type="radio" name="optionsRadiosInline" id="options0" value="0">a
-												</label>
-												<label class="radio-inline_1">
-													<input type="radio" name="optionsRadiosInline" id="options1" value="1">b
-												</label>
-												<label class="radio-inline_1">
-													<input type="radio" name="optionsRadiosInline" id="options2" value="2">c
-												</label>
-												<label class="radio-inline_1">
-													<input type="radio" name="optionsRadiosInline" id="options3" value="3" checked>d
-												</label>
-											</div>
-											<div class="form-group">
-												<a href="#" id="add">Add another Question</a>
-											</div>
-										</div>
 									</div>
 
-									<?php for($i=0; $i < sizeof($slides); $i++) { ?>
+									<script>CKEDITOR.replace("courseDescription");</script>
+
+								</div>
+								<div class="tab-pane fade" id="course_quiz">
+									<?php for ($i=0; $i < sizeof($questions); $i++) { 
+									?>
+										<div class="form-group" id="q<?php echo $i; ?>">
+											<h3>Question <?php echo $i+1; ?></h3>
+											<div class="form-group">
+												<textarea class="form-control" name="question_<?php echo $i; ?>" id="question_<?php echo $i; ?>" rows="10" cols="80">
+													<?php echo $questions[$i]->questionText; ?>
+												</textarea>
+											</div>
+	
+											<script>CKEDITOR.replace(question_<?php echo $i; ?>);</script>
+	
+											<?php for ($j=0; $j < sizeof($answers[$i]); $j++) { 
+											?>
+											<div class="row">
+												<div class="col-md-2">
+													<div class="form-group">
+														<?php
+															if($j == 0) {
+																echo '<label>Correct Answer:</label>';
+															} else {
+																echo sprintf('<label>Alternate %d:</label>', $j);
+															}
+														?>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<div class="row">
+														<div class="col-md-2">
+															<?php
+																if($j >=2) {
+																	echo '<i class="fa fa-minus-square" style="color:red"></i>';
+																}
+															?>
+														</div>
+														<div class="col-md-2">
+															<input size="64" id="q<?php echo $i; ?>a<?php echo $j; ?>" name="q<?php echo $i; ?>a<?php echo $j; ?>" value="<?php echo $answers[$i][$j]->answerText; ?>" required>
+														</div>
+													</div>
+												</div>
+											</div>
+											<?php }	?>
+											<div class="form-group">
+												<a href="#" class="add-answer">Add another Answer</a>
+											</div>
+										</div>
+										<hr>
+									<?php }	?>
+									<div class="form-group">
+										<a href="#" id="add-question">Add a question</a>
+									</div>
+									<hr>
+								</div>
+
+								<?php for ($i=0; $i < sizeof($slides); $i++) { 
+									?>
 									<div class="tab-pane fade" id="chapter_<?php echo $i; ?>">
 										<div class="form-group">
 											<label>Chapter title</label>
@@ -106,15 +134,16 @@
 											</textarea>
 										</div>
 									</div>
+
 									<script>CKEDITOR.replace(editor_<?php echo ($i); ?>);</script>
-									<!-- '/*, $slides[$i]->slideOrder*/; -->
+
 									<?php 
 								}
 								?>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-default">Submit</button>
-								<button type="reset" class="btn btn-default">Reset</button>
+								<div class="form-group">
+									<input type="submit" class="btn btn-success" value="Submit" />
+									<input type="reset" class="btn btn-danger" value="Reset" />
+								</div>
 							</div>
 						</form>
 					</div>
@@ -125,7 +154,7 @@
 </div>
 </div>
 </div>
-
+<?php echo date("d M Y h:i A"); ?>
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 <script>
 // $(document).ready(function() {

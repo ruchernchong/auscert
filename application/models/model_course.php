@@ -6,8 +6,8 @@ Class model_course extends CI_Model {
 	}
 
 	public function validate() {
-		$this->db->where('username',$this->input->post('username'));
-		$this->db->where('password',$this->input->post('password'));
+		$this->db->where('username', $this->input->post('username'));
+		$this->db->where('password', $this->input->post('password'));
 		$query = $this->db->get('users');
 
 		if ($query->num_rows == 1) {
@@ -25,8 +25,8 @@ Class model_course extends CI_Model {
 	}
 
 	//returns a course based on an ID
-	public function GetCourseById() {
-		$this->db->where('courseID', $this->input->get('courseID'));
+	public function GetCourseById($courseID) {
+		$this->db->where('courseID', $courseID);
 		$query = $this->db->get('courses');
 
 		if ($query->num_rows == 1) {
@@ -59,8 +59,30 @@ Class model_course extends CI_Model {
 
 	//Delete an existing course from the courses table
 	public function DeleteCourse($courseID) {
-		$data = array('courseID' => $courseID);
-		$query = $this->db->delete('courses', $data);
+		$data = array(
+			'courses',
+			'user_courses'
+		); //cascade deletion to user_courses table as well
+		$this->db->where('courseID', $courseID);
+		$this->db->delete($data);
+	}
+
+	public function ifActive($courseID) {
+		$data = array(
+			'active' => 1
+			);
+
+		$this->db->where('courseID', $courseID);
+		$this->db->update('courses', $data);
+	}
+
+	public function ifNotActive($courseID) {
+		$data = array(
+			'active' => 0
+			);
+
+		$this->db->where('courseID', $courseID);
+		$this->db->update('courses', $data);
 	}
 
 	//Get the date of the last edited course
@@ -77,14 +99,14 @@ Class model_course extends CI_Model {
 	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
 		
 		$data = array(
-		'courseName' => $courseTitle,
-		'category' => $courseCategory,
-		'description' => $courseDescription,
-		'lastEdited' => date("Y-m-d H:i:s", time())
-		);
+			'courseName' => $courseTitle,
+			'category' => $courseCategory,
+			'description' => $courseDescription,
+			'lastEdited' => date("Y-m-d H:i:s", time())
+			);
 		
 		$this->db->where('courseID', $courseID);
-		$this->db->update('courses', $data);			
+		$this->db->update('courses', $data);
 	}
 }
 ?>

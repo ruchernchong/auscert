@@ -18,8 +18,8 @@ Class model_userCourse extends CI_Model {
 	//Returns a list of the current user's courses
 	public function GetUserCourses() {
 		$this->db->where('userID', $this->session->userdata['logged_in']['userID']);
-		$this->db->join('courses', 'courses.courseID = user_courses.courseID', "INNER");
-		$this->db->order_by("courseName", "ASC");
+		$this->db->join('courses', 'courses.courseID = user_courses.courseID', 'INNER');
+		$this->db->order_by('courseName', 'ASC');
 		$query = $this->db->get('user_courses');
 		return $query->result();
 	}
@@ -31,16 +31,35 @@ Class model_userCourse extends CI_Model {
 		return $query->num_rows;
 	}
 
-	//Add a user and his correspondin enrolled course to the usercourse table
+	//Add a user and his corresponding enrolled course to the usercourse table
 	public function RegisterToCourse($userID, $courseID) {
 		$data = array('userID' => $userID, 'courseID' => $courseID); 
-		$query = $this->db->insert('user_courses', $data);
+		$this->db->insert('user_courses', $data);
 	}
 
 	//Remove a user and his corresponding dropped course from the usercourse table
 	public function DropFromCourse($userID, $courseID) {
 		$data = array('userID' => $userID, 'courseID' => $courseID);
-		$query = $this->db->delete('user_courses', $data);
+		$this->db->delete('user_courses', $data);
+	}
+
+	//Returns a list of users who are enrolled in a course
+	public function GetUsersFromCourse($courseID) {
+		$this->db->where('courseID', $courseID);
+		$this->db->join('users', 'users.userID = user_courses.userID', 'INNER');
+		$this->db->order_by('username', 'ASC');
+		$query = $this->db->get('user_courses');
+		return $query->result();
+	}
+
+    //Returns a list of users who have completed the course
+	public function GetCompletedUsers($courseID) {
+		$this->db->where('courseID', $courseID);
+		$this->db->where('completion', 100);
+		$this->db->join('users', 'users.userID = user_courses.userID', 'INNER');
+		$this->db->order_by('username', 'ASC');
+        $query = $this->db->get('user_courses');
+		return $query->result();
 	}
 }
 ?>

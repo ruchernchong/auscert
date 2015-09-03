@@ -140,7 +140,7 @@ if (!empty($this->session->flashdata('denied'))) {
 							foreach ($coursesAvail as $courseAvail) {
 								?>
 								<div class="form-group">
-									<a href="learning/?courseID=<?php echo $courseAvail->courseID; ?>" class="courseLink">
+									<a href="learning?courseID=<?php echo $courseAvail->courseID; ?>" class="courseLink">
 										<label><?php echo $courseAvail->courseName; ?></label>
 									</a>
 									<p>&emsp;<?php echo $courseAvail->description; ?></p>
@@ -203,13 +203,7 @@ if (!empty($this->session->flashdata('denied'))) {
 		</div>
 	</div>
 </div>
-
-<!-- 
-<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
--->
 <script>
-
 function toggler(toggle, hideOne, hideTwo) {
 	$("#" + toggle).toggle("slow");
 	$("#" + hideOne).hide("slow")

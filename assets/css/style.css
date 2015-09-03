@@ -57,7 +57,7 @@ input:focus {
 	-webkit-box-shadow: none;
 	outline:none;
 }
-.register_errorMessage {
+.errorMessage {
 	font-weight: bold;
 	color: #ff0000;
 }
