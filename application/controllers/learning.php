@@ -7,6 +7,7 @@ class learning extends CI_Controller {
 
 		$this->load->model('model_course');
 		$this->load->model('model_slide');
+		$this->load->model('model_answer');
 	}
 
 	public function index() {
@@ -18,16 +19,15 @@ class learning extends CI_Controller {
 			$data['menu'] = "course";
 			
 			$query = $this->model_course->GetCourseById($this->input->get('courseID'));
-
 			if ($query) {
 				$data['course'] = $query;
 			}
 
 			$slides = $this->model_slide->GetSlide();
-
 			if ($slides) {
 				$data['slides'] = $slides;
 			}
+
 			$this->load->view('header', $data);
 			$this->load->view('view_learning', $data);
 		} else {
