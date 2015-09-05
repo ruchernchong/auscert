@@ -59,9 +59,13 @@ Class model_course extends CI_Model {
 
 	//Delete an existing course from the courses table
 	public function DeleteCourse($courseID) {
+		// Cascade deletion. If deleting from courses, remove the others first before deleting the course itself.
 		$data = array(
-			'courses',
-			'user_courses'
+			'user_courses',
+			'slides',
+			'questions',
+			'answers',
+			'courses'
 		); //cascade deletion to user_courses table as well
 		$this->db->where('courseID', $courseID);
 		$this->db->delete($data);
