@@ -27,7 +27,7 @@ if (!empty($this->session->flashdata('denied'))) {
 	</div>
 
 	<div class="row">
-		<div class="col-lg-4 col-sm-6">
+		<div class="col-lg-6">
 			<div class="circle-tile">
 				<a href="#">
 					<div class="circle-tile-heading orange">
@@ -35,8 +35,11 @@ if (!empty($this->session->flashdata('denied'))) {
 					</div>
 				</a>
 				<div class="circle-tile-content orange">
-					<div class="circle-tile-description text-faded">
+					<!-- <div class="circle-tile-description text-faded">
 						Courses Enrolled
+					</div> -->
+					<div class="circle-tile-description text-faded">
+						Completed Courses
 					</div>
 					<div class="circle-tile-number text-faded">
 						<?php echo empty($NoOfUserCourses) ? "0" : $NoOfUserCourses ?>
@@ -48,7 +51,7 @@ if (!empty($this->session->flashdata('denied'))) {
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-4 col-sm-6">
+		<div class="col-lg-6">
 			<div class="circle-tile">
 				<a href="#">
 					<div class="circle-tile-heading green">
@@ -56,8 +59,11 @@ if (!empty($this->session->flashdata('denied'))) {
 					</div>
 				</a>
 				<div class="circle-tile-content green">
-					<div class="circle-tile-description text-faded">
+					<!-- <div class="circle-tile-description text-faded">
 						Browse Available Courses
+					</div> -->
+					<div class="circle-tile-description text-faded">
+						Availabe Courses to be Completed
 					</div>
 					<div class="circle-tile-number text-faded">
 						<?php echo empty($count_coursesAvail) ? "0" : $count_coursesAvail ?>
@@ -71,7 +77,7 @@ if (!empty($this->session->flashdata('denied'))) {
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4 col-sm-6">
+			<!-- <div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
 						<div class="circle-tile-heading blue">
@@ -90,7 +96,7 @@ if (!empty($this->session->flashdata('denied'))) {
 						</a>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 		<div class="row">
@@ -172,7 +178,7 @@ if (!empty($this->session->flashdata('denied'))) {
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-12" id="availableGroups">
+			<!-- <div class="col-lg-12" id="availableGroups">
 				<div class="tile checklist-tile blue">
 					<h4 class="moreInfo-title">Available Groups</h4>
 					<div class="checklist">
@@ -199,7 +205,7 @@ if (!empty($this->session->flashdata('denied'))) {
 						?>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>
