@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /
+RewriteBase /var/www/htdocs/
 
 # Adjust default time zone 
 SetEnv TZ Australia/Brisbane
