@@ -50,7 +50,6 @@ class admin extends CI_Controller {
 	function dropCourse() {
 		$courseID = $this->input->get('id', TRUE);
 		$this->model_course->DeleteCourse($courseID);
-//		$this->model_userCourse->DeleteCourse($courseID);
 		redirect('admin', 'refresh');
 	}
 
