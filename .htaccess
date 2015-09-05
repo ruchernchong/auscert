@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase deco3801-tartiner.uqcloud.net/
+RewriteBase /
 
 # Adjust default time zone 
 SetEnv TZ Australia/Brisbane
