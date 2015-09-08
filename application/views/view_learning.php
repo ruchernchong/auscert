@@ -10,35 +10,52 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<ul class="nav nav-tabs">
-						<li class="active">
-							<a href="#courseChapter" data-toggle="tab"><i class="fa fa-database"></i>&emsp;<?php echo "Chapter here" ?></a>
-						</li>
-						<li>
-							<a href="#courseChapter2" data-toggle="tab"><i class="fa fa-database"></i>&emsp;<?php echo "Chapter here" ?></a>
-						</li>
+						<?php
+						for ($i=0; $i<sizeof($slides); $i++) {
+							if ($i == 0) {
+								?>
+								<li class="active">
+									<a href="#chapter<?php echo($i + 1) ?>" data-toggle="tab"><i
+											class="fa fa-database"></i>&emsp;<?php echo "Active Chapter " . ($i + 1) ?>
+									</a>
+								</li>
+								<?php
+							} else {
+								?>
+								<li>
+									<a href="#chapter<?php echo($i + 1) ?>" data-toggle="tab"><i
+											class="fa fa-database"></i>&emsp;<?php echo "Chapter " . ($i + 1) ?></a>
+								</li>
+								<?php
+							}
+						}
+						?>
 					</ul>
 
 					<div class="panel-body">
 						<?php
 						if (empty($slides)) {
 						?>
-						<div class="tab-content">
-							<div id="tab-content" class="tab-pane active">
-								<div class="panel-group" id="accordion">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<h3 class="panel-title">There are no slides found in this course.</h3>
+							<div class="tab-content">
+								<div id="tab-content" class="tab-pane active">
+									<div class="panel-group" id="accordion">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<h3 class="panel-title">There are no slides found in this course.</h3>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 						<?php
 						} else {
-						$i = 0; //set counter
-						foreach ($slides as $slide) { ?>
+						?>
 							<div class="tab-content">
-								<div id="tab-<?php echo($i + 1); ?>" class="tab-pane <?php echo(($i == 0) ? 'active' : ''); ?>">
+						<?php
+							$i = 0; //set counter
+							foreach ($slides as $slide) {
+						?>
+								<div id="tab-<?php echo($i + 1); ?>" class="tab-pane fade <?php echo(($i == 0) ? 'in active' : ''); ?>">
 									<div class="col-lg-12">
 										<h2>
 											<small><?php echo $slide->slideTitle; ?></small>
@@ -47,11 +64,13 @@
 											<div class="panel panel-default">
 												<div class="panel-heading">
 													<h4 class="panel-title">
-														<a class="accordion-toggle" data-toggle="collapse" href="#collapseOne<?php echo(($i > 0) ? $i + 1 : ""); ?>">Readings</a>
+														<a class="accordion-toggle" data-toggle="collapse"
+														   href="#collapseOne<?php echo(($i > 0) ? $i + 1 : ""); ?>">Readings</a>
 													</h4>
 												</div>
 
-												<div id="collapseOne<?php echo(($i > 0) ? $i + 1 : ""); ?>" class="panel-collapse collapse in">
+												<div id="collapseOne<?php echo(($i > 0) ? $i + 1 : ""); ?>"
+													 class="panel-collapse collapse in">
 													<div class="panel-body">
 														<?php echo $slide->slideContent; ?>
 													</div>
@@ -61,6 +80,7 @@
 									</div>
 								</div>
 								<?php
+
 								if ($i == sizeof($slides) - 1) {
 									?>
 									<a href="<?php echo site_url('course') ?>" class="btn btn-default btn-success">Finish</a>
@@ -72,10 +92,11 @@
 								}
 								?>
 							</div>
-								<?php
-									}
-									}
-								?>
+							<?php
+								$i++;
+							}
+						}
+							?>
 					</div>
 				</div>
 			</div>
