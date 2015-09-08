@@ -103,7 +103,6 @@ INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slid
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `userID` int(11) NOT NULL,
-  `groupID` int(11) NOT NULL,
   `username` varchar(65) NOT NULL,
   `password` varchar(65) NOT NULL,
   `email` varchar(65) NOT NULL,
@@ -111,16 +110,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userType` varchar(24) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`userID`, `groupID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
-  (1, 1, 'admin', 'admin', 'admin@gmail.com', '000', 'admin'),
-  (2, 1, 'leon', 'admin', 'leonxenarax@gmail.com', '000', 'creator'),
-  (3, 1, 'RuChern', 'admin', 'iruchern@gmail.com', '+61 451 519 513', 'admin'),
-  (4, 1, 'helen', 'admin', 'helen@gmail.com', '000', 'admin'),
-  (5, 1, 'cameron', 'admin', 'cameron@gmail.com', '000', 'admin'),
-  (6, 1, 'ravi', 'admin', 'ravi@gmail.com', '+61 452 525 020', 'admin'),
-  (7, 1, 'mal', 'admin', 'mal.joseland@live.com', '000', 'admin'),
-  (8, 8, 'StudentTest', 'test', 'studenttest@uq.edu.au', '+61  1234 5678', 'student'),
-  (9, 6, 'StaffTest', 'test', 'StaffTest@uq.edu.au', '+61 1234 5678', 'staff');
+INSERT INTO `users` (`userID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
+  (1, 'admin', 'admin', 'admin@gmail.com', '000', 'admin'),
+  (2, 'Leon', 'admin', 'leonxenarax@gmail.com', '000', 'creator'),
+  (3, 'RuChern', 'admin', 'iruchern@gmail.com', '+61 451 519 513', 'admin'),
+  (4, 'helen', 'admin', 'helen@gmail.com', '000', 'admin'),
+  (5, 'cameron', 'admin', 'cameron@gmail.com', '000', 'admin'),
+  (6, 'ravi', 'admin', 'ravi@gmail.com', '+61 452 525 020', 'admin'),
+  (7, 'mal', 'admin', 'mal.joseland@live.com', '000', 'admin'),
+  (8, 'StudentTest', 'test', 'studenttest@uq.edu.au', '+61  1234 5678', 'student'),
+  (9, 'StaffTest', 'test', 'StaffTest@uq.edu.au', '+61 1234 5678', 'staff');
 
 DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE IF NOT EXISTS `user_courses` (
@@ -144,6 +143,29 @@ INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `
   (3, 9, '0.00', '', '', 0),
   (3, 11, '0.00', '', '', 0);
 
+DROP TABLE IF EXISTS `user_groups`;
+CREATE TABLE IF NOT EXISTS `user_groups` (
+  `userID` int(11) NOT NULL,
+  `groupID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
+  (1, 1),
+  (1, 4),
+  (2, 5),
+  (2, 6),
+  (2, 7),
+  (3, 1),
+  (4, 2),
+  (4, 1),
+  (5, 2),
+  (5, 1),
+  (6, 8),
+  (6, 5),
+  (7, 4),
+  (7, 2),
+  (8, 1);
+
 
 ALTER TABLE `answers`
 ADD PRIMARY KEY (`courseID`,`questionOrder`,`answerOrder`);
@@ -161,11 +183,13 @@ ALTER TABLE `slides`
 ADD PRIMARY KEY (`slideID`), ADD KEY `courseID` (`courseID`);
 
 ALTER TABLE `users`
-ADD PRIMARY KEY (`userID`), ADD KEY `groupID` (`groupID`);
+ADD PRIMARY KEY (`userID`);
 
 ALTER TABLE `user_courses`
 ADD PRIMARY KEY (`userID`,`courseID`), ADD KEY `courseID` (`courseID`);
 
+ALTER TABLE `user_groups`
+ADD PRIMARY KEY (`userID`,`groupID`), ADD KEY `groupID` (`groupID`);
 
 ALTER TABLE `courses`
 MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
@@ -186,12 +210,13 @@ ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` 
 ALTER TABLE `slides`
 ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
-ALTER TABLE `users`
-ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`);
-
 ALTER TABLE `user_courses`
 ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
 ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+
+ALTER TABLE `user_groups`
+ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
+ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
