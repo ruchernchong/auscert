@@ -24,8 +24,6 @@
 						?>
 						<div class="tab-content">
 							<div id="tab-content" class="tab-pane active">
-								<div class="col-lg-12">
-								</div>
 								<div class="panel-group" id="accordion">
 									<div class="panel panel-default">
 										<div class="panel-heading">
@@ -107,8 +105,9 @@
 									</div>
 									<?php
 									}
-								}
-								?>
+									}
+									?>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -116,7 +115,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 <script src="<?php echo base_url('assets/js/email.js'); ?>"></script>
 </body>
