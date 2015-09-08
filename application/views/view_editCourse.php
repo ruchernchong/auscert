@@ -32,6 +32,7 @@
 						<a href="#" class="add-contact" data-toggle="tab"><i class="fa fa-plus"></i>&emsp;Add Chapter</a>
 					</li>
 				</ul>
+
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-12">
