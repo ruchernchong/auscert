@@ -25,7 +25,7 @@
 								<i class="fa fa-times"></i>
 							</span>
 						</li>
-						<?php 
+					<?php
 					} 
 					?>
 					<li>
