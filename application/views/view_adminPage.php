@@ -57,7 +57,7 @@
 												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user->username; ?>" class="client-link"><?php echo $user->username; ?></a>
 											</td>
 											<td>
-												<a href="#"><?php echo this ?></a>
+												<a href="#"><?php echo "Hello" ?></a>
 											</td>
 											<td>
 												<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user->userType; ?></span>

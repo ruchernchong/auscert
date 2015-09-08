@@ -26,7 +26,6 @@ Class model_user extends CI_Model {
 		
 		$data = array(
 			'username' => $registerUsername,
-			'groupID' => 8, // Hardcoded to assume as student for now.
 			'password' => $registerPassword,
 			'email' => $registerEmail,
 			'contact' => $registerContact,
