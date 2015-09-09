@@ -63,10 +63,15 @@
 												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userName']; ?>" class="client-link"><?php echo $user['userName']; ?></a>
 											</td>
 											<td>
-												<?php foreach ($user['groupArray'] as $org) { ?>
-												<a href="#"><?php echo $org['organisation'] ?></a>
-												<br>
 												<?php
+												if ($user['groupArray'] != "") {
+													foreach ($user['groupArray'] as $org) { ?>
+														<a href="#"><?php echo $org['organisation'] ?></a>
+														<br>
+														<?php
+													}
+												} else {
+													echo "Not assigned to group";
 												}
 												?>
 											</td>
