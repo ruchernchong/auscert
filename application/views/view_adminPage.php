@@ -1,4 +1,11 @@
 <div id="page-wrapper">
+<!--	--><?php
+//	echo var_dump($usersAndGroups);
+//	echo "<br>";
+//	echo"<br>";
+//	echo var_dump($courses);
+//
+//	?>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
@@ -56,23 +63,15 @@
 												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userName']; ?>" class="client-link"><?php echo $user['userName']; ?></a>
 											</td>
 											<td>
-												<?php 
-												$userArrays = $user['groupArray'];
-
-												if (!empty($userArrays)) {
-													foreach ($userArrays as $userArray) { 
-														?>
-														<a href="#">
-															<ul>
-																<li><?php echo $userArray['organisation']; ?></li>
-															</ul>
-														</a>
+												<?php
+												if ($user['groupArray'] != "") {
+													foreach ($user['groupArray'] as $org) { ?>
+														<a href="#"><?php echo $org['organisation'] ?></a>
+														<br>
 														<?php
 													}
 												} else {
-													?>
-													<a href="#"><?php echo 'User does not belong to any group(s).'; ?></a>
-													<?php
+													echo "Not assigned to group";
 												}
 												?>
 											</td>
@@ -170,6 +169,11 @@ $("#menu-toggle").click(function(e) {
 	e.preventDefault();
 	$("#wrapper").toggleClass("toggled");
 });
+
+// $('.courseActive').click(function(e) {
+// 	// e.preventDefault();
+// 	$(this).find('i').toggleClass('fa-check-square-o fa-square-o');
+// });
 
 $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
