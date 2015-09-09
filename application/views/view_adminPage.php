@@ -1,4 +1,11 @@
 <div id="page-wrapper">
+<!--	--><?php
+//	echo var_dump($usersAndGroups);
+//	echo "<br>";
+//	echo"<br>";
+//	echo var_dump($courses);
+//
+//	?>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
@@ -10,7 +17,6 @@
 				<a href="<?php echo site_url('addCourse') ?>" class="btn btn-primary">Create new course</a>&emsp;
 				Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
 				<hr>
-				<!-- <h2>Report</h2> -->
 				<div class="row">
 					<div class="col-lg-8">
 					</div>
@@ -51,22 +57,27 @@
 										</tr>
 									</thead>
 									<tbody>
-										<?php foreach ($users as $user) { ?>
+										<?php foreach ($usersAndGroups as $user) { ?>
 										<tr>
 											<td class="client-avatar">
-												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user->username; ?>" class="client-link"><?php echo $user->username; ?></a>
+												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userName']; ?>" class="client-link"><?php echo $user['userName']; ?></a>
 											</td>
 											<td>
-												<a href="#"><?php echo "Hello" ?></a>
+												<?php foreach ($user['groupArray'] as $org) { ?>
+												<a href="#"><?php echo $org['organisation'] ?></a>
+												<br>
+												<?php
+												}
+												?>
 											</td>
 											<td>
-												<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user->userType; ?></span>
+												<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user['userType']; ?></span>
 											</td>
 											<td>
-												<i class="fa fa-envelope"></i>&emsp;<a href="mailto:<?php echo $user->email; ?>"><?php echo $user->email; ?></a>
+												<i class="fa fa-envelope"></i>&emsp;<a href="mailto:<?php echo $user['email']; ?>"><?php echo $user['email']; ?></a>
 											</td>
 											<td>
-												<i class="fa fa-phone"></i>&emsp;<a href="tel:<?php echo $user->contact; ?>"><?php echo $user->contact; ?></a>
+												<i class="fa fa-phone"></i>&emsp;<a href="tel:<?php echo $user['contact']; ?>"><?php echo $user['contact']; ?></a>
 											</td>
 												<!-- <td class="client-status">
 													<span class="label label-success" data-toggle="tooltip" title="I have no idea what is this.">Complete All Task</span>
