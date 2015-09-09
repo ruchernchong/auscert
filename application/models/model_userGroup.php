@@ -11,7 +11,7 @@ Class model_userGroup extends CI_Model {
         $this->db->join('users', 'users.userID = user_groups.userID', 'full outer');
         $query = $this->db->get('user_groups');
 
-        if ($query->num_rows >= 1) {
+        if ($query->num_rows > 0) {
             return $query->result();
         }
         return false;
@@ -25,7 +25,7 @@ Class model_userGroup extends CI_Model {
         $this->db->where('g.groupID = ug.groupID');
         $query = $this->db->get();
 
-        if ($query->num_rows >= 1) {
+        if ($query->num_rows > 0) {
             return $query->result_array();
         }
         return false;
