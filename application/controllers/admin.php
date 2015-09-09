@@ -8,6 +8,7 @@ class admin extends CI_Controller {
 		$this->load->model('model_user');
 		$this->load->model('model_userCourse');
 		$this->load->model('model_group');
+		$this->load->model('model_userGroup');
 	}
 
 	function index() {
@@ -16,10 +17,18 @@ class admin extends CI_Controller {
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "admin";
-			
+
 			$getAllCourses = $this->model_course->GetAllCourses();
 			$getLastEdited = $this->model_course->GetCourseLastEdited();
-			$getUsers = $this->model_user->GetUsers();
+			$users = $this->model_user->GetUsers();
+
+			$usersAndGroups = [];
+
+			foreach ($users as $user) {
+				$userGroupList = $this->model_userGroup->GetUserGroup($user->userID);
+				$usersList = ["userName"=> $user->username ,"groupArray"=> $userGroupList, "email"=> $user->email, "contact"=> $user->contact, "userType"=> $user->userType];
+				array_push($usersAndGroups, $usersList);
+			}
 
 			if ($getAllCourses) {
 				$data['courses'] = $getAllCourses;
@@ -29,8 +38,12 @@ class admin extends CI_Controller {
 				$data['courseLastEdited'] = $getLastEdited;
 			}
 
-			if ($getUsers) {
-				$data['users'] = $getUsers;
+			if ($users) {
+				$data['users'] = $users;
+			}
+
+			if ($usersAndGroups) {
+				$data['usersAndGroups'] = $usersAndGroups;
 			}
 
 			if ($data['usertype'] != "admin") {
@@ -41,6 +54,7 @@ class admin extends CI_Controller {
 				$this->load->view('header',$data);
 				$this->load->view('view_adminPage',$data);
 			}
+
 		} else {
 			redirect('login', 'refresh');
 		}
@@ -62,4 +76,9 @@ class admin extends CI_Controller {
 		$courseID = $this->input->post('courseID');
 		$courseIfNotActive = $this->model_course->ifNotActive($courseID);
 	}
-}	
+}
+
+	function getUserGroup($userID) {
+		return $this->model_userGroups->GetUserGroups($userID);
+	}
+
