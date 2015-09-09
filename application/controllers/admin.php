@@ -16,7 +16,7 @@ class admin extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
-			$data['menu'] = "admin";
+			$data['menu'] = 'admin';
 
 			$getAllCourses = $this->model_course->GetAllCourses();
 			$getLastEdited = $this->model_course->GetCourseLastEdited();
@@ -26,7 +26,15 @@ class admin extends CI_Controller {
 
 			foreach ($users as $user) {
 				$userGroupList = $this->model_userGroup->GetUserGroup($user->userID);
-				$usersList = ["userName"=> $user->username ,"groupArray"=> $userGroupList, "email"=> $user->email, "contact"=> $user->contact, "userType"=> $user->userType];
+				
+				$usersList = [
+				'userName'=> $user->username, 
+				'groupArray'=> $userGroupList, 
+				'email'=> $user->email, 
+				'contact'=> $user->contact, 
+				'userType'=> $user->userType
+				];
+
 				array_push($usersAndGroups, $usersList);
 			}
 
@@ -46,7 +54,7 @@ class admin extends CI_Controller {
 				$data['usersAndGroups'] = $usersAndGroups;
 			}
 
-			if ($data['usertype'] != "admin") {
+			if ($data['usertype'] != 'admin') {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
 				redirect('home', 'refresh');
 			} else {
@@ -78,7 +86,7 @@ class admin extends CI_Controller {
 	}
 }
 
-	function getUserGroup($userID) {
-		return $this->model_userGroups->GetUserGroups($userID);
-	}
+function getUserGroup($userID) {
+	return $this->model_userGroups->GetUserGroups($userID);
+}
 
