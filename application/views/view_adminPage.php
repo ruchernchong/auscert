@@ -1,89 +1,98 @@
 <div id="page-wrapper">
-<!--	--><?php
+	<!--	--><?php
 //	echo var_dump($usersAndGroups);
 //	echo "<br>";
 //	echo"<br>";
 //	echo var_dump($courses);
 //
 //	?>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Admin Page</h1>
-			</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Admin Page</h1>
 		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<a href="<?php echo site_url('addCourse') ?>" class="btn btn-primary">Create new course</a>&emsp;
-				Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
-				<hr>
-				<div class="row">
-					<div class="col-lg-8">
-					</div>
-					<div class="col-lg-4">
-						<div class="input-group">
-							<div class="input-group-btn">
-							</div>
-							<input type="search" placeholder="Search" class="form-control">
-							<span class="input-group-btn">
-								<button type="button" class="btn btn-primary">
-									<i class="fa fa-search"></i>
-								</button>
-							</span>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<a href="<?php echo site_url('addCourse') ?>" class="btn btn-primary">Create new course</a>&emsp;
+			Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
+			<hr>
+			<div class="row">
+				<div class="col-lg-8">
+				</div>
+				<div class="col-lg-4">
+					<div class="input-group">
+						<div class="input-group-btn">
 						</div>
+						<input type="search" placeholder="Search" class="form-control">
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-primary">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
 					</div>
 				</div>
-				<div class="clients-list">
-					<ul class="nav nav-tabs">
-						<li class="active">
-							<a data-toggle="tab" href="#tab-courses"><i class="fa fa-briefcase"></i>&emsp;Courses</a>
-						</li>
-						<li>
-							<a data-toggle="tab" href="#tab-members"><i class="fa fa-user"></i>&emsp;Members</a>
-						</li>
-					</ul>
+			</div>
+			<div class="clients-list">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a data-toggle="tab" href="#tab-courses"><i class="fa fa-briefcase"></i>&emsp;Courses</a>
+					</li>
+					<li>
+						<a data-toggle="tab" href="#tab-members"><i class="fa fa-user"></i>&emsp;Members</a>
+					</li>
+				</ul>
 
-					<div class="tab-content">
-						<div id="tab-members" class="tab-pane fade">
-							<div class="table-responsive">
-								<table class="table table-striped table-hover">
-									<thead>
-										<tr>
-											<th>Username</th>
-											<th>Groups</th>
-											<th>User Type</th>
-											<th>Email Address</th>
-											<th>Contact No.</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php foreach ($usersAndGroups as $user) { ?>
-										<tr>
-											<td class="client-avatar">
-												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userName']; ?>" class="client-link"><?php echo $user['userName']; ?></a>
-											</td>
-											<td>
-												<?php
-												if ($user['groupArray'] != "") {
-													foreach ($user['groupArray'] as $org) { ?>
-														<a href="#"><?php echo $org['organisation'] ?></a>
-														<br>
-														<?php
-													}
-												} else {
-													echo "Not assigned to group";
+				<div class="tab-content">
+					<div id="tab-members" class="tab-pane fade">
+						<div class="table-responsive">
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Groups</th>
+										<th>User Type</th>
+										<th>Email Address</th>
+										<th>Contact No.</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach ($usersAndGroups as $user) { ?>
+									<tr>
+										<td class="client-avatar">
+											<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userName']; ?>" class="client-link"><?php echo $user['userName']; ?></a>
+										</td>
+										<td>
+											<?php
+											$userArrays = $user['groupArray'];
+											if (!empty($userArrays)) {
+												foreach ($userArrays as $userArray) { 
+													?>
+													<ul>
+														<li>
+															<a href="#"><?php echo $userArray['organisation']; ?></a>
+														</li>
+													</ul>
+													<?php
 												}
+											} else {
 												?>
-											</td>
-											<td>
-												<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user['userType']; ?></span>
-											</td>
-											<td>
-												<i class="fa fa-envelope"></i>&emsp;<a href="mailto:<?php echo $user['email']; ?>"><?php echo $user['email']; ?></a>
-											</td>
-											<td>
-												<i class="fa fa-phone"></i>&emsp;<a href="tel:<?php echo $user['contact']; ?>"><?php echo $user['contact']; ?></a>
-											</td>
+												<ul>
+													<li>User does not belong to any group(s)</li>
+												</ul>
+												<?php
+											}
+											?>
+										</td>
+										<td>
+											<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user['userType']; ?></span>
+										</td>
+										<td>
+											<i class="fa fa-envelope"></i>&emsp;<a href="mailto:<?php echo $user['email']; ?>"><?php echo $user['email']; ?></a>
+										</td>
+										<td>
+											<i class="fa fa-phone"></i>&emsp;<a href="tel:<?php echo $user['contact']; ?>"><?php echo $user['contact']; ?></a>
+										</td>
 												<!-- <td class="client-status">
 													<span class="label label-success" data-toggle="tooltip" title="I have no idea what is this.">Complete All Task</span>
 												</td> -->
