@@ -26,7 +26,13 @@ class admin extends CI_Controller {
 
 			foreach ($users as $user) {
 				$userGroupList = ($this->model_userGroup->GetUserGroup($user->userID) ? $this->model_userGroup->GetUserGroup($user->userID) : "");
-				$usersList = ["userName"=> $user->username ,"groupArray"=> $userGroupList, "email"=> $user->email, "contact"=> $user->contact, "userType"=> $user->userType];
+				$usersList = [
+					"userName"=> $user->username ,
+					"groupArray"=> $userGroupList,
+					"email"=> $user->email,
+					"contact"=> $user->contact,
+					"userType"=> $user->userType
+				];
 				array_push($usersAndGroups, $usersList);
 			}
 
