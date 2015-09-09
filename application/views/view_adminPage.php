@@ -63,26 +63,26 @@
 											<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userName']; ?>" class="client-link"><?php echo $user['userName']; ?></a>
 										</td>
 										<td>
-											<?php
-											$userArrays = $user['groupArray'];
-											if (!empty($userArrays)) {
-												foreach ($userArrays as $userArray) { 
-													?>
-													<ul>
-														<li>
-															<a href="#"><?php echo $userArray['organisation']; ?></a>
-														</li>
-													</ul>
-													<?php
-												}
-											} else {
-												?>
-												<ul>
-													<li>User does not belong to any group(s)</li>
-												</ul>
-												<?php
+										<?php
+										$userArrays = $user['groupArray'];
+										if (!empty($userArrays)) {
+											foreach ($userArrays as $userArray) {
+										?>
+											<ul>
+												<li>
+													<a href="#"><?php echo $userArray['organisation']; ?></a>
+												</li>
+											</ul>
+										<?php
 											}
-											?>
+										} else {
+										?>
+											<ul>
+												<li>User does not belong to any group(s)</li>
+											</ul>
+										<?php
+										}
+										?>
 										</td>
 										<td>
 											<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user['userType']; ?></span>
