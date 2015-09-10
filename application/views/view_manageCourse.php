@@ -50,12 +50,24 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($otherCourses as $course) {?>
-							<tr>
-								<td><?php echo $course->courseID ?></td>
-								<td><?php echo $course->courseName ?></td>
-							</tr>
-							<?php } ?>
+							<?php 
+							if (!empty($otherCourses)) {
+								foreach($otherCourses as $course) {
+									?>
+									<tr>
+										<td><?php echo $course->courseID ?></td>
+										<td><?php echo $course->courseName ?></td>
+									</tr>
+									<?php
+								}
+							} else {
+								?>
+								<tr>
+									<td colspan="2">There are no courses available.</td>
+								</tr>
+								<?php
+							}
+							?>
 						</tbody>
 					</table>
 				</div>
