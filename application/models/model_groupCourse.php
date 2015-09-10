@@ -10,9 +10,6 @@ Class model_groupCourse extends CI_Model {
         $this->db->from('courses AS c, group_courses AS gc');
         $where = "gc.courseID = c.courseID AND gc.groupID='" . $groupID . "'";
         $this->db->where($where);
-//        $this->db->where('gc.courseID', 'c.courseID');
-//        $this->db->where('gc.groupID', $groupID);
-
         $query = $this->db->get();
 
         if ($query->num_rows > 0) {
