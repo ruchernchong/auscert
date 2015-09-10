@@ -21,7 +21,12 @@ class manageCourse extends CI_Controller
             $thisGroupID = $this->input->get('groupID');
             $thisGroup = $this->model_group->GetGroupByID($thisGroupID);
             $assignedCourses = $this->model_groupCourse->GetGroupCourses($thisGroupID);
-            $otherCourses = $this->model_course->GetAllCourses();
+            $omittedCourses = [];
+
+            foreach ($assignedCourses as $exceptCourse) {
+                array_push($omittedCourses, $exceptCourse->courseID);
+            }
+            $otherCourses = $this->model_course->GetAllCoursesExcept($omittedCourses);
 
             if ($thisGroup) {
                 $data['thisGroup'] = $thisGroup;
@@ -31,9 +36,10 @@ class manageCourse extends CI_Controller
                 $data['assignedCourses'] = $assignedCourses;
             }
 
-            if($otherCourses) {
+//            if($otherCourses) {
                 $data['$otherCourses'] = $otherCourses;
-            }
+                $data['omittedCourses'] = $omittedCourses;
+//            }
 
             if ($data['usertype'] != 'admin') {
                 $this->session->set_flashdata('denied', 'You do not have permission to view this page.');

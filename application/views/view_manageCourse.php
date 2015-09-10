@@ -1,4 +1,5 @@
 <div id="page-wrapper">
+    <?php echo var_dump($omittedCourses)?>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
@@ -11,6 +12,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="table-responsive">
+                    <div class="col-lg-6">
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -27,6 +29,26 @@
                         <?php } ?>
                         </tbody>
                     </table>
+                    </div>
+
+                    <div class="col-lg-6">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($otherCourses as $course) {?>
+                            <tr>
+                                <td><?php echo $course->courseID ?></td>
+                                <td><?php echo $course->courseName ?></td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             </div>
         </div>
