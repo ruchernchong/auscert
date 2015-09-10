@@ -1,6 +1,4 @@
 <div id="page-wrapper">
-	<!-- <?php echo var_dump($omittedCourses)?> -->
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
@@ -22,9 +20,6 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php 
-								print_r($assignedCourses); 
-								?>
 								<?php 
 								if (!empty($assignedCourses)) {
 									foreach($assignedCourses as $course) {?>
