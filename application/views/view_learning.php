@@ -1,109 +1,137 @@
-<div id="page-wrapper">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><?php echo $course->courseName; ?></h1>
-			</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header"><?php echo $course->courseName; ?></h1>
 		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="#course_details" data-toggle="tab"><i class="fa fa-database"></i>&emsp;Course Details</a>
+					</li>
 
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<ul class="nav nav-tabs">
-						<?php
-						for ($i=0; $i<sizeof($slides); $i++) {
-							if ($i == 0) {
-								?>
-								<li class="active">
-									<a href="#chapter<?php echo($i + 1) ?>" data-toggle="tab"><i
-											class="fa fa-database"></i>&emsp;<?php echo "Active Chapter " . ($i + 1) ?>
-									</a>
-								</li>
-								<?php
-							} else {
-								?>
-								<li>
-									<a href="#chapter<?php echo($i + 1) ?>" data-toggle="tab"><i
-											class="fa fa-database"></i>&emsp;<?php echo "Chapter " . ($i + 1) ?></a>
-								</li>
-								<?php
-							}
-						}
+					<?php
+					for ($i=0; $i < sizeof($slides); $i++) {
 						?>
-					</ul>
+						<li id="<?php echo $i; ?>">
+							<a href="#chapter_<?php echo $i; ?>" data-toggle="tab">
+								<i class="fa fa-book"></i>&emsp;<?php echo $i+1 . " &mdash; " . $slides[$i]->slideTitle; ?>
+							</a>
+							<span>
+								<i class="fa fa-times"></i>
+							</span>
+						</li>
+					<?php
+					} 
+					?>
+					<li>
+						<a href="#course_quiz" data-toggle="tab"><i class="fa fa-graduation-cap"></i>&emsp;Quiz</a>
+					</li>
+				</ul>
 
-					<div class="panel-body">
-						<?php
-						if (empty($slides)) {
-						?>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<?php 
+							$attributes = array(
+								'id' => 'userInput',
+								'name' => 'userInput'
+								);
+
+							echo form_open('edits/save?courseID=' . $course->courseID, $attributes);
+							?>
 							<div class="tab-content">
-								<div id="tab-content" class="tab-pane active">
-									<div class="panel-group" id="accordion">
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<h3 class="panel-title">There are no slides found in this course.</h3>
-											</div>
-										</div>
-									</div>
+								<div class="tab-pane fade in active" id="course_details">
+									<h3>Category:&emsp;<?php echo $course->category; ?></h3><br />
+									<p><?php echo $course->description; ?></p>
 								</div>
-							</div>
-						<?php
-						} else {
-						?>
-							<div class="tab-content">
-						<?php
-							$i = 0; //set counter
-							foreach ($slides as $slide) {
-						?>
-								<div id="tab-<?php echo($i + 1); ?>" class="tab-pane fade <?php echo(($i == 0) ? 'in active' : ''); ?>">
-									<div class="col-lg-12">
-										<h2>
-											<small><?php echo $slide->slideTitle; ?></small>
-										</h2>
-										<div class="panel-group" id="accordion">
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<a class="accordion-toggle" data-toggle="collapse"
-														   href="#collapseOne<?php echo(($i > 0) ? $i + 1 : ""); ?>">Readings</a>
-													</h4>
-												</div>
+								<?php for ($i=0; $i < sizeof($slides); $i++) { ?>
+									<div class="tab-pane fade" id="chapter_<?php echo $i; ?>">
+										<h2><?php echo $slides[$i]->slideTitle; ?></h2><br />
+										<p><?php echo $slides[$i]->slideContent ?><p>
+										
+									</div>
 
-												<div id="collapseOne<?php echo(($i > 0) ? $i + 1 : ""); ?>"
-													 class="panel-collapse collapse in">
-													<div class="panel-body">
-														<?php echo $slide->slideContent; ?>
+									<script>CKEDITOR.replace(editor_<?php echo ($i); ?>);</script>
+
+								<?php } ?>
+								<div class="tab-pane fade" id="course_quiz">
+									<?php for ($i=0; $i < sizeof($questions); $i++) { 
+										?>
+										<div class="form-group" id="q<?php echo $i; ?>">
+											<h3><i class="fa fa-minus-square delete_question" style="color:red"></i> &emsp; Question <?php echo $i+1; ?></h3>
+											<div class="form-group">
+												<textarea class="form-control" name="question_<?php echo $i; ?>" id="question_<?php echo $i; ?>" rows="10" cols="80">
+													<?php echo $questions[$i]->questionText; ?>
+												</textarea>
+											</div>
+
+											<script>CKEDITOR.replace(question_<?php echo $i; ?>);</script>
+
+											<?php for ($j=0; $j < sizeof($answers[$i]); $j++) { 
+												?>
+												<div class="row">
+													<div class="col-md-2">
+														<div class="form-group">
+															<?php
+															if($j == 0) {
+																echo '<label>Correct Answer:</label>';
+															} else {
+																echo sprintf('<label>Alternate %d:</label>', $j);
+															}
+															?>
+														</div>
+													</div>
+													<div class="col-md-2">
+														<div class="row">
+															<div class="col-md-2">
+																<?php
+																if($j >=2) {
+																	echo '<i class="fa fa-minus-square delete_answer" style="color:red"></i>';
+																}
+																?>
+															</div>
+															<div class="col-md-2">
+																<div class="form-group">
+																	<input size="64" id="q<?php echo $i; ?>a<?php echo $j; ?>" name="q<?php echo $i; ?>a<?php echo $j; ?>" value="<?php echo $answers[$i][$j]->answerText; ?>" required>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
+												<?php }	?>
+												<div class="form-group">
+													<a href="#" class="add-answer">Add another Answer</a>
+												</div>
+												<hr>
 											</div>
+											<?php }	?>
+											<a href="#" id="add-question">Add a question</a>
+											<hr>
 										</div>
 									</div>
-								</div>
-								<?php
-
-								if ($i == sizeof($slides) - 1) {
-									?>
-									<a href="<?php echo site_url('course') ?>" class="btn btn-default btn-success">Finish</a>
-									<?php
-								} else {
-									?>
-									<a data-toggle="tab" href="#tab-<?php echo($i + 2); ?>" class="btn btn-default btn-warning">Next</a>
-									<?php
-								}
-								?>
+								</form>
 							</div>
-							<?php
-								$i++;
-							}
-						}
-							?>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<?php echo date("d M Y h:i A"); ?>
+<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+<script>
+// $(document).ready(function() {
+// 	$("#pageAdmin").addClass("active").removeAttr("href");
+// });
 
-<script src="<?php echo base_url('assets/js/email.js'); ?>"></script>
+$("#menu-toggle").click(function(e) {
+	e.preventDefault();
+	$("#wrapper").toggleClass("toggled");
+}); 
+</script>
 </body>
 </html>
