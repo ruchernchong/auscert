@@ -55,16 +55,21 @@ $(".tab-content").on("change", ".chapter-title", function() {
 
 // Delete question script, cascade order to following questions
 $("#course_quiz").on("click", ".delete_question", function() {
-	$target = $(this).closest(".form-group");
-	$target.hide('slow', function(){ $target.remove(); });
-	
-	var children = $("#course_quiz").children(	".form-group");
-	for(var i = 0; i < children.length; i++) {
-		var curr = children.eq(i);
-		
-		if(curr.attr('id') != 'q'+i) {
-			curr.attr('id', 'q'+i);
+	var $target = $(this).closest(".form-group");
+	var targetNum = $target.attr('id').match(/\d+/)[0]*1;
+	console.log(targetNum);
+	$target.hide('slow', function(){
+		$(this).remove();
+	});
 
+	var children = $("#course_quiz").children(".form-group");
+	for(var i = targetNum; i < children.length; i++) {
+		var curr = children.eq(i+1);
+		console.log('q'+i);
+		console.log(curr.attr('id'));
+		//if(curr.attr('id') != 'q'+i) {
+			curr.attr('id', 'q'+i);
+			
 			curr.find('h3').html('<h3><i class="fa fa-minus-square delete_question" style="color:red"></i> &emsp; Question '+ (i+1) +'</h3>');
 			curr.find('textarea').attr('id', 'q'+i);
 			curr.find('textarea').attr('name', 'q'+i);
@@ -73,7 +78,7 @@ $("#course_quiz").on("click", ".delete_question", function() {
 			while(true) {
 				if ($('#q'+ (i+1) + 'a' + count).length) {
 					var $answer = $('#q'+(i+1)+'a'+count);
-					console.log($answer);
+					//console.log($answer);
 					$answer.attr('id', 'q'+i+'a'+count);
 					$answer.attr('name', 'q'+i+'a'+count);
 				} else {
@@ -81,17 +86,16 @@ $("#course_quiz").on("click", ".delete_question", function() {
 				}
 				count++;
 			}
-		}
+		//}
 	}
 });
+
 
 // Delete answer script, cascade order to following answers
 $("#course_quiz").on("click", ".delete_answer", function() {
 	var $question = $(this).closest(".form-group");
 	var questionNumber = $(this).closest(".form-group").attr('id').match(/\d+/)[0]*1;
 	var answerNumber = $(this).closest('.row').find('input').attr('id').match(/\d+[^\d*](\d+)/)[1]*1;
-	//console.log(questionNumber);
-	//console.log(answerNumber);
 	$target = $(this).closest(".row").parent().closest(".row");
 	$target.hide('slow', function(){ $target.remove(); });
 
@@ -119,23 +123,21 @@ $("#course_quiz").on("click", ".add-answer", function(e){
 	var question = ($(this).parent().parent().attr('id').match(/\d+/)[0])*1;
 	var new_answer = $(
 		'<div class="row">'+
+		'	<div class="col-md-2">'+
+		'		<div class="form-group">'+
+		'			<label>Alternate ' + count + ':</label>'+
+		'		</div>'+
+		'	</div>'+
 		'<div class="col-md-2">'+
-		'<div class="form-group">'+
-		'<label>Alternate ' + count + ':</label>'+
-		'</div>'+
-		'</div>'+
-		'<div class="col-md-2">'+
-		'<div class="row">'+
-		'<div class="col-md-2">'+
-		'<i class="fa fa-minus-square delete_answer" style="color:red"></i>'+
-		'</div>'+
-		'<div class="col-md-2">'+
-		'<div class="form-group">'+
-		'<input size="64" id="q' + question + 'a' + count + '" name="q' + question + 'a' + count + '" required>'+
-		'</div>'+
-		'</div>'+
-		'</div>'+
-		'</div>'+
+		'	<div class="row">'+
+		'		<div class="col-md-2">'+
+		'			<i class="fa fa-minus-square delete_answer" style="color:red"></i>'+
+		'		</div>'+
+		'		<div class="col-md-2">'+
+		'		<div class="form-group">'+
+		'			<input size="64" id="q' + question + 'a' + count + '" name="q' + question + 'a' + count + '" required>'+
+		'		</div>'+
+		'	</div>'+
 		'</div>'
 	).hide();
 
@@ -155,28 +157,38 @@ $("#add-question").click(function(e) {
 		'	<div class="row">'+
 		'		<div class="col-md-2">'+
 		'			<div class="form-group">'+
-		'			<label>Correct answer:</label>'+
+		'				<label>Correct answer:</label>'+
 		'			</div>'+
 		'		</div>'+
-		'		<div class="col-md-2">'+
-		'		<div class="form-group">'+
-		'			<input size="64" id="q' + questionCount + 'a0" name="q' + questionCount + 'a0" required>'+
-		'		</div>'+
+		'		<div class="col-md-2">'+	
+		'			<div class="row">' +
+		'				<div class="col-md-2"></div>' +	
+		'				<div class="col-md-2">' +
+		'					<div class="form-group">'+
+		'						<input size="64" id="q' + questionCount + 'a0" name="q' + questionCount + 'a0" required>'+
+		'					</div>'+
+		'				</div>'+
+		'			</div>'+
 		'		</div>'+
 		'	</div>'+
 		'	<div class="row">'+
 		'		<div class="col-md-2">'+
 		'			<div class="form-group">'+
-		'			<label>Alternate 1:</label>'+
+		'				<label>Alternate 1:</label>'+
 		'			</div>'+
 		'		</div>'+
-		'		<div class="col-md-2">'+
-		'			<div class="form-group">'+
-		'			<input size="64" id="q' + questionCount + 'a1" name="q' + questionCount + 'a1" required>'+
+		'		<div class="col-md-2">'+	
+		'			<div class="row">' +
+		'				<div class="col-md-2"></div>' +	
+		'				<div class="col-md-2">' +
+		'					<div class="form-group">'+
+		'						<input size="64" id="q' + questionCount + 'a1" name="q' + questionCount + 'a1" required>'+
+		'					</div>'+
+		'				</div>'+
 		'			</div>'+
 		'		</div>'+
-		'		</div>'+
-		'		<div class="form-group">'+
+		'	</div>'+
+		'	<div class="form-group">'+
 		'		<a href="#" class="add-answer">Add another Answer</a>'+
 		'	</div>'+
 		'	<hr>'+
