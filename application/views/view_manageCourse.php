@@ -9,22 +9,26 @@
 		</div>
 
         <div class="row">
-            <table class="table-responsive">
-                <thead>
-                    <tr>
-                        <th>Course ID</th>
-                        <th>Course Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php foreach($assignedCourses as $course) { ?>
-                    <tr>
-                        <td><?php echo $course->courseID ?></td>
-                        <td><?php echo $course->courseName ?></td>
-                    </tr>
-                <?php } ?>
-                </tbody>
-            </table>
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Course ID</th>
+                                <th>Course Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($assignedCourses as $course) {?>
+                            <tr>
+                                <td><?php echo $course->courseID ?></td>
+                                <td><?php echo $course->courseName ?></td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 	</div>
 </div>
