@@ -528,11 +528,6 @@ ul.alert-dropdown {
 	.courseLink:visited {
 		color: inherit;
 	}
-	.side-nav .active {
-		text-decoration: none;
-		color: #337ab7;
-		background-color: #FFFFFF;
-	}
 	#reportrange {
 		padding: 0;
 	}
@@ -669,4 +664,13 @@ ul.alert-dropdown {
 	}
 	.progress {
 		margin: 10px 0;
+	}
+	.navbar-inverse .navbar-nav>.active>a, 
+	.navbar-inverse .navbar-nav>.active>a:focus, 
+	.navbar-inverse .navbar-nav>.active>a:hover {
+		background:inherit;
+		/*font-weight: bold;*/
+		background: rgba(255,255,255,0.2);
+		border-radius: 10px;
+		font-size: 16px;
 	}
