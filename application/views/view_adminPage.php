@@ -174,9 +174,9 @@
 											<td><?php echo $group['organisation'] ?></td>
 											<td><?php echo $group['userCount'] ?></td>
 											<td>
-												<a class="btn btn-sm btn-success"><i class="fa fa-signal"></i>&emsp;Manage Members</a>
+												<a href="<?php echo base_url('manageUser?groupID=' . $group['groupID']); ?>" class="btn btn-sm btn-success"><i class="fa fa-signal"></i>&emsp;Manage Members</a>
 												&nbsp;
-												<a class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
+												<a href="<?php echo base_url('manageCourse?groupID=' . $group['groupID']); ?>" class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
 												&nbsp;
 												<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Delete Group</a>
 												&nbsp;
@@ -195,6 +195,7 @@
 </div>
 
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+
 <script>
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
