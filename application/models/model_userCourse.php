@@ -63,5 +63,3 @@ Class model_userCourse extends CI_Model {
 	}
 }
 ?>
-
-
