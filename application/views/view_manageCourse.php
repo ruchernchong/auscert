@@ -1,5 +1,6 @@
 <div id="page-wrapper">
-    <?php echo var_dump($omittedCourses)?>
+	<!-- <?php echo var_dump($omittedCourses)?> -->
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
@@ -9,48 +10,62 @@
 			</h1>
 		</div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="table-responsive">
-                    <div class="col-lg-6">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Course ID</th>
-                                <th>Course Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach($assignedCourses as $course) {?>
-                            <tr>
-                                <td><?php echo $course->courseID ?></td>
-                                <td><?php echo $course->courseName ?></td>
-                            </tr>
-                        <?php } ?>
-                        </tbody>
-                    </table>
-                    </div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="table-responsive">
+					<div class="col-lg-6">
+						<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Course ID</th>
+									<th>Course Name</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php 
+								print_r($assignedCourses); 
+								?>
+								<?php 
+								if (!empty($assignedCourses)) {
+									foreach($assignedCourses as $course) {?>
+									<tr>
+										<td><?php echo $course->courseID ?></td>
+										<td><?php echo $course->courseName ?></td>
+									</tr>
+									<?php 
+								}
+							} else {
+								?>
+								<tr>
+									<td colspan="2">There are no courses available.</td>
+								</tr>
+								<?php
+							}
+							?>
+						</tbody>
+					</table>
+				</div>
 
-                    <div class="col-lg-6">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>Course ID</th>
-                            <th>Course Name</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach($otherCourses as $course) {?>
-                            <tr>
-                                <td><?php echo $course->courseID ?></td>
-                                <td><?php echo $course->courseName ?></td>
-                            </tr>
-                        <?php } ?>
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+				<div class="col-lg-6">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Course ID</th>
+								<th>Course Name</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach($otherCourses as $course) {?>
+							<tr>
+								<td><?php echo $course->courseID ?></td>
+								<td><?php echo $course->courseName ?></td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
+</div>
 </div>
