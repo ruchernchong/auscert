@@ -37,9 +37,10 @@ class manageCourse extends CI_Controller
             }
 
             if($otherCourses) {
-                $data['$otherCourses'] = $otherCourses;
-                $data['omittedCourses'] = $omittedCourses;
+                $data['otherCourses'] = $otherCourses;
             }
+
+            $data['omittedCourses'] = $omittedCourses;
 
             if ($data['usertype'] != 'admin') {
                 $this->session->set_flashdata('denied', 'You do not have permission to view this page.');
