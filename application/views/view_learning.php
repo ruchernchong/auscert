@@ -11,7 +11,7 @@
 				<div class="panel panel-default">
 					<ul class="nav nav-tabs">
 						<?php
-						for ($i=0; $i<sizeof($slides); $i++) {
+						for ($i=0; $i<count($slides); $i++) {
 							if ($i == 0) {
 								?>
 								<li class="active">

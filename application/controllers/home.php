@@ -29,7 +29,7 @@ class home extends CI_Controller {
 
 			$query = $this->model_userCourse->GetUserCourses();
 			if ($query) {
-				$data['user_courses'] = $query;
+				$data['userCourses'] = $query;
 			}
 
 			$count = $this->model_userCourse->GetNumberOfUserCourses();
@@ -58,6 +58,13 @@ class home extends CI_Controller {
 			$data['usertype'] = $session_data['usertype'];
 			$data['email'] = $session_data['email'];
 			$data['menu'] = "home";
+
+			$query = $this->model_userCourse->GetCompletedUserCourse($data['userID']);
+			if ($query) {
+				$data['completedUserCourses'] = $query;
+			} else {
+				$data['completedUserCourses'] = null;
+			}
 
 			$this->load->view('header',$data);
 			$this->load->view('view_dashboard');
