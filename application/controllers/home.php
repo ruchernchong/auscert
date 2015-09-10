@@ -62,6 +62,8 @@ class home extends CI_Controller {
 			$query = $this->model_userCourse->GetCompletedUserCourse($data['userID']);
 			if ($query) {
 				$data['completedUserCourses'] = $query;
+			} else {
+				$data['completedUserCourses'] = null;
 			}
 
 			$this->load->view('header',$data);

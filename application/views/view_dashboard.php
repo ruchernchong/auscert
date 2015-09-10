@@ -103,8 +103,9 @@ if (!empty($this->session->flashdata('denied'))) {
 					<div class="panel panel-completed body">
 						<!-- <table class="table table-hover"> -->
 						<?php 
-						foreach ($completedUserCourses as $completedUserCourse) {
-							?>
+						if (!empty($completedUserCourses)) {
+							foreach ($completedUserCourses as $completedUserCourse) {
+								?>
 								<!-- <tr>
 									<td><?php echo !empty($completedUserCourse) ? $completedUserCourse->courseName : 'You do not have any completed course.' ?></td>
 								</tr> -->
@@ -129,24 +130,33 @@ if (!empty($this->session->flashdata('denied'))) {
 								</div>
 								<?php
 							}
+						} else {
 							?>
-							<!-- </table> -->
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="panel panel-calendar">
-						<div class="panel panel-heading-calendar">
-							<h3 class="panel-title">Reminder</h3>
-						</div>
-						<div class="panel panel-calendar body">
-							<div class="calendar center">
-								<h2><b><?php echo date("F"); ?></b></h2>
-								<h1><b><?php echo date("d"); ?></b></h1>
+							<div class="form-group">
+								<a class="courseLink">
+									<label>You do not have any completed course(s)</label>
+								</a>
 							</div>
+							<?php
+						}
+						?>
+						<!-- </table> -->
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="panel panel-calendar">
+					<div class="panel panel-heading-calendar">
+						<h3 class="panel-title">Reminder</h3>
+					</div>
+					<div class="panel panel-calendar body">
+						<div class="calendar center">
+							<h2><b><?php echo date("F"); ?></b></h2>
+							<h1><b><?php echo date("d"); ?></b></h1>
 						</div>
 					</div>
 				</div>
+			</div>
 			<!-- <div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
