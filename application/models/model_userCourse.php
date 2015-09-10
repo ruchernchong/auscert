@@ -71,8 +71,5 @@ Class model_userCourse extends CI_Model {
 		$query = $this->db->get('user_courses');
 		return $query->result();
 	}
-	//
 }
 ?>
-
-
