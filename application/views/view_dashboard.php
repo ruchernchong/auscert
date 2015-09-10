@@ -111,19 +111,18 @@ if (!empty($this->session->flashdata('denied'))) {
 										<label><?php echo $completedUserCourse->courseName; ?></label>
 									</a>
 									<!-- <a class="btn btn-primary pull-right" href="home/dropCourse?id=<?php echo $completedUserCourse->courseID; ?>">Drop Course</a> -->
-									<a class="btn btn-primary disabled pull-right">
-										<?php 
-										if ($completedUserCourse->grading > 50) {
-											?>
-											Pass
-											<?php
-										} else {
-											?>
-											Fail
-											<?php
-										}
+									
+									<?php 
+									if ($completedUserCourse->grading > 50) {
 										?>
-									</a>
+										<a class="btn btn-success pull-right disabled">Pass</a>
+										<?php
+									} else {
+										?>
+										<a class="btn btn-danger pull-right disabled">Fail</a>
+										<?php
+									}
+									?>
 								</div>
 								<?php
 							}
@@ -325,7 +324,7 @@ function toggler(toggle, hideOne, hideTwo) {
 
 $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
-	$('#pageHome').removeAttr('href');
+	$('#pageHome').removeAttr('cursor');
 	$('#confirmEnrol').on('show.bs.modal', function(e) {
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 	});
