@@ -139,7 +139,7 @@ $("#course_quiz").on("click", ".add-answer", function(e){
 		'		</div>'+
 		'	</div>'+
 		'</div>'
-	).hide();
+		).hide();
 
 	$(this).parent().before(new_answer);
 	new_answer.show('slow');
@@ -193,15 +193,14 @@ $("#add-question").click(function(e) {
 		'	</div>'+
 		'	<hr>'+
 		'</div>'
-	).hide();
-	$(this).before(new_question);
-	new_question.show('slow');
+		).hide();
+$(this).before(new_question);
+new_question.show('slow');
 
 CKEDITOR.replace('question_' + questionCount);
 });
 
 $(".courseActive").click(function() {
-	// console.log($(this).prop('checked'));
 	if ($(this).prop('checked') == true) {
 		var courseID = $(this).attr('id').match(/\d+/)[0]*1;
 		$.ajax({
