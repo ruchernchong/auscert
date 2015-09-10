@@ -45,33 +45,34 @@
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav pull-right">
-						<li class="<?php echo $menu=='home' ? 'active' : '' ?>">
+						<li <?php echo $menu=='home' ? 'class="active"' : '' ?>>
 							<a id="pageHome" href="<?php echo site_url('home'); ?>">
-								<i class="fa fa-fw fa-home"></i>&emsp;Home
+								<i class="fa fa-fw fa-home"></i>&nbsp;Home
 							</a>
 						</li>
-						<li class="<?php echo $menu=='course' ? 'active' : '' ?>">
+						<!-- Duplicated page -->
+						<!-- <li class="<?php echo $menu=='course' ? 'active' : '' ?>">
 							<a id="pageCourse" href="<?php echo site_url('course'); ?>">
-								<i class="fa fa-fw fa-briefcase"></i>&emsp;Course
+								<i class="fa fa-fw fa-briefcase"></i>&nbsp;Course
 							</a>
-						</li>
+						</li> -->
 						<?php if ($usertype=="admin") { ?>
-						<li class="<?php echo $menu=='admin' ? 'active' : '' ?>">
+						<li <?php echo $menu=='admin' ? 'class="active"' : '' ?>>
 							<a id="pageAdmin" href="<?php echo site_url('admin'); ?>">
-								<i class="fa fa-fw fa-folder-open"></i>&emsp;Admin Page
+								<i class="fa fa-fw fa-folder-open"></i>&nbsp;Admin
 							</a>	
 						</li>
 						<?php 
 					} 
 					?>
-					<li class="<?php echo $menu=='settings' ? 'active' : '' ?>">
+					<li <?php echo $menu=='settings' ? 'class="active"' : '' ?>>
 						<a id="pageSettings" href="<?php echo site_url('settings'); ?>">
-							<i class="fa fa-fw fa-gear"></i>&emsp;Settings
+							<i class="fa fa-fw fa-gear"></i>&nbsp;Settings
 						</a>
 					</li>
-					<li class="<?php echo $menu=='logout' ? 'active' : '' ?>">
+					<li <?php echo $menu=='logout' ? 'clss="active"' : '' ?>>
 						<a id="pageLogout" href="<?php echo site_url('logout'); ?>">
-							<i class="fa fa-fw fa-power-off"></i>&emsp;Log Out
+							<i class="fa fa-fw fa-power-off"></i>&nbsp;Logout
 						</a>
 					</li>
 				</ul>
@@ -116,7 +117,6 @@
 				</li>
 			</ul> -->
 		</div>
-
 	</div>
 </nav>
 
