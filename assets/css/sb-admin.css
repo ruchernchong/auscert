@@ -666,11 +666,19 @@ ul.alert-dropdown {
 		margin: 10px 0;
 	}
 	.navbar-inverse .navbar-nav>.active>a, 
-	.navbar-inverse .navbar-nav>.active>a:focus, 
-	.navbar-inverse .navbar-nav>.active>a:hover {
-		background:inherit;
+	.navbar-inverse .navbar-nav>.active>a:focus {
 		/*font-weight: bold;*/
 		background: rgba(255,255,255,0.2);
+		border-radius: 10px;
+		font-size: 16px;
+	}
+	.navbar-inverse .navbar-nav>.active>a:hover {
+		background: rgba(255,255,255,0.5);
+		border-radius: 10px;
+		font-size: 16px;
+	}
+	.navbar-inverse .navbar-nav>li>a:hover {
+		background: rgba(255,255,255,0.5);
 		border-radius: 10px;
 		font-size: 16px;
 	}
