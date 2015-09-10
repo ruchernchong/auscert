@@ -7,6 +7,7 @@ class manageCourse extends CI_Controller
         parent::__construct();
         $this->load->model('model_group');
         $this->load->model('model_course');
+        $this->load->model('model_groupCourse');
     }
 
     function index()
@@ -19,7 +20,7 @@ class manageCourse extends CI_Controller
 
             $thisGroupID = $this->input->get('groupID');
             $thisGroup = $this->model_group->GetGroupByID($thisGroupID);
-            $assignedCourses = $this->model_groupCourse_-> GetGroupCourses($thisGroupID);
+            $assignedCourses = $this->model_groupCourse->GetGroupCourses($thisGroupID);
             $otherCourses = $this->model_course->GetAllCourses();
 
             if ($thisGroup) {

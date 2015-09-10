@@ -9,7 +9,7 @@
 		</div>
 
         <div class="row">
-            <div class="table-responsive">
+            <table class="table-responsive">
                 <thead>
                     <tr>
                         <th>Course ID</th>
@@ -24,7 +24,7 @@
                     </tr>
                 <?php } ?>
                 </tbody>
-            </div>
+            </table>
         </div>
 	</div>
 </div>
