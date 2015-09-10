@@ -36,14 +36,14 @@ if (!empty($this->session->flashdata('denied'))) {
 					<table class="table table-hover">
 						<tbody>
 							<?php 
-							foreach ($courses as $course) {
+							foreach ($userCourses as $userCourse) {
 								?>
 								<!-- <tr>
 									<td><?php echo $course->courseName; ?></td>
 								</tr> -->
 								<div class="form-group">
-									<a href="learning/?courseID=<?php echo $course->courseID; ?>" class="courseLink">
-										<label><?php echo $course->courseName; ?></label>
+									<a href="learning/?courseID=<?php echo $userCourse->courseID; ?>" class="courseLink">
+										<label><?php echo $userCourse->courseName; ?></label>
 									</a>
 									<!-- <a class="btn btn-danger pull-right" href="home/dropCourse?id=<?php echo $course->courseID; ?>">Drop Course</a> -->
 								</div>
