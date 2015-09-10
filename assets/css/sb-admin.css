@@ -46,7 +46,7 @@ body {
 	line-height: normal;
 }
 
-/*@media(min-width:768px) {
+@media(min-width:768px) {
 	#wrapper {
 		padding-left: 225px;
 	}

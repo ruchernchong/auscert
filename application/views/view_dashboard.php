@@ -14,48 +14,20 @@ if (!empty($this->session->flashdata('denied'))) {
 				<h1 class="page-header">Dashboard
 					<small>Content Overview</small>
 				</h1>
-				<!-- <ol class="breadcrumb">
+				<ol class="breadcrumb">
 					<li class="pull-right">
 						<div id="reportrange" class="btn btn-green btn-square date-picker">
 							<i class="fa fa-calendar"></i>
 							<span class="date-range">&emsp;<?php echo date('l\, jS \of F Y'); ?></span> <i class="fa fa-caret-down"></i>
 						</div>
 					</li>
-				</ol> -->
+				</ol>
 			</div>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-lg-4">
-			<div class="panel panel-course">
-				<div class="panel panel-heading-course">
-					<h3 class="panel-title">Course List</h3>
-				</div>
-				<div class="panel panel-course body">
-					<table class="table table-hover">
-						<tbody>
-							<?php 
-							foreach ($userCourses as $userCourse) {
-								?>
-								<!-- <tr>
-									<td><?php echo $course->courseName; ?></td>
-								</tr> -->
-								<div class="form-group">
-									<a href="learning/?courseID=<?php echo $userCourse->courseID; ?>" class="courseLink">
-										<label><?php echo $userCourse->courseName; ?></label>
-									</a>
-									<!-- <a class="btn btn-danger pull-right" href="home/dropCourse?id=<?php echo $course->courseID; ?>">Drop Course</a> -->
-								</div>
-								<?php
-							}
-							?>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<!-- <div class="col-lg-6">
+		<div class="col-lg-6">
 			<div class="circle-tile">
 				<a href="#">
 					<div class="circle-tile-heading orange">
