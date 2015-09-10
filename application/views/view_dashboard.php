@@ -14,20 +14,48 @@ if (!empty($this->session->flashdata('denied'))) {
 				<h1 class="page-header">Dashboard
 					<small>Content Overview</small>
 				</h1>
-				<ol class="breadcrumb">
+				<!-- <ol class="breadcrumb">
 					<li class="pull-right">
 						<div id="reportrange" class="btn btn-green btn-square date-picker">
 							<i class="fa fa-calendar"></i>
 							<span class="date-range">&emsp;<?php echo date('l\, jS \of F Y'); ?></span> <i class="fa fa-caret-down"></i>
 						</div>
 					</li>
-				</ol>
+				</ol> -->
 			</div>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-4">
+			<div class="panel panel-course">
+				<div class="panel panel-heading-course">
+					<h3 class="panel-title">Course List</h3>
+				</div>
+				<div class="panel panel-course body">
+					<table class="table table-hover">
+						<tbody>
+							<?php 
+							foreach ($userCourses as $userCourse) {
+								?>
+								<!-- <tr>
+									<td><?php echo $course->courseName; ?></td>
+								</tr> -->
+								<div class="form-group">
+									<a href="learning/?courseID=<?php echo $userCourse->courseID; ?>" class="courseLink">
+										<label><?php echo $userCourse->courseName; ?></label>
+									</a>
+									<!-- <a class="btn btn-danger pull-right" href="home/dropCourse?id=<?php echo $course->courseID; ?>">Drop Course</a> -->
+								</div>
+								<?php
+							}
+							?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="col-lg-6">
 			<div class="circle-tile">
 				<a href="#">
 					<div class="circle-tile-heading orange">
@@ -35,23 +63,19 @@ if (!empty($this->session->flashdata('denied'))) {
 					</div>
 				</a>
 				<div class="circle-tile-content orange">
-					<!-- <div class="circle-tile-description text-faded">
-						Courses Enrolled
-					</div> -->
 					<div class="circle-tile-description text-faded">
 						Completed Courses
 					</div>
 					<div class="circle-tile-number text-faded">
 						<?php echo empty($NoOfUserCourses) ? "0" : $NoOfUserCourses ?>
 					</div>
-					<!-- <a class="circle-tile-footer courseList">More Info&nbsp;<i class="fa fa-chevron-circle-right"></i></a> -->
 					<a class="circle-tile-footer" onclick="toggler('courseList', 'availableCourses', 'availableGroups');">More Info&nbsp;
 						<i class="fa fa-chevron-circle-right"></i>
 					</a>
 				</div>
 			</div>
-		</div>
-		<div class="col-lg-6">
+		</div> -->
+		<!-- <div class="col-lg-6">
 			<div class="circle-tile">
 				<a href="#">
 					<div class="circle-tile-heading green">
@@ -59,24 +83,70 @@ if (!empty($this->session->flashdata('denied'))) {
 					</div>
 				</a>
 				<div class="circle-tile-content green">
-					<!-- <div class="circle-tile-description text-faded">
-						Browse Available Courses
-					</div> -->
 					<div class="circle-tile-description text-faded">
 						Availabe Courses to be Completed
 					</div>
 					<div class="circle-tile-number text-faded">
 						<?php echo empty($count_coursesAvail) ? "0" : $count_coursesAvail ?>
 					</div>
-						<!-- <a class="circle-tile-footer availableCourses">More Info&nbsp;
-							<i class="fa fa-chevron-circle-right"></i>
-						</a> -->
 						<a class="circle-tile-footer" onclick="toggler('availableCourses', 'courseList', 'availableGroups');">More Info&nbsp;
 							<i class="fa fa-chevron-circle-right"></i>
 						</a>
 					</div>
 				</div>
-			</div>
+			</div> -->
+			<div class="col-lg-4">
+				<div class="panel panel-completed">
+					<div class="panel panel-heading-completed">
+						<h3 class="panel-title">Completed Courses</h3>
+					</div>
+					<div class="panel panel-completed body">
+						<!-- <table class="table table-hover"> -->
+						<?php 
+						foreach ($completedUserCourses as $completedUserCourse) {
+							?>
+								<!-- <tr>
+									<td><?php echo !empty($completedUserCourse) ? $completedUserCourse->courseName : 'You do not have any completed course.' ?></td>
+								</tr> -->
+								<div class="form-group">
+									<a href="learning/?courseID=<?php echo $completedUserCourse->courseID; ?>" class="courseLink">
+										<label><?php echo $completedUserCourse->courseName; ?></label>
+									</a>
+									<!-- <a class="btn btn-primary pull-right" href="home/dropCourse?id=<?php echo $completedUserCourse->courseID; ?>">Drop Course</a> -->
+									<a class="btn btn-primary disabled pull-right">
+										<?php 
+										if ($completedUserCourse->grading > 50) {
+											?>
+											Pass
+											<?php
+										} else {
+											?>
+											Fail
+											<?php
+										}
+										?>
+									</a>
+								</div>
+								<?php
+							}
+							?>
+							<!-- </table> -->
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="panel panel-calendar">
+						<div class="panel panel-heading-calendar">
+							<h3 class="panel-title">Reminder</h3>
+						</div>
+						<div class="panel panel-calendar body">
+							<div class="calendar center">
+								<h2><b><?php echo date("F"); ?></b></h2>
+								<h1><b><?php echo date("d"); ?></b></h1>
+							</div>
+						</div>
+					</div>
+				</div>
 			<!-- <div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
@@ -98,8 +168,66 @@ if (!empty($this->session->flashdata('denied'))) {
 				</div>
 			</div> -->
 		</div>
-
 		<div class="row">
+			<div class="col-lg-8">
+				<div class="panel panel-progress">
+					<div class="panel panel-heading-progress">
+						<h3 class="panel-title">Course Progress</h3>
+					</div>
+					<div class="panel panel-progress body">
+						<table class="table">
+							<?php 
+							if (empty($userCourses[0]->completion)) {
+								?>
+								<label>You do not have any courses enrolled.</label>
+								<?php
+							} else {
+								foreach ($userCourses as $userCourse) { 
+									?>
+									<tr data-href="<?php echo site_url('learning?courseID=' . $userCourse->courseID); ?>">
+										<td width="50%">
+											<?php
+											if ($userCourse->completion == 100) {
+												?>
+												<span class="label label-success">Completed</span>
+												<?php
+											} else if ($userCourse->completion == 0) {
+												?>
+												<span class="label label-danger">Not Started</span>
+												<?php
+											} else {
+												?>
+												<span class="label label-warning">In Progress</span>
+												<?php 
+											} 
+											?>
+<!-- 										</td>
+										<td class="project-title">
+											<td> -->
+												&emsp;<?php echo $userCourse->courseName; ?>
+											<!-- <small>
+												<i class="fa fa-line-chart"></i>&emsp;
+												Grade: <?php echo (empty($userCourse->grading)) ? 'Not Graded' : $userCourse->grading; ?>
+											</small> -->
+											<!-- </td> -->
+										</td>
+										<td width="50%">
+											<div class="progress">
+												<div style="width: <?php echo $userCourse->completion; ?>%" class="progress-bar"><?php echo $userCourse->completion; ?>%</div>
+											</div>
+										</td>
+									</tr>
+									<?php 
+								}
+							}
+							?>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="row">
 			<div class="col-lg-12" id="courseList">
 				<div class="tile checklist-tile orange">
 					<h4 class="moreInfo-title">Courses Enrolled</h4>
@@ -178,35 +306,7 @@ if (!empty($this->session->flashdata('denied'))) {
 					</div>
 				</div>
 			</div>
-			<!-- <div class="col-lg-12" id="availableGroups">
-				<div class="tile checklist-tile blue">
-					<h4 class="moreInfo-title">Available Groups</h4>
-					<div class="checklist">
-						<?php
-						if (empty($userGroups[0]->organisation)) {
-							?>
-							<div class="form-group">
-								<label>There are 0 user groups available.</label>
-							</div>
-							<?php
-						} else {
-							?>
-							<?php
-							foreach ($userGroups as $userGroup) {
-								?>
-								<div class="form-group">
-									<a href="#" class="courseLink">
-										<label><i class="fa fa-users"></i>&emsp;<?php echo $userGroup->organisation; ?></label>
-									</a>
-								</div>
-								<?php
-							}
-						}
-						?>
-					</div>
-				</div>
-			</div> -->
-		</div>
+		</div> -->
 	</div>
 </div>
 <script>
