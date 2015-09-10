@@ -23,10 +23,10 @@ class manageCourse extends CI_Controller
             $assignedCourses = $this->model_groupCourse->GetGroupCourses($thisGroupID);
             $omittedCourses = [];
 
-            foreach ($assignedCourses as $exceptCourse) {
-                array_push($omittedCourses, $exceptCourse->courseID);
-            }
-            $otherCourses = $this->model_course->GetAllCoursesExcept($omittedCourses);
+//            foreach ($assignedCourses as $exceptCourse) {
+//                array_push($omittedCourses, $exceptCourse->courseID);
+//            }
+//            $otherCourses = $this->model_course->GetAllCoursesExcept($omittedCourses);
 
             if ($thisGroup) {
                 $data['thisGroup'] = $thisGroup;
@@ -37,8 +37,8 @@ class manageCourse extends CI_Controller
             }
 
 //            if($otherCourses) {
-                $data['$otherCourses'] = $otherCourses;
-                $data['omittedCourses'] = $omittedCourses;
+//                $data['$otherCourses'] = $otherCourses;
+//                $data['omittedCourses'] = $omittedCourses;
 //            }
 
             if ($data['usertype'] != 'admin') {
