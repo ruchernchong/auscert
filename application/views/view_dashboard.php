@@ -38,9 +38,6 @@ if (!empty($this->session->flashdata('denied'))) {
 							<?php 
 							foreach ($userCourses as $userCourse) {
 								?>
-								<!-- <tr>
-									<td><?php echo $course->courseName; ?></td>
-								</tr> -->
 								<div class="form-group">
 									<a href="learning/?courseID=<?php echo $userCourse->courseID; ?>" class="courseLink">
 										<label><?php echo $userCourse->courseName; ?></label>
