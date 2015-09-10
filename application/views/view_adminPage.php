@@ -10,7 +10,6 @@
 				<a href="<?php echo site_url('addCourse') ?>" class="btn btn-primary">Create new course</a>&emsp;
 				Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
 				<hr>
-				<!-- <h2>Report</h2> -->
 				<div class="row">
 					<div class="col-lg-8">
 					</div>
@@ -35,6 +34,9 @@
 						<li>
 							<a data-toggle="tab" href="#tab-members"><i class="fa fa-user"></i>&emsp;Members</a>
 						</li>
+						<li>
+							<a data-toggle="tab" href="#tab-groups"><i class="fa fa-users"></i>&emsp;Groups</a>
+						</li>
 					</ul>
 
 					<div class="tab-content">
@@ -54,27 +56,46 @@
 										<?php foreach ($users as $user) { ?>
 										<tr>
 											<td class="client-avatar">
-												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user->username; ?>" class="client-link"><?php echo $user->username; ?></a>
+												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userName']; ?>" class="client-link"><?php echo $user['userName']; ?></a>
 											</td>
 											<td>
-												<a href="#"><?php echo "Hello" ?></a>
-											</td>
-											<td>
-												<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user->userType; ?></span>
-											</td>
-											<td>
-												<i class="fa fa-envelope"></i>&emsp;<a href="mailto:<?php echo $user->email; ?>"><?php echo $user->email; ?></a>
-											</td>
-											<td>
-												<i class="fa fa-phone"></i>&emsp;<a href="tel:<?php echo $user->contact; ?>"><?php echo $user->contact; ?></a>
-											</td>
-												<!-- <td class="client-status">
-													<span class="label label-success" data-toggle="tooltip" title="I have no idea what is this.">Complete All Task</span>
-												</td> -->
-											</tr>
 											<?php
-										}
-										?>
+											$userArrays = $user['groupArray'];
+											if (!empty($userArrays)) {
+												foreach ($userArrays as $userArray) {
+											?>
+												<ul>
+													<li>
+														<a href="#"><?php echo $userArray['organisation']; ?></a>
+													</li>
+												</ul>
+											<?php
+												}
+											} else {
+											?>
+												<ul>
+													<li>User does not belong to any group(s)</li>
+												</ul>
+											<?php
+											}
+											?>
+											</td>
+											<td>
+												<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user['userType']; ?></span>
+											</td>
+											<td>
+												<i class="fa fa-envelope"></i>&emsp;<a href="mailto:<?php echo $user['email']; ?>"><?php echo $user['email']; ?></a>
+											</td>
+											<td>
+												<i class="fa fa-phone"></i>&emsp;<a href="tel:<?php echo $user['contact']; ?>"><?php echo $user['contact']; ?></a>
+											</td>
+													<!-- <td class="client-status">
+														<span class="label label-success" data-toggle="tooltip" title="I have no idea what is this.">Complete All Task</span>
+													</td> -->
+												</tr>
+												<?php
+											}
+											?>
 									</tbody>
 								</table>
 							</div>
@@ -90,31 +111,27 @@
 										<th>Actions</th>
 									</thead>
 									<tbody>
-										<?php foreach ($courses as $course) { 
+										<?php foreach ($courses as $course) {
 											?>
 											<tr>
 												<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
 												<td><?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
 												<td>
-													<!-- <a href="<?php echo site_url('')?>" class="btn btn-sm btn-default">
-														<i class="fa fa-check-square-o"></i>&emsp;Active
-													</a> -->
-													<!-- Prevents redirect to Login page -->
-													<?php 
+													<?php
 													if ($course->active == 1) {
 														?>
 														<div class="btn btn-sm btn-default">
 															<input type="checkbox" id="activeChecked_<?php echo $course->courseID; ?>" class="courseActive" checked>
 															<label for="activeChecked_<?php echo $course->courseID; ?>" class="activeLabel">Active</label>
 														</div>
-														<?php 
-													} else { 
+														<?php
+													} else {
 														?>
 														<div class="btn btn-sm btn-default">
 															<input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
 															<label for="activeNotChecked_<?php echo $course->courseID; ?>" class="activeLabel">Active</label>
 														</div>
-														<?php 
+														<?php
 													}
 													?>
 												</td>
@@ -140,13 +157,43 @@
 								</table>
 							</div>
 						</div>
+
+						<div id="tab-groups" class="tab-pane fade">
+							<div class="table-responsive">
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th>Group Name</th>
+											<th>Total Members</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+									<?php foreach($groups as $group) {?>
+										<tr>
+											<td><?php echo $group['organisation'] ?></td>
+											<td><?php echo $group['userCount'] ?></td>
+											<td>
+												<a class="btn btn-sm btn-success"><i class="fa fa-signal"></i>&emsp;Manage Members</a>
+												&nbsp;
+												<a class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
+												&nbsp;
+												<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Delete Group</a>
+												&nbsp;
+											</td>
+										</tr>
+									<?php } ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</div>
+
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 <script>
 $("#menu-toggle").click(function(e) {

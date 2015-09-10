@@ -5,7 +5,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-DROP DATABASE IF EXISTS `auscertdb`;
+DROP DATABASE IF EXISTS `auscertdb `;
 CREATE DATABASE IF NOT EXISTS `auscertdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `auscertdb`;
 
@@ -31,7 +31,7 @@ INSERT INTO `answers` (`courseID`, `questionOrder`, `answerOrder`, `answerText`)
 
 DROP TABLE IF EXISTS `courses`;
 CREATE TABLE IF NOT EXISTS `courses` (
-`courseID` int(11) NOT NULL,
+  `courseID` int(11) NOT NULL,
   `courseName` varchar(255) NOT NULL,
   `category` varchar(255) DEFAULT NULL,
   `creator` varchar(255) DEFAULT NULL,
@@ -55,7 +55,7 @@ INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`
 
 DROP TABLE IF EXISTS `groups`;
 CREATE TABLE IF NOT EXISTS `groups` (
-`groupID` int(11) NOT NULL,
+  `groupID` int(11) NOT NULL,
   `organisation` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
@@ -83,7 +83,7 @@ INSERT INTO `questions` (`courseID`, `questionOrder`, `passPercentage`, `questio
 
 DROP TABLE IF EXISTS `slides`;
 CREATE TABLE IF NOT EXISTS `slides` (
-`slideID` int(11) NOT NULL,
+  `slideID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
   `slideOrder` int(3) NOT NULL,
   `slideContent` text,
@@ -102,13 +102,13 @@ INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slid
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-`userID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `username` varchar(65) NOT NULL,
   `password` varchar(65) NOT NULL,
   `email` varchar(65) NOT NULL,
   `contact` varchar(255) NOT NULL,
   `userType` varchar(24) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 INSERT INTO `users` (`userID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
 (1, 'admin', 'admin', 'admin@gmail.com', '000', 'admin'),
@@ -119,7 +119,8 @@ INSERT INTO `users` (`userID`, `username`, `password`, `email`, `contact`, `user
 (6, 'ravi', 'admin', 'ravi@gmail.com', '+61 452 525 020', 'admin'),
 (7, 'mal', 'admin', 'mal.joseland@live.com', '000', 'admin'),
 (8, 'StudentTest', 'test', 'studenttest@uq.edu.au', '+61  1234 5678', 'student'),
-(9, 'StaffTest', 'test', 'StaffTest@uq.edu.au', '+61 1234 5678', 'staff');
+(9, 'StaffTest', 'test', 'StaffTest@uq.edu.au', '+61 1234 5678', 'staff'),
+(10, 'Chris Teakle', 'test', 'c.teakle@its.uq.edu.au', '+ 61 (7) 3346 6640, + 61 (7) 3365 7555', 'staff');
 
 DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE IF NOT EXISTS `user_courses` (
@@ -168,28 +169,28 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 
 
 ALTER TABLE `answers`
- ADD PRIMARY KEY (`courseID`,`questionOrder`,`answerOrder`);
+ADD PRIMARY KEY (`courseID`,`questionOrder`,`answerOrder`);
 
 ALTER TABLE `courses`
- ADD PRIMARY KEY (`courseID`);
+ADD PRIMARY KEY (`courseID`);
 
 ALTER TABLE `groups`
- ADD PRIMARY KEY (`groupID`), ADD KEY `groupID` (`groupID`);
+ADD PRIMARY KEY (`groupID`), ADD KEY `groupID` (`groupID`);
 
 ALTER TABLE `questions`
- ADD PRIMARY KEY (`courseID`,`questionOrder`);
+ADD PRIMARY KEY (`courseID`,`questionOrder`);
 
 ALTER TABLE `slides`
- ADD PRIMARY KEY (`slideID`), ADD KEY `courseID` (`courseID`);
+ADD PRIMARY KEY (`slideID`), ADD KEY `courseID` (`courseID`);
 
 ALTER TABLE `users`
- ADD PRIMARY KEY (`userID`);
+ADD PRIMARY KEY (`userID`);
 
 ALTER TABLE `user_courses`
- ADD PRIMARY KEY (`userID`,`courseID`), ADD KEY `courseID` (`courseID`);
+ADD PRIMARY KEY (`userID`,`courseID`), ADD KEY `courseID` (`courseID`);
 
 ALTER TABLE `user_groups`
- ADD PRIMARY KEY (`userID`,`groupID`), ADD KEY `groupID` (`groupID`);
+ADD PRIMARY KEY (`userID`,`groupID`), ADD KEY `groupID` (`groupID`);
 
 
 ALTER TABLE `courses`
@@ -199,7 +200,7 @@ MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 ALTER TABLE `slides`
 MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 ALTER TABLE `users`
-MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 
 ALTER TABLE `answers`
 ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`, `questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE,

@@ -36,6 +36,7 @@ Class model_user extends CI_Model {
 	}
 
 	public function GetUsers() {
+		$this->db->order_by('username', 'ASC');
 		$query = $this->db->get('users');
 
 		if ($query->num_rows > 0) {
