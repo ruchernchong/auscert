@@ -31,9 +31,8 @@
                                             foreach($assignedCourses as $course) {?>
                                             <tr>
                                                 <td>
-                                                    <div class="btn btn-sm btn-default">
-                                                        <input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
-                                                    </div>
+                                                    <input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
+                                                    <label for="activeNotChecked_<?php echo $course->courseID; ?>" activelabel"></label>
                                                 </td>
                                                 <td><?php echo $course->courseID ?></td>
                                                 <td><?php echo $course->courseName ?></td>
@@ -81,9 +80,8 @@
                                         <?php foreach($otherCourses as $course) {?>
                                         <tr>
                                             <td>
-                                                <div class="btn btn-sm btn-default">
-                                                    <input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
-                                                </div>
+                                                <input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
+                                                <label for="activeNotChecked_<?php echo $course->courseID; ?>" activelabel"></label>
                                             </td>
                                             <td><?php echo $course->courseID ?></td>
                                             <td><?php echo $course->courseName ?></td>
