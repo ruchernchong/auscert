@@ -101,7 +101,6 @@ Class model_course extends CI_Model {
 	}
 	
 	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
-		
 		$data = array(
 			'courseName' => $courseTitle,
 			'category' => $courseCategory,
