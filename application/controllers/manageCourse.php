@@ -17,18 +17,18 @@ class manageCourse extends CI_Controller
             $data['usertype'] = $session_data['usertype'];
             $data['menu'] = 'admin';
 
-            $thisGroup = $this->model_group->GetGroupByID($this->input->get('groupID'));
-
-//            $assignedCourses = $this->model_groupCourse_-> GetGroupCourses($groupID);
+            $thisGroupID = $this->input->get('groupID');
+            $thisGroup = $this->model_group->GetGroupByID($thisGroupID);
+            $assignedCourses = $this->model_groupCourse_-> GetGroupCourses($thisGroupID);
             $otherCourses = $this->model_course->GetAllCourses();
 
             if ($thisGroup) {
                 $data['thisGroup'] = $thisGroup;
             }
 
-//            if ($assignedCourses) {
-//                $data['assignedCourses'] = $assignedCourses;
-//            }
+            if ($assignedCourses) {
+                $data['assignedCourses'] = $assignedCourses;
+            }
 
             if($otherCourses) {
                 $data['$otherCourses'] = $otherCourses;

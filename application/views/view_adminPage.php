@@ -15,8 +15,6 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="input-group">
-							<div class="input-group-btn">
-							</div>
 							<input type="search" placeholder="Search" class="form-control">
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-primary">
