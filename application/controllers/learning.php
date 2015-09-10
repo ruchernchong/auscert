@@ -55,5 +55,12 @@ class learning extends CI_Controller {
 			redirect('login', 'refresh');
 		}
 	}
+
+	public function quiz() {
+		$courseID = $this->input->get('courseID');
+		$q1 = $this->input->post('q1');
+		$this->session->set_flashdata('msg', $q1);
+		redirect('learning', 'refresh');
+	}
 }
 ?>

@@ -1,3 +1,23 @@
+.display-table{
+    display: table;
+    table-layout: fixed;
+}
+
+.display-cell{
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+}
+
+#next {
+	opacity:1;
+}
+
+#prev {
+	opacity:0;
+}
+
+
 #container h1 {
 	text-align: center;
 }
@@ -57,9 +77,7 @@ ul {
 	margin: 0;
 }
 
-#prev {
-	display:none;
-}
+
 
 #start {
 	display:none;
