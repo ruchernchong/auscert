@@ -30,7 +30,11 @@ Class model_course extends CI_Model {
 		$this->db->order_by('courseName', 'ASC');
 		$this->db->where_not_in('courseID', $omittedCourses);
 		$query = $this->db->get();
-		return $query->result();
+
+		if ($query->num_rows == 1) {
+			return $query->result();
+		}
+		return false;
 	}
 
 	//returns a course based on an ID
