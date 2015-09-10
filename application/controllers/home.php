@@ -61,7 +61,7 @@ class home extends CI_Controller {
 
 			$this->load->view('header',$data);
 			$this->load->view('view_dashboard');
-			// $this->load->view("footer");
+			$this->load->view("footer");
 		} else {
 			 //If no session, redirect to login page
 			redirect('login', 'refresh');
