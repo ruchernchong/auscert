@@ -167,6 +167,20 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 (2, 7),
 (6, 8);
 
+DROP TABLE IF EXISTS `group_courses`;
+CREATE TABLE IF NOT EXISTS `group_courses` (
+  `groupID` int(11) NOT NULL,
+  `courseID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `group_courses` (`groupID`, `courseID`) VALUES
+(1,1),
+(1,2),
+(1,3),
+(2,1),
+(2,2),
+(2,4),
+(3,2);
 
 ALTER TABLE `answers`
 ADD PRIMARY KEY (`courseID`,`questionOrder`,`answerOrder`);
@@ -191,6 +205,9 @@ ADD PRIMARY KEY (`userID`,`courseID`), ADD KEY `courseID` (`courseID`);
 
 ALTER TABLE `user_groups`
 ADD PRIMARY KEY (`userID`,`groupID`), ADD KEY `groupID` (`groupID`);
+
+ALTER TABLE `group_courses`
+ADD PRIMARY KEY (`groupID`,`courseID`);
 
 
 ALTER TABLE `courses`
@@ -219,6 +236,10 @@ ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `course
 ALTER TABLE `user_groups`
 ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
 ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`);
+
+ALTER TABLE `group_courses`
+ADD CONSTRAINT `group_courses_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`),
+ADD CONSTRAINT `group_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

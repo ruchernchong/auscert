@@ -19,9 +19,22 @@ Class model_course extends CI_Model {
 	//returns a list of all courses available
 	public function GetAllCourses() {
 		$this->db->from('courses');
-		$this->db->order_by("courseName", "asc"); 
+		$this->db->order_by('courseName', 'ASC');
 		$query = $this->db->get();
 		return $query->result();
+	}
+
+	//returns a list of courses except the ones stated in the argument
+	public function GetAllCoursesExcept($omittedCourses) {
+		$this->db->from('courses');
+		$this->db->order_by('courseID', 'ASC');
+		$this->db->where_not_in('courseID', $omittedCourses);
+		$query = $this->db->get();
+
+		if ($query->num_rows > 0) {
+			return $query->result();
+		}
+		return false;
 	}
 
 	//returns a course based on an ID
@@ -101,7 +114,6 @@ Class model_course extends CI_Model {
 	}
 	
 	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
-		
 		$data = array(
 			'courseName' => $courseTitle,
 			'category' => $courseCategory,
