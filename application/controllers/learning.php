@@ -26,6 +26,8 @@ class learning extends CI_Controller {
 			$slides = $this->model_slide->GetSlide();
 			if ($slides) {
 				$data['slides'] = $slides;
+			} else {
+				$data['slides'] = null;
 			}
 
 			$this->load->view('header', $data);
