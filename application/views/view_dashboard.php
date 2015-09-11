@@ -35,23 +35,28 @@ if (!empty($this->session->flashdata('denied'))) {
 				<div class="panel-course body">
 					<div class="table-responsive">
 						<table class="table table-hover">
-							<thead>
-								<th>Course Name</th>
-							</thead>
-							<tbody>
-								<?php 
-								foreach ($userCourses as $userCourse) {
+							<?php
+							if (!empty($userCourses)) {
+								?>
+								<thead>
+									<th>Course Name</th>
+								</thead>
+								<tbody>
+									<?php
+									foreach ($userCourses as $userCourse) {
+										?>
+										<tr data-href="learning/?courseID=<?php echo $userCourse->courseID; ?>">
+											<td>
+												<?php echo $userCourse->courseName; ?>
+											</td>
+										</tr>
+										<?php
+									}
+								} else {
 									?>
-									<tr data-href="learning/?courseID=<?php echo $userCourse->courseID; ?>">
-										<td>
-											<?php echo $userCourse->courseName; ?>
-										</td>
-									</tr>
-										<!-- <div class="form-group">
-										<a href="learning/?courseID=<?php echo $userCourse->courseID; ?>" class="courseLink">
-											<label><?php echo $userCourse->courseName; ?></label>
-										</a>
-									</div> -->
+									<div class="form-group">
+										<label>There are no course(s) available for you</label>
+									</div>
 									<?php
 								}
 								?>
@@ -223,60 +228,65 @@ if (!empty($this->session->flashdata('denied'))) {
 						<div class="table-responsive">
 							<table class="table table-hover">
 								<?php 
-								if (empty($userCourses[0]->completion)) {
+								if (!empty($userCourses[0]->completion)) {
 									?>
-									<label>You do not have any courses enrolled.</label>
-									<?php
-								} else {
-									foreach ($userCourses as $userCourse) { 
+									<thead>
+										<th>Status</th>
+										<th>Course Name</th>
+										<th>Progress</th>
+									</thead>
+									<tbody>
+										<?php
+										foreach ($userCourses as $userCourse) {
+											?>
+											<tr data-href="<?php echo site_url('learning?courseID=' . $userCourse->courseID); ?>">
+												<td>
+													<?php
+													if ($userCourse->completion == 100) {
+														?>
+														<span class="label label-success">Completed</span>
+														<?php
+													} else if ($userCourse->completion == 0) {
+														?>
+														<span class="label label-danger">Not Started</span>
+														<?php
+													} else if ($userCourse->completion < 0 || $userCourse->completion > 100) {
+														?>
+														<span class="label label-info">WTF?</span>
+														<?php
+													} else {
+														?>
+														<span class="label label-warning">In Progress</span>
+														<?php 
+													}
+													?>
+												</td>
+												<td>
+													<?php echo $userCourse->courseName; ?>
+												</td>
+												<td width="50%">
+													<div class="progress">
+														<div style="width: <?php echo $userCourse->completion; ?>%" class="progress-bar"><?php echo $userCourse->completion; ?>%</div>
+													</div>
+												</td>
+											</tr>
+											<?php
+										}
+									} else {
 										?>
-										<tr data-href="<?php echo site_url('learning?courseID=' . $userCourse->courseID); ?>">
-											<td width="50%">
-												<?php
-												if ($userCourse->completion == 100) {
-													?>
-													<span class="label label-success">Completed</span>
-													<?php
-												} else if ($userCourse->completion == 0) {
-													?>
-													<span class="label label-danger">Not Started</span>
-													<?php
-												} else if ($userCourse->completion < 0 || $userCourse->completion > 100) {
-													?>
-													<span class="label label-info">WTF?</span>
-													<?php
-												} else {
-													?>
-													<span class="label label-warning">In Progress</span>
-													<?php 
-												} 
-												?>
-<!-- 										</td>
-										<td class="project-title">
-											<td> -->
-												&emsp;<?php echo $userCourse->courseName; ?>
-											<!-- <small>
-												<i class="fa fa-line-chart"></i>&emsp;
-												Grade: <?php echo (empty($userCourse->grading)) ? 'Not Graded' : $userCourse->grading; ?>
-											</small> -->
-											<!-- </td> -->
-										</td>
-										<td width="50%">
-											<div class="progress">
-												<div style="width: <?php echo $userCourse->completion; ?>%" class="progress-bar"><?php echo $userCourse->completion; ?>%</div>
-											</div>
-										</td>
-									</tr>
-									<?php 
-								}
-							}
-							?>
-						</table>
+										<div class="form-group">
+											<label>You do not have any courses enrolled.</label>
+										</div>
+										<?php
+									}
+									?>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
 		<!-- <div class="row">
 			<div class="col-lg-12" id="courseList">
