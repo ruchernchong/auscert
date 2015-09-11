@@ -1,6 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
 class home extends CI_Controller {
 	function __construct() {
 		parent::__construct();
@@ -66,7 +65,7 @@ class home extends CI_Controller {
 				$data['completedUserCourses'] = null;
 			}
 
-			$this->load->view('header',$data);
+			$this->load->view('header', $data);
 			$this->load->view('view_dashboard');
 			// $this->load->view("footer");
 		} else {

@@ -42,8 +42,8 @@ class analysis extends CI_Controller {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
 				redirect('home', 'refresh');
 			} else {
-				$this->load->view('header',$data);
-				$this->load->view('view_analysis',$data);
+				$this->load->view('header', $data);
+				$this->load->view('view_analysis', $data);
 			}
 		} else {
 			redirect('login', 'refresh');

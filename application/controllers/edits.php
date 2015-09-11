@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class edits extends CI_Controller {
-	function __construct(){
+	function __construct() {
 		parent::__construct();
 
 		$this->load->model('model_course');
@@ -13,7 +13,7 @@ class edits extends CI_Controller {
 	}
 
 	public function index() {
-		if($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
@@ -43,7 +43,6 @@ class edits extends CI_Controller {
 						$data['answers'][$questions[$i]->questionOrder] = array();
 					}
 				}
-				
 			} else {
 				$data['questions'] = array();
 			}
@@ -76,7 +75,7 @@ class edits extends CI_Controller {
 			$slideTitle = $this->input->post(sprintf('title_%d', $slideOrder));
 			$slideContent = $this->input->post(sprintf('editor_%d', $slideOrder));
 			
-			if($slideTitle == NULL) {
+			if ($slideTitle == NULL) {
 				break;
 			}
 
@@ -89,7 +88,7 @@ class edits extends CI_Controller {
 		while (true) {
 			$questionText = $this->input->post(sprintf('question_%d', $questionOrder));
 			
-			if($questionText == NULL) {
+			if ($questionText == NULL) {
 				break;
 			}
 
@@ -99,7 +98,7 @@ class edits extends CI_Controller {
 			while (true) {
 				$answerText = $this->input->post(sprintf('q%da%d', $questionOrder, $answerOrder));
 				
-				if($answerText == NULL) {
+				if ($answerText == NULL) {
 					break;
 				}
 	
