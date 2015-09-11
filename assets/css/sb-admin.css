@@ -9,8 +9,7 @@
 
 body {
 	font-family: 'Lato';
-	padding-top: 90px;
-	/*margin-top: 100px;*/
+	padding-top: 50px;
 	background-color: #fff;
 }
 /*mobile-width*/
@@ -26,7 +25,7 @@ body {
 
 #wrapper {
 	/*padding-top: 30px;*/
-	padding-left: 0;
+	/*padding-left: 0;*/
 	-webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;

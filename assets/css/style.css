@@ -5,48 +5,44 @@
 	src: url(../../assets/font/flat-ui-icons-regular.woff);
 }
 
-html, body {
+html,
+body {
 	margin: 0;
 	padding: 0;
 	background: url('../img/imgBackground.png') fixed no-repeat bottom right;
 }
+#formModal {
+	position: fixed;
+	min-height: 150px;
+	/*background: rgba(236, 240, 241, 0.5);*/
+	background: rgba(255,255,255,0.5);
+	border-radius: 25px;
+}
 @media(max-width: 720px) {
 	#formModal {
-		position: fixed;
-		top: 10%;
+		top: 25%;
 		left: 25%;
 		width: 50%;
-		min-height:150px;
-		background-color: rgba(236, 240, 241, 0.5);
-		border-radius: 0;
 	}
-}
-@media(min-width: 768px) {
-	#formModal {
-		position: fixed;
-		top: 10%;
-		left: 35%;
-		width: 30%;
-		min-height: 150px;
-		background-color: rgba(236, 240, 241, 0.5);
-		border-radius: 0;
-	}
-}
-@media(max-width: 720px) {
 	.formLogin, .formRegister {
-		width:90%;
-		min-height:150px;
-		background-color: inherit;
+		width: 90%;
+		min-height: 150px;
+		background: inherit;
 		border-radius: 0px;
 		margin: 0 auto;
 		padding: 10px;
 	}
 }
 @media(min-width: 768px) {
+	#formModal {
+		top: 25%;
+		left: 35%;
+		width: 30%;
+	}
 	.formLogin, .formRegister {
-		width:75%;
-		min-height:150px;
-		background-color: inherit;
+		width: 75%;
+		min-height: 150px;
+		background: inherit;
 		border-radius: 0px;
 		margin: 10px auto;
 		padding: 10px;
@@ -79,12 +75,12 @@ input:focus {
 .pin_icon {width:21px;height:34px;margin:10px;float:left;}
 .btn {font-size:15px;padding:5px 15px;border-radius:6px;}*/
 .btn-UQ {
-	display:inline-block;
-	color:#FFF;
-	cursor:pointer;
-	font-family:'Lato';
-	text-decoration:none;
-	font-weight:600;
+	display: inline-block;
+	color: #FFF;
+	cursor: pointer;
+	font-family: 'Lato';
+	text-decoration: none;
+	font-weight: 600;
 	width: 100%;
 	height: 40px;
 	border: 0 none;
@@ -114,39 +110,39 @@ input:focus {
 .form-group {width:300px;min-height: 0px;position:relative;margin-top:10px;margin-bottom:10px;}
 */
 .input-group input.text-input {
-	height:40px;
+	height: 40px;
 	border-radius: 0px;
-	font-family:"Lato";
-	font-size:16px;
+	font-family: "Lato";
+	font-size: 16px;
 	font-weight: 600;
 }
 .input-group input.text-input:focus {
-	border-color:#49075e;
+	border-color: #49075e;
 	transition: border-color ease-in-out .15s,
 	box-shadow ease-in-out .15s,
 	color ease-in-out .15s;
-	color:#49075e;
+	color: #49075e;
 }
 .input-group input.text-input:focus + label {
-	color:#49075e;
+	color: #49075e;
 }
 .login-icon {
-	width:20px;
-	height:20px;
-	position:relative;
-	top:20px;
-	left:35px;
-	font-family:Flat-UI-Pro-Icons;
-	color:#BFC9CA;
+	width: 20px;
+	height: 20px;
+	positionrelative;
+	top: 20px;
+	left: 35px;
+	font-family: Flat-UI-Pro-Icons;
+	color: #BFC9CA;
 	transition: border-color ease-in-out .15s,
 	box-shadow ease-in-out .15s,
 	color ease-in-out .15s;
 }
 .icon-lock:before {
-	content:"\e633";
+	content: "\e633";
 }
 .icon-person:before {
-	content:"\e631";
+	content: "\e631";
 }
 /*.form-group input[type="submit"] {width:250px;height:40px;border: 0 none; padding:4px;margin:5px 22px;border-radius: 0px;}*/
 /*.err_msg {color:red;font-family: "Lato";width:250px;margin:5px 22px;display: inline-block;}
