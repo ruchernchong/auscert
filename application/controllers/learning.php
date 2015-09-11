@@ -9,6 +9,7 @@ class learning extends CI_Controller {
 		$this->load->model('model_slide');
 		$this->load->model('model_question');
 		$this->load->model('model_answer');
+		$this->load->model('model_userResults');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form', 'url'));
 	}
@@ -58,9 +59,19 @@ class learning extends CI_Controller {
 
 	public function quiz() {
 		$courseID = $this->input->get('courseID');
-		$q1 = $this->input->post('q1');
-		//$this->session->set_flashdata('msg', $q1);
-		//redirect('learning', 'refresh');
+		$results = array();
+		
+		$i = 0;
+		while($this->input->post('q' . $i) != NULL) {
+			array_push($results,  $this->input->post('q' . $i));
+			$i++;
+		}
+		
+		$this->model_userResults->SaveResults(
+			$courseID,
+			$this->session->userdata['logged_in']['userID'],
+			$results
+		);
 		redirect('course', 'refresh');
 	}
 }
