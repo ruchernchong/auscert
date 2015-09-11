@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Cyber Security online training system for a business context." />
 	<meta name="author" content="Tartiner Studios" />
-	<link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" />
+	<!-- <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" /> -->
 
 	<title>AusCert | Dashboard</title>
 
