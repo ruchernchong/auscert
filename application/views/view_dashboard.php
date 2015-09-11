@@ -167,9 +167,7 @@ if (!empty($this->session->flashdata('denied'))) {
 						} else {
 							?>
 							<div class="form-group">
-								<a class="courseLink">
-									<label>You do not have any completed course(s)</label>
-								</a>
+								<label>You do not have any completed course(s)</label>
 							</div>
 							<?php
 						}
