@@ -648,8 +648,14 @@ ul.alert-dropdown {
 	.panel-course .body,
 	.panel-completed .body,
 	.panel-calendar .body {
+		overflow: auto;
 		height: 200px;
 		padding: 15px;
+		padding-top: 0;
+	}
+	.panel-course .body::-webkit-scrollbar,
+	.panel-completed .body::-webkit-scrollbar {
+		width: 0;
 	}
 	.panel-progress .body {
 		padding: 15px;

@@ -97,33 +97,60 @@ if (!empty($this->session->flashdata('denied'))) {
 					<div class="panel panel-heading-completed">
 						<h3 class="panel-title">Completed Courses</h3>
 					</div>
-					<div class="panel panel-completed body">
-						<!-- <table class="table table-hover"> -->
-						<?php 
-						if (!empty($completedUserCourses)) {
-							foreach ($completedUserCourses as $completedUserCourse) {
-								?>
-								<!-- <tr>
-									<td><?php echo !empty($completedUserCourse) ? $completedUserCourse->courseName : 'You do not have any completed course.' ?></td>
-								</tr> -->
-								<div class="form-group">
-									<a href="learning/?courseID=<?php echo $completedUserCourse->courseID; ?>" class="courseLink">
-										<label><?php echo $completedUserCourse->courseName; ?></label>
-									</a>
-									<!-- <a class="btn btn-primary pull-right" href="home/dropCourse?id=<?php echo $completedUserCourse->courseID; ?>">Drop Course</a> -->
-									
+					<div class="panel-completed body">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<th>Course Name</th>
+									<th>Mark</th>
+									<th>Pass/Fail</th>
+								</thead>
+								<tbody>
 									<?php 
-									if ($completedUserCourse->grading > 50) {
+									if (!empty($completedUserCourses)) {
+										foreach ($completedUserCourses as $completedUserCourse) {
+											?>
+											<tr data-href="learning/?courseID=<?php echo $completedUserCourse->courseID; ?>">
+												<td>
+													<?php echo !empty($completedUserCourse) ? $completedUserCourse->courseName : 'You do not have any completed course.' ?>
+												</td>
+												<td>
+													<small>
+														<i class="fa fa-line-chart"></i>&nbsp;
+														<?php echo (!empty($completedUserCourse->grading)) ? $completedUserCourse->grading : '0' ?>/100
+													</small>
+												</td>
+												<td>
+													<?php 
+													if ($completedUserCourse->grading > 50) {
+														?>
+														<p class="btn btn-success pull-right disabled">Pass</p>
+														<?php
+													} else {
+														?>
+														<p class="btn btn-danger pull-right disabled">Fail</p>
+														<?php
+													}
+													?>
+												</td>
+											</tr>
+								<!-- <div class="form-group" data-href="learning/?courseID=<?php echo $completedUserCourse->courseID; ?>">
+									<span class="courseLink">
+										<?php echo $completedUserCourse->courseName; ?>
+
+										<?php 
+										if ($completedUserCourse->grading > 50) {
+											?>
+											<p class="btn btn-success pull-right disabled">Pass</p>
+											<?php
+										} else {
+											?>
+											<p class="btn btn-danger pull-right disabled">Fail</p>
+											<?php
+										}
 										?>
-										<a class="btn btn-success pull-right disabled">Pass</a>
-										<?php
-									} else {
-										?>
-										<a class="btn btn-danger pull-right disabled">Fail</a>
-										<?php
-									}
-									?>
-								</div>
+									</span>
+								</div> -->
 								<?php
 							}
 						} else {
@@ -136,23 +163,25 @@ if (!empty($this->session->flashdata('denied'))) {
 							<?php
 						}
 						?>
-						<!-- </table> -->
-					</div>
-				</div>
+					</tbody>
+				</table>
 			</div>
-			<div class="col-lg-4">
-				<div class="panel panel-calendar">
-					<div class="panel panel-heading-calendar">
-						<h3 class="panel-title">Reminder</h3>
-					</div>
-					<div class="panel panel-calendar body">
-						<div class="calendar center">
-							<h2><b><?php echo date("F"); ?></b></h2>
-							<h1><b><?php echo date("d"); ?></b></h1>
-						</div>
-					</div>
-				</div>
+		</div>
+	</div>
+</div>
+<div class="col-lg-4">
+	<div class="panel panel-calendar">
+		<div class="panel panel-heading-calendar">
+			<h3 class="panel-title">Reminder</h3>
+		</div>
+		<div class="panel panel-calendar body">
+			<div class="calendar center">
+				<h2><b><?php echo date("F"); ?></b></h2>
+				<h1><b><?php echo date("d"); ?></b></h1>
 			</div>
+		</div>
+	</div>
+</div>
 			<!-- <div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
@@ -323,6 +352,9 @@ function toggler(toggle, hideOne, hideTwo) {
 }
 
 $(document).ready(function() {
+	$('.disabled').click(function(e){
+		e.preventDefault();
+	});
 	$('[data-toggle="tooltip"]').tooltip();
 	$('#pageHome').removeAttr('cursor');
 	$('#confirmEnrol').on('show.bs.modal', function(e) {
