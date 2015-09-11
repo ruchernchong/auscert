@@ -3,7 +3,7 @@
 		<li class="side-user hidden-xs">
 			<div class="photo">
 				<img src="<?php echo base_url('assets/img/uq_logo.png'); ?>" class="uq-logo" alt="UQ Logo">
-				<img class="img-circle" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>" alt="User Placeholder Image" /> 
+				<img class="img-circle" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>" alt="User Placeholder Image" />
 				<p class="welcome">Logged in as</p>
 				<p class="name"><?php echo $username;?></p>
 			</div>
