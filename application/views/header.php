@@ -49,7 +49,9 @@
 							<img class="img-circle" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>" alt="User Placeholder Image" />
 						</li>
 						<li>
-							<a>Logged in as: <?php echo $username; ?></a>
+							<a>
+								Logged in as: <?php echo $username; ?>
+							</a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav pull-right">
