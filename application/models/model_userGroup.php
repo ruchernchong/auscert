@@ -53,10 +53,6 @@ Class model_userGroup extends CI_Model {
         return true;
     }
 
-
-
-
-
     //	//get a list of users details and the groups they are assigned to
 //	public function GetUsersAndGroups() {
 //		$this->db->join('groups', 'groups.groupID = user_groups.groupID', 'full outer');

@@ -67,7 +67,7 @@ Class model_course extends CI_Model {
 		$this->db->insert('courses', $data);
 		$insert_id = $this->db->insert_id();
 
-		return  $insert_id;
+		return $insert_id;
 	}
 
 	//Delete an existing course from the courses table

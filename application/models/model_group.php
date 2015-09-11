@@ -10,7 +10,7 @@ Class model_group extends CI_Model {
 		$this->db->order_by("organisation", "ASC");
 		$query = $this->db->get('groups');
 
-		if ($query->num_rows >= 1) {
+		if ($query->num_rows > 0) {
 			return $query->result();
 		}
 		return false;

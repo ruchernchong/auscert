@@ -27,8 +27,7 @@ Class model_answer extends CI_Model {
 		$this->db->where('answerOrder >=', $answerOrder);
 		$this->db->delete('answers');
 	}
-	
-	
+
 	//Add a new answer to the answers table for a given course, or updates if it already exists 
 	public function SaveAnswer($courseID, $questionOrder, $answerOrder, $answerText) {
 		$this->db->where('courseID', $courseID);
@@ -39,8 +38,8 @@ Class model_answer extends CI_Model {
 		if ($query->num_rows > 0) {
 			$data = array(
 				'answerText' => $answerText,
-			);
-		
+				);
+			
 			$this->db->where('courseID', $courseID);
 			$this->db->where('questionOrder', $questionOrder);
 			$this->db->where('answerOrder', $answerOrder);
@@ -52,8 +51,8 @@ Class model_answer extends CI_Model {
 				'questionOrder' => $questionOrder,
 				'answerOrder' => $answerOrder,
 				'answerText' => $answerText,
-			);
-		
+				);
+			
 			$this->db->insert('answers', $data);
 		}
 	}
