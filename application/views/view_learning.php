@@ -92,9 +92,9 @@
 </div>
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 <script>
-$(document).ready(function() {
-	alert('<?php echo $this->session->flashdata('msg'); ?>');
-});
+//$(document).ready(function() {
+//	alert('<?php echo $this->session->flashdata('msg'); ?>');
+//});
 
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
