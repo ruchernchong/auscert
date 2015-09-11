@@ -5,7 +5,6 @@
 				<h1 class="page-header"><?php echo $thisGroup[0]->organisation ?>&nbsp;
 					<small>Manage Courses</small>
 				</h1>
-			</h1>
 		</div>
 
 		<div class="row">

@@ -43,25 +43,17 @@ Class model_userGroup extends CI_Model {
         }
     }
 
-    public function DeleteGroup() {
+    //Assign a user to the group
+    public function AddUserToGroup() {
         return true;
     }
 
-    public function AddMemberToGroup() {
+    //Remove a user from the group
+    public function RemoveUserFromGroup() {
         return true;
     }
 
-    public function RemoveMemberFromGroup() {
-        return true;
-    }
 
-    public function AddCourseToGroup() {
-        return true;
-    }
-
-    public function RemoveCourseFromGroup() {
-        return true;
-    }
 
 
 

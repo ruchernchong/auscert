@@ -24,7 +24,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="clients-list">
 					<ul class="nav nav-tabs">
 						<li class="active">

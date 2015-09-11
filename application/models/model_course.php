@@ -112,7 +112,8 @@ Class model_course extends CI_Model {
 		}
 		return false;
 	}
-	
+
+	//Update the values of a course
 	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
 		$data = array(
 			'courseName' => $courseTitle,
