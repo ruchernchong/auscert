@@ -1,17 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class manageCourse extends CI_Controller
-{
-	function __construct()
-	{
+class manageCourse extends CI_Controller {
+	function __construct() {
 		parent::__construct();
 		$this->load->model('model_group');
 		$this->load->model('model_course');
 		$this->load->model('model_groupCourse');
 	}
 
-	function index()
-	{
+	function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];

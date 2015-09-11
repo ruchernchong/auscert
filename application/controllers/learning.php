@@ -1,6 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
 class learning extends CI_Controller {
 	function __construct() {
 		parent::__construct();
@@ -23,6 +22,7 @@ class learning extends CI_Controller {
 			$data['menu'] = "course";
 			
 			$query = $this->model_course->GetCourseById($this->input->get('courseID'));
+
 			if ($query) {
 				$data['course'] = $query;
 				$slides = $this->model_slide->GetSlidesByCourse($data['course']->courseID);
@@ -45,7 +45,6 @@ class learning extends CI_Controller {
 						$data['answers'][$questions[$i]->questionOrder] = array();
 					}
 				}
-				
 			} else {
 				$data['questions'] = array();
 			}
@@ -62,7 +61,7 @@ class learning extends CI_Controller {
 		$results = array();
 		
 		$i = 0;
-		while($this->input->post('q' . $i) != NULL) {
+		while ($this->input->post('q' . $i) != NULL) {
 			array_push($results,  $this->input->post('q' . $i));
 			$i++;
 		}
@@ -71,7 +70,8 @@ class learning extends CI_Controller {
 			$courseID,
 			$this->session->userdata['logged_in']['userID'],
 			$results
-		);
+			);
+		
 		redirect('course', 'refresh');
 	}
 }

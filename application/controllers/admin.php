@@ -2,8 +2,7 @@
 
 class admin extends CI_Controller
 {
-	function __construct()
-	{
+	function __construct() {
 		parent::__construct();
 
 		$this->load->model('model_course');
@@ -31,11 +30,11 @@ class admin extends CI_Controller
 			foreach ($users as $user) {
 				$groupArray = (!empty($this->model_userGroup->GetUserGroups($user->userID)) ? $this->model_userGroup->GetUserGroups($user->userID) : '');
 				$usersList = [
-					'userName' => $user->username,
-					'groupArray' => $groupArray,
-					'email' => $user->email,
-					'contact' => $user->contact,
-					'userType' => $user->userType
+				'userName' => $user->username,
+				'groupArray' => $groupArray,
+				'email' => $user->email,
+				'contact' => $user->contact,
+				'userType' => $user->userType
 				];
 				array_push($usersAndGroups, $usersList);
 			}
@@ -47,10 +46,10 @@ class admin extends CI_Controller
 				$userArray = (!empty($this->model_userGroup->GetGroupUsers($group->groupID)) ? $this->model_userGroup->GetGroupUsers($group->groupID) : '');
 				$userCount = (($this->model_userGroup->GetUserCount($group->groupID) != "") ? $this->model_userGroup->GetUserCount($group->groupID) : "No Members");
 				$groupList = [
-					'groupID' => $group->groupID,
-					'organisation' => $group->organisation,
-					'userArray' => $userArray,
-					'userCount' => $userCount
+				'groupID' => $group->groupID,
+				'organisation' => $group->organisation,
+				'userArray' => $userArray,
+				'userCount' => $userCount
 				];
 				array_push($groupsAndUsers, $groupList);
 			}
@@ -103,4 +102,3 @@ class admin extends CI_Controller
 		$courseIfNotActive = $this->model_course->ifNotActive($courseID);
 	}
 }
-
