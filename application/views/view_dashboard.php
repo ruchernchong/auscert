@@ -363,21 +363,18 @@ if (!empty($this->session->flashdata('denied'))) {
 	</div>
 </div>
 <script>
-function toggler(toggle, hideOne, hideTwo) {
-	$("#" + toggle).toggle("slow");
-	$("#" + hideOne).hide("slow")
-	$("#" + hideTwo).hide("slow")
-}
+// function toggler(toggle, hideOne, hideTwo) {
+// 	$("#" + toggle).toggle("slow");
+// 	$("#" + hideOne).hide("slow")
+// 	$("#" + hideTwo).hide("slow")
+// }
 
 $(document).ready(function() {
-	$('.disabled').click(function(e){
-		e.preventDefault();
-	});
 	$('[data-toggle="tooltip"]').tooltip();
 	$('#pageHome').removeAttr('cursor');
-	$('#confirmEnrol').on('show.bs.modal', function(e) {
-		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-	});
+	// $('#confirmEnrol').on('show.bs.modal', function(e) {
+	// 	$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+	// });
 });
 </script>
 </body>
