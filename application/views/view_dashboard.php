@@ -183,7 +183,7 @@ if (!empty($this->session->flashdata('denied'))) {
 <div class="col-lg-4">
 	<div class="panel panel-announcement">
 		<div class="panel panel-heading-announcement">
-			<h3 class="panel-title">Reminder</h3>
+			<h3 class="panel-title">Announcement</h3>
 		</div>
 		<div class="panel-announcement body">
 			<div class="announcement center">
