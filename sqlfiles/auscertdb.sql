@@ -182,6 +182,18 @@ INSERT INTO `group_courses` (`groupID`, `courseID`) VALUES
 (2,4),
 (3,2);
 
+DROP TABLE IF EXISTS `user_results`;
+CREATE TABLE IF NOT EXISTS `user_results` (
+  `courseID` int(11) NOT NULL,
+  `questionOrder` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `attempt` int(11) NOT NULL,
+  `userAnswer` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `user_results` (`courseID`, `questionOrder`, `userID`, `attempt`, `userAnswer`) VALUES
+(2, 0, 1, 0, 2);
+
 ALTER TABLE `answers`
 ADD PRIMARY KEY (`courseID`,`questionOrder`,`answerOrder`);
 
@@ -208,6 +220,9 @@ ADD PRIMARY KEY (`userID`,`groupID`), ADD KEY `groupID` (`groupID`);
 
 ALTER TABLE `group_courses`
 ADD PRIMARY KEY (`groupID`,`courseID`);
+
+ALTER TABLE `user_results`
+  ADD PRIMARY KEY (`courseID`,`questionOrder`,`userID`,`attempt`) USING BTREE;
 
 
 ALTER TABLE `courses`

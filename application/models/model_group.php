@@ -31,5 +31,10 @@ Class model_group extends CI_Model {
 		$query = $this->db->get('groups');
 		return $query->num_rows;
 	}
+
+	//Delete the group
+	public function DeleteGroup() {
+		return true;
+	}
 }
 ?>
