@@ -7,7 +7,10 @@ class learning extends CI_Controller {
 
 		$this->load->model('model_course');
 		$this->load->model('model_slide');
+		$this->load->model('model_question');
 		$this->load->model('model_answer');
+		$this->load->library('form_validation');
+		$this->load->helper(array('form', 'url'));
 	}
 
 	public function index() {
@@ -21,20 +24,44 @@ class learning extends CI_Controller {
 			$query = $this->model_course->GetCourseById($this->input->get('courseID'));
 			if ($query) {
 				$data['course'] = $query;
+				$slides = $this->model_slide->GetSlidesByCourse($data['course']->courseID);
+				$questions = $this->model_question->GetQuestions($data['course']->courseID);
 			}
 
-			$slides = $this->model_slide->GetSlide();
 			if ($slides) {
 				$data['slides'] = $slides;
 			} else {
-				$data['slides'] = null;
+				$data['slides'] = array();
 			}
-
+			
+			if ($questions) {
+				$data['questions'] = $questions;
+				for($i = 0; $i < sizeof($questions); $i++) {
+					$answers = $this->model_answer->GetAnswers($data['course']->courseID, $questions[$i]->questionOrder);
+					if ($answers) {
+						$data['answers'][$questions[$i]->questionOrder] = $answers;
+					} else {
+						$data['answers'][$questions[$i]->questionOrder] = array();
+					}
+				}
+				
+			} else {
+				$data['questions'] = array();
+			}
+			
 			$this->load->view('header', $data);
 			$this->load->view('view_learning', $data);
 		} else {
 			redirect('login', 'refresh');
 		}
+	}
+
+	public function quiz() {
+		$courseID = $this->input->get('courseID');
+		$q1 = $this->input->post('q1');
+		//$this->session->set_flashdata('msg', $q1);
+		//redirect('learning', 'refresh');
+		redirect('course', 'refresh');
 	}
 }
 ?>

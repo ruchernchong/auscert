@@ -233,3 +233,98 @@ $(".courseActive").click(function() {
 		});
 	}
 });
+
+// Click handler for the 'next' button
+$('#next').click(function(e) {
+
+	$target = $('#current_question');
+	
+
+	if($target.next().length == 0) {
+		$form = $('#userInput')[0];
+    	if ($form.checkValidity()) {
+    		$form.submit();
+    	} else {
+        	alert("There are unanswered questions.");
+   		}
+		return;
+	}
+
+	if($target.next().next().length == 0) {
+		$(this).animate({opacity:0}, 200, function(e) {
+			$(this).removeClass("fa-chevron-circle-right");
+			$(this).css('color', '#7f7');
+			$(this).addClass("fa-caret-square-o-right");
+			$(this).animate({opacity:1}, 400);
+		});
+	}
+	
+	$('#prev').animate({opacity:1})
+
+	$target.removeAttr("id");
+	$target.next().attr('id', 'current_question');
+	
+	$target.hide('slow');
+	$target.next().show('slow');
+
+	e.preventDefault();
+
+/* Suspend click listener during fade animation
+if(quiz.is(':animated')) {        
+	return false;
+}
+choose();
+
+// If no user selection, progress is stopped
+if (isNaN(selections[questionCounter])) {
+	alert('Please make a selection!');
+} else {
+	questionCounter++;
+	displayNext();
+}*/
+});
+
+// Click handler for the 'next' button
+$('#prev').click(function(e) {
+	$target = $('#current_question');
+
+	if($target.prev().length == 0) {
+		return;
+	}
+
+	if($target.prev().prev().length == 0) {
+		$(this).animate({opacity:0});
+	}
+
+	$next = $('#next');
+	if($next.hasClass("fa-caret-square-o-right")) {
+		$next.animate({opacity:0}, 200, function(e) {
+			$next.removeClass("fa-caret-square-o-right");
+			$next.css('color', '#bbb');
+			$next.addClass("fa-chevron-circle-right");
+			$next.animate({opacity:1}, 400);
+		});
+	}
+
+	$target.removeAttr("id");
+	$target.prev().attr('id', 'current_question');
+	
+	$target.hide('slow');
+	$target.prev().show('slow');
+	
+	e.preventDefault();
+
+/* Suspend click listener during fade animation
+if(quiz.is(':animated')) {        
+	return false;
+}
+choose();
+
+// If no user selection, progress is stopped
+if (isNaN(selections[questionCounter])) {
+	alert('Please make a selection!');
+} else {
+	questionCounter++;
+	displayNext();
+}*/
+});
