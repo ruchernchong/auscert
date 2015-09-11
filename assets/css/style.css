@@ -11,6 +11,7 @@ body {
 	padding: 0;
 	background: url('../img/imgBackground.png') fixed no-repeat bottom right;
 }
+
 #formModal {
 	position: fixed;
 	min-height: 150px;
@@ -18,12 +19,14 @@ body {
 	background: rgba(255,255,255,0.5);
 	border-radius: 25px;
 }
+
 @media(max-width: 720px) {
 	#formModal {
 		top: 25%;
 		left: 25%;
 		width: 50%;
 	}
+
 	.formLogin, .formRegister {
 		width: 90%;
 		min-height: 150px;
@@ -33,12 +36,14 @@ body {
 		padding: 10px;
 	}
 }
+
 @media(min-width: 768px) {
 	#formModal {
 		top: 25%;
 		left: 35%;
 		width: 30%;
 	}
+
 	.formLogin, .formRegister {
 		width: 75%;
 		min-height: 150px;
@@ -48,32 +53,18 @@ body {
 		padding: 10px;
 	}
 }
+
 input:focus {
-	-webkit-appearance:none;
+	-webkit-appearance: none;
 	-webkit-box-shadow: none;
 	outline:none;
 }
+
 .errorMessage {
 	font-weight: bold;
 	color: #ff0000;
 }
-/*.content,.footer {width:1080px;margin:0 auto;padding:0 5px;}
-.content-inner {float:left;padding:0 5px;margin-bottom:25px;width:1080px;}
-.header {width:100%;height:100px;margin-bottom:0px;background-color:#49075e;}
-.nav {height:35px;width:100%;background-color: black;}
-.uq-logo {width:180px;height:50px;background-image: url(../../assets/img/uq_logo.png);float:left;}
-.logo {font-size:large;color:white;font-family:"Lato Black";font-weight:600;font-size:22px;padding:13px 21px;float:left;width:300px;float:left;}
-.login {float:right;line-height:40px;}
-.footer {/*border-top:1px solid #ddd;*//*clear:both;margin-top:25px;}
-.footer p {color:#DDD;font-size:11px;font-family:tahoma;text-align:center;}
-#map-canvas {width:620px;height:600px;float:left;border:1px solid #CCC;}
-.topic-list {background-color:#4aa3df;float:left;width:200px;min-height: 400px;}
-.slide-content{background-color: red;width:800px;height:500px;float:right;}
-.slide-list {background-color:green;width:800px;height:150px;float:right;} 
 
-.sidebar {width:400px;height:600px;border-top:1px solid #ccc;border-bottom: 1px solid #ccc; float:left;margin:0px 0px 5px 45px;padding:0;}
-.pin_icon {width:21px;height:34px;margin:10px;float:left;}
-.btn {font-size:15px;padding:5px 15px;border-radius:6px;}*/
 .btn-UQ {
 	display: inline-block;
 	color: #FFF;
@@ -93,22 +84,7 @@ input:focus {
 	background-color: #820ca7;
 	transition-duration: .5s;
 }
-/*.r_box {width:240px;float:left;margin-left:15px;}
-.r_box a {width:240px;display:inline-block;color:blue;font-weight:600;font-size: 16px;text-decoration: none;}
-.r_box a:hover {text-decoration: underline;}
-.r_box a.btn {width:auto;background-color:#3498db;color:white;text-decoration:none;font-family:Tahoma,Arial;font-weight:400;margin-top:5px;}
-.r_box a.btn:hover {background-color: #5dade2;}
-.r_box span.address {color:#ccc;font-size:12px;font-family:'Open Sans';}
-.sidebar ul { list-style:none;margin:0;padding:0;float:left;width:400px;}
-.sidebar ul  li  {padding:10px 0;float:left;clear:both;font-family: 'Lato',Arial;font-weight: 300; border-bottom:1px dashed #eee;padding-bottom:20px;width:100%;}
-.sidebar ul  li:hover {background-color:#f7f7f7;}
-.sidebar ul  li img {float:left;margin-left:15px;border:1px solid #ccc;}
 
-.login_bg {background-color: #49075e;}
-*/
-/*
-.form-group {width:300px;min-height: 0px;position:relative;margin-top:10px;margin-bottom:10px;}
-*/
 .input-group input.text-input {
 	height: 40px;
 	border-radius: 0px;
@@ -116,6 +92,7 @@ input:focus {
 	font-size: 16px;
 	font-weight: 600;
 }
+
 .input-group input.text-input:focus {
 	border-color: #49075e;
 	transition: border-color ease-in-out .15s,
@@ -123,13 +100,15 @@ input:focus {
 	color ease-in-out .15s;
 	color: #49075e;
 }
+
 .input-group input.text-input:focus + label {
 	color: #49075e;
 }
+
 .login-icon {
 	width: 20px;
 	height: 20px;
-	positionrelative;
+	position: relative;
 	top: 20px;
 	left: 35px;
 	font-family: Flat-UI-Pro-Icons;
@@ -144,8 +123,40 @@ input:focus {
 .icon-person:before {
 	content: "\e631";
 }
-/*.form-group input[type="submit"] {width:250px;height:40px;border: 0 none; padding:4px;margin:5px 22px;border-radius: 0px;}*/
-/*.err_msg {color:red;font-family: "Lato";width:250px;margin:5px 22px;display: inline-block;}
+
+/*.content,.footer {width:1080px;margin:0 auto;padding:0 5px;}
+.content-inner {float:left;padding:0 5px;margin-bottom:25px;width:1080px;}
+.header {width:100%;height:100px;margin-bottom:0px;background-color:#49075e;}
+.nav {height:35px;width:100%;background-color: black;}
+.uq-logo {width:180px;height:50px;background-image: url(../../assets/img/uq_logo.png);float:left;}
+.logo {font-size:large;color:white;font-family:"Lato Black";font-weight:600;font-size:22px;padding:13px 21px;float:left;width:300px;float:left;}
+.login {float:right;line-height:40px;}
+.footer {/*border-top:1px solid #ddd;*//*clear:both;margin-top:25px;}
+.footer p {color:#DDD;font-size:11px;font-family:tahoma;text-align:center;}
+#map-canvas {width:620px;height:600px;float:left;border:1px solid #CCC;}
+.topic-list {background-color:#4aa3df;float:left;width:200px;min-height: 400px;}
+.slide-content{background-color: red;width:800px;height:500px;float:right;}
+.slide-list {background-color:green;width:800px;height:150px;float:right;} 
+
+.sidebar {width:400px;height:600px;border-top:1px solid #ccc;border-bottom: 1px solid #ccc; float:left;margin:0px 0px 5px 45px;padding:0;}
+.pin_icon {width:21px;height:34px;margin:10px;float:left;}
+.btn {font-size:15px;padding:5px 15px;border-radius:6px;}
+
+.r_box {width:240px;float:left;margin-left:15px;}
+.r_box a {width:240px;display:inline-block;color:blue;font-weight:600;font-size: 16px;text-decoration: none;}
+.r_box a:hover {text-decoration: underline;}
+.r_box a.btn {width:auto;background-color:#3498db;color:white;text-decoration:none;font-family:Tahoma,Arial;font-weight:400;margin-top:5px;}
+.r_box a.btn:hover {background-color: #5dade2;}
+.r_box span.address {color:#ccc;font-size:12px;font-family:'Open Sans';}
+.sidebar ul { list-style:none;margin:0;padding:0;float:left;width:400px;}
+.sidebar ul  li  {padding:10px 0;float:left;clear:both;font-family: 'Lato',Arial;font-weight: 300; border-bottom:1px dashed #eee;padding-bottom:20px;width:100%;}
+.sidebar ul  li:hover {background-color:#f7f7f7;}
+.sidebar ul  li img {float:left;margin-left:15px;border:1px solid #ccc;}
+
+.login_bg {background-color: #49075e;}
+.form-group {width:300px;min-height: 0px;position:relative;margin-top:10px;margin-bottom:10px;}
+.form-group input[type="submit"] {width:250px;height:40px;border: 0 none; padding:4px;margin:5px 22px;border-radius: 0px;}
+.err_msg {color:red;font-family: "Lato";width:250px;margin:5px 22px;display: inline-block;}
 
 .btn {display:inline-block;color:white;cursor:pointer;font-family:'Lato';text-decoration:none;font-weight:600;} 
 .btn-blue {background-color:#3498db;}
@@ -207,7 +218,6 @@ form#delete{display:none;}
 .effect7{position:relative;-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;}
 .effect7:before, .effect7:after{content:"";position:absolute; z-index:-1;-webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);-moz-box-shadow:0 0 20px rgba(0,0,0,0.8);box-shadow:0 0 20px rgba(0,0,0,0.8);top:0;bottom:0;left:10px;right:10px;-moz-border-radius:100px / 10px;border-radius:100px / 10px;}
 .effect7:after {right:10px;left:auto;-webkit-transform:skew(8deg) rotate(3deg); -moz-transform:skew(8deg) rotate(3deg);     -ms-transform:skew(8deg) rotate(3deg);     -o-transform:skew(8deg) rotate(3deg); transform:skew(8deg) rotate(3deg);}
-
 
 em{
 	font-style: italic;
