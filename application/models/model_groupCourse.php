@@ -5,7 +5,7 @@ Class model_groupCourse extends CI_Model {
 		parent::__construct();
 	}
 
-    //Returns a list of courses assigned to a group
+	//Returns a list of courses assigned to a group
 	public function GetGroupCourses($groupID) {
 		$this->db->select('gc.groupID, gc.courseID, c.courseName');
 		$this->db->from('courses AS c, group_courses AS gc');
@@ -19,14 +19,14 @@ Class model_groupCourse extends CI_Model {
 		return false;
 	}
 
-    //Assign course to group
-    public function AddCourseToGroup() {
-        return true;
-    }
+	//Assign course to group
+	public function AddCourseToGroup() {
+		return true;
+	}
 
-    //Remove a course from the group
-    public function RemoveCourseFromGroup() {
-        return true;
-    }
+	//Remove a course from the group
+	public function RemoveCourseFromGroup() {
+		return true;
+	}
 }
 ?>

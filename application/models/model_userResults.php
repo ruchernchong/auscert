@@ -5,7 +5,7 @@ Class model_userResults extends CI_Model {
 		parent::__construct();
 	}
 
-//Add a new answer to the answers table for a given course, or updates if it already exists 
+	//Add a new answer to the answers table for a given course, or updates if it already exists 
 	public function SaveResults($courseID, $userID, $results) {
 	// find how many attempts have already been made
 		$this->db->where('courseID', $courseID);

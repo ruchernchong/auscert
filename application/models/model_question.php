@@ -36,8 +36,8 @@ Class model_question extends CI_Model {
 		if ($query->num_rows > 0) {
 			$data = array(
 				'questionText' => $questionText,
-			);
-		
+				);
+			
 			$this->db->where('courseID', $courseID);
 			$this->db->where('questionOrder', $questionOrder);
 			$this->db->update('questions', $data);
@@ -46,8 +46,8 @@ Class model_question extends CI_Model {
 				'courseID' => $courseID,
 				'questionOrder' => $questionOrder,
 				'questionText' => $questionText,
-			);
-		
+				);
+			
 			$this->db->insert('questions', $data);
 		}
 	}
