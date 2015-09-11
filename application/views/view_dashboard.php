@@ -14,14 +14,6 @@ if (!empty($this->session->flashdata('denied'))) {
 				<h1 class="page-header">Dashboard
 					<small>Content Overview</small>
 				</h1>
-				<!-- <ol class="breadcrumb">
-					<li class="pull-right">
-						<div id="reportrange" class="btn btn-green btn-square date-picker">
-							<i class="fa fa-calendar"></i>
-							<span class="date-range">&emsp;<?php echo date('l\, jS \of F Y'); ?></span> <i class="fa fa-caret-down"></i>
-						</div>
-					</li>
-				</ol> -->
 			</div>
 		</div>
 	</div>
@@ -196,7 +188,7 @@ if (!empty($this->session->flashdata('denied'))) {
 		</div>
 	</div>
 </div>
-			<!-- <div class="col-lg-4 col-sm-6">
+<!-- <div class="col-lg-4 col-sm-6">
 				<div class="circle-tile">
 					<a href="#">
 						<div class="circle-tile-heading blue">
