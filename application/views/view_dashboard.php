@@ -109,14 +109,16 @@ if (!empty($this->session->flashdata('denied'))) {
 					<div class="panel-completed body">
 						<div class="table-responsive">
 							<table class="table table-hover">
-								<thead>
-									<th>Course Name</th>
-									<th>Mark</th>
-									<th>Pass/Fail</th>
-								</thead>
-								<tbody>
-									<?php 
-									if (!empty($completedUserCourses)) {
+								<?php 
+								if (!empty($completedUserCourses)) {
+									?>
+									<thead>
+										<th>Course Name</th>
+										<th>Mark</th>
+										<th>Pass/Fail</th>
+									</thead>
+									<tbody>
+										<?php
 										foreach ($completedUserCourses as $completedUserCourse) {
 											?>
 											<tr data-href="learning/?courseID=<?php echo $completedUserCourse->courseID; ?>">
