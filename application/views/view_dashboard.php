@@ -32,23 +32,32 @@ if (!empty($this->session->flashdata('denied'))) {
 				<div class="panel panel-heading-course">
 					<h3 class="panel-title">Course List</h3>
 				</div>
-				<div class="panel panel-course body">
-					<table class="table table-hover">
-						<tbody>
-							<?php 
-							foreach ($userCourses as $userCourse) {
+				<div class="panel-course body">
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<th>Course Name</th>
+							</thead>
+							<tbody>
+								<?php 
+								foreach ($userCourses as $userCourse) {
+									?>
+									<tr data-href="learning/?courseID=<?php echo $userCourse->courseID; ?>">
+										<td>
+											<?php echo $userCourse->courseName; ?>
+										</td>
+									</tr>
+										<!-- <div class="form-group">
+										<a href="learning/?courseID=<?php echo $userCourse->courseID; ?>" class="courseLink">
+											<label><?php echo $userCourse->courseName; ?></label>
+										</a>
+									</div> -->
+									<?php
+								}
 								?>
-								<div class="form-group">
-									<a href="learning/?courseID=<?php echo $userCourse->courseID; ?>" class="courseLink">
-										<label><?php echo $userCourse->courseName; ?></label>
-									</a>
-									<!-- <a class="btn btn-danger pull-right" href="home/dropCourse?id=<?php echo $course->courseID; ?>">Drop Course</a> -->
-								</div>
-								<?php
-							}
-							?>
-						</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -170,12 +179,12 @@ if (!empty($this->session->flashdata('denied'))) {
 	</div>
 </div>
 <div class="col-lg-4">
-	<div class="panel panel-calendar">
-		<div class="panel panel-heading-calendar">
+	<div class="panel panel-announcement">
+		<div class="panel panel-heading-announcement">
 			<h3 class="panel-title">Reminder</h3>
 		</div>
-		<div class="panel panel-calendar body">
-			<div class="calendar center">
+		<div class="panel-announcement body">
+			<div class="announcement center">
 				<h2><b><?php echo date("F"); ?></b></h2>
 				<h1><b><?php echo date("d"); ?></b></h1>
 			</div>
@@ -209,33 +218,39 @@ if (!empty($this->session->flashdata('denied'))) {
 					<div class="panel panel-heading-progress">
 						<h3 class="panel-title">Course Progress</h3>
 					</div>
-					<div class="panel panel-progress body">
-						<table class="table">
-							<?php 
-							if (empty($userCourses[0]->completion)) {
-								?>
-								<label>You do not have any courses enrolled.</label>
-								<?php
-							} else {
-								foreach ($userCourses as $userCourse) { 
+
+					<div class="panel-progress body">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<?php 
+								if (empty($userCourses[0]->completion)) {
 									?>
-									<tr data-href="<?php echo site_url('learning?courseID=' . $userCourse->courseID); ?>">
-										<td width="50%">
-											<?php
-											if ($userCourse->completion == 100) {
-												?>
-												<span class="label label-success">Completed</span>
+									<label>You do not have any courses enrolled.</label>
+									<?php
+								} else {
+									foreach ($userCourses as $userCourse) { 
+										?>
+										<tr data-href="<?php echo site_url('learning?courseID=' . $userCourse->courseID); ?>">
+											<td width="50%">
 												<?php
-											} else if ($userCourse->completion == 0) {
+												if ($userCourse->completion == 100) {
+													?>
+													<span class="label label-success">Completed</span>
+													<?php
+												} else if ($userCourse->completion == 0) {
+													?>
+													<span class="label label-danger">Not Started</span>
+													<?php
+												} else if ($userCourse->completion < 0 || $userCourse->completion > 100) {
+													?>
+													<span class="label label-info">WTF?</span>
+													<?php
+												} else {
+													?>
+													<span class="label label-warning">In Progress</span>
+													<?php 
+												} 
 												?>
-												<span class="label label-danger">Not Started</span>
-												<?php
-											} else {
-												?>
-												<span class="label label-warning">In Progress</span>
-												<?php 
-											} 
-											?>
 <!-- 										</td>
 										<td class="project-title">
 											<td> -->
@@ -261,6 +276,7 @@ if (!empty($this->session->flashdata('denied'))) {
 				</div>
 			</div>
 		</div>
+	</div>
 
 		<!-- <div class="row">
 			<div class="col-lg-12" id="courseList">

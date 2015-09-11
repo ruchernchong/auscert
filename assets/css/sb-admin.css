@@ -591,14 +591,6 @@ ul.alert-dropdown {
 	{                
 		color: green;
 	}
-	.panel-heading-calendar {
-		color: white;
-		padding: 10px 15px;
-		border-bottom: 1px solid transparent;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		background: #c00000;
-	}
 	.panel-heading-course {
 		color: white;
 		padding: 10px 15px;
@@ -614,6 +606,14 @@ ul.alert-dropdown {
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
 		background: #538234;
+	}
+	.panel-heading-announcement {
+		color: white;
+		padding: 10px 15px;
+		border-bottom: 1px solid transparent;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		background: #c00000;
 	}
 	.panel-heading-progress {
 		color: white;
@@ -632,7 +632,7 @@ ul.alert-dropdown {
 		/*height: 150px;*/
 		background: #e2f0d9;
 	}
-	.panel-calendar {
+	.panel-announcement {
 		height: 250px;
 		background: #f6c8ca;
 	}
@@ -642,49 +642,53 @@ ul.alert-dropdown {
 	.center {
 		text-align: center;
 	}
-	.calendar {
+	.announcement {
 		padding: 10px;
 	}
 	.panel-course .body,
 	.panel-completed .body,
-	.panel-calendar .body {
+	.panel-announcement .body,
+	.panel-progress .body {
 		overflow: auto;
 		height: 200px;
 		padding: 15px;
 		padding-top: 0;
 	}
 	.panel-course .body::-webkit-scrollbar,
-	.panel-completed .body::-webkit-scrollbar {
-		width: 0;
+	.panel-completed .body::-webkit-scrollbar,
+	.panel-announcement .body::-webkit-scrollbar,
+	.panel-progress .body::-webkit-scrollbar {
+		/*width: 0;*/
 	}
-	.panel-progress .body {
+	/*.panel-progress .body {
 		padding: 15px;
-	}
-	.table>tbody>tr>td, 
-	.table>tbody>tr>th, 
-	.table>tfoot>tr>td, 
-	.table>tfoot>tr>th, 
-	.table>thead>tr>td, 
-	.table>thead>tr>th {
-		vertical-align: middle;
-	}
-	.progress {
-		margin: 10px 0;
-	}
-	.navbar-inverse .navbar-nav>.active>a, 
-	.navbar-inverse .navbar-nav>.active>a:focus {
-		/*font-weight: bold;*/
-		background: rgba(255,255,255,0.2);
-		border-radius: 10px;
-		font-size: 16px;
-	}
-	.navbar-inverse .navbar-nav>.active>a:hover {
-		background: rgba(255,255,255,0.5);
-		border-radius: 10px;
-		font-size: 16px;
-	}
-	.navbar-inverse .navbar-nav>li>a:hover {
-		background: rgba(255,255,255,0.5);
-		border-radius: 10px;
-		font-size: 16px;
-	}
+		padding
+		}*/
+		.table>tbody>tr>td, 
+		.table>tbody>tr>th, 
+		.table>tfoot>tr>td, 
+		.table>tfoot>tr>th, 
+		.table>thead>tr>td, 
+		.table>thead>tr>th {
+			vertical-align: middle;
+		}
+		.progress {
+			margin: 10px 0;
+		}
+		.navbar-inverse .navbar-nav>.active>a, 
+		.navbar-inverse .navbar-nav>.active>a:focus {
+			/*font-weight: bold;*/
+			background: rgba(255,255,255,0.2);
+			border-radius: 10px;
+			font-size: 16px;
+		}
+		.navbar-inverse .navbar-nav>.active>a:hover {
+			background: rgba(255,255,255,0.5);
+			border-radius: 10px;
+			font-size: 16px;
+		}
+		.navbar-inverse .navbar-nav>li>a:hover {
+			background: rgba(255,255,255,0.5);
+			border-radius: 10px;
+			font-size: 16px;
+		}
