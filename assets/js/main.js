@@ -200,6 +200,8 @@ new_question.show('slow');
 CKEDITOR.replace('question_' + questionCount);
 });
 
+
+//Ajax method for handling course status based on the state of the checkbox
 $(".courseActive").click(function() {
 	if ($(this).prop('checked') == true) {
 		var courseID = $(this).attr('id').match(/\d+/)[0]*1;
@@ -233,3 +235,7 @@ $(".courseActive").click(function() {
 		});
 	}
 });
+
+//Get courseIDs of all the checked courses in the assigned courses table and updates the database accordingly
+
+//Get courseID of all the checked courses in the available courses table and updates the database accordingly

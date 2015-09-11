@@ -201,11 +201,6 @@ $("#menu-toggle").click(function(e) {
 	$("#wrapper").toggleClass("toggled");
 });
 
-// $('.courseActive').click(function(e) {
-// 	// e.preventDefault();
-// 	$(this).find('i').toggleClass('fa-check-square-o fa-square-o');
-// });
-
 $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
 	$('#pageAdmin').removeAttr('href');

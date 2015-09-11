@@ -79,7 +79,7 @@
                                         <?php foreach($otherCourses as $course) {?>
                                         <tr>
                                             <td>
-                                                <input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
+                                                <input type="checkbox" id="check_<?php echo $course->courseID;?>" value="<?php echo $course->courseID;?>" class="courseActive">
                                                 <label for="activeNotChecked_<?php echo $course->courseID; ?>" activelabel"></label>
                                             </td>
                                             <td><?php echo $course->courseID ?></td>
@@ -96,3 +96,7 @@
 	    </div>
     </div>
 </div>
+
+<!--Include script for event listeners    -->
+<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+

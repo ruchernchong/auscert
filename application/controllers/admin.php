@@ -94,13 +94,13 @@ class admin extends CI_Controller
 	function ifActive()
 	{
 		$courseID = $this->input->post('courseID');
-		$courseIfActive = $this->model_course->ifActive($courseID);
+		$this->model_course->ActivateCourse($courseID);
 	}
 
 	function ifNotActive()
 	{
 		$courseID = $this->input->post('courseID');
-		$courseIfNotActive = $this->model_course->ifNotActive($courseID);
+		$this->model_course->DeactivateCourse($courseID);
 	}
 }
 
