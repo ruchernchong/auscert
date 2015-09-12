@@ -248,6 +248,7 @@ $("#add_course_btn").click(function() {
 	//loop through each checkbox in the table and add checked courseIDs to the array	var otherCourseIDs = [];
 	var groupID = $("#courseIDHeader").attr('value');
 	var otherCourseIDs = [];
+
 	$('.otherSelected').each(function() {
 		if (this.checked == true) {
 			otherCourseIDs.push($(this).attr('value'));
@@ -262,6 +263,7 @@ $("#add_course_btn").click(function() {
 			groupID : groupID
 		},
 		success: function(response) {
+			location.reload();
 			console.log(response);
 		},
 		error: function(error) {
@@ -275,6 +277,7 @@ $("#remove_course_btn").click(function() {
 	//loop through each checkbox in the table and add checked courseIDs to the array
 	var groupID = $("#courseIDHeader").attr('value');
 	var assignedCourseIDs = [];
+	
 	$('.assignedSelected').each(function() {
 		if (this.checked == true) {
 			assignedCourseIDs.push($(this).attr('value'));
@@ -289,6 +292,7 @@ $("#remove_course_btn").click(function() {
 			groupID : groupID
 		},
 		success: function(response) {
+			location.reload();
 			console.log(response);
 		},
 		error: function(error) {
