@@ -182,8 +182,24 @@ if (!empty($this->session->flashdata('denied'))) {
 		</div>
 		<div class="panel-announcement body">
 			<div class="announcement center">
-				<h2><b><?php echo date("F"); ?></b></h2>
-				<h1><b><?php echo date("d"); ?></b></h1>
+				<ul>
+					<li>
+						<img class="img-circle" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>" alt="User Placeholder Image" />
+					</li>
+					<li>
+						<h4>
+							Logged in as <i><?php echo $username; ?></i>
+						</h4>
+						<hr />
+						<!-- <h4>
+							<b><?php echo date("F"); ?></b>
+						</h4>
+						<h3>
+							<b><?php echo date("d"); ?></b>
+						</h3> -->
+						<!-- <hr /> -->
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
