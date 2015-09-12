@@ -68,7 +68,7 @@ class manageCourse extends CI_Controller {
         }
 //        $this->debug_to_console($_SERVER['REQUEST_URI']);
 //        header("Location: " . $_SERVER['REQUEST_URI']);
-//        header('Location: http://localhost/auscert/manageCourse?groupID=1');
+        header('Location: http://localhost/auscert/manageCourse?groupID=1');
     }
 
     //remove courses from a group
@@ -88,7 +88,6 @@ class manageCourse extends CI_Controller {
             $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
         else
             $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-
         echo $output;
     }
 }
