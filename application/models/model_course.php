@@ -26,15 +26,17 @@ Class model_course extends CI_Model {
 
 	//returns a list of courses except the ones stated in the argument
 	public function GetAllCoursesExcept($omittedCourses) {
-		$this->db->from('courses');
-		$this->db->order_by('courseID', 'ASC');
-		$this->db->where_not_in('courseID', $omittedCourses);
-		$query = $this->db->get();
+		if (count($omittedCourses) > 0) {
+			$this->db->from('courses');
+			$this->db->order_by('courseName', 'ASC');
+			$this->db->where_not_in('courseID', $omittedCourses);
+			$query = $this->db->get();
 
-		if ($query->num_rows > 0) {
-			return $query->result();
+			if ($query->num_rows > 0) {
+				return $query->result();
+			}
+			return false;
 		}
-		return false;
 	}
 
 	//returns a course based on an ID
@@ -121,7 +123,7 @@ Class model_course extends CI_Model {
 			'description' => $courseDescription,
 			'lastEdited' => date("Y-m-d H:i:s", time())
 			);
-		
+
 		$this->db->where('courseID', $courseID);
 		$this->db->update('courses', $data);
 	}
