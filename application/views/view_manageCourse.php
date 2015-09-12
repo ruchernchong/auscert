@@ -13,10 +13,10 @@
 					<div class="table-responsive">
 						<div class="col-lg-5">
 							<div class="panel panel-primary">
-								<div class="panel panel-heading">
+								<div class="panel-heading">
 									<h3 class="panel-title">Courses Assigned to Group</h3>
 								</div>
-								<div class="panel-body">
+								<div class="panel-body" style="height: 400px;overflow: auto;">
 									<table class="table table-striped table-hover">
 										<thead>
 											<tr>
@@ -42,7 +42,7 @@
 										} else {
 											?>
 											<tr>
-												<td colspan="2">There are no courses available.</td>
+												<td colspan="3">There are no courses available.</td>
 											</tr>
 											<?php
 										}
@@ -67,7 +67,7 @@
 							<div class="panel-heading">
 								<h3 class="panel-title">Courses Available</h3>
 							</div>
-							<div class="panel-body">
+							<div class="panel-body" style="height: 400px;overflow: auto;">
 								<table class="table table-striped table-hover">
 									<thead>
 										<tr>
