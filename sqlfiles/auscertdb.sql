@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`, `description`, `dateCreated`, `lastEdited`) VALUES
-(1, 'Phising Emails', 'Safety', 'Tartiner Studios', 0, 'Introduciton to the phishing emails. What they are and what you can do to avoid being a victim', '2015-03-08 10:00:00', '2015-03-08 10:00:00'),
+(1, 'Phising Emails', 'Safety', 'Tartiner Studios', 1, 'Introduciton to the phishing emails. What they are and what you can do to avoid being a victim', '2015-03-08 10:00:00', '2015-03-08 10:00:00'),
 (2, 'Choosing A Safe Password', 'Security', 'Redones', 1, '<p>This course will guide you through how a password works as well as steps to take to ensure a strong and secure password</p>\r\n', '2015-07-15 10:00:00', '2015-09-02 22:00:18'),
 (3, 'Tartiner Studios Training', 'Introductory', 'Tartiner Studios', 0, 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', '2015-08-12 10:00:00', '2015-08-17 10:00:00'),
 (4, 'SQL Injection Attacks', 'Cyber Attacks', 'AusCert', 1, 'Introduction to what SQL Injection Attacks are and how to avoid them', '2015-06-19 10:00:00', '2015-08-25 10:00:00'),
@@ -51,23 +51,33 @@ INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`
 (7, 'Ru Chern Workshop', 'Introductory', 'ruchern', 0, 'Ez Workshop.', '2015-08-20 14:13:41', '2015-08-20 14:13:41'),
 (9, 'Tartiner Studios UX Design', 'Design', 'ruchern', 0, 'Please submit your UX Video to blog by Tuesday.\r\n\r\n*This is a test post.', '2015-08-21 12:01:23', '2015-08-21 12:01:23'),
 (10, 'Tartiner Week 6 2nd Sprint', 'Sprint Zero', 'RuChern', 0, '2nd Checkpoint', '2015-08-26 22:45:53', '2015-08-26 22:45:53'),
-(11, 'Old School - AustLit', 'Introductory', 'RuChern', 1, '<p>Learn to use Children&#39;s Literature Digital Resource (CLDR).</p>\r\n', '2015-09-01 21:43:15', '2015-09-02 21:50:13');
+(11, 'Old School - AustLit', 'Introductory', 'RuChern', 0, '<p>Learn to use Children&#39;s Literature Digital Resource (CLDR).</p>\r\n', '2015-09-01 21:43:15', '2015-09-02 21:50:13');
 
 DROP TABLE IF EXISTS `groups`;
 CREATE TABLE IF NOT EXISTS `groups` (
   `groupID` int(11) NOT NULL,
   `organisation` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 INSERT INTO `groups` (`groupID`, `organisation`) VALUES
+(0, 'Administrators'),
 (1, 'Tartiner Studios'),
 (2, 'AusCert'),
 (3, 'UQ ITEE'),
-(4, 'BEL Faculty'),
-(5, 'UQ Engineering'),
+(4, 'UQ BEL'),
+(5, 'UQ EAIT'),
 (6, 'UQ Staff'),
 (7, 'UQ Union'),
-(8, 'UQ Student');
+(8, 'UQ Students'),
+(9, 'UQ HABS'),
+(10, 'UQ HASS'),
+(11, 'UQ MBS'),
+(12, 'UQ Science Faculty'),
+(14, 'UQ ITS'),
+(15, 'UQ MAME'),
+(16, 'UQ AWMC'),
+(17, 'Noblest Creative'),
+(18, 'AUSTLit');
 
 DROP TABLE IF EXISTS `group_courses`;
 CREATE TABLE IF NOT EXISTS `group_courses` (
@@ -76,13 +86,17 @@ CREATE TABLE IF NOT EXISTS `group_courses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `group_courses` (`groupID`, `courseID`) VALUES
-(1, 1),
-(2, 1),
-(1, 2),
-(2, 2),
+(5, 1),
 (3, 2),
 (1, 3),
-(2, 4);
+(2, 3),
+(5, 4),
+(5, 5),
+(1, 9),
+(2, 9),
+(1, 10),
+(2, 10),
+(18, 11);
 
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
@@ -121,19 +135,29 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(65) NOT NULL,
   `contact` varchar(255) NOT NULL,
   `userType` varchar(24) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 INSERT INTO `users` (`userID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
-(1, 'admin', 'admin', 'admin@gmail.com', '000', 'admin'),
-(2, 'Leon', 'admin', 'leonxenarax@gmail.com', '000', 'creator'),
-(3, 'RuChern', 'admin', 'iruchern@gmail.com', '+61 451 519 513', 'admin'),
-(4, 'helen', 'admin', 'helen@gmail.com', '000', 'admin'),
-(5, 'cameron', 'admin', 'cameron@gmail.com', '000', 'admin'),
-(6, 'ravi', 'admin', 'ravi@gmail.com', '+61 452 525 020', 'admin'),
-(7, 'mal', 'admin', 'mal.joseland@live.com', '000', 'admin'),
-(8, 'StudentTest', 'test', 'studenttest@uq.edu.au', '+61  1234 5678', 'student'),
-(9, 'StaffTest', 'test', 'StaffTest@uq.edu.au', '+61 1234 5678', 'staff'),
-(10, 'Chris Teakle', 'test', 'c.teakle@its.uq.edu.au', '+ 61 (7) 3346 6640, + 61 (7) 3365 7555', 'staff');
+(1, 'admin', 'admin', 'admin@tartiner.com', '', 'admin'),
+(2, 'leon', 'admin', 'leonxenarax@gmail.com', '0423 302 776', 'admin'),
+(3, 'ruchern', 'admin', 'ruchern.chong@uqconnect.edu.au', '0451 519 513', 'admin'),
+(4, 'huigyeong', 'admin', 'hk2518@hotmail.com', '0424 169 232', 'admin'),
+(5, 'cameron', 'admin', 'cameronpaulsen0@gmail.com', '0401 603 217', 'admin'),
+(6, 'ravi', 'admin', 'ravi_khemlani@hotmail.com', '0452 525 020', 'admin'),
+(7, 'mal', 'admin', 'mal.j@live.com', '0450 479 554', 'admin'),
+(8, 'jimsteel', 'admin', 'j.steel@uq.edu.au', '(07) 3365 4917', 'user'),
+(9, 'bolong', 'admin', 'b.zheng@uq.edu.au', '(07) 3365 2447', 'user'),
+(10, 'christeakle', 'admin', 'c.teakle@its.uq.edu.au', '(07) 3365 7555', 'admin'),
+(11, 's.cockcroft', 'admin', 'S.Cockcroft@business.uq.edu.au', '(07) 3346 8016', 'user'),
+(12, 'bethanieong', 'admin', 'bethanie.ong.9@facebook.com', '', 'user'),
+(13, 'joyceng', 'admin', '', '0452 571 787', 'user'),
+(14, 'gavino', 'admin', '', '0412 816 417', 'user'),
+(15, 'kuroneko', 'admin', '', '0451 932 133', 'user'),
+(16, 'adityarahardi', 'admin', '', '0406 504 067', 'user'),
+(17, 'j.hadwen', 'admin', 'j.hadwen@uq.edu.au', '(07) 3346 8265', 'user'),
+(18, 'c.mills', 'admin', 'c.mills@uq.edu.au', '(07) 3346 8279', 'user'),
+(19, 'm.farquhar', 'admin', 'm.farquhar@uq.edu.au', '(07) 3346 8265', 'user'),
+(20, 'k.kilner', 'admin', 'k.kilner@uq.edu.au', '(07) 3365 3313', 'user');
 
 DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE IF NOT EXISTS `user_courses` (
@@ -153,7 +177,7 @@ INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `
 (3, 1, '65.00', '', '100', 1),
 (3, 2, '10.00', '', '10', 1),
 (3, 3, '100.00', '', '85', 0),
-(3, 7, '100.00', '', '100', 0),
+(3, 7, '101.00', '', '100', 0),
 (3, 9, '100.00', '', '49', 0),
 (3, 11, '0.00', NULL, NULL, NULL);
 
@@ -164,21 +188,57 @@ CREATE TABLE IF NOT EXISTS `user_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
-(1, 1),
+(1, 0),
+(2, 0),
+(3, 0),
+(16, 0),
+(2, 1),
 (3, 1),
 (4, 1),
 (5, 1),
+(6, 1),
+(7, 1),
 (8, 1),
+(2, 2),
+(3, 2),
 (4, 2),
 (5, 2),
+(6, 2),
 (7, 2),
-(1, 4),
+(10, 2),
+(2, 3),
+(3, 3),
+(7, 3),
+(8, 3),
 (7, 4),
+(11, 4),
 (2, 5),
+(3, 5),
 (6, 5),
-(2, 6),
+(8, 5),
+(9, 5),
 (2, 7),
-(6, 8);
+(12, 7),
+(6, 8),
+(12, 9),
+(18, 10),
+(10, 14),
+(2, 17),
+(3, 17),
+(13, 17),
+(14, 17),
+(15, 17),
+(16, 17),
+(17, 17),
+(2, 18),
+(3, 18),
+(13, 18),
+(14, 18),
+(15, 18),
+(16, 18),
+(17, 18),
+(19, 18),
+(20, 18);
 
 DROP TABLE IF EXISTS `user_results`;
 CREATE TABLE IF NOT EXISTS `user_results` (
@@ -191,7 +251,8 @@ CREATE TABLE IF NOT EXISTS `user_results` (
 
 INSERT INTO `user_results` (`courseID`, `questionOrder`, `userID`, `attempt`, `userAnswer`) VALUES
 (2, 0, 1, 0, 2),
-(2, 0, 3, 0, 0);
+(2, 0, 3, 0, 0),
+(11, 0, 3, 0, 2);
 
 
 ALTER TABLE `answers`
@@ -228,11 +289,11 @@ ADD PRIMARY KEY (`courseID`,`questionOrder`,`userID`,`attempt`) USING BTREE;
 ALTER TABLE `courses`
 MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 ALTER TABLE `groups`
-MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 ALTER TABLE `slides`
 MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 ALTER TABLE `users`
-MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 
 ALTER TABLE `answers`
 ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`, `questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE,

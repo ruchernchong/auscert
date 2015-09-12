@@ -25,7 +25,6 @@
 	<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/course.js'); ?>"></script>
-
 </head>
 <body>
 	<div id="wrapper">
@@ -45,14 +44,13 @@
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li>
-							<img class="img-circle" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>" alt="User Placeholder Image" />
+						<li class="v-divider">
+							<span class="navbar-brand auscert-logo">&emsp;<b>AusCERT</b></span>
 						</li>
-						<li>
-							<a>
-								Logged in as: <?php echo $username; ?>
-							</a>
+						<li class="v-divider">
+							<span class="navbar-brand auscert-logo">&emsp;<small><b>Tartiner Studios</b></small></span>
 						</li>
+						<!-- <li><a class="navbar-brand">AusCERT</a></li> -->
 					</ul>
 					<ul class="nav navbar-nav pull-right">
 						<li <?php echo $menu=='home' ? 'class="active"' : '' ?>>
