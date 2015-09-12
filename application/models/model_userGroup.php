@@ -39,6 +39,7 @@ Class model_userGroup extends CI_Model {
 		$this->db->from('users AS u, user_groups AS ug');
 		$this->db->where('ug.groupID', $groupID);
 		$this->db->where('u.userID = ug.userID');
+		$this->db->order_by('username', 'ASC');
 		$query = $this->db->get();
 
 		if ($query->num_rows > 0) {
