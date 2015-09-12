@@ -387,7 +387,7 @@ if (!empty($this->session->flashdata('denied'))) {
 
 $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
-	$('#pageHome').removeAttr('cursor');
+	$('#pageHome').removeAttr('href');
 	// $('#confirmEnrol').on('show.bs.modal', function(e) {
 	// 	$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 	// });
