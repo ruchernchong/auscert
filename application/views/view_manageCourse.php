@@ -78,14 +78,8 @@
 									</thead>
 									<tbody>
 										<?php
-										if ($otherCourses == null) {
-											?>
-											<tr>
-												<td colspan="2">There are no courses available.</td>
-											</tr>
-											<?php
-										} else {
-											foreach($otherCourses as $course) {
+										if (!empty($otherCourses)) {
+											foreach ($otherCourses as $course) {
 												?>
 												<form id="otherCoursesForm">
 													<tr>
@@ -99,6 +93,12 @@
 												</form>
 												<?php
 											}
+										} else {
+											?>
+											<tr>
+												<td colspan="2">There are no courses available.</td>
+											</tr>
+											<?php
 										}
 										?>
 									</tbody>

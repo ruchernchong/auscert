@@ -9,6 +9,7 @@ Class model_groupCourse extends CI_Model {
 	public function GetGroupCourses($groupID) {
 		$this->db->select('gc.groupID, gc.courseID, c.courseName');
 		$this->db->from('courses AS c, group_courses AS gc');
+		$this->db->order_by('courseName', 'ASC');
 		$this->db->where('gc.groupID', $groupID);
 		$this->db->where('gc.courseID = c.courseID');
 		$query = $this->db->get();
@@ -20,17 +21,17 @@ Class model_groupCourse extends CI_Model {
 	}
 
     //Assign course to group
-    public function AddCourseToGroup($courseID, $groupID) {
-        $course = array('groupID' => $groupID, 'courseID' => $courseID);
-        $this->db->insert('group_courses', $course);
-    }
+	public function AddCourseToGroup($courseID, $groupID) {
+		$course = array('groupID' => $groupID, 'courseID' => $courseID);
+		$this->db->insert('group_courses', $course);
+	}
 
     //Remove a course from the group
-    public function RemoveCourseFromGroup($courseID, $groupID) {
-        $course = array('groupID' => $groupID, 'courseID' => $courseID);
-        $this->db->where($course);
-        $this->db->delete('group_courses');
-    }
+	public function RemoveCourseFromGroup($courseID, $groupID) {
+		$course = array('groupID' => $groupID, 'courseID' => $courseID);
+		$this->db->where($course);
+		$this->db->delete('group_courses');
+	}
 
 }
 ?>
