@@ -69,6 +69,21 @@ INSERT INTO `groups` (`groupID`, `organisation`) VALUES
 (7, 'UQ Union'),
 (8, 'UQ Student');
 
+DROP TABLE IF EXISTS `group_courses`;
+CREATE TABLE IF NOT EXISTS `group_courses` (
+  `groupID` int(11) NOT NULL,
+  `courseID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `group_courses` (`groupID`, `courseID`) VALUES
+(1, 1),
+(2, 1),
+(1, 2),
+(2, 2),
+(3, 2),
+(1, 3),
+(2, 4);
+
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
   `courseID` int(11) NOT NULL,
@@ -95,9 +110,7 @@ INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slid
 (2, 1, 2, 'Team Tartiner Testing Content of Further Study', 'Special Phishing Emails'),
 (3, 2, 1, '<p>So, how do you have a &ldquo;strong&rdquo; password that is easy to remember? While it may seem tough to do this, there are a few simple tips that can make it easy.Note: the examples below illustrate just the concepts being discussed. No single technique should be used on its own, but rather should be used with other techniques. The combination of several will produce a strong password.</p>\r\n', ' General Guidelines'),
 (4, 2, 2, '<p>You want to choose something that is easy to remember with a minimum of 8 characters that uses as many of the techniques above as possible. One way to do this is to pick a phrase you will remember, pick all the first or last letters from each word and then substitute some letters with numbers and symbols. You can then apply capitals to some letters (perhaps the first and last, or second to last, etc.) You could also perhaps keep or add punctuation.</p>\r\n', 'Passwords to choose'),
-(5, 2, 0, '<p>So, how do you have a &ldquo;strong&rdquo; password that is easy to remember? While it may seem tough to do this, there are a few simple tips that can make it easy.Note: the examples below illustrate just the concepts being discussed. No single technique should be used on its own, but rather should be used with other techniques. The combination of several will produce a strong password.</p>\r\n', 'General Guidelines'),
 (6, 11, 0, '<p>AustLit is a Lorem ipsum dolor si du met...</p>\r\n', 'Introduction to AustLit'),
-(7, 2, 0, '<p>So, how do you have a &ldquo;strong&rdquo; password that is easy to remember? While it may seem tough to do this, there are a few simple tips that can make it easy.Note: the examples below illustrate just the concepts being discussed. No single technique should be used on its own, but rather should be used with other techniques. The combination of several will produce a strong password.</p>\r\n', 'General Guidelines'),
 (8, 2, 3, '<p>If you only use words from a dictionary or a purely numeric password, a hacker only has to try a limited list of possibilities. A hacking program can try the full set in under one minute. If you use the full set of characters and the techniques above, you force a hacker to continue trying every possible combination to find yours. If we assume that the password is 8 characters long, this table shows how many times a hacker may have to before guessing your password. Most password crackers have rules that can try millions of word variants per second, so the more algorithmically complex your password, the better.</p>\r\n', 'Passwords not to choose');
 
 DROP TABLE IF EXISTS `users`;
@@ -127,9 +140,9 @@ CREATE TABLE IF NOT EXISTS `user_courses` (
   `userID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
   `completion` decimal(5,2) NOT NULL,
-  `description` text NOT NULL,
-  `grading` varchar(255) NOT NULL,
-  `mandatory` tinyint(1) NOT NULL
+  `description` text,
+  `grading` varchar(255) DEFAULT NULL,
+  `mandatory` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `grading`, `mandatory`) VALUES
@@ -141,8 +154,8 @@ INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `
 (3, 2, '10.00', '', '10', 1),
 (3, 3, '100.00', '', '85', 0),
 (3, 7, '100.00', '', '100', 0),
-(3, 9, '0.00', '', '', 0),
-(3, 11, '0.00', '', '', 0);
+(3, 9, '100.00', '', '49', 0),
+(3, 11, '0.00', NULL, NULL, NULL);
 
 DROP TABLE IF EXISTS `user_groups`;
 CREATE TABLE IF NOT EXISTS `user_groups` (
@@ -167,20 +180,19 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 (2, 7),
 (6, 8);
 
-DROP TABLE IF EXISTS `group_courses`;
-CREATE TABLE IF NOT EXISTS `group_courses` (
-  `groupID` int(11) NOT NULL,
-  `courseID` int(11) NOT NULL
+DROP TABLE IF EXISTS `user_results`;
+CREATE TABLE IF NOT EXISTS `user_results` (
+  `courseID` int(11) NOT NULL,
+  `questionOrder` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `attempt` int(11) NOT NULL,
+  `userAnswer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `group_courses` (`groupID`, `courseID`) VALUES
-(1,1),
-(1,2),
-(1,3),
-(2,1),
-(2,2),
-(2,4),
-(3,2);
+INSERT INTO `user_results` (`courseID`, `questionOrder`, `userID`, `attempt`, `userAnswer`) VALUES
+(2, 0, 1, 0, 2),
+(2, 0, 3, 0, 0);
+
 
 ALTER TABLE `answers`
 ADD PRIMARY KEY (`courseID`,`questionOrder`,`answerOrder`);
@@ -190,6 +202,9 @@ ADD PRIMARY KEY (`courseID`);
 
 ALTER TABLE `groups`
 ADD PRIMARY KEY (`groupID`), ADD KEY `groupID` (`groupID`);
+
+ALTER TABLE `group_courses`
+ADD PRIMARY KEY (`groupID`,`courseID`), ADD KEY `group_courses_ibfk_2` (`courseID`);
 
 ALTER TABLE `questions`
 ADD PRIMARY KEY (`courseID`,`questionOrder`);
@@ -206,8 +221,8 @@ ADD PRIMARY KEY (`userID`,`courseID`), ADD KEY `courseID` (`courseID`);
 ALTER TABLE `user_groups`
 ADD PRIMARY KEY (`userID`,`groupID`), ADD KEY `groupID` (`groupID`);
 
-ALTER TABLE `group_courses`
-ADD PRIMARY KEY (`groupID`,`courseID`);
+ALTER TABLE `user_results`
+ADD PRIMARY KEY (`courseID`,`questionOrder`,`userID`,`attempt`) USING BTREE;
 
 
 ALTER TABLE `courses`
@@ -223,6 +238,10 @@ ALTER TABLE `answers`
 ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`, `questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE,
 ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
+ALTER TABLE `group_courses`
+ADD CONSTRAINT `group_courses_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`),
+ADD CONSTRAINT `group_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
+
 ALTER TABLE `questions`
 ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
 
@@ -236,10 +255,6 @@ ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `course
 ALTER TABLE `user_groups`
 ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
 ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`);
-
-ALTER TABLE `group_courses`
-ADD CONSTRAINT `group_courses_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`),
-ADD CONSTRAINT `group_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

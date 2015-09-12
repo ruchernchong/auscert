@@ -1,9 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class admin extends CI_Controller
-{
-	function __construct()
-	{
+class admin extends CI_Controller {
+	function __construct() {
 		parent::__construct();
 
 		$this->load->model('model_course');
@@ -13,8 +11,7 @@ class admin extends CI_Controller
 		$this->load->model('model_userGroup');
 	}
 
-	function index()
-	{
+	function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
@@ -31,15 +28,14 @@ class admin extends CI_Controller
 			foreach ($users as $user) {
 				$groupArray = (!empty($this->model_userGroup->GetUserGroups($user->userID)) ? $this->model_userGroup->GetUserGroups($user->userID) : '');
 				$usersList = [
-					'userName' => $user->username,
-					'groupArray' => $groupArray,
-					'email' => $user->email,
-					'contact' => $user->contact,
-					'userType' => $user->userType
+				'userName' => $user->username,
+				'groupArray' => $groupArray,
+				'email' => $user->email,
+				'contact' => $user->contact,
+				'userType' => $user->userType
 				];
 				array_push($usersAndGroups, $usersList);
 			}
-
 
 			//Group list with associated array of users
 			$groupsAndUsers = [];
@@ -47,10 +43,10 @@ class admin extends CI_Controller
 				$userArray = (!empty($this->model_userGroup->GetGroupUsers($group->groupID)) ? $this->model_userGroup->GetGroupUsers($group->groupID) : '');
 				$userCount = (($this->model_userGroup->GetUserCount($group->groupID) != "") ? $this->model_userGroup->GetUserCount($group->groupID) : "No Members");
 				$groupList = [
-					'groupID' => $group->groupID,
-					'organisation' => $group->organisation,
-					'userArray' => $userArray,
-					'userCount' => $userCount
+				'groupID' => $group->groupID,
+				'organisation' => $group->organisation,
+				'userArray' => $userArray,
+				'userCount' => $userCount
 				];
 				array_push($groupsAndUsers, $groupList);
 			}
@@ -84,23 +80,19 @@ class admin extends CI_Controller
 	}
 
 	// Delete a course
-	function dropCourse()
-	{
+	function dropCourse() {
 		$courseID = $this->input->get('id', TRUE);
 		$this->model_course->DeleteCourse($courseID);
 		redirect('admin', 'refresh');
 	}
 
-	function ifActive()
-	{
+	function ifActive() {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->ActivateCourse($courseID);
 	}
 
-	function ifNotActive()
-	{
+	function ifNotActive() {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->DeactivateCourse($courseID);
 	}
 }
-

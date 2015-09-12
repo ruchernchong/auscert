@@ -5,7 +5,7 @@ Class model_groupCourse extends CI_Model {
 		parent::__construct();
 	}
 
-    //Returns a list of courses assigned to a group
+	//Returns a list of courses assigned to a group
 	public function GetGroupCourses($groupID) {
 		$this->db->select('gc.groupID, gc.courseID, c.courseName');
 		$this->db->from('courses AS c, group_courses AS gc');
@@ -31,5 +31,6 @@ Class model_groupCourse extends CI_Model {
         $this->db->where($course);
         $this->db->delete('group_courses');
     }
+
 }
 ?>

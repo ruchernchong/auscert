@@ -46,7 +46,7 @@ Class model_slide extends CI_Model {
 		$data = array(
 			'slideTitle' => $slideTitle,
 			'slideContent' =>  $slideContent,
-		);
+			);
 		
 		$this->db->where('courseID', $courseID);
 		$this->db->where('slideOrder', $slideOrder);
@@ -56,8 +56,8 @@ Class model_slide extends CI_Model {
 			$data = array(
 				'slideTitle' => $slideTitle,
 				'slideContent' =>  $slideContent,
-			);
-		
+				);
+			
 			$this->db->where('courseID', $courseID);
 			$this->db->where('slideOrder', $slideOrder);
 			$this->db->update('slides', $data);
@@ -67,8 +67,8 @@ Class model_slide extends CI_Model {
 				'slideOrder' => $slideOrder,
 				'slideTitle' => $slideTitle,
 				'slideContent' =>  $slideContent,
-			);
-	
+				);
+			
 			$this->db->insert('slides', $data);
 			$insert_id = $this->db->insert_id();
 		}

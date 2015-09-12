@@ -1,6 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
 class addCourse extends CI_Controller {
 	function __construct() {
 		parent::__construct();
@@ -53,7 +52,7 @@ class addCourse extends CI_Controller {
 			$courseID = $this->model_course->AddCourse($createCourseName, $createCourseCategory, 0, $createCourseDescription);
 
 			$this->session->set_flashdata('courseID', $courseID);
-			redirect('admin','refresh');
+			redirect('admin', 'refresh');
 		} else {
 			if ($this->session->userdata('logged_in')) {
 				$session_data = $this->session->userdata('logged_in');

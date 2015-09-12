@@ -58,7 +58,7 @@ Class model_userCourse extends CI_Model {
 		$this->db->where('completion', 100);
 		$this->db->join('users', 'users.userID = user_courses.userID', 'INNER');
 		$this->db->order_by('username', 'ASC');
-        $query = $this->db->get('user_courses');
+		$query = $this->db->get('user_courses');
 		return $query->result();
 	}
 
