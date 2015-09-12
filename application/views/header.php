@@ -48,7 +48,7 @@
 							<span class="navbar-brand auscert-logo">&emsp;<b>AusCERT</b></span>
 						</li>
 						<li class="v-divider">
-							<span class="navbar-brand auscert-logo">&emsp;<small><b>Tartiner Studios</b></small></span>
+							<span class="navbar-brand" id="tartiner-logo">&emsp;Tartiner Studios</span>
 						</li>
 						<!-- <li><a class="navbar-brand">AusCERT</a></li> -->
 					</ul>
