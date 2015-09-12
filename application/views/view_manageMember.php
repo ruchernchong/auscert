@@ -18,16 +18,18 @@
 								</div>
 								<div class="panel-body" style="height: 400px;overflow: auto;">
 									<table class="table table-striped table-hover">
-										<thead>
-											<tr>
-												<th>Select</th>
-												<th>User ID</th>
-												<th>UserName</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-											if (!empty($groupUsers)) {
+										<?php
+										if (!empty($groupUsers)) {
+											?>
+											<thead>
+												<tr>
+													<th>Select</th>
+													<th>User ID</th>
+													<th>UserName</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php
 												foreach ($groupUsers as $groupUser) {
 													?>
 													<tr>
