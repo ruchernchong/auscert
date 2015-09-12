@@ -21,7 +21,7 @@ Class model_group extends CI_Model {
 		$this->db->where('groupID', $groupID);
 		$query = $this->db->get('groups');
 		if ($query->num_rows == 1) {
-			return $query->result();
+			return $query->row_array();
 		}
 		return false;
 	}

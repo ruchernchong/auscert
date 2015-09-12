@@ -20,13 +20,16 @@ Class model_groupCourse extends CI_Model {
 	}
 
     //Assign course to group
-    public function AddCourseToGroup() {
-        return true;
+    public function AddCourseToGroup($courseID, $groupID) {
+        $course = array('groupID' => $groupID, 'courseID' => $courseID);
+        $this->db->insert('group_courses', $course);
     }
 
     //Remove a course from the group
-    public function RemoveCourseFromGroup() {
-        return true;
+    public function RemoveCourseFromGroup($courseID, $groupID) {
+        $course = array('groupID' => $groupID, 'courseID' => $courseID);
+        $this->db->where($course);
+        $this->db->delete('group_courses');
     }
 }
 ?>

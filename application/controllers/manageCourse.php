@@ -60,5 +60,39 @@ class manageCourse extends CI_Controller
 			redirect('login', 'refresh');
 		}
 	}
+
+    //assign courses to a group
+    function addCourses() {
+        $coursesArray = $this->input->post('courseIDs');
+        $groupID = $this->input->post('groupID');
+
+        foreach ($coursesArray as $courseID) {
+            $this->model_groupCourse->AddCourseToGroup($courseID, $groupID);
+        }
+//        $this->debug_to_console($_SERVER['REQUEST_URI']);
+//        header("Location: " . $_SERVER['REQUEST_URI']);
+//        header('Location: http://localhost/auscert/manageCourse?groupID=1');
+    }
+
+    //remove courses from a group
+    function removeCourses() {
+        $coursesArray = $this->input->post('courseIDs');
+        $groupID = $this->input->post('groupID');
+
+        foreach ($coursesArray as $courseID) {
+            $this->model_groupCourse->RemoveCourseFromGroup($courseID, $groupID);
+        }
+        redirect($this->uri->uri_string());
+    }
+
+    //Helpful function for printing to console. Evoke with $this->debug_to_console(value);
+    function debug_to_console( $data ) {
+        if ( is_array( $data ) )
+            $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+        else
+            $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+
+        echo $output;
+    }
 }
 ?>

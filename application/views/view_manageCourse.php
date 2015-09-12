@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header"><?php echo $thisGroup[0]->organisation ?>&nbsp;
+				<h1 id= "courseIDHeader" value = "<?php echo $thisGroup['groupID']?>" class="page-header"><?php echo $thisGroup['organisation']?>&nbsp;
 					<small>Manage Courses</small>
 				</h1>
 		</div>
@@ -30,8 +30,8 @@
                                             foreach($assignedCourses as $course) {?>
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
-                                                    <label for="activeNotChecked_<?php echo $course->courseID; ?>" activelabel"></label>
+                                                    <input type="checkbox" id="assignedChecked_<?php echo $course->courseID;?>" value="<?php echo $course->courseID;?>" class="courseActive assignedSelected">
+                                                    <label for="assignedChecked_<?php echo $course->courseID; ?>" activelabel"></label>
                                                 </td>
                                                 <td><?php echo $course->courseID ?></td>
                                                 <td><?php echo $course->courseName ?></td>
@@ -54,10 +54,10 @@
 
                     <div class="col-lg-2">
                         <div class="form-group">
-                        <a class="btn btn-success"><i class="fa fa-caret-left"></i>&emsp;Add Course&emsp;&emsp;</a>
+                        <a class="btn btn-success" id="add_course_btn"><i class="fa fa-caret-left"></i>&emsp;Add Course&emsp;&emsp;</a>
                             </div>
                         <div class="form-group">
-                        <a class="btn btn-danger">Remove Course&emsp;<i class="fa fa-caret-right"></i></a>
+                        <a class="btn btn-danger" id="remove_course_btn">Remove Course&emsp;<i class="fa fa-caret-right"></i></a>
                             </div>
                     </div>
 
@@ -76,16 +76,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($otherCourses as $course) {?>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" id="check_<?php echo $course->courseID;?>" value="<?php echo $course->courseID;?>" class="courseActive">
-                                                <label for="activeNotChecked_<?php echo $course->courseID; ?>" activelabel"></label>
-                                            </td>
-                                            <td><?php echo $course->courseID ?></td>
-                                            <td><?php echo $course->courseName ?></td>
-                                        </tr>
-                                        <?php } ?>
+                                        <?php
+                                        if ($otherCourses == null) {
+                                        ?>
+                                            <tr>
+                                                <td colspan="2">There are no courses available.</td>
+                                            </tr>
+                                        <?php
+                                        } else {
+                                            foreach($otherCourses as $course) {
+                                        ?>
+                                                <form id="otherCoursesForm">
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" id="otherCheck_<?php echo $course->courseID;?>" value="<?php echo $course->courseID;?>" class="courseActive otherSelected">
+                                                            <label for="otherCheck_<?php echo $course->courseID; ?>"></label>
+                                                        </td>
+                                                        <td><?php echo $course->courseID ?></td>
+                                                        <td><?php echo $course->courseName ?></td>
+                                                    </tr>
+                                                </form>
+                                        <?php }}?>
                                     </tbody>
                                 </table>
                             </div>

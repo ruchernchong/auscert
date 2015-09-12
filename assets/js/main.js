@@ -236,6 +236,58 @@ $(".courseActive").click(function() {
 	}
 });
 
-//Get courseIDs of all the checked courses in the assigned courses table and updates the database accordingly
 
-//Get courseID of all the checked courses in the available courses table and updates the database accordingly
+//Get courseIDs of all the checked courses in the other courses table and send an array via ajax
+$("#add_course_btn").click(function() {
+	//loop through each checkbox in the table and add checked courseIDs to the array	var otherCourseIDs = [];
+	var groupID = $("#courseIDHeader").attr('value');
+	var otherCourseIDs = [];
+	$('.otherSelected').each(function() {
+		if (this.checked == true) {
+			otherCourseIDs.push($(this).attr('value'));
+		}
+	});
+	//alert("Courses to be added: " + otherCourseIDs);
+	$.ajax({
+		method: "POST",
+		url: "manageCourse/addCourses",
+		data: {
+			courseIDs : otherCourseIDs,
+			groupID : groupID
+		},
+		success: function(response) {
+			console.log(response);
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	});
+});
+
+//Get courseIDs of all the checked courses in the assigned courses table and send an array via ajax
+$("#remove_course_btn").click(function() {
+	//loop through each checkbox in the table and add checked courseIDs to the array
+	var groupID = $("#courseIDHeader").attr('value');
+	var assignedCourseIDs = [];
+	$('.assignedSelected').each(function() {
+		if (this.checked == true) {
+			assignedCourseIDs.push($(this).attr('value'));
+		}
+	});
+	alert("The following courses will be removed: " + assignedCourseIDs);
+	$.ajax({
+		method: "POST",
+		url: "manageCourse/removeCourses",
+		data: {
+			courseIDs : assignedCourseIDs,
+			groupID : groupID
+		},
+		success: function(response) {
+			console.log(response);
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	});
+});
+
