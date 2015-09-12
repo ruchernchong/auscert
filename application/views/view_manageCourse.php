@@ -28,14 +28,14 @@
 										<tbody>
 											<?php
 											if (!empty($assignedCourses)) {
-												foreach($assignedCourses as $course) {?>
+												foreach($assignedCourses as $assignedCourse) {?>
 												<tr>
 													<td>
-														<input type="checkbox" id="assignedChecked_<?php echo $course->courseID; ?>" value="<?php echo $course->courseID;?>" class="courseActive assignedSelected">
-														<label for="assignedChecked_<?php echo $course->courseID; ?>" class="activelabel"></label>
+														<input type="checkbox" id="assignedChecked_<?php echo $assignedCourse->courseID; ?>" value="<?php echo $assignedCourse->courseID;?>" class="courseActive assignedSelected">
+														<label for="assignedChecked_<?php echo $assignedCourse->courseID; ?>" class="activelabel"></label>
 													</td>
-													<td><?php echo $course->courseID; ?></td>
-													<td><?php echo $course->courseName; ?></td>
+													<td><?php echo $assignedCourse->courseID; ?></td>
+													<td><?php echo $assignedCourse->courseName; ?></td>
 												</tr>
 												<?php
 											}
@@ -55,10 +55,14 @@
 
 					<div class="col-lg-2">
 						<div class="form-group">
-							<a class="btn btn-success" id="add_course_btn"><i class="fa fa-caret-left"></i>&emsp;Add Course&emsp;&emsp;</a>
+							<a class="btn btn-success" id="btn_addCourse">
+								<i class="fa fa-caret-left"></i>&emsp;Add Course&emsp;&emsp;
+							</a>
 						</div>
 						<div class="form-group">
-							<a class="btn btn-danger" id="remove_course_btn">Remove Course&emsp;<i class="fa fa-caret-right"></i></a>
+							<a class="btn btn-danger" id="btn_removeCourse">Remove Course&emsp;
+								<i class="fa fa-caret-right"></i>
+							</a>
 						</div>
 					</div>
 
@@ -79,16 +83,16 @@
 									<tbody>
 										<?php
 										if (!empty($otherCourses)) {
-											foreach ($otherCourses as $course) {
+											foreach ($otherCourses as $otherCourse) {
 												?>
 												<form id="otherCoursesForm">
 													<tr>
 														<td>
-															<input type="checkbox" id="otherCheck_<?php echo $course->courseID;?>" value="<?php echo $course->courseID;?>" class="courseActive otherSelected">
-															<label for="otherCheck_<?php echo $course->courseID; ?>"></label>
+															<input type="checkbox" id="otherCheck_<?php echo $otherCourse->courseID;?>" value="<?php echo $otherCourse->courseID;?>" class="courseActive otherSelected">
+															<label for="otherCheck_<?php echo $otherCourse->courseID; ?>"></label>
 														</td>
-														<td><?php echo $course->courseID; ?></td>
-														<td><?php echo $course->courseName; ?></td>
+														<td><?php echo $otherCourse->courseID; ?></td>
+														<td><?php echo $otherCourse->courseName; ?></td>
 													</tr>
 												</form>
 												<?php

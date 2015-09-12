@@ -244,7 +244,7 @@ $(".courseActive").click(function() {
 });
 
 //Get courseIDs of all the checked courses in the other courses table and send an array via ajax
-$("#add_course_btn").click(function() {
+$("#btn_addCourse").click(function() {
 	//loop through each checkbox in the table and add checked courseIDs to the array	var otherCourseIDs = [];
 	var groupID = $("#groupIDHeader").attr('value');
 	var otherCourseIDs = [];
@@ -273,7 +273,7 @@ $("#add_course_btn").click(function() {
 });
 
 //Get courseIDs of all the checked courses in the assigned courses table and send an array via ajax
-$("#remove_course_btn").click(function() {
+$("#btn_removeCourse").click(function() {
 	//loop through each checkbox in the table and add checked courseIDs to the array
 	var groupID = $("#groupIDHeader").attr('value');
 	var assignedCourseIDs = [];
@@ -303,7 +303,7 @@ $("#remove_course_btn").click(function() {
 
 
 
-$("#add_user_btn").click(function() {
+$("#btn_addUser").click(function() {
 	//loop through each checkbox in the table and add checked userIDs to the array
 	var groupID = $("#groupIDHeader").attr('value');
 	var otherUserIDs = [];
@@ -313,10 +313,10 @@ $("#add_user_btn").click(function() {
 			otherUserIDs.push($(this).attr('value'));
 		}
 	});
-	//alert("Courses to be added: " + otherCourseIDs);
+	
 	$.ajax({
 		method: "POST",
-		url: "manageMembers/addMembers",
+		url: "manageMember/addMembers",
 		data: {
 			userIDs : otherUserIDs,
 			groupID : groupID
@@ -331,20 +331,20 @@ $("#add_user_btn").click(function() {
 	});
 });
 
-$("#remove_user_btn").click(function() {
+$("#btn_removeUser").click(function() {
 	//loop through each checkbox in the table and add checked userIDs to the array
 	var groupID = $("#groupIDHeader").attr('value');
 	var assignedUserIDs = [];
 
-	$('.otherSelected').each(function() {
+	$('.assignedSelected').each(function() {
 		if (this.checked == true) {
 			assignedUserIDs.push($(this).attr('value'));
 		}
 	});
-	//alert("Courses to be added: " + otherCourseIDs);
+
 	$.ajax({
 		method: "POST",
-		url: "manageMembers/removeMembers",
+		url: "manageMember/removeMembers",
 		data: {
 			userIDs : assignedUserIDs,
 			groupID : groupID

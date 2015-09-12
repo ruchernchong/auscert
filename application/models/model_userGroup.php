@@ -59,15 +59,21 @@ Class model_userGroup extends CI_Model {
 
 	//Assign a user to the group
 	public function AddUserToGroup($userID, $groupID) {
-		$user = array('groupID' => $groupID, 'userID' => $userID);
+		$user = array(
+			'groupID' => $groupID,
+			'userID' => $userID
+			);
 		$this->db->insert('user_groups', $user);
 	}
 
 	//Remove a user from the group
 	public function RemoveUserFromGroup($userID, $groupID) {
-		$user = array('groupID' => $groupID, 'userID' => $userID);
+		$user = array(
+			'groupID' => $groupID,
+			'userID' => $userID
+			);
 		$this->db->where($user);
-		$this->db->delete('user_groups');
+		$this->db->delete('user_groups', $user);
 	}
 }
 ?>
