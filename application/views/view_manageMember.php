@@ -43,7 +43,7 @@
 											} else {
 												?>
 												<tr>
-													<td colspan="3">There are no users in this group</td>
+													<td colspan="3">There are no member(s) in this group.</td>
 												</tr>
 												<?php
 											}
