@@ -3,6 +3,7 @@
 class manageCourse extends CI_Controller {
 	function __construct() {
 		parent::__construct();
+		
 		$this->load->model('model_group');
 		$this->load->model('model_course');
 		$this->load->model('model_groupCourse');
@@ -52,13 +53,12 @@ class manageCourse extends CI_Controller {
 				$this->load->view('header', $data);
 				$this->load->view('view_manageCourse', $data);
 			}
-
 		} else {
 			redirect('login', 'refresh');
 		}
 	}
 
-    //assign courses to a group
+	//assign courses to a group
 	function addCourses() {
 		$coursesArray = $this->input->post('courseIDs');
 		$groupID = $this->input->post('groupID');
@@ -66,17 +66,9 @@ class manageCourse extends CI_Controller {
 		foreach ($coursesArray as $courseID) {
 			$this->model_groupCourse->AddCourseToGroup($courseID, $groupID);
 		}
-//        $this->debug_to_console($_SERVER['REQUEST_URI']);
-//        header("Location: " . $_SERVER['REQUEST_URI']);
-<<<<<<< HEAD
-        header('Location: http://localhost/auscert/manageCourse?groupID=1');
-    }
-=======
-//        header('Location: http://localhost/auscert/manageCourse?groupID=1');
 	}
->>>>>>> master
 
-    //remove courses from a group
+	//remove courses from a group
 	function removeCourses() {
 		$coursesArray = $this->input->post('courseIDs');
 		$groupID = $this->input->post('groupID');
@@ -86,24 +78,15 @@ class manageCourse extends CI_Controller {
 		}
 	}
 
-    //Helpful function for printing to console. Evoke with $this->debug_to_console(value);
-<<<<<<< HEAD
-    function debug_to_console( $data ) {
-        if ( is_array( $data ) )
-            $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
-        else
-            $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-        echo $output;
-    }
-=======
-	function debug_to_console( $data ) {
-		if (is_array( $data ))
+	//Helpful function for printing to console. Evoke with $this->debug_to_console(value);
+	function debug_to_console($data) {
+		if (is_array($data)) {
 			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
-		else
+		} else {
 			$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
 
-		echo $output;
+			echo $output;
+		}
 	}
->>>>>>> master
 }
 ?>
