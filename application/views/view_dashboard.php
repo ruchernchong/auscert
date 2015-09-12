@@ -47,7 +47,7 @@ if (!empty($this->session->flashdata('denied'))) {
 								} else {
 									?>
 									<div class="form-group">
-										<label>There are no course(s) available for you</label>
+										<label>There are no course(s) available for you.</label>
 									</div>
 									<?php
 								}
@@ -164,7 +164,7 @@ if (!empty($this->session->flashdata('denied'))) {
 						} else {
 							?>
 							<div class="form-group">
-								<label>You do not have any completed course(s)</label>
+								<label>You do not have any completed course(s).</label>
 							</div>
 							<?php
 						}
@@ -267,7 +267,7 @@ if (!empty($this->session->flashdata('denied'))) {
 									} else {
 										?>
 										<div class="form-group">
-											<label>You do not have any courses enrolled.</label>
+											<label>You do not have any course(s) enrolled.</label>
 										</div>
 										<?php
 									}
