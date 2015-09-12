@@ -246,7 +246,7 @@ $(".courseActive").click(function() {
 //Get courseIDs of all the checked courses in the other courses table and send an array via ajax
 $("#add_course_btn").click(function() {
 	//loop through each checkbox in the table and add checked courseIDs to the array	var otherCourseIDs = [];
-	var groupID = $("#courseIDHeader").attr('value');
+	var groupID = $("#groupIDHeader").attr('value');
 	var otherCourseIDs = [];
 
 	$('.otherSelected').each(function() {
@@ -275,7 +275,7 @@ $("#add_course_btn").click(function() {
 //Get courseIDs of all the checked courses in the assigned courses table and send an array via ajax
 $("#remove_course_btn").click(function() {
 	//loop through each checkbox in the table and add checked courseIDs to the array
-	var groupID = $("#courseIDHeader").attr('value');
+	var groupID = $("#groupIDHeader").attr('value');
 	var assignedCourseIDs = [];
 	
 	$('.assignedSelected').each(function() {
@@ -300,6 +300,65 @@ $("#remove_course_btn").click(function() {
 		}
 	});
 });
+
+
+
+$("#add_user_btn").click(function() {
+	//loop through each checkbox in the table and add checked userIDs to the array
+	var groupID = $("#groupIDHeader").attr('value');
+	var otherUserIDs = [];
+
+	$('.otherSelected').each(function() {
+		if (this.checked == true) {
+			otherUserIDs.push($(this).attr('value'));
+		}
+	});
+	//alert("Courses to be added: " + otherCourseIDs);
+	$.ajax({
+		method: "POST",
+		url: "manageMembers/addMembers",
+		data: {
+			userIDs : otherUserIDs,
+			groupID : groupID
+		},
+		success: function(response) {
+			location.reload();
+			console.log(response);
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	});
+});
+
+$("#remove_user_btn").click(function() {
+	//loop through each checkbox in the table and add checked userIDs to the array
+	var groupID = $("#groupIDHeader").attr('value');
+	var assignedUserIDs = [];
+
+	$('.otherSelected').each(function() {
+		if (this.checked == true) {
+			assignedUserIDs.push($(this).attr('value'));
+		}
+	});
+	//alert("Courses to be added: " + otherCourseIDs);
+	$.ajax({
+		method: "POST",
+		url: "manageMembers/removeMembers",
+		data: {
+			userIDs : assignedUserIDs,
+			groupID : groupID
+		},
+		success: function(response) {
+			location.reload();
+			console.log(response);
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	});
+});
+
 
 // Click handler for the 'next' button
 $('#next').click(function(e) {

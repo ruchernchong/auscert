@@ -5,6 +5,7 @@ Class model_userCourse extends CI_Model {
 		parent::__construct();
 	}
 
+	//Validate user
 	public function validate() {
 		$this->db->where('username',$this->input->post('username'));
 		$this->db->where('password',$this->input->post('password'));
@@ -65,7 +66,6 @@ Class model_userCourse extends CI_Model {
 	public function GetCompletedUserCourse($userID) {
 		$this->db->where('userID', $userID);
 		$this->db->where('completion', 100);
-		// $this->db->join('users', 'users.userID = user_courses.userID', 'INNER');
 		$this->db->join('courses', 'courses.courseID = user_courses.courseID', 'INNER');
 		$this->db->order_by('courseName', 'ASC');
 		$query = $this->db->get('user_courses');

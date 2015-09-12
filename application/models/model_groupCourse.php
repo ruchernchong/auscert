@@ -32,6 +32,5 @@ Class model_groupCourse extends CI_Model {
 		$this->db->where($course);
 		$this->db->delete('group_courses');
 	}
-
 }
 ?>

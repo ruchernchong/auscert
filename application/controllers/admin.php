@@ -20,7 +20,7 @@ class admin extends CI_Controller {
 
 			$allCourses = $this->model_course->GetAllCourses();
 			$lastEdited = $this->model_course->GetCourseLastEdited();
-			$users = $this->model_user->GetUsers();
+			$users = $this->model_user->GetAllUsers();
 			$groups = $this->model_group->GetGroups();
 
 			//User list with associated array of groups

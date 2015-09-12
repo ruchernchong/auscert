@@ -19,12 +19,26 @@ Class model_userGroup extends CI_Model {
 		return false;
 	}
 
-	//returns an array (instead of object) of all users wuthin a group
+//	//returns an array (instead of object) of all users within a group
+//	public function GetGroupUsers($groupID) {
+//		$this->db->select('ug.userID');
+//		$this->db->from('groups AS g, user_groups AS ug');
+//		$this->db->where('ug.groupID', $groupID);
+//		$this->db->where('g.groupID = ug.groupID');
+//		$query = $this->db->get();
+//
+//		if ($query->num_rows > 0) {
+//			return $query->result_array();
+//		}
+//		return false;
+//	}
+
+	//returns an array (instead of object) of all users within a group
 	public function GetGroupUsers($groupID) {
-		$this->db->select('ug.userID');
-		$this->db->from('groups AS g, user_groups AS ug');
+		$this->db->select('u.userID, u.username');
+		$this->db->from('users AS u, user_groups AS ug');
 		$this->db->where('ug.groupID', $groupID);
-		$this->db->where('g.groupID = ug.groupID');
+		$this->db->where('u.userID = ug.userID');
 		$query = $this->db->get();
 
 		if ($query->num_rows > 0) {
@@ -44,25 +58,16 @@ Class model_userGroup extends CI_Model {
 	}
 
 	//Assign a user to the group
-	public function AddUserToGroup() {
-		return true;
+	public function AddUserToGroup($userID, $groupID) {
+		$user = array('groupID' => $groupID, 'userID' => $userID);
+		$this->db->insert('user_groups', $user);
 	}
 
 	//Remove a user from the group
-	public function RemoveUserFromGroup() {
-		return true;
+	public function RemoveUserFromGroup($userID, $groupID) {
+		$user = array('groupID' => $groupID, 'userID' => $userID);
+		$this->db->where($user);
+		$this->db->delete('user_groups');
 	}
-
-	//get a list of users details and the groups they are assigned to
-	//	public function GetUsersAndGroups() {
-	//		$this->db->join('groups', 'groups.groupID = user_groups.groupID', 'full outer');
-	//		$this->db->join('users', 'users.userID = user_groups.userID', 'full outer');
-	//		$query = $this->db->get('user_groups');
-	//
-	//		if ($query->num_rows > 0) {
-	//			return $query->result();
-	//		}
-	//		return false;
-	//	}
 }
 ?>

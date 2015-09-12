@@ -35,7 +35,8 @@ Class model_user extends CI_Model {
 		$this->db->insert('users', $data);
 	}
 
-	public function GetUsers() {
+	//return a list of all users
+	public function GetAllUsers() {
 		$this->db->order_by('username', 'ASC');
 		$query = $this->db->get('users');
 
@@ -43,6 +44,21 @@ Class model_user extends CI_Model {
 			return $query->result();
 		}
 		return false;
+	}
+
+	//returns a list of all users except the ones given in the argument
+	public function GetAllUsersExcept($omittedUsers) {
+		if (count($omittedUsers) > 0) {
+			$this->db->from('users');
+			$this->db->order_by('username', 'ASC');
+			$this->db->where_not_in('userID', $omittedUsers);
+			$query = $this->db->get();
+
+			if ($query->num_rows > 0) {
+				return $query->result();
+			}
+			return false;
+		}
 	}
 }
 ?>

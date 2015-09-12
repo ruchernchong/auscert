@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 id="courseIDHeader" value="<?php echo $thisGroup['groupID']; ?>" class="page-header">
+				<h1 id="groupIDHeader" value="<?php echo $thisGroup['groupID']; ?>" class="page-header">
 					<?php echo $thisGroup['organisation']; ?>&nbsp;
 					<small>Manage Courses</small>
 				</h1>
