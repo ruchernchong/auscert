@@ -2,7 +2,8 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 id= "courseIDHeader" value = "<?php echo $thisGroup['groupID']?>" class="page-header"><?php echo $thisGroup['organisation']?>&nbsp;
+				<h1 id="courseIDHeader" value="<?php echo $thisGroup['groupID']; ?>" class="page-header">
+					<?php echo $thisGroup['organisation']; ?>&nbsp;
 					<small>Manage Courses</small>
 				</h1>
 			</div>
@@ -33,8 +34,8 @@
 														<input type="checkbox" id="assignedChecked_<?php echo $course->courseID; ?>" value="<?php echo $course->courseID;?>" class="courseActive assignedSelected">
 														<label for="assignedChecked_<?php echo $course->courseID; ?>" class="activelabel"></label>
 													</td>
-													<td><?php echo $course->courseID ?></td>
-													<td><?php echo $course->courseName ?></td>
+													<td><?php echo $course->courseID; ?></td>
+													<td><?php echo $course->courseName; ?></td>
 												</tr>
 												<?php
 											}
@@ -92,22 +93,24 @@
 															<input type="checkbox" id="otherCheck_<?php echo $course->courseID;?>" value="<?php echo $course->courseID;?>" class="courseActive otherSelected">
 															<label for="otherCheck_<?php echo $course->courseID; ?>"></label>
 														</td>
-														<td><?php echo $course->courseID ?></td>
-														<td><?php echo $course->courseName ?></td>
+														<td><?php echo $course->courseID; ?></td>
+														<td><?php echo $course->courseName; ?></td>
 													</tr>
 												</form>
-												<?php }}?>
-											</tbody>
-										</table>
-									</div>
-								</div>
+												<?php
+											}
+										}
+										?>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
 
-		<!--Include script for event listeners    -->
-		<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
-
+<!-- Include script for event listeners -->
+<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
