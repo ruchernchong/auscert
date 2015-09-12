@@ -3,6 +3,7 @@
 class manageCourse extends CI_Controller {
 	function __construct() {
 		parent::__construct();
+
 		$this->load->model('model_group');
 		$this->load->model('model_course');
 		$this->load->model('model_groupCourse');
@@ -20,6 +21,7 @@ class manageCourse extends CI_Controller {
 			$assignedCourses = $this->model_groupCourse->GetGroupCourses($thisGroupID);
 
 			$omittedCourses = [];
+
 			if (!empty($assignedCourses)) {
 				foreach ($assignedCourses as $exceptCourse) {
 					array_push($omittedCourses, $exceptCourse->courseID);
@@ -30,8 +32,8 @@ class manageCourse extends CI_Controller {
 			if ($thisGroup) {
 				$data['thisGroup'] = $thisGroup;
 			} else {
-                $data['thisGroup'] = null;
-            }
+				$data['thisGroup'] = null;
+			}
 
 			if ($assignedCourses) {
 				$data['assignedCourses'] = $assignedCourses;
@@ -52,43 +54,39 @@ class manageCourse extends CI_Controller {
 				$this->load->view('header', $data);
 				$this->load->view('view_manageCourse', $data);
 			}
-
 		} else {
 			redirect('login', 'refresh');
 		}
 	}
 
     //assign courses to a group
-    function addCourses() {
-        $coursesArray = $this->input->post('courseIDs');
-        $groupID = $this->input->post('groupID');
+	function addCourses() {
+		$coursesArray = $this->input->post('courseIDs');
+		$groupID = $this->input->post('groupID');
 
-        foreach ($coursesArray as $courseID) {
-            $this->model_groupCourse->AddCourseToGroup($courseID, $groupID);
-        }
-//        $this->debug_to_console($_SERVER['REQUEST_URI']);
-//        header("Location: " . $_SERVER['REQUEST_URI']);
-        header('Location: http://localhost/auscert/manageCourse?groupID=1');
-    }
+		foreach ($coursesArray as $courseID) {
+			$this->model_groupCourse->AddCourseToGroup($courseID, $groupID);
+		}
+	}
 
     //remove courses from a group
-    function removeCourses() {
-        $coursesArray = $this->input->post('courseIDs');
-        $groupID = $this->input->post('groupID');
+	function removeCourses() {
+		$coursesArray = $this->input->post('courseIDs');
+		$groupID = $this->input->post('groupID');
 
-        foreach ($coursesArray as $courseID) {
-            $this->model_groupCourse->RemoveCourseFromGroup($courseID, $groupID);
-        }
-        redirect($this->uri->uri_string());
-    }
+		foreach ($coursesArray as $courseID) {
+			$this->model_groupCourse->RemoveCourseFromGroup($courseID, $groupID);
+		}
+	}
 
     //Helpful function for printing to console. Evoke with $this->debug_to_console(value);
-    function debug_to_console( $data ) {
-        if ( is_array( $data ) )
-            $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
-        else
-            $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-        echo $output;
-    }
+	function debug_to_console($data) {
+		if (is_array($data)) {
+			$output = "<script>console.log('Debug Objects: " . implode(',', $data) . "');</script>";
+		} else {
+			$output = "<script>console.log('Debug Objects: " . $data . "');</script>";
+			echo $output;
+		}
+	}
 }
 ?>
