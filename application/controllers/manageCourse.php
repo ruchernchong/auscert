@@ -21,6 +21,7 @@ class manageCourse extends CI_Controller {
 			$assignedCourses = $this->model_groupCourse->GetGroupCourses($thisGroupID);
 
 			$omittedCourses = [];
+
 			if (!empty($assignedCourses)) {
 				foreach ($assignedCourses as $exceptCourse) {
 					array_push($omittedCourses, $exceptCourse->courseID);
@@ -43,7 +44,7 @@ class manageCourse extends CI_Controller {
 			if (!empty($otherCourses)) {
 				$data['otherCourses'] = $otherCourses;
 			} else {
-				$data['otherCourses'] = null;
+				$data['otherCourses'] = $this->model_course->GetAllCourses();
 			}
 
 			if ($data['usertype'] != 'admin') {

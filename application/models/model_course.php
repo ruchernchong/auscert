@@ -28,7 +28,7 @@ Class model_course extends CI_Model {
 	public function GetAllCoursesExcept($omittedCourses) {
 		if (count($omittedCourses) > 0) {
 			$this->db->from('courses');
-			$this->db->order_by('courseID', 'ASC');
+			$this->db->order_by('courseName', 'ASC');
 			$this->db->where_not_in('courseID', $omittedCourses);
 			$query = $this->db->get();
 
@@ -36,13 +36,7 @@ Class model_course extends CI_Model {
 				return $query->result();
 			}
 			return false;
-		} else {
-			$this->db->from('courses');
-			$this->db->order_by('courseName', 'ASC');
-			$query = $this->db->get();
-			return $query->result();
 		}
-
 	}
 
 	//returns a course based on an ID
@@ -129,7 +123,7 @@ Class model_course extends CI_Model {
 			'description' => $courseDescription,
 			'lastEdited' => date("Y-m-d H:i:s", time())
 			);
-		
+
 		$this->db->where('courseID', $courseID);
 		$this->db->update('courses', $data);
 	}
