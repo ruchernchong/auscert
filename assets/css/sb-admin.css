@@ -654,7 +654,7 @@ input[type=checkbox].courseActive:focus ~ label {
 .v-divider {
 	height: 50px;
 	margin: 0 auto;
-	border-left: 1px solid #FFF;
+	border-left: 2px solid #FFF;
 	/*border-right: 1px solid #ffffff;*/
 }
 .navbar-inverse .navbar-brand {
