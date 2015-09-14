@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = 'http://tartiner.uqcloud.net/auscert';
+$config['base_url'] = 'http://tartiner.uqcloud.net/auscert/';
 //$config['base_url'] = 'http://localhost/auscert/';
 
 /*
