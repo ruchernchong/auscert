@@ -5,6 +5,7 @@ Class model_user extends CI_Model {
 		parent::__construct();
 	}
 
+	//Validate the user
 	public function validate() {
 		$this->db->where('username', $this->input->post('loginUsername'));
 		$this->db->where('password', $this->input->post('loginPassword'));
@@ -17,6 +18,7 @@ Class model_user extends CI_Model {
 		return false;
 	}
 
+	//Create a user
 	public function registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact) {
 		$registerUsername = $this->input->post('registerUsername');
 		$registerPassword = $this->input->post('registerPassword');

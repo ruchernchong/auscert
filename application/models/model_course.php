@@ -86,6 +86,7 @@ Class model_course extends CI_Model {
 		$this->db->delete($tables);
 	}
 
+	//activate a course
 	public function ActivateCourse($courseID) {
 		$data = array(
 			'active' => 1
@@ -95,6 +96,7 @@ Class model_course extends CI_Model {
 		$this->db->update('courses', $data);
 	}
 
+	//deactivate a course
 	public function DeactivateCourse($courseID) {
 		$data = array(
 			'active' => 0

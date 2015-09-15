@@ -20,8 +20,8 @@ class manageMember extends CI_Controller {
 			$thisGroup = $this->model_group->GetGroupByID($thisGroupID);
 			$groupUsers = $this->model_userGroup->GetGroupUsers($thisGroupID);
 
+			//Get all users who are not assigned to the current group
 			$omittedUsers = [];
-
 			if (!empty($groupUsers)) {
 				foreach ($groupUsers as $groupUser) {
 					array_push($omittedUsers, $groupUser['userID']);
@@ -29,24 +29,28 @@ class manageMember extends CI_Controller {
 				$otherUsers = $this->model_user->GetAllUsersExcept($omittedUsers);
 			}
 
+			//Get the current group object
 			if ($thisGroup) {
 				$data['thisGroup'] = $thisGroup;
 			} else {
 				$data['thisGroup'] = null;
 			}
 
+			//Get all users assigned to the current group
 			if ($groupUsers) {
 				$data['groupUsers'] = $groupUsers;
 			} else {
 				$data['groupUsers'] = null;
 			}
 
+			//Get all users not assigned to the current group
 			if (!empty($otherUsers)) {
 				$data['otherUsers'] = $otherUsers;
 			} else {
 				$data['otherUsers'] = $this->model_user->GetAllUsers();
 			}
 
+			//Verify that the user is an admin. Deny access otherwise
 			if ($data['usertype'] != 'admin') {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
 				redirect('home', 'refresh');

@@ -26,26 +26,31 @@ class home extends CI_Controller {
 				$data['count_coursesAvail'] = count($coursesAvail);
 			}
 
-			$query = $this->model_userCourse->GetUserCourses();
-			if ($query) {
-				$data['userCourses'] = $query;
+			//List of courses the user is enrolled in
+			$userCourses = $this->model_userCourse->GetUserCourses();
+			if ($userCourses) {
+				$data['userCourses'] = $userCourses;
 			}
 
+			//Count of courses the user is enrolled in
 			$count = $this->model_userCourse->GetNumberOfUserCourses();
 			if ($count) {
 				$data['NoOfUserCourses'] = $count;
 			}
 
+			//Count of the total nunmber of courses
 			$count = $this->model_course->GetNumberOfCourses();
 			if ($count) {
 				$data['NoOfCourses'] = $count;
 			}
 
+			//Count of the number of groups in the system
 			$count = $this->model_group->GetNumberofGroups();
 			if ($count) {
 				$data['NoOfGroups'] = $count;
 			}
 
+			//List of groups in the system
 			$groups = $this->model_group->GetGroups();
 			if ($groups) {
 				$data['userGroups'] = $groups;
@@ -58,6 +63,7 @@ class home extends CI_Controller {
 			$data['email'] = $session_data['email'];
 			$data['menu'] = "home";
 
+			//List of courses completed by a user, null if there is none
 			$query = $this->model_userCourse->GetCompletedUserCourse($data['userID']);
 			if ($query) {
 				$data['completedUserCourses'] = $query;
@@ -74,6 +80,7 @@ class home extends CI_Controller {
 		}
 	}
 
+	//Enrol a user to a course
 	function EnrolToCourse() {
 		$session_data = $this->session->userdata('logged_in');
 		$courseID = $this->input->get('id', TRUE);
@@ -82,6 +89,7 @@ class home extends CI_Controller {
 		redirect('home', 'refresh');
 	}
 
+	//Drop a user from a course
 	function dropCourse() {
 		$session_data = $this->session->userdata('logged_in');
 		$courseID = $this->input->get('id', TRUE);
