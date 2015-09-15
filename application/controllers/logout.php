@@ -5,6 +5,7 @@ class logout extends CI_Controller {
 		parent::__construct();
 	}
 
+	//Log out a user
 	function index() {
 		$this->session->unset_userdata('logged_in');
 		redirect('home', 'refresh');

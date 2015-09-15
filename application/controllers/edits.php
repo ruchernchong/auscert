@@ -27,12 +27,14 @@ class edits extends CI_Controller {
 				$questions = $this->model_question->GetQuestions($data['course']->courseID);
 			}
 
+			//List of slides for each chapter in a course
 			if ($slides) {
 				$data['slides'] = $slides;
 			} else {
 				$data['slides'] = array();
 			}
-			
+
+			//List of questions
 			if ($questions) {
 				$data['questions'] = $questions;
 				for($i = 0; $i < sizeof($questions); $i++) {

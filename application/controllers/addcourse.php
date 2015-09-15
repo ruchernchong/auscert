@@ -23,6 +23,7 @@ class addCourse extends CI_Controller {
 		}
 	}
 
+	//Create and save a course
 	public function createCourse() {
 		$rules = array(
 			array(
