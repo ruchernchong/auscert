@@ -25,6 +25,12 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `answers`
 --
+DROP DATABASE IF EXISTS `auscertdb`;
+
+CREATE DATABASE `auscertdb`;
+
+USE `auscertdb`;
+
 
 CREATE TABLE IF NOT EXISTS `answers` (
   `courseID` int(11) NOT NULL,
