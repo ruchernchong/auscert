@@ -8,7 +8,8 @@ class admin extends CI_Controller {
 		$this->load->model('model_user');
 		$this->load->model('model_userCourse');
 		$this->load->model('model_group');
-		$this->load->model('model_userGroup');
+		// $this->load->model('model_userGroup');
+		$this->load->model('model_usergroup');
 	}
 
 	function index() {
