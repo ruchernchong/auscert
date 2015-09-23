@@ -50,6 +50,7 @@ class analysis extends CI_Controller {
 		}
 	}
 
+	//Delete a course
 	function dropCourse() {
 		$courseID = $this->input->get('id', TRUE);
 		$this->model_course->DeleteCourse($courseID);

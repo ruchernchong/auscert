@@ -65,7 +65,7 @@ class learning extends CI_Controller {
 			$i++;
 		}
 		
-		$this->model_userResults->SaveResults(
+		$this->model_userResult->SaveResults(
 			$courseID,
 			$this->session->userdata['logged_in']['userID'],
 			$results

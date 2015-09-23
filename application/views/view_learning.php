@@ -83,7 +83,7 @@
 														</p>
 														<ul>
 															<?php
-															for ($j=1; $j < sizeof($answers[$i]); $j++) {
+															for ($j=0; $j < sizeof($answers[$i]); $j++) {
 																?>
 																<li>
 																	<input type="radio" name="<?php echo 'q' . $i; ?>" value="<?php echo $j; ?>" required/>&emsp;<?php echo $answers[$i][$j]->answerText; ?>

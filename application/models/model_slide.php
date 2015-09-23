@@ -5,6 +5,7 @@ Class model_slide extends CI_Model {
 		parent::__construct();
 	}
 
+	//Get the current slide id
 	public function GetSlideById() {
 		$this->db->where('courseID', $this->input->get('courseID'));
 		$this->db->where('slideID', $this->input->get('slideID'));
@@ -17,6 +18,7 @@ Class model_slide extends CI_Model {
 		return false;
 	}
 
+	//get the current slide object
 	public function GetSlide() {
 		$this->db->where('courseID', $this->input->get('courseID'));
 
@@ -27,7 +29,8 @@ Class model_slide extends CI_Model {
 		} 
 		return false;
 	}
-	
+
+	//get the current slide
 	public function GetSlidesByCourse($courseID) {
 		$this->db->where('courseID', $courseID);
 		$this->db->order_by("slideOrder", "asc"); 

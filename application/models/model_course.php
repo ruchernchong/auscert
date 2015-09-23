@@ -57,13 +57,14 @@ Class model_course extends CI_Model {
 	}
 
 	//Add a new course to the courses table
-	public function AddCourse($courseTitle, $courseCategory, $courseActive, $courseDescription) {
+	public function AddCourse($courseTitle, $courseCategory, $courseActive, $courseDescription, $coursePassPercentage) {
 		$data = array(
 			'courseName' => $courseTitle,
 			'category' => $courseCategory,
 			'creator' => $this->session->userdata['logged_in']['username'],
 			'active' =>  $courseActive,
 			'description' => $courseDescription,
+			'passPercentage' => $coursePassPercentage
 			);
 
 		$this->db->insert('courses', $data);
@@ -86,6 +87,7 @@ Class model_course extends CI_Model {
 		$this->db->delete($tables);
 	}
 
+	//activate a course
 	public function ActivateCourse($courseID) {
 		$data = array(
 			'active' => 1
@@ -95,6 +97,7 @@ Class model_course extends CI_Model {
 		$this->db->update('courses', $data);
 	}
 
+	//deactivate a course
 	public function DeactivateCourse($courseID) {
 		$data = array(
 			'active' => 0
@@ -116,11 +119,12 @@ Class model_course extends CI_Model {
 	}
 
 	//Update the values of a course
-	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
+	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription, $coursePassPercentage) {
 		$data = array(
 			'courseName' => $courseTitle,
 			'category' => $courseCategory,
 			'description' => $courseDescription,
+			'passPercentage' => $coursePassPercentage,
 			'lastEdited' => date("Y-m-d H:i:s", time())
 			);
 

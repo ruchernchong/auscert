@@ -19,7 +19,9 @@ class edits extends CI_Controller {
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "admin";
 
-			$query = $this->model_course->GetCourseById($this->input->get('courseID'));
+			$courseID = $this->uri->segment(3);
+
+			$query = $this->model_course->GetCourseById($courseID);
 
 			if ($query) {
 				$data['course'] = $query;
@@ -27,12 +29,14 @@ class edits extends CI_Controller {
 				$questions = $this->model_question->GetQuestions($data['course']->courseID);
 			}
 
+			//List of slides for each chapter in a course
 			if ($slides) {
 				$data['slides'] = $slides;
 			} else {
 				$data['slides'] = array();
 			}
-			
+
+			//List of questions
 			if ($questions) {
 				$data['questions'] = $questions;
 				for($i = 0; $i < sizeof($questions); $i++) {
@@ -67,8 +71,9 @@ class edits extends CI_Controller {
 		$courseName = $this->input->post('courseName');
 		$courseCategory = $this->input->post('courseCategory');
 		$courseDescription = $this->input->post('courseDescription');
+		$coursePassPercentage = $this->input->post('coursePassPercentage');
 
-		$this->model_course->UpdateCourse($courseID, $courseName, $courseCategory, $courseDescription);
+		$this->model_course->UpdateCourse($courseID, $courseName, $courseCategory, $courseDescription, $coursePassPercentage);
 		
 		$slideOrder = 0;
 		while (true) {

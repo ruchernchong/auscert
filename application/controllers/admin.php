@@ -51,22 +51,27 @@ class admin extends CI_Controller {
 				array_push($groupsAndUsers, $groupList);
 			}
 
+			//List of all courses
 			if ($allCourses) {
 				$data['courses'] = $allCourses;
 			}
 
+			//Last edited course
 			if ($lastEdited) {
 				$data['courseLastEdited'] = $lastEdited;
 			}
 
+			//List of users and the groups they belong to
 			if ($usersAndGroups) {
 				$data['users'] = $usersAndGroups;
 			}
 
+			//List of groups and the users assigned to them
 			if ($groupsAndUsers) {
 				$data['groups'] = $groupsAndUsers;
 			}
 
+			//Validates user to be admin in order for access
 			if ($data['usertype'] != 'admin') {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
 				redirect('home', 'refresh');
@@ -86,11 +91,13 @@ class admin extends CI_Controller {
 		redirect('admin', 'refresh');
 	}
 
+	//Activate a course if checkbox is ticked
 	function ifActive() {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->ActivateCourse($courseID);
 	}
 
+	//Deactivate a course if checkbox is ticked
 	function ifNotActive() {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->DeactivateCourse($courseID);

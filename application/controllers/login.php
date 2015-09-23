@@ -13,6 +13,7 @@ class login extends CI_Controller {
 		$this->load->view("view_login");
 	}
 
+	//validate a user's login
 	public function validateLogin() {
 		$username = $this->input->post('loginUsername');
 		$query = $this->model_user->validate();

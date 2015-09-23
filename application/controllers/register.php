@@ -7,7 +7,8 @@ class register extends CI_Controller {
 		$this->load->model('model_user');
 		$this->load->library('form_validation');
 	}
-	
+
+	//Create user
 	public function registerUsers() {
 		$rules = array(
 			array(

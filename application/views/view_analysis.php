@@ -104,7 +104,6 @@
 
 		$(document).ready(function() {
 	// $('[data-toggle="tooltip"]').tooltip();
-	$('#pageAdmin').removeAttr('href');
 });
 		</script>
 	</body>

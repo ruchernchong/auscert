@@ -23,6 +23,7 @@ class addCourse extends CI_Controller {
 		}
 	}
 
+	//Create and save a course
 	public function createCourse() {
 		$rules = array(
 			array(
@@ -48,11 +49,15 @@ class addCourse extends CI_Controller {
 			$createCourseName = $this->input->post('createCourseName');
 			$createCourseCategory = $this->input->post('createCourseCategory');
 			$createCourseDescription = $this->input->post('createCourseDescription');
+			$createCoursePassPercentage = $this->input->post('createCoursePassPercentage');
 
-			$courseID = $this->model_course->AddCourse($createCourseName, $createCourseCategory, 0, $createCourseDescription);
+			if(is_null($createCoursePassPercentage)) {
+				$createCoursePassPercentage = 50;
+			}
 
-			$this->session->set_flashdata('courseID', $courseID);
-			redirect('admin', 'refresh');
+			$courseID = $this->model_course->AddCourse($createCourseName, $createCourseCategory, 0, $createCourseDescription, $createCoursePassPercentage);
+
+			redirect('edits/index/' . $courseID, 'refresh');
 		} else {
 			if ($this->session->userdata('logged_in')) {
 				$session_data = $this->session->userdata('logged_in');

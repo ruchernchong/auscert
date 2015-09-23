@@ -29,24 +29,28 @@ class manageCourse extends CI_Controller {
 				$otherCourses = $this->model_course->GetAllCoursesExcept($omittedCourses);
 			}
 
+			//Gets the current group's object
 			if ($thisGroup) {
 				$data['thisGroup'] = $thisGroup;
 			} else {
 				$data['thisGroup'] = null;
 			}
 
+			//Gets the current group's assigned course
 			if ($assignedCourses) {
 				$data['assignedCourses'] = $assignedCourses;
 			} else {
 				$data['assignedCourses'] = null;
 			}
 
+			//Gets all the other courses not assigned to the current group
 			if (!empty($otherCourses)) {
 				$data['otherCourses'] = $otherCourses;
 			} else {
 				$data['otherCourses'] = $this->model_course->GetAllCourses();
 			}
 
+			//Validates that the user is an admin deny access otherwise
 			if ($data['usertype'] != 'admin') {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
 				redirect('home', 'refresh');

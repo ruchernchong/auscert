@@ -63,6 +63,7 @@ Class model_userCourse extends CI_Model {
 		return $query->result();
 	}
 
+	//Returns a list of courses completed by the user
 	public function GetCompletedUserCourse($userID) {
 		$this->db->where('userID', $userID);
 		$this->db->where('completion', 100);

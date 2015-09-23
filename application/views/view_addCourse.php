@@ -42,6 +42,13 @@
 						</div>
 
 						<div class="form-group">
+							<label for="createCoursePassPercentage">Quiz pass percentage</label>
+							<!--<input type="range"  value="50" min="1" max="100" id="passPercentageSlider"/>-->
+							<input type="number" value="50" min="1" max="100" class="form-control" id="createCoursePassPercentage" name="createCoursePassPercentage">
+							<span class="help-block errorMessage"><?php echo empty(form_error('createCoursePassPercentage')) ? "Must be filled" : form_error('createCoursePassPercentage'); ?></span>
+						</div>
+
+						<div class="form-group">
 							<label for="createCourseDescription">Description</label>
 							<textarea class="form-control" rows="5" id="createCourseDescription" name="createCourseDescription"></textarea>
 							<span class="help-block errorMessage"><?php echo empty(form_error('createCourseDescription')) ? "Must be filled" : form_error('createCourseDescription'); ?></span>
@@ -59,7 +66,6 @@
 </div>
 </div>
 </div>
-<script src="<?php echo base_url('assets/js/dash.js'); ?>"></script>
 <script>
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
