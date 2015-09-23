@@ -8,7 +8,7 @@ class learning extends CI_Controller {
 		$this->load->model('model_slide');
 		$this->load->model('model_question');
 		$this->load->model('model_answer');
-		$this->load->model('model_userResult');
+		$this->load->model('model_userresult');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form', 'url'));
 	}
@@ -65,7 +65,7 @@ class learning extends CI_Controller {
 			$i++;
 		}
 		
-		$this->model_userResult->SaveResults(
+		$this->model_userresult->SaveResults(
 			$courseID,
 			$this->session->userdata['logged_in']['userID'],
 			$results
