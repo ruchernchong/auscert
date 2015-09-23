@@ -57,13 +57,14 @@ Class model_course extends CI_Model {
 	}
 
 	//Add a new course to the courses table
-	public function AddCourse($courseTitle, $courseCategory, $courseActive, $courseDescription) {
+	public function AddCourse($courseTitle, $courseCategory, $courseActive, $courseDescription, $passPercentage) {
 		$data = array(
 			'courseName' => $courseTitle,
 			'category' => $courseCategory,
 			'creator' => $this->session->userdata['logged_in']['username'],
 			'active' =>  $courseActive,
 			'description' => $courseDescription,
+			'passPercentage' => $passPercentage
 			);
 
 		$this->db->insert('courses', $data);

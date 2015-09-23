@@ -19,7 +19,9 @@ class edits extends CI_Controller {
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "admin";
 
-			$query = $this->model_course->GetCourseById($this->input->get('courseID'));
+			$courseID = $this->uri->segment(3);
+
+			$query = $this->model_course->GetCourseById($courseID);
 
 			if ($query) {
 				$data['course'] = $query;
