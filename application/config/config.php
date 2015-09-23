@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = 'http://tartiner.uqcloud.net/';
+$config['base_url'] = 'http://ruchern.com/auscert/';
 //$config['base_url'] = 'http://localhost/auscert/';
 
 /*
@@ -29,7 +29,7 @@ $config['base_url'] = 'http://tartiner.uqcloud.net/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
