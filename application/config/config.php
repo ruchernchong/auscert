@@ -17,7 +17,6 @@
 |
 */
 $config['base_url'] = 'http://ruchern.com/auscert/';
-//$config['base_url'] = 'http://localhost/auscert/';
 
 /*
 |--------------------------------------------------------------------------
