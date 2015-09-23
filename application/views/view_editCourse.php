@@ -57,6 +57,10 @@
 										<input class="form-control" name="courseCategory" id="courseCategory" value="<?php echo $course->category; ?>" required><br />
 									</div>
 									<div class="form-group">
+										<label for="coursePassPercentage">Quiz pass percentage</label>
+										<input type="number" value="<?php echo $course->passPercentage; ?>" min="1" max="100" class="form-control" id="coursePassPercentage" name="coursePassPercentage">
+									</div>
+									<div class="form-group">
 										<label for="courseDescription">Description</label>
 										<textarea class="form-control" rows="5" name="courseDescription" id="courseDescription" required>
 											<?php echo $course->description; ?>

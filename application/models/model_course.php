@@ -57,14 +57,14 @@ Class model_course extends CI_Model {
 	}
 
 	//Add a new course to the courses table
-	public function AddCourse($courseTitle, $courseCategory, $courseActive, $courseDescription, $passPercentage) {
+	public function AddCourse($courseTitle, $courseCategory, $courseActive, $courseDescription, $coursePassPercentage) {
 		$data = array(
 			'courseName' => $courseTitle,
 			'category' => $courseCategory,
 			'creator' => $this->session->userdata['logged_in']['username'],
 			'active' =>  $courseActive,
 			'description' => $courseDescription,
-			'passPercentage' => $passPercentage
+			'passPercentage' => $coursePassPercentage
 			);
 
 		$this->db->insert('courses', $data);
@@ -119,11 +119,12 @@ Class model_course extends CI_Model {
 	}
 
 	//Update the values of a course
-	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription) {
+	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription, $coursePassPercentage) {
 		$data = array(
 			'courseName' => $courseTitle,
 			'category' => $courseCategory,
 			'description' => $courseDescription,
+			'passPercentage' => $coursePassPercentage,
 			'lastEdited' => date("Y-m-d H:i:s", time())
 			);
 

@@ -71,8 +71,9 @@ class edits extends CI_Controller {
 		$courseName = $this->input->post('courseName');
 		$courseCategory = $this->input->post('courseCategory');
 		$courseDescription = $this->input->post('courseDescription');
+		$coursePassPercentage = $this->input->post('coursePassPercentage');
 
-		$this->model_course->UpdateCourse($courseID, $courseName, $courseCategory, $courseDescription);
+		$this->model_course->UpdateCourse($courseID, $courseName, $courseCategory, $courseDescription, $coursePassPercentage);
 		
 		$slideOrder = 0;
 		while (true) {
