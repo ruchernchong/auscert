@@ -2,9 +2,12 @@
 if (!empty($this->session->flashdata('denied'))) {
 	?>
 	<script>
-	alert("<?php echo $this->session->flashdata('denied'); ?>");
-</script>;
-<?php
+	$.notify("<?php echo $this->session->flashdata('denied'); ?>", {
+		className: "error",
+		globalPosition: 'bottom right'
+	});
+	</script>
+	<?php
 }
 ?>
 <div id="page-wrapper">
