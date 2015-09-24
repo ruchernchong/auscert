@@ -298,7 +298,7 @@ INSERT INTO `users` (`userID`, `username`, `password`, `email`, `contact`, `user
 CREATE TABLE IF NOT EXISTS `user_courses` (
   `userID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
-  `completion` decimal(5,2) NOT NULL,
+  `completion` int(11) NOT NULL,
   `description` text,
   `grading` varchar(255) DEFAULT NULL,
   `mandatory` tinyint(1) DEFAULT NULL
@@ -309,14 +309,14 @@ CREATE TABLE IF NOT EXISTS `user_courses` (
 --
 
 INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `grading`, `mandatory`) VALUES
-(2, 1, '0.00', NULL, '0.0', NULL),
-(2, 3, '100.00', '', '90', 0),
-(2, 12, '0.00', NULL, '0.0', NULL),
-(3, 3, '100.00', '', '85', 0),
-(3, 7, '101.00', '', '100', 0),
-(3, 9, '100.00', '', '49', 0),
-(7, 1, '0.00', NULL, '0.0', NULL),
-(7, 12, '0.00', NULL, '0.0', NULL);
+(2, 1, '0', NULL, '0.0', NULL),
+(2, 3, '3', '', '90', 0),
+(2, 12, '2', NULL, '0.0', NULL),
+(3, 3, '3', '', '85', 0),
+(3, 7, '3', '', '100', 0),
+(3, 9, '1', '', '49', 0),
+(7, 1, '2', NULL, '0.0', NULL),
+(7, 12, '1', NULL, '0.0', NULL);
 
 -- --------------------------------------------------------
 
