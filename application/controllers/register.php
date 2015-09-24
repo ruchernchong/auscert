@@ -47,14 +47,14 @@ class register extends CI_Controller {
 		$registerContact = $this->input->post('registerContact');
 
 		if ($this->form_validation->run() == false) {
-			$this->load->view('view_login');
-
 			$this->session->set_flashdata('login-error', 'Error registering. Please see register form for errors.');
+
+			$this->load->view('view_login');
 		} else {
 			$this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
 
-			$this->load->view('view_login');
 			$this->session->set_flashdata('login-success', 'Successfully registered. Please proceed to login.');
+			$this->load->view('view_login');
 		}
 	}
 }
