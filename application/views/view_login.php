@@ -4,13 +4,17 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>AusCert | Login &amp; Register</title>
-	<!-- <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" /> -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap-select.min.css'); ?>" />
+
 
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/bootstrap-select.min.js'); ?>"></script>
+
+
 </head>
 
 <body>
@@ -72,6 +76,20 @@
 			<span class="errorMessage"><?php echo form_error('registerRepeatPassword'); ?></span>
 
 			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-group fa-fw"></i></span>
+				<select class="selectpicker form-control text-input" multiple data-max-options="4" data-live-search="true" data-selected-text-format="count>2" title="Select Faculty" id="registerGroup" name="registerGroup[]">
+				<?php
+				foreach ($groups as $group) {
+					?>
+					<option><?php echo $group->organisation ?></option>
+				<?php
+				}
+				?>
+				</select>
+			</div>
+			<span class="errorMessage"><?php echo form_error('registerFaculty'); ?></span>
+
+			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
 				<input type="text" id="registerEmail" name="registerEmail" placeholder="Email Address" class="form-control text-input" value="<?php echo set_value('registerEmail'); ?>">
 			</div>
@@ -90,5 +108,11 @@
 	</div>
 </div>
 </div>
+<script>
+	$('.selectpicker').selectpicker({
+		iconBase: 'fa',
+		tickIcon: 'fa-check'
+	});
+</script>
 </body>
 </html>

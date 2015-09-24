@@ -19,16 +19,12 @@ Class model_user extends CI_Model {
 	}
 
 	//Create a user
-	public function registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact) {
-		$registerUsername = $this->input->post('registerUsername');
-		$registerPassword = $this->input->post('registerPassword');
-		$registerRepeatPassword = $this->input->post('registerRepeatPassword');
-		$registerEmail = $this->input->post('registerEmail');
-		$registerContact = $this->input->post('registerContact');
-		
+	public function registerUsers($registerUsername, $registerPassword, $registerGroup, $registerEmail, $registerContact) {
+
 		$data = array(
 			'username' => $registerUsername,
 			'password' => $registerPassword,
+			'group' => $registerGroup,
 			'email' => $registerEmail,
 			'contact' => $registerContact,
 			'userType' => 'student'

@@ -6,7 +6,11 @@ class register extends CI_Controller {
 		
 		$this->load->model('model_user');
 		$this->load->library('form_validation');
+		$this->load->model('model_groupCourse');
+		$this->load->model('model_course');
+		$this->load->model('model_group');
 	}
+
 
 	//Create user
 	public function registerUsers() {
@@ -27,6 +31,11 @@ class register extends CI_Controller {
 				'rules' => 'required|xss_clean'
 				),
 			array(
+				'field' => 'registerGroup',
+				'label' => 'Faculty',
+				'rules' => 'required|xss_clean'
+				),
+			array(
 				'field' => 'registerEmail',
 				'label' => 'Email',
 				'rules' => 'required|valid_email|is_unique[users.email]|xss_clean'
@@ -43,15 +52,15 @@ class register extends CI_Controller {
 		$registerUsername = $this->input->post('registerUsername');
 		$registerPassword = $this->input->post('registerPassword');
 		$registerRepeatPassword = $this->input->post('registerRepeatPassword');
+		$registerGroup = $this->input->post('registerGroup');
 		$registerEmail = $this->input->post('registerEmail');
 		$registerContact = $this->input->post('registerContact');
 
 		if ($this->form_validation->run() == false) {
-			$this->load->view('view_login');
 
 			echo "<script>alert('Error registering. Please see register form for errors.');</script>";
 		} else {
-			$this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
+			$this->model_user->registerUsers($registerUsername, $registerPassword, $registerGroup, $registerEmail, $registerContact);
 
 			echo "<script>alert('Successfully registered. Please proceed to login.');</script>";
 			
