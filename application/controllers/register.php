@@ -49,13 +49,12 @@ class register extends CI_Controller {
 		if ($this->form_validation->run() == false) {
 			$this->load->view('view_login');
 
-			echo "<script>alert('Error registering. Please see register form for errors.');</script>";
+			$this->session->set_flashdata('login-error', 'Error registering. Please see register form for errors.');
 		} else {
 			$this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
 
-			echo "<script>alert('Successfully registered. Please proceed to login.');</script>";
-			
 			$this->load->view('view_login');
+			$this->session->set_flashdata('login-success', 'Successfully registered. Please proceed to login.');
 		}
 	}
 }
