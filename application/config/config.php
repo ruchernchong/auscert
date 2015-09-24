@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/auscert/';
+$config['base_url'] = 'http://ruchern.com/auscert/';
 
 /*
 |--------------------------------------------------------------------------
