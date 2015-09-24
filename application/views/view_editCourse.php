@@ -70,7 +70,7 @@
 									<script>CKEDITOR.replace("course-description");</script>
 
 								</div>
-								<div class="tab-pane fade" id="course_quiz">
+								<div class="tab-pane fade" id="course-quiz">
 									<?php for ($i=0; $i < sizeof($questions); $i++) { 
 										?>
 										<div class="form-group" id="q<?php echo $i; ?>">
