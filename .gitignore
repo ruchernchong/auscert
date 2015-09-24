@@ -1,1 +1,3 @@
 .idea/
+.htaccess
+application/config/*
