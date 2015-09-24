@@ -1,9 +1,6 @@
 RewriteEngine On
 RewriteBase /auscert/
 
-# Adjust default time zone 
-SetEnv TZ Australia/Brisbane
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
