@@ -25,7 +25,7 @@
 		});
 		</script>
 		<?php
-	} else if {
+	} else if (!empty($this->session->flashdata('login-success'))) {
 		?>
 		<script>
 		$.notify("<?php echo $this->session->flashdata('login-success'); ?>", {
