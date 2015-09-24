@@ -1,51 +1,75 @@
-$(".nav-tabs").on("click", "a", function(e) {
-	e.preventDefault();
+$(".tab-content").on('click', ".chapter-delete", function() {
+	var tabBar = $('#tab-bar');
+	var tabContent = $(this).closest('.tab-pane');
+	var index = tabContent.attr('id').match(/\d+/)[0] * 1
 
-	$(this).tab('show');
-})
+	$('#chapter-' + index).remove();
+	var $deletedTab = $('#chapter-tab-' + index);
+	$('.nav-tabs a[href="' + $deletedTab.prev().find('a').attr('href') + '"]').tab('show');
+	$deletedTab.remove();
 
-.on("click", "span", function() {
-	var parent = $(this).closest('ul');
-	var anchor = $(this).siblings('a');
+	var tabs = tabBar.children();
 
-	$(anchor.attr('href')).remove();
-	$(this).parent().remove();
-	$(".nav-tabs li").children('a').first().click();
-
-	var children = parent.children();
-
-	for(var i = 2; i < children.length - 1; i++) {
-		var $curr = children.eq(i);
+	for(var i = 2; i < tabs.length - 1; i++) {
+		var $curr = tabs.eq(i);
 		var index = i - 2;
 		
 		if ($curr.attr('id') != 'chapter-tab-'+index) {
-			console.log(index);
-			console.log($curr.attr('id'));
-
 			reorderChapter((index+1), index);
 		}
 	}
 });
 
-$(".add-chapter").click(function(e) {
+$(".tab-content").on('click', ".chapter-move-right", function() {
+	var tabBar = $('#tab-bar');
+	var tabContent = $(this).closest('.tab-pane');
+	var index = tabContent.attr('id').match(/\d+/)[0] * 1
+
+	var $swapTarget = $('#chapter-tab-' + (index + 1));
+
+	if( ! $swapTarget.length) {
+		return;
+	}
+
+	$swapTarget.after($('#chapter-tab-' + index));
+	reorderChapter((index+1), -1);
+	reorderChapter(index, (index+1));
+	reorderChapter(-1, index);
+});
+
+$(".tab-content").on('click', ".chapter-move-left", function() {
+	var tabBar = $('#tab-bar');
+	var tabContent = $(this).closest('.tab-pane');
+	var index = tabContent.attr('id').match(/\d+/)[0] * 1
+
+	var $swapTarget = $('#chapter-tab-' + (index - 1));
+	if( ! $swapTarget.length) {
+		return;
+	}
+
+	$swapTarget.before($('#chapter-tab-' + index));
+	reorderChapter((index-1), -1);
+	reorderChapter(index, (index-1));
+	reorderChapter(-1, index);
+});
+
+
+$("#add-chapter").click(function(e) {
 	e.preventDefault();
 
 	var id = $(".nav-tabs").children().length - 3;
 	var editorx = "editor-" + id;
 
-	$(this).closest('li').before('<li id="chapter-tab-' + id + '"><a href="#chapter-' + id + '" data-toggle="tab"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash; New Chapter</a><span><i class="fa fa-times"></i></span></li>');         
-	$(".tab-content").append('<div class="tab-pane fade" id="chapter-' + id + '"><div class="form-group"><label>Chapter title </label><input class="form-control chapter-title" name="title-' + id + '" id="title-' + id + '" value="New Chapter" required><br /><label>Chapter contents</label><textarea name="editor-' + id + '" id="editor-' + id + '" rows="10" cols="80"></textarea></div></div>');
-	// Trying to set tab to inactive when user clicks on "Add Chapter".
-	$(".nav-tabs li").removeClass("active");
+	$(this).closest('li').before('<li id="chapter-tab-' + id + '"><a href="#chapter-' + id + '" data-toggle="tab"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash; New Chapter</a></li>');         
+	$(".tab-content").append('<div class="tab-pane fade" id="chapter-' + id + '"><label>Chapter controls</label> <div class="row"><div class="col-md-3"><i class="fa fa-caret-square-o-left fa-2x chapter-move-left"></i> Move Left</div><div class="col-md-3"><i class="fa fa-minus-square fa-2x chapter-delete"style="color:red"></i> Delete Chapter</div><div class="col-md-3"><i class="fa fa-caret-square-o-right fa-2x chapter-move-right"></i> Move Right</div></div><br>		<div class="form-group"><label>Chapter title </label><input class="form-control chapter-title" name="title-' + id + '" id="title-' + id + '" value="New Chapter" required><br /><label>Chapter contents</label><textarea name="editor-' + id + '" id="editor-' + id + '" rows="10" cols="80"></textarea></div></div>');
 	CKEDITOR.replace(editorx);
+	$('.nav-tabs a[href="#chapter-' + id + '"]').tab('show');
 });
 
 $(".tab-content").on("change", ".chapter-title", function() {
 	var id = ($(this).attr('id').match(/\d+/)[0]) * 1;
 
-	$('#' + id).html('<a href="#chapter-' + id + '"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash;' + $("#title-" + (id)).val() + '</a><span><i class="fa fa-times"></i></span>');
-	// Trying to set tab to inactive when user clicks on "Add Chapter".
-	$(".nav-tabs li").removeClass("active");
+	$('#chapter-tab-' + id).html('<a href="#chapter-' + id + '" data-toggle="tab"><i class="fa fa-book"></i>&emsp; ' + (id + 1) + ' &mdash;' + $("#title-" + (id)).val() + '</a>');
 });
 
 // Delete question script, cascade order to following questions

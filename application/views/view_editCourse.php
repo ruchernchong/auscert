@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
-				<ul class="nav nav-tabs">
+				<ul class="nav nav-tabs" id="tab-bar">
 					<li class="active">
 						<a href="#course-details" data-toggle="tab"><i class="fa fa-database"></i>&emsp;Course Details</a>
 					</li>
@@ -21,15 +21,12 @@
 							<a href="#chapter-<?php echo $i; ?>" data-toggle="tab">
 								<i class="fa fa-book"></i>&emsp;<?php echo $i+1 . " &mdash; " . $slides[$i]->slideTitle; ?>
 							</a>
-							<span>
-								<i class="fa fa-times"></i>
-							</span>
 						</li>
 					<?php
 					} 
 					?>
 					<li>
-						<a href="#" class="add-chapter" data-toggle="tab"><i class="fa fa-plus"></i>&emsp;Add Chapter</a>
+						<a href="#" id="add-chapter" data-toggle="tab"><i class="fa fa-plus"></i></a>
 					</li>
 				</ul>
 
@@ -128,6 +125,22 @@
 										<?php for ($i=0; $i < sizeof($slides); $i++) { 
 											?>
 											<div class="tab-pane fade" id="chapter-<?php echo $i; ?>">
+												<label>Chapter controls</label>
+												<div class="row">
+													<div class="col-md-3">
+														<i class="fa fa-caret-square-o-left fa-2x chapter-move-left"></i>
+														Move Left
+													</div>
+													<div class="col-md-3">
+														<i class="fa fa-minus-square fa-2x chapter-delete"style="color:red"></i>
+														Delete Chapter
+													</div>
+													<div class="col-md-3">
+														<i class="fa fa-caret-square-o-right fa-2x chapter-move-right"></i>
+														Move Right
+													</div>
+												</div><br>
+
 												<div class="form-group">
 													<label>Chapter title</label>
 													<input class="form-control chapter-title" id ="title-<?php echo $i; ?>" name="title-<?php echo $i; ?>" value="<?php echo $slides[$i]->slideTitle; ?>">
@@ -145,11 +158,11 @@
 											<?php 
 										}
 										?>
+									</div>
 										<div class="form-group">
 											<input type="submit" class="btn btn-success" value="Submit" />
 											<input type="reset" class="btn btn-danger" value="Reset" />
 										</div>
-									</div>
 								</form>
 							</div>
 						</div>
