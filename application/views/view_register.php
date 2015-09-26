@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AusCert | Login &amp; Register</title>
+    <title>AusCert | Register</title>
     <!-- <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" /> -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
