@@ -9,6 +9,21 @@ class manageMember extends CI_Controller {
 		$this->load->model('model_usergroup');
 	}
 
+	function _remap(){
+		$groupID = $this->uri->segment(2);
+
+		switch ($groupID) {
+			case null:
+			case false:
+			case '':
+				$this->index();
+				break;
+			default:
+				show_404();
+				break;
+		}
+	}
+
 	function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
@@ -16,7 +31,9 @@ class manageMember extends CI_Controller {
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = 'admin';
 
-			$thisGroupID = $this->input->get('groupID');
+			$groupID = $this->uri->segment(2);
+
+			$thisGroupID = $groupID;
 			$thisGroup = $this->model_group->GetGroupByID($thisGroupID);
 			$groupUsers = $this->model_usergroup->GetGroupUsers($thisGroupID);
 

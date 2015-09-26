@@ -170,9 +170,9 @@
 										<td><?php echo $group['organisation'] ?></td>
 										<td><?php echo $group['userCount'] ?></td>
 										<td>
-											<a href="<?php echo base_url('manageMember?groupID=' . $group['groupID']); ?>" class="btn btn-sm btn-success"><i class="fa fa-signal"></i>&emsp;Manage Members</a>
+											<a href="<?php echo base_url('manageMember/' . $group['groupID']); ?>" class="btn btn-sm btn-success"><i class="fa fa-signal"></i>&emsp;Manage Members</a>
 											&nbsp;
-											<a href="<?php echo base_url('manageCourse?groupID=' . $group['groupID']); ?>" class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
+											<a href="<?php echo base_url('manageCourse/' . $group['groupID']); ?>" class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
 											&nbsp;
 											<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Delete Group</a>
 											&nbsp;
