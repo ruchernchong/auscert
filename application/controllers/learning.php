@@ -19,6 +19,8 @@ class learning extends CI_Controller {
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "course";
+
+			$courseID = $this->uri->segment(2);
 			
 			$query = $this->model_course->GetCourseById($courseID);
 
