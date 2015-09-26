@@ -137,7 +137,7 @@
 													<i class="fa fa-pencil"></i>&emsp;Edit
 												</a>
 												&nbsp;
-												<a href="<?php echo site_url('analysis?courseID=' . $course->courseID); ?>" class="btn btn-sm btn-primary">
+												<a href="<?php echo site_url('analysis/' . $course->courseID); ?>" class="btn btn-sm btn-primary">
 													<i class="fa fa-bar-chart-o"></i>&emsp;Course Analytics
 												</a>
 												&nbsp;

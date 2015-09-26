@@ -11,12 +11,28 @@ class analysis extends CI_Controller {
 		$this->load->model('model_slide');
 	}
 
+	function _remap() {
+		$courseID = $this=>uri->segment(3);
+
+		switch ($courseID) {
+			case null:
+			case false:
+			case '':
+				$this->index();
+			default:
+				show_404();
+				break;
+		}
+	}
+
 	function index() {
-		if($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "admin";
+
+			$courseID = $this->uri->segment(2);
 
 			$getCourse = $this->model_course->GetCourseByID($this->input->get('courseID'));
 			$getCourseUsers = $this->model_usercourse->GetUsersFromCourse($this->input->get('courseID'));
