@@ -15,23 +15,24 @@ class login extends CI_Controller {
 
 	//validate a user's login
 	public function validateLogin() {
-		$username = $this->input->post('loginUsername');
+//		$email = $this->input->post('loginEmail');
 		$query = $this->model_user->validate();
 		
 		if ($query) {
 			foreach($query as $row)
 			{
-				$sess_array = array(
+				$session_array = array(
 					'userID' => $row->userID, 
 					'username' => $row->username, 
 					'email' => $row->email, 
 					'usertype' => $row->userType
 					);
-				$this->session->set_userdata('logged_in', $sess_array);
+				$this->session->set_userdata('logged_in', $session_array);
 			}
 			redirect('home', 'refresh');
 		} else {
-			redirect('login','refresh');
+			$this->session->set_flashdata('login-error', 'Invalid Email and/or Password.');
+			redirect('login', 'refresh');
 		}
 	}
 }
