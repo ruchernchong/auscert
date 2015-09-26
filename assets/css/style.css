@@ -13,7 +13,7 @@ body {
 }*/
 
 @import url(http://fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);
-@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+/*@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");*/
 * {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -206,6 +206,18 @@ a {
 	font-size: 0.9rem;
 }
 
+.content i {
+	border-right: 1px black solid;
+	width: 50px;
+	border-radius: 4px;
+	color: black;
+	font-size: 1.2em;
+	height: 47px;
+	background-color: white;
+	padding: 10px;
+	padding-top: 15px;
+	margin: 10px 0;
+}
 
 /*#formModal {
 	position: fixed;
