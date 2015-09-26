@@ -133,7 +133,7 @@
 											</td>
 
 											<td class="project-actions">
-												<a href="<?php echo site_url('edits/index/' . $course->courseID);?>" class="btn btn-sm btn-success">
+												<a href="<?php echo site_url('edits/' . $course->courseID);?>" class="btn btn-sm btn-success">
 													<i class="fa fa-pencil"></i>&emsp;Edit
 												</a>
 												&nbsp;

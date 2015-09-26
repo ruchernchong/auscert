@@ -12,6 +12,21 @@ class edits extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 	}
 
+	function _remap() {
+		$courseID = $this->uri->segment(3);
+
+		switch ($courseID) {
+			case null:
+			case false:
+			case '':
+				$this->index();
+				break;
+			default:
+				show_404();
+				break;
+		}
+	}
+
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
@@ -19,7 +34,7 @@ class edits extends CI_Controller {
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "admin";
 
-			$courseID = $this->uri->segment(3);
+			$courseID = $this->uri->segment(2);
 
 			$query = $this->model_course->GetCourseById($courseID);
 
