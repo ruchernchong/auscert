@@ -59,12 +59,12 @@
 											<i id="prev" class="fa fa-chevron-circle-left fa-5x" style="color:#bbb"></i>
 										</div>
 										<div class="col-md-10">
-											<?php 
+											<?php
 											$attributes = array(
 												'id' => 'userInput',
 												'name' => 'userInput'
 												);
-											echo form_open('learning/quiz?courseID=' . $course->courseID, $attributes);
+											echo form_open('learning/quiz/' . $course->courseID, $attributes);
 
 											for ($i=0; $i < sizeof($questions); $i++) {
 												if ($i == 0) {
