@@ -20,7 +20,9 @@
 		<script>
 		$.notify("<?php echo $this->session->flashdata('login-error'); ?>", {
 			className: "error",
-			globalPosition: "top right"
+			clickToHide: true,
+			autoHide: false,
+			globalPosition:"bottom right"
 		});
 		</script>
 		<?php
@@ -29,27 +31,49 @@
 		<script>
 		$.notify("<?php echo $this->session->flashdata('login-success'); ?>", {
 			className: "success",
-			globalPosition: "top-right"
+			clickToHide: true,
+			autoHide: false,
+			globalPosition: "bottom right"
 		});
 		</script>
 		<?php
 	}
 	?>
-	<div id="formModal">
+
+	<?php
+	$attributes = array(
+		'id' => 'formLogin',
+		'name' => 'formLogin',
+		'class' => 'formLogin'
+	);
+	echo form_open('login/validateLogin', $attributes);
+	?>
+	<div class="content">
+		<div class="title">Login</div>
+		<input type="text" id="loginEmail" name="loginEmail" placeholder="E-mail" />
+		<input type="password" id="loginPassword" name="loginPassword" placeholder="Password" />
+		<input type="checkbox" id="rememberMe" name="rememberMe" />
+		<label for="rememberMe"></label><span>Remember Me</span>
+		<button>Login</button>
+		<!-- <div class="social"> <span>or sign up with social media</span></div>
+		<div class="buttons">
+			<button class="facebook"><i class="fa fa-facebook"></i>Facebook</button>
+			<button class="twitter"><i class="fa fa-twitter"></i>Twitter</button>
+			<button class="google"><i class="fa fa-google-plus"></i>Google</button>
+		</div> -->
+		<div class="not-already">
+			Do not have an account? <a href="<?php echo base_url('register'); ?>">Register</a>
+		</div>
+	</div>
+	</form>
+
+	<!-- <div id="formModal">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#login" data-toggle="tab">Login</a></li>
 			<li><a href="#register" data-toggle="tab">Register</a></li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div class="tab-pane active in" id="login">
-				<?php 
-				$attributes = array(
-					'id' => 'formLogin',
-					'name' => 'formLogin',
-					'class' => 'formLogin'
-					);
-				echo form_open('login/validateLogin', $attributes);
-				?>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 					<input type="text" id="loginUsername" name="loginUsername" placeholder="Username" class="form-control text-input">
