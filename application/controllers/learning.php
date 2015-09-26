@@ -20,12 +20,14 @@ class learning extends CI_Controller {
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "course";
 			
-			$query = $this->model_course->GetCourseById($this->input->get('courseID'));
+			$query = $this->model_course->GetCourseById($courseID);
 
 			if ($query) {
 				$data['course'] = $query;
-				$slides = $this->model_slide->GetSlidesByCourse($data['course']->courseID);
-				$questions = $this->model_question->GetQuestions($data['course']->courseID);
+//				$slides = $this->model_slide->GetSlidesByCourse($data['course']->courseID);
+//				$questions = $this->model_question->GetQuestions($data['course']->courseID);
+				$slides = $this->model_slide->GetSlidesByCourse($courseID);
+				$questions = $this->model_question->GetQuestions($courseID);
 			}
 
 			if ($slides) {
@@ -37,7 +39,8 @@ class learning extends CI_Controller {
 			if ($questions) {
 				$data['questions'] = $questions;
 				for($i = 0; $i < sizeof($questions); $i++) {
-					$answers = $this->model_answer->GetAnswers($data['course']->courseID, $questions[$i]->questionOrder);
+//					$answers = $this->model_answer->GetAnswers($data['course']->courseID, $questions[$i]->questionOrder);
+					$answers = $this->model_answer->GetAnswers($courseID, $questions[$i]->questionOrder);
 					if ($answers) {
 						$data['answers'][$questions[$i]->questionOrder] = $answers;
 					} else {
