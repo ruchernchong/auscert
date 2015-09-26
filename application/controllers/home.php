@@ -83,7 +83,7 @@ class home extends CI_Controller {
 	//Enrol a user to a course
 	function EnrolToCourse() {
 		$session_data = $this->session->userdata('logged_in');
-		$courseID = $this->input->get('id', TRUE);
+		$courseID = $this->uri->segment(2);
 		$this->model_usercourse->RegisterToCourse($session_data['userID'], $courseID);
 
 		redirect('home', 'refresh');
@@ -92,7 +92,7 @@ class home extends CI_Controller {
 	//Drop a user from a course
 	function dropCourse() {
 		$session_data = $this->session->userdata('logged_in');
-		$courseID = $this->input->get('id', TRUE);
+		$courseID = $this->uri->segment(2);
 		$this->model_usercourse->DropFromCourse($session_data['userID'], $courseID);
 
 		redirect('home', 'refresh');

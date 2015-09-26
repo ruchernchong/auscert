@@ -40,7 +40,7 @@ if (!empty($this->session->flashdata('denied'))) {
 									<?php
 									foreach ($userCourses as $userCourse) {
 										?>
-										<tr data-href="learning/?courseID=<?php echo $userCourse->courseID; ?>">
+										<tr data-href="<?php echo site_url('learning/' . $userCourse->courseID); ?>">
 											<td>
 												<?php echo $userCourse->courseName; ?>
 											</td>
@@ -121,7 +121,7 @@ if (!empty($this->session->flashdata('denied'))) {
 										<?php
 										foreach ($completedUserCourses as $completedUserCourse) {
 											?>
-											<tr data-href="learning/?courseID=<?php echo $completedUserCourse->courseID; ?>">
+											<tr data-href="<?php echo site_url('learning/' . $completedUserCourse->courseID); ?>">
 												<td>
 													<?php echo !empty($completedUserCourse) ? $completedUserCourse->courseName : 'You do not have any completed course.' ?>
 												</td>
@@ -250,7 +250,7 @@ if (!empty($this->session->flashdata('denied'))) {
 										<?php
 										foreach ($userCourses as $userCourse) {
 											?>
-											<tr data-href="<?php echo site_url('learning?courseID=' . $userCourse->courseID); ?>">
+											<tr data-href="<?php echo site_url('learning/' . $userCourse->courseID); ?>">
 												<td>
 													<?php
 													if ($userCourse->completion == 100) {
