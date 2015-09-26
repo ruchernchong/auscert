@@ -141,7 +141,7 @@
 													<i class="fa fa-bar-chart-o"></i>&emsp;Course Analytics
 												</a>
 												&nbsp;
-												<a href="<?php echo site_url('admin/dropCourse?id=' . $course->courseID); ?>" class="btn btn-sm btn-danger">
+												<a href="<?php echo site_url('admin/dropCourse/' . $course->courseID); ?>" class="btn btn-sm btn-danger">
 													<i class="fa fa-trash"></i>&emsp;Remove
 												</a>
 											</td>
