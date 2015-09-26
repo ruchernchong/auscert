@@ -12,13 +12,14 @@ class analysis extends CI_Controller {
 	}
 
 	function _remap() {
-		$courseID = $this=>uri->segment(3);
+		$courseID = $this->uri->segment(3);
 
 		switch ($courseID) {
 			case null:
 			case false:
 			case '':
 				$this->index();
+				break;
 			default:
 				show_404();
 				break;
@@ -34,9 +35,9 @@ class analysis extends CI_Controller {
 
 			$courseID = $this->uri->segment(2);
 
-			$getCourse = $this->model_course->GetCourseByID($this->input->get('courseID'));
-			$getCourseUsers = $this->model_usercourse->GetUsersFromCourse($this->input->get('courseID'));
-			$getCompletedCourseUsers = $this->model_usercourse->GetCompletedUsers($this->input->get('courseID'));
+			$getCourse = $this->model_course->GetCourseByID($courseID);
+			$getCourseUsers = $this->model_usercourse->GetUsersFromCourse($courseID);
+			$getCompletedCourseUsers = $this->model_usercourse->GetCompletedUsers($courseID);
 
 			if ($getCourse) {
 				$data['course'] = $getCourse;
