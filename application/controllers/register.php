@@ -8,6 +8,10 @@ class register extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 
+	public function index() {
+		$this->load->view('view_register');
+	}
+
 	//Create user
 	public function registerUsers() {
 		$rules = array(
