@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AusCert | Register</title>
-    <!-- <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" /> -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>AusCert | Register</title>
+	<!-- <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" /> -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" />
 
-    <script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
 </head>
 
 <body>
-<?php
-if (!empty($this->session->flashdata('login-error'))) {
-    ?>
-    <script>
-        $.notify("<?php echo $this->session->flashdata('login-error'); ?>", {
-            className: "error",
-            globalPosition: "top right"
-        });
-    </script>
-<?php
-} else if (!empty($this->session->flashdata('login-success'))) {
-?>
-    <script>
-        $.notify("<?php echo $this->session->flashdata('login-success'); ?>", {
-            className: "success",
-            globalPosition: "top-right"
-        });
-    </script>
-    <?php
-}
-?>
+	<?php
+	if (!empty($this->session->flashdata('login-error'))) {
+		?>
+		<script>
+		$.notify("<?php echo $this->session->flashdata('login-error'); ?>", {
+			className: "error",
+			globalPosition: "top right"
+		});
+		</script>
+		<?php
+	} else if (!empty($this->session->flashdata('login-success'))) {
+		?>
+		<script>
+		$.notify("<?php echo $this->session->flashdata('login-success'); ?>", {
+			className: "success",
+			globalPosition: "top-right"
+		});
+		</script>
+		<?php
+	}
+	?>
 
-<?php
-$attributes = array(
-    'id' => 'formLogin',
-    'name' => 'formLogin',
-    'class' => 'formLogin'
-);
-echo form_open('login/validateLogin', $attributes);
-?>
-<div class="content">
-    <div class="title">Create account</div>
-    <input type="text" placeholder="E-mail"/>
-    <input type="password" placeholder="Password"/>
-    <input type="checkbox" id="rememberMe"/>
-    <label for="rememberMe"></label><span>I have read and agree to the <a href="#">Terms of Use </a>and <a href="#">Privacy Policy</a></span>
-    <button>Create Account</button>
+	<?php
+	$attributes = array(
+		'id' => 'formLogin',
+		'name' => 'formLogin',
+		'class' => 'formLogin'
+		);
+	echo form_open('login/validateLogin', $attributes);
+	?>
+	<div class="content">
+		<div class="title">Create account</div>
+		<input type="text" placeholder="E-mail"/>
+		<input type="password" placeholder="Password"/>
+		<input type="checkbox" id="rememberMe"/>
+		<label for="rememberMe"></label><span>I have read and agree to the <a href="#">Terms of Use </a>and <a href="#">Privacy Policy</a></span>
+		<button>Create Account</button>
     <!-- <div class="social"> <span>or sign up with social media</span></div>
     <div class="buttons">
         <button class="facebook"><i class="fa fa-facebook"></i>Facebook</button>
