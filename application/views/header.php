@@ -26,8 +26,6 @@
 	<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/course.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
-
-	<meta name="google-site-verification" content="1LBGW060DUsPKhNgB2y34EQATnRahk9D3F9vR5VyFaI" />
 </head>
 <body>
 	<div id="wrapper">
