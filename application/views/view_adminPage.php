@@ -174,7 +174,7 @@
 											&nbsp;
 											<a href="<?php echo base_url('manageCourse?groupID=' . $group['groupID']); ?>" class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
 											&nbsp;
-											<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Delete Group</a>
+											<a href="<?php echo site_url('admin/dropGroup?id=' . $group['groupID'])?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Delete Group</a>
 											&nbsp;
 										</td>
 									</tr>

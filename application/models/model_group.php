@@ -33,8 +33,9 @@ Class model_group extends CI_Model {
 	}
 
 	//Delete the group
-	public function DeleteGroup() {
-		return true;
+	public function DeleteGroup($groupID) {
+		$this->db->where('groupID', $groupID);
+		$this->db->delete('groups');
 	}
 }
 ?>
