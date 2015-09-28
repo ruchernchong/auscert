@@ -18,44 +18,44 @@
 </head>
 
 <body>
-	<div id="formModal">
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#login" data-toggle="tab">Login</a></li>
-			<li><a href="#register" data-toggle="tab">Register</a></li>
-		</ul>
-		<div id="myTabContent" class="tab-content">
-			<div class="tab-pane active in" id="login">
-				<?php 
-				$attributes = array(
-					'id' => 'formLogin',
-					'name' => 'formLogin',
-					'class' => 'formLogin'
-					);
-				echo form_open('login/validateLogin', $attributes);
-				?>
-				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-					<input type="text" id="loginUsername" name="loginUsername" placeholder="Username" class="form-control text-input">
-				</div>
-				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-					<input type="password" id="loginPassword" name="loginPassword" placeholder="Password" class="form-control text-input">
-				</div>
+<div id="formModal">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+		<li><a href="#register" data-toggle="tab">Register</a></li>
+	</ul>
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane active in" id="login">
+			<?php
+			$attributes = array(
+				'id' => 'formLogin',
+				'name' => 'formLogin',
+				'class' => 'formLogin'
+			);
+			echo form_open('login/validateLogin', $attributes);
+			?>
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+				<input type="text" id="loginUsername" name="loginUsername" placeholder="Username" class="form-control text-input">
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+				<input type="password" id="loginPassword" name="loginPassword" placeholder="Password" class="form-control text-input">
+			</div>
 
-				<div class="form-group">
-					<button class="btn-UQ">Login</button>
-				</div>
+			<div class="form-group">
+				<button class="btn-UQ">Login</button>
+			</div>
 			</form>
 		</div>
 
 		<div class="tab-pane fade" id="register">
-			<?php 
+			<?php
 			$attributes = array(
 				'id' => 'formRegister',
 				'name' => 'formRegister',
 				'class' => 'formRegister'
-				);
-			echo form_open('register/registerUsers', $attributes); 
+			);
+			echo form_open('register/registerUsers', $attributes);
 			?>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
@@ -78,13 +78,13 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-group fa-fw"></i></span>
 				<select class="selectpicker form-control text-input" multiple data-max-options="4" data-live-search="true" data-selected-text-format="count>2" title="Select Faculty" id="registerGroup" name="registerGroup[]">
-				<?php
-				foreach ($groups as $group) {
+					<?php
+					foreach ($groups as $group) {
+						?>
+						<option><?php echo $group->organisation ?></option>
+						<?php
+					}
 					?>
-					<option><?php echo $group->organisation ?></option>
-				<?php
-				}
-				?>
 				</select>
 			</div>
 			<span class="errorMessage"><?php echo form_error('registerFaculty'); ?></span>
@@ -104,9 +104,9 @@
 			<div class="form-group">
 				<button class="btn-UQ">Register</button>
 			</div>
-		</form>
+			</form>
+		</div>
 	</div>
-</div>
 </div>
 <script>
 	$('.selectpicker').selectpicker({
