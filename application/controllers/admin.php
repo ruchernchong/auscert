@@ -92,7 +92,7 @@ class admin extends CI_Controller {
 	}
 
 	function dropGroup() {
-		$groupID = $this->input->get('id', TRUE);
+		$groupID = $this->uri->segment(3);
 		$this->model_group->DeleteGroup($groupID);
 		redirect('admin', 'refresh');
 	}

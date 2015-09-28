@@ -13,6 +13,24 @@ class learning extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 	}
 
+	function _remap() {
+		$method = $this->uri->segment(2);
+
+		switch ($method) {
+			case null:
+			case false:
+			case is_numeric($method):
+				$this->index();
+				break;
+			case 'quiz':
+				$this->quiz();
+				break;
+			default:
+				show_404();
+				break;
+		}
+	}
+
 	public function index() {
 		if($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');

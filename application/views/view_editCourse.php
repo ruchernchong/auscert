@@ -39,7 +39,7 @@
 								'name' => 'userInput'
 								);
 
-							echo form_open('edits/save?courseID=' . $course->courseID, $attributes);
+							echo form_open('edits/save/' . $course->courseID, $attributes);
 							?>
 							<div class="tab-content">
 								<div class="tab-pane fade in active" id="course-details">

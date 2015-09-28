@@ -57,7 +57,7 @@ class addCourse extends CI_Controller {
 
 			$courseID = $this->model_course->AddCourse($createCourseName, $createCourseCategory, 0, $createCourseDescription, $createCoursePassPercentage);
 
-			redirect('edits/index/' . $courseID, 'refresh');
+			redirect('edits/' . $courseID, 'refresh');
 		} else {
 			if ($this->session->userdata('logged_in')) {
 				$session_data = $this->session->userdata('logged_in');

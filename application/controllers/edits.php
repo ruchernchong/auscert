@@ -13,13 +13,16 @@ class edits extends CI_Controller {
 	}
 
 	function _remap() {
-		$courseID = $this->uri->segment(3);
+		$method = $this->uri->segment(2);
 
-		switch ($courseID) {
+		switch ($method) {
 			case null:
 			case false:
-			case '':
+			case is_numeric($method):
 				$this->index();
+				break;
+			case 'save':
+				$this->save();
 				break;
 			default:
 				show_404();
@@ -82,15 +85,21 @@ class edits extends CI_Controller {
 	// Updates the description for a course and saves slides, quiz questions and quiz answers.
 	// Deletes any excess content if the user has removed content
 	public function save() {
-		$courseID = $this->input->get('courseID');
+		$courseID = $this->uri->segment(3);
 		$courseName = $this->input->post('course-name');
 		$courseCategory = $this->input->post('course-category');
 		$courseDescription = $this->input->post('course-description');
 		$coursePassPercentage = $this->input->post('course-pass-percentage');
 
-		$this->model_course->UpdateCourse($courseID, $courseName, $courseCategory, $courseDescription, $coursePassPercentage);
+		$this->model_course->UpdateCourse(
+			$courseID,
+			$courseName,
+			$courseCategory,
+			$courseDescription,
+			$coursePassPercentage);
 		
 		$slideOrder = 0;
+
 		while (true) {
 			$slideTitle = $this->input->post(sprintf('title-%d', $slideOrder));
 			$slideContent = $this->input->post(sprintf('editor-%d', $slideOrder));
@@ -105,6 +114,7 @@ class edits extends CI_Controller {
 		$this->model_slide->DeleteHigherSlides($courseID, $slideOrder);
 
 		$questionOrder = 0;
+
 		while (true) {
 			$questionText = $this->input->post(sprintf('question-%d', $questionOrder));
 			
@@ -115,6 +125,7 @@ class edits extends CI_Controller {
 			$this->model_question->SaveQuestion($courseID, $questionOrder, $questionText);
 			
 			$answerOrder = 0;
+
 			while (true) {
 				$answerText = $this->input->post(sprintf('q-%d-a-%d', $questionOrder, $answerOrder));
 				
