@@ -77,7 +77,6 @@ class manageCourse extends CI_Controller {
 	function removeCourses() {
 		$coursesArray = $this->input->post('courseIDs');
 		$groupID = $this->input->post('groupID');
-
 		foreach ($coursesArray as $courseID) {
 			$this->model_groupcourse->RemoveCourseFromGroup($courseID, $groupID);
 		}

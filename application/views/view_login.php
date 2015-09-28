@@ -81,7 +81,7 @@
 					<?php
 					foreach ($groups as $group) {
 						?>
-						<option><?php echo $group->organisation ?></option>
+						<option value="<?php echo $group->groupID ?>"><?php echo $group->organisation ?></option>
 						<?php
 					}
 					?>
