@@ -118,6 +118,65 @@
 			</div>
 		</div>
 	</div>
+<script>
+    /**
+     * Created by RuChern on 28 Sep 2015.
+     */
 
-	<!-- Include script for event listeners -->
-	<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+    $("#btn_addUser").click(function() {
+        //loop through each checkbox in the table and add checked userIDs to the array
+        var groupID = $("#groupIDHeader").attr('value');
+        var otherUserIDs = [];
+
+        $('.otherSelected').each(function() {
+            if (this.checked == true) {
+                otherUserIDs.push($(this).attr('value'));
+            }
+        });
+
+        $.ajax({
+            method: "POST",
+            url: "<?php echo base_url('manageMember/addMembers'); ?>",
+            data: {
+                userIDs : otherUserIDs,
+                groupID : groupID
+            },
+            success: function(response) {
+                location.reload();
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+
+
+    $("#btn_removeUser").click(function() {
+        //loop through each checkbox in the table and add checked userIDs to the array
+        var groupID = $("#groupIDHeader").attr('value');
+        var assignedUserIDs = [];
+
+        $('.assignedSelected').each(function() {
+            if (this.checked == true) {
+                assignedUserIDs.push($(this).attr('value'));
+            }
+        });
+
+        $.ajax({
+            method: "POST",
+            url: "<?php echo base_url('manageMember/removeMembers'); ?>",
+            data: {
+                userIDs : assignedUserIDs,
+                groupID : groupID
+            },
+            success: function(response) {
+                location.reload();
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+</script>

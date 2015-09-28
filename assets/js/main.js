@@ -316,65 +316,6 @@ $("#btn_removeCourse").click(function() {
 	});
 });
 
-
-
-$("#btn_addUser").click(function() {
-	//loop through each checkbox in the table and add checked userIDs to the array
-	var groupID = $("#groupIDHeader").attr('value');
-	var otherUserIDs = [];
-
-	$('.otherSelected').each(function() {
-		if (this.checked == true) {
-			otherUserIDs.push($(this).attr('value'));
-		}
-	});
-	
-	$.ajax({
-		method: "POST",
-		url: "manageMember/addMembers",
-		data: {
-			userIDs : otherUserIDs,
-			groupID : groupID
-		},
-		success: function(response) {
-			location.reload();
-			console.log(response);
-		},
-		error: function(error) {
-			console.log(error);
-		}
-	});
-});
-
-$("#btn_removeUser").click(function() {
-	//loop through each checkbox in the table and add checked userIDs to the array
-	var groupID = $("#groupIDHeader").attr('value');
-	var assignedUserIDs = [];
-
-	$('.assignedSelected').each(function() {
-		if (this.checked == true) {
-			assignedUserIDs.push($(this).attr('value'));
-		}
-	});
-
-	$.ajax({
-		method: "POST",
-		url: "manageMember/removeMembers",
-		data: {
-			userIDs : assignedUserIDs,
-			groupID : groupID
-		},
-		success: function(response) {
-			location.reload();
-			console.log(response);
-		},
-		error: function(error) {
-			console.log(error);
-		}
-	});
-});
-
-
 // Click handler for the 'next' button
 $('#next').click(function(e) {
 	$target = $('#current_question');
