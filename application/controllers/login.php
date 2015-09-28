@@ -15,7 +15,7 @@ class login extends CI_Controller {
 
 	//validate a user's login
 	public function validateLogin() {
-//		$email = $this->input->post('loginEmail');
+		$email = $this->input->post('loginEmail');
 		$query = $this->model_user->validate();
 		
 		if ($query) {
