@@ -5,7 +5,7 @@ class analysis extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('model_user');
-		$this->load->model('model_userCourse');
+		$this->load->model('model_usercourse');
 		$this->load->model('model_course');
 		$this->load->model('model_group');
 		$this->load->model('model_slide');
@@ -19,8 +19,8 @@ class analysis extends CI_Controller {
 			$data['menu'] = "admin";
 
 			$getCourse = $this->model_course->GetCourseByID($this->input->get('courseID'));
-			$getCourseUsers = $this->model_userCourse->GetUsersFromCourse($this->input->get('courseID'));
-			$getCompletedCourseUsers = $this->model_userCourse->GetCompletedUsers($this->input->get('courseID'));
+			$getCourseUsers = $this->model_usercourse->GetUsersFromCourse($this->input->get('courseID'));
+			$getCompletedCourseUsers = $this->model_usercourse->GetCompletedUsers($this->input->get('courseID'));
 
 			if ($getCourse) {
 				$data['course'] = $getCourse;

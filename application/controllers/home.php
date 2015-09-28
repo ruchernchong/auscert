@@ -6,7 +6,7 @@ class home extends CI_Controller {
 		
 		$this->load->model('model_course');
 		$this->load->model('model_user');
-		$this->load->model('model_userCourse');
+		$this->load->model('model_usercourse');
 		$this->load->model('model_group');
 	}
 
@@ -14,7 +14,7 @@ class home extends CI_Controller {
 		if ($this->session->userdata('logged_in')) {
 
 			$courses = $this->model_course->GetAllCourses();
-			$userCourses = $this->model_userCourse->GetUserCourses();
+			$userCourses = $this->model_usercourse->GetUserCourses();
 
 			if ($courses) {
 				$coursesAvail = array_udiff($courses, $userCourses, function ($courses, $userCourses) {
@@ -27,13 +27,13 @@ class home extends CI_Controller {
 			}
 
 			//List of courses the user is enrolled in
-			$userCourses = $this->model_userCourse->GetUserCourses();
+			$userCourses = $this->model_usercourse->GetUserCourses();
 			if ($userCourses) {
 				$data['userCourses'] = $userCourses;
 			}
 
 			//Count of courses the user is enrolled in
-			$count = $this->model_userCourse->GetNumberOfUserCourses();
+			$count = $this->model_usercourse->GetNumberOfUserCourses();
 			if ($count) {
 				$data['NoOfUserCourses'] = $count;
 			}
@@ -64,7 +64,7 @@ class home extends CI_Controller {
 			$data['menu'] = "home";
 
 			//List of courses completed by a user, null if there is none
-			$query = $this->model_userCourse->GetCompletedUserCourse($data['userID']);
+			$query = $this->model_usercourse->GetCompletedUserCourse($data['userID']);
 			if ($query) {
 				$data['completedUserCourses'] = $query;
 			} else {
@@ -84,7 +84,7 @@ class home extends CI_Controller {
 	function EnrolToCourse() {
 		$session_data = $this->session->userdata('logged_in');
 		$courseID = $this->input->get('id', TRUE);
-		$this->model_userCourse->RegisterToCourse($session_data['userID'], $courseID);
+		$this->model_usercourse->RegisterToCourse($session_data['userID'], $courseID);
 
 		redirect('home', 'refresh');
 	}
@@ -93,7 +93,7 @@ class home extends CI_Controller {
 	function dropCourse() {
 		$session_data = $this->session->userdata('logged_in');
 		$courseID = $this->input->get('id', TRUE);
-		$this->model_userCourse->DropFromCourse($session_data['userID'], $courseID);
+		$this->model_usercourse->DropFromCourse($session_data['userID'], $courseID);
 
 		redirect('home', 'refresh');
 	}

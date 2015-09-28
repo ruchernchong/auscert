@@ -68,17 +68,17 @@ class edits extends CI_Controller {
 	// Deletes any excess content if the user has removed content
 	public function save() {
 		$courseID = $this->input->get('courseID');
-		$courseName = $this->input->post('courseName');
-		$courseCategory = $this->input->post('courseCategory');
-		$courseDescription = $this->input->post('courseDescription');
-		$coursePassPercentage = $this->input->post('coursePassPercentage');
+		$courseName = $this->input->post('course-name');
+		$courseCategory = $this->input->post('course-category');
+		$courseDescription = $this->input->post('course-description');
+		$coursePassPercentage = $this->input->post('course-pass-percentage');
 
 		$this->model_course->UpdateCourse($courseID, $courseName, $courseCategory, $courseDescription, $coursePassPercentage);
 		
 		$slideOrder = 0;
 		while (true) {
-			$slideTitle = $this->input->post(sprintf('title_%d', $slideOrder));
-			$slideContent = $this->input->post(sprintf('editor_%d', $slideOrder));
+			$slideTitle = $this->input->post(sprintf('title-%d', $slideOrder));
+			$slideContent = $this->input->post(sprintf('editor-%d', $slideOrder));
 			
 			if ($slideTitle == NULL) {
 				break;
@@ -91,7 +91,7 @@ class edits extends CI_Controller {
 
 		$questionOrder = 0;
 		while (true) {
-			$questionText = $this->input->post(sprintf('question_%d', $questionOrder));
+			$questionText = $this->input->post(sprintf('question-%d', $questionOrder));
 			
 			if ($questionText == NULL) {
 				break;
@@ -101,7 +101,7 @@ class edits extends CI_Controller {
 			
 			$answerOrder = 0;
 			while (true) {
-				$answerText = $this->input->post(sprintf('q%da%d', $questionOrder, $answerOrder));
+				$answerText = $this->input->post(sprintf('q-%d-a-%d', $questionOrder, $answerOrder));
 				
 				if ($answerText == NULL) {
 					break;

@@ -6,9 +6,9 @@ class admin extends CI_Controller {
 
 		$this->load->model('model_course');
 		$this->load->model('model_user');
-		$this->load->model('model_userCourse');
+		$this->load->model('model_usercourse');
 		$this->load->model('model_group');
-		$this->load->model('model_userGroup');
+		$this->load->model('model_usergroup');
 	}
 
 	function index() {
@@ -26,7 +26,7 @@ class admin extends CI_Controller {
 			//User list with associated array of groups
 			$usersAndGroups = [];
 			foreach ($users as $user) {
-				$groupArray = (!empty($this->model_userGroup->GetUserGroups($user->userID)) ? $this->model_userGroup->GetUserGroups($user->userID) : '');
+				$groupArray = (!empty($this->model_usergroup->GetUserGroups($user->userID)) ? $this->model_usergroup->GetUserGroups($user->userID) : '');
 				$usersList = [
 				'userName' => $user->username,
 				'groupArray' => $groupArray,
@@ -40,8 +40,8 @@ class admin extends CI_Controller {
 			//Group list with associated array of users
 			$groupsAndUsers = [];
 			foreach ($groups as $group) {
-				$userArray = (!empty($this->model_userGroup->GetGroupUsers($group->groupID)) ? $this->model_userGroup->GetGroupUsers($group->groupID) : '');
-				$userCount = (($this->model_userGroup->GetUserCount($group->groupID) != "") ? $this->model_userGroup->GetUserCount($group->groupID) : "No Members");
+				$userArray = (!empty($this->model_usergroup->GetGroupUsers($group->groupID)) ? $this->model_usergroup->GetGroupUsers($group->groupID) : '');
+				$userCount = (($this->model_usergroup->GetUserCount($group->groupID) != "") ? $this->model_usergroup->GetUserCount($group->groupID) : "No Members");
 				$groupList = [
 				'groupID' => $group->groupID,
 				'organisation' => $group->organisation,
@@ -88,13 +88,6 @@ class admin extends CI_Controller {
 	function dropCourse() {
 		$courseID = $this->input->get('id', TRUE);
 		$this->model_course->DeleteCourse($courseID);
-		redirect('admin', 'refresh');
-	}
-
-	//Delete a group
-	function dropGroup() {
-		$groupId = $this->input->get('id', True);
-		$this->model_group->DeleteGroup($groupId);
 		redirect('admin', 'refresh');
 	}
 

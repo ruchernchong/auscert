@@ -7,19 +7,10 @@ class login extends CI_Controller {
 		$this->load->model('model_user');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form', 'url'));
-		$this->load->model('model_groupCourse');
-		$this->load->model('model_course');
-		$this->load->model('model_group');
 	}
 
 	public function index() {
-		$groups = $this->model_group->GetGroups();
-
-		if ($groups) {
-			$data['groups'] = $groups;
-		}
-
-		$this->load->view("view_login", $data);
+		$this->load->view("view_login");
 	}
 
 	//validate a user's login

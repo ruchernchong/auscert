@@ -6,7 +6,7 @@ class manageMember extends CI_Controller {
 
 		$this->load->model('model_user');
 		$this->load->model('model_group');
-		$this->load->model('model_userGroup');
+		$this->load->model('model_usergroup');
 	}
 
 	function index() {
@@ -18,7 +18,7 @@ class manageMember extends CI_Controller {
 
 			$thisGroupID = $this->input->get('groupID');
 			$thisGroup = $this->model_group->GetGroupByID($thisGroupID);
-			$groupUsers = $this->model_userGroup->GetGroupUsers($thisGroupID);
+			$groupUsers = $this->model_usergroup->GetGroupUsers($thisGroupID);
 
 			//Get all users who are not assigned to the current group
 			$omittedUsers = [];
@@ -69,7 +69,7 @@ class manageMember extends CI_Controller {
 		$groupID = $this->input->post('groupID');
 
 		foreach ($usersArray as $userID) {
-			$this->model_userGroup->AddUserToGroup($userID, $groupID);
+			$this->model_usergroup->AddUserToGroup($userID, $groupID);
 		}
 	}
 
@@ -79,7 +79,7 @@ class manageMember extends CI_Controller {
 		$groupID = $this->input->post('groupID');
 
 		foreach ($usersArray as $userID) {
-			$this->model_userGroup->RemoveUserFromGroup($userID, $groupID);
+			$this->model_usergroup->RemoveUserFromGroup($userID, $groupID);
 		}
 	}
 

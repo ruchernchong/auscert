@@ -6,12 +6,7 @@ class register extends CI_Controller {
 		
 		$this->load->model('model_user');
 		$this->load->library('form_validation');
-		$this->load->model('model_groupCourse');
-		$this->load->model('model_course');
-		$this->load->model('model_group');
-		$this->load->model('userGroup');
 	}
-
 
 	//Create user
 	public function registerUsers() {
@@ -32,11 +27,6 @@ class register extends CI_Controller {
 				'rules' => 'required|xss_clean'
 				),
 			array(
-				'field' => 'registerGroup',
-				'label' => 'Faculty',
-				'rules' => 'required|xss_clean'
-				),
-			array(
 				'field' => 'registerEmail',
 				'label' => 'Email',
 				'rules' => 'required|valid_email|is_unique[users.email]|xss_clean'
@@ -53,31 +43,18 @@ class register extends CI_Controller {
 		$registerUsername = $this->input->post('registerUsername');
 		$registerPassword = $this->input->post('registerPassword');
 		$registerRepeatPassword = $this->input->post('registerRepeatPassword');
-		$registerGroup = $this->input->post('registerGroup');
 		$registerEmail = $this->input->post('registerEmail');
 		$registerContact = $this->input->post('registerContact');
 
 		if ($this->form_validation->run() == false) {
-			echo "<script>alert('Error registering. Please see register form for errors.');</script>";
-		} else {
-			$thisUserID = $this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
-//			$this->model_userGroup->AddUserToGroup($thisUserID, $registerGroup);
-			$this->debug_to_console($thisUserID);
+			$this->session->set_flashdata('login-error', 'Error registering. Please see register form for errors.');
 
-			echo "<script>alert('Successfully registered. Please proceed to login.');</script>";
-			
 			$this->load->view('view_login');
-		}
-	}
-
-	//Helpful function for printing to console. Evoke with $this->debug_to_console(value);
-	function debug_to_console($data) {
-		if (is_array($data)) {
-			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
 		} else {
-			$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+			$this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
 
-			echo $output;
+			$this->session->set_flashdata('login-success', 'Successfully registered. Please proceed to login.');
+			$this->load->view('view_login');
 		}
 	}
 }

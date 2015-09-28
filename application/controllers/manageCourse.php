@@ -6,7 +6,7 @@ class manageCourse extends CI_Controller {
 		
 		$this->load->model('model_group');
 		$this->load->model('model_course');
-		$this->load->model('model_groupCourse');
+		$this->load->model('model_groupcourse');
 	}
 
 	function index() {
@@ -18,7 +18,7 @@ class manageCourse extends CI_Controller {
 
 			$thisGroupID = $this->input->get('groupID');
 			$thisGroup = $this->model_group->GetGroupByID($thisGroupID);
-			$assignedCourses = $this->model_groupCourse->GetGroupCourses($thisGroupID);
+			$assignedCourses = $this->model_groupcourse->GetGroupCourses($thisGroupID);
 
 			$omittedCourses = [];
 
@@ -69,7 +69,7 @@ class manageCourse extends CI_Controller {
 		$groupID = $this->input->post('groupID');
 
 		foreach ($coursesArray as $courseID) {
-			$this->model_groupCourse->AddCourseToGroup($courseID, $groupID);
+			$this->model_groupcourse->AddCourseToGroup($courseID, $groupID);
 		}
 	}
 
@@ -79,7 +79,7 @@ class manageCourse extends CI_Controller {
 		$groupID = $this->input->post('groupID');
 
 		foreach ($coursesArray as $courseID) {
-			$this->model_groupCourse->RemoveCourseFromGroup($courseID, $groupID);
+			$this->model_groupcourse->RemoveCourseFromGroup($courseID, $groupID);
 		}
 	}
 
