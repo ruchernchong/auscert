@@ -106,7 +106,7 @@ class manageMember extends CI_Controller {
 		}
 	}
 
-    //Helpful function for printing to console. Evoke with $this->debug_to_console(value);
+    //Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debug($data) {
 		if (is_array($data)) {
 			$output = "<script>console.log('Debug Objects: " . implode( ',', $data) . "');</script>";
