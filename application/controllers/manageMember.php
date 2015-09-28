@@ -10,13 +10,19 @@ class manageMember extends CI_Controller {
 	}
 
 	function _remap(){
-		$groupID = $this->uri->segment(2);
+		$method = $this->uri->segment(2);
 
-		switch ($groupID) {
+		switch ($method) {
 			case null:
 			case false:
-			case '':
+			case is_numeric($method):
 				$this->index();
+				break;
+			case 'addMembers':
+				$this->addMembers();
+				break;
+			case 'removeMembers':
+				$this->removeMembers();
 				break;
 			default:
 				show_404();
@@ -83,7 +89,7 @@ class manageMember extends CI_Controller {
     //assign users to a group
 	function addMembers() {
 		$usersArray = $this->input->post('userIDs');
-		$groupID = $this->input->post('groupID');
+		$groupID = $this->uri->segment(2);
 
 		foreach ($usersArray as $userID) {
 			$this->model_usergroup->AddUserToGroup($userID, $groupID);
@@ -93,7 +99,7 @@ class manageMember extends CI_Controller {
     //remove users from a group
 	function removeMembers() {
 		$usersArray = $this->input->post('userIDs');
-		$groupID = $this->input->post('groupID');
+		$groupID = $this->uri->segment(2);
 
 		foreach ($usersArray as $userID) {
 			$this->model_usergroup->RemoveUserFromGroup($userID, $groupID);
