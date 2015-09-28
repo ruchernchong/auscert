@@ -4,3 +4,9 @@ RewriteBase /auscert/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
+
+<ifmodule mod_deflate.c="">
+<filesmatch ".(js|css|jpg|gif|png|tiff|ico)$"="">
+SetOutputFilter DEFLATE
+</filesmatch>
+</ifmodule>
