@@ -110,7 +110,7 @@
 									<?php foreach ($courses as $course) {
 										?>
 										<tr>
-											<td><a href="<?php echo site_url('learning/' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
+											<td><a href="<?php echo site_url('learning?courseID=' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
 											<td><?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
 											<td>
 												<?php
@@ -133,15 +133,15 @@
 											</td>
 
 											<td class="project-actions">
-												<a href="<?php echo site_url('edits/' . $course->courseID);?>" class="btn btn-sm btn-success">
+												<a href="<?php echo site_url('edits/index/' . $course->courseID);?>" class="btn btn-sm btn-success">
 													<i class="fa fa-pencil"></i>&emsp;Edit
 												</a>
 												&nbsp;
-												<a href="<?php echo site_url('analysis/' . $course->courseID); ?>" class="btn btn-sm btn-primary">
+												<a href="<?php echo site_url('analysis?courseID=' . $course->courseID); ?>" class="btn btn-sm btn-primary">
 													<i class="fa fa-bar-chart-o"></i>&emsp;Course Analytics
 												</a>
 												&nbsp;
-												<a href="<?php echo site_url('admin/dropCourse/' . $course->courseID); ?>" class="btn btn-sm btn-danger">
+												<a href="<?php echo site_url('admin/dropCourse?id=' . $course->courseID); ?>" class="btn btn-sm btn-danger">
 													<i class="fa fa-trash"></i>&emsp;Remove
 												</a>
 											</td>
@@ -170,17 +170,15 @@
 										<td><?php echo $group['organisation'] ?></td>
 										<td><?php echo $group['userCount'] ?></td>
 										<td>
-											<a href="<?php echo base_url('manageMember/' . $group['groupID']); ?>" class="btn btn-sm btn-success"><i class="fa fa-signal"></i>&emsp;Manage Members</a>
+											<a href="<?php echo base_url('manageMember?groupID=' . $group['groupID']); ?>" class="btn btn-sm btn-success"><i class="fa fa-signal"></i>&emsp;Manage Members</a>
 											&nbsp;
-											<a href="<?php echo base_url('manageCourse/' . $group['groupID']); ?>" class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
+											<a href="<?php echo base_url('manageCourse?groupID=' . $group['groupID']); ?>" class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
 											&nbsp;
-											<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Delete Group</a>
+											<a href="<?php echo site_url('admin/dropGroup?id=' . $group['groupID'])?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Delete Group</a>
 											&nbsp;
 										</td>
 									</tr>
-									<?php
-									}
-									?>
+									<?php } ?>
 								</tbody>
 							</table>
 						</div>

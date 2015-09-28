@@ -91,6 +91,12 @@ class admin extends CI_Controller {
 		redirect('admin', 'refresh');
 	}
 
+	function dropGroup() {
+		$groupID = $this->input->get('id', TRUE);
+		$this->model_group->DeleteGroup($groupID);
+		redirect('admin', 'refresh');
+	}
+
 	//Activate a course if checkbox is ticked
 	function ifActive() {
 		$courseID = $this->input->post('courseID');

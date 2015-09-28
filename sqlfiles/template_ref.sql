@@ -100,7 +100,6 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `description` longtext,
   `dateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastEdited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
@@ -299,7 +298,7 @@ INSERT INTO `users` (`userID`, `username`, `password`, `email`, `contact`, `user
 CREATE TABLE IF NOT EXISTS `user_courses` (
   `userID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
-  `completion` int(11) NOT NULL,
+  `completion` decimal(5,2) NOT NULL,
   `description` text,
   `grading` varchar(255) DEFAULT NULL,
   `mandatory` tinyint(1) DEFAULT NULL
@@ -310,14 +309,14 @@ CREATE TABLE IF NOT EXISTS `user_courses` (
 --
 
 INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `grading`, `mandatory`) VALUES
-(2, 1, '0', NULL, '0.0', NULL),
-(2, 3, '3', '', '90', 0),
-(2, 12, '2', NULL, '0.0', NULL),
-(3, 3, '3', '', '85', 0),
-(3, 7, '3', '', '100', 0),
-(3, 9, '1', '', '49', 0),
-(7, 1, '2', NULL, '0.0', NULL),
-(7, 12, '1', NULL, '0.0', NULL);
+(2, 1, '0.00', NULL, '0.0', NULL),
+(2, 3, '100.00', '', '90', 0),
+(2, 12, '0.00', NULL, '0.0', NULL),
+(3, 3, '100.00', '', '85', 0),
+(3, 7, '101.00', '', '100', 0),
+(3, 9, '100.00', '', '49', 0),
+(7, 1, '0.00', NULL, '0.0', NULL),
+(7, 12, '0.00', NULL, '0.0', NULL);
 
 -- --------------------------------------------------------
 
@@ -535,8 +534,8 @@ ALTER TABLE `answers`
 -- Constraints for table `group_courses`
 --
 ALTER TABLE `group_courses`
-  ADD CONSTRAINT `group_courses_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `group_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `group_courses_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`),
+  ADD CONSTRAINT `group_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 --
 -- Constraints for table `questions`
@@ -554,15 +553,15 @@ ALTER TABLE `slides`
 -- Constraints for table `user_courses`
 --
 ALTER TABLE `user_courses`
-  ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
+  ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 --
 -- Constraints for table `user_groups`
 --
 ALTER TABLE `user_groups`
-  ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
+  ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

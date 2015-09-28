@@ -19,20 +19,6 @@ Class model_usergroup extends CI_Model {
 		return false;
 	}
 
-//	//returns an array (instead of object) of all users within a group
-//	public function GetGroupUsers($groupID) {
-//		$this->db->select('ug.userID');
-//		$this->db->from('groups AS g, user_groups AS ug');
-//		$this->db->where('ug.groupID', $groupID);
-//		$this->db->where('g.groupID = ug.groupID');
-//		$query = $this->db->get();
-//
-//		if ($query->num_rows > 0) {
-//			return $query->result_array();
-//		}
-//		return false;
-//	}
-
 	//returns an array (instead of object) of all users within a group
 	public function GetGroupUsers($groupID) {
 		$this->db->select('u.userID, u.username');

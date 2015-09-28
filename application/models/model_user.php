@@ -7,7 +7,7 @@ Class model_user extends CI_Model {
 
 	//Validate the user
 	public function validate() {
-		$this->db->where('email', $this->input->post('loginEmail'));
+		$this->db->where('username', $this->input->post('loginUsername'));
 		$this->db->where('password', $this->input->post('loginPassword'));
 
 		$query = $this->db->get('users');
@@ -20,12 +20,6 @@ Class model_user extends CI_Model {
 
 	//Create a user
 	public function registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact) {
-		$registerUsername = $this->input->post('registerUsername');
-		$registerPassword = $this->input->post('registerPassword');
-		$registerRepeatPassword = $this->input->post('registerRepeatPassword');
-		$registerEmail = $this->input->post('registerEmail');
-		$registerContact = $this->input->post('registerContact');
-		
 		$data = array(
 			'username' => $registerUsername,
 			'password' => $registerPassword,
@@ -35,7 +29,9 @@ Class model_user extends CI_Model {
 			);
 
 		$this->db->insert('users', $data);
+		return $this->db->insert_id();
 	}
+
 
 	//return a list of all users
 	public function GetAllUsers() {
