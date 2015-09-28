@@ -79,16 +79,19 @@ class register extends CI_Controller {
 		$defaultGroupID = "1";
 		$this->model_usergroup->AddUserToGroup($thisUserID, $defaultGroupID); //Assign user to default AllUsers group
 		$thisCourses = $this->model_groupcourse->GetGroupCourses($defaultGroupID);//Get all the default courses
+
 		foreach ($thisCourses as $thisCourse) {
 			$this->model_usercourse->RegisterToCourse($thisUserID, $thisCourse->courseID);
 		}
 
 		//Handle the additional groups and courses
 		if (!in_array("not_applicable", $registerGroup)) { //checks to ensure the Not Applicable field is not selected
-			$this->debug_to_console("Entered!");
+			$this->debugConsole("Entered!");
+
 			foreach ($registerGroup as $thisGroupID) {
 				$this->model_usergroup->AddUserToGroup($thisUserID, $thisGroupID); //Assign user to the group
 				$thisCourses = $this->model_groupcourse->GetGroupCourses($thisGroupID);//Get all the courses
+
 				foreach ($thisCourses as $thisCourse) {
 					//check if course not yet assigned yet. Do nothing if course already assigned
 					if (!$this->model_usercourse->CourseAlreadyAssigned($thisUserID, $thisCourse->courseID)) {
@@ -99,8 +102,8 @@ class register extends CI_Controller {
 		}
 	}
 
-	//Helpful function for printing to console. Evoke with $this->debug_to_console(value);
-	function debug_to_console($data) {
+	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
+	function debugConsole($data) {
 		if (is_array($data)) {
 			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
 		} else {
