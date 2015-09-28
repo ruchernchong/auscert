@@ -10,13 +10,19 @@ class manageCourse extends CI_Controller {
 	}
 
 	function _remap() {
-		$groupID = $this->uri->segment(2);
+		$method = $this->uri->segment(2);
 
-		switch($groupID){
+		switch($method){
 			case null:
 			case false:
-			case '':
+			case is_numeric($method):
 				$this->index();
+				break;
+			case 'addCourses':
+				$this->addCourses();
+				break;
+			case 'removeCourses':
+				$this->removeCourses();
 				break;
 			default:
 				show_404();
@@ -100,7 +106,7 @@ class manageCourse extends CI_Controller {
 	}
 
 	//Helpful function for printing to console. Evoke with $this->debug_to_console(value);
-	function debug_to_console($data) {
+	function debugConsole($data) {
 		if (is_array($data)) {
 			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
 		} else {

@@ -19,16 +19,16 @@
 								<div class="panel-body" style="height: 400px;overflow: auto;">
 									<table class="table table-striped table-hover">
 										<thead>
-											<tr>
-												<th>Select</th>
-												<th>Course ID</th>
-												<th>Course Name</th>
-											</tr>
+										<tr>
+											<th>Select</th>
+											<th>Course ID</th>
+											<th>Course Name</th>
+										</tr>
 										</thead>
 										<tbody>
-											<?php
-											if (!empty($assignedCourses)) {
-												foreach($assignedCourses as $assignedCourse) {?>
+										<?php
+										if (!empty($assignedCourses)) {
+											foreach($assignedCourses as $assignedCourse) {?>
 												<tr>
 													<td>
 														<input type="checkbox" id="assignedChecked_<?php echo $assignedCourse->courseID; ?>" value="<?php echo $assignedCourse->courseID;?>" class="courseActive assignedSelected">
@@ -47,40 +47,40 @@
 											<?php
 										}
 										?>
-									</tbody>
-								</table>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="col-lg-2">
-						<div class="form-group">
-							<a class="btn btn-success" id="btn_addCourse">
-								<i class="fa fa-caret-left"></i>&emsp;Add Course&emsp;&emsp;
-							</a>
-						</div>
-						<div class="form-group">
-							<a class="btn btn-danger" id="btn_removeCourse">Remove Course&emsp;
-								<i class="fa fa-caret-right"></i>
-							</a>
-						</div>
-					</div>
-
-					<div class="col-lg-5">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h3 class="panel-title">Courses Available</h3>
+						<div class="col-lg-2">
+							<div class="form-group">
+								<a class="btn btn-success" id="btn_addCourse">
+									<i class="fa fa-caret-left"></i>&emsp;Add Course&emsp;&emsp;
+								</a>
 							</div>
-							<div class="panel-body" style="height: 400px;overflow: auto;">
-								<table class="table table-striped table-hover">
-									<thead>
+							<div class="form-group">
+								<a class="btn btn-danger" id="btn_removeCourse">Remove Course&emsp;
+									<i class="fa fa-caret-right"></i>
+								</a>
+							</div>
+						</div>
+
+						<div class="col-lg-5">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title">Courses Available</h3>
+								</div>
+								<div class="panel-body" style="height: 400px;overflow: auto;">
+									<table class="table table-striped table-hover">
+										<thead>
 										<tr>
 											<th>Select</th>
 											<th>Course ID</th>
 											<th>Course Name</th>
 										</tr>
-									</thead>
-									<tbody>
+										</thead>
+										<tbody>
 										<?php
 										if (!empty($otherCourses)) {
 											foreach ($otherCourses as $otherCourse) {
@@ -105,8 +105,9 @@
 											<?php
 										}
 										?>
-									</tbody>
-								</table>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
