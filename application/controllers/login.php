@@ -7,10 +7,19 @@ class login extends CI_Controller {
 		$this->load->model('model_user');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form', 'url'));
+		$this->load->model('model_groupCourse');
+		$this->load->model('model_course');
+		$this->load->model('model_group');
 	}
 
 	public function index() {
-		$this->load->view("view_login");
+		$groups = $this->model_group->GetGroups();
+
+		if ($groups) {
+			$data['groups'] = $groups;
+		}
+
+		$this->load->view("view_login", $data);
 	}
 
 	//validate a user's login
@@ -26,7 +35,7 @@ class login extends CI_Controller {
 					'username' => $row->username,
 					'email' => $row->email,
 					'usertype' => $row->userType
-					);
+				);
 				$this->session->set_userdata('logged_in', $sess_array);
 			}
 			redirect('home', 'refresh');
