@@ -36,30 +36,32 @@
 	}
 	?>
 
-	<?php
-	$attributes = array(
-		'id' => 'formLogin',
-		'name' => 'formLogin',
-		'class' => 'formLogin'
-		);
-	echo form_open('login/validateLogin', $attributes);
-	?>
-	<div class="content">
-		<div class="title">Create account</div>
-		<input type="text" placeholder="E-mail"/>
-		<input type="password" placeholder="Password"/>
-		<input type="checkbox" id="rememberMe"/>
-		<label for="rememberMe"></label><span>I have read and agree to the <a href="#">Terms of Use </a>and <a href="#">Privacy Policy</a></span>
-		<button>Create Account</button>
-    <!-- <div class="social"> <span>or sign up with social media</span></div>
-    <div class="buttons">
-        <button class="facebook"><i class="fa fa-facebook"></i>Facebook</button>
-        <button class="twitter"><i class="fa fa-twitter"></i>Twitter</button>
-        <button class="google"><i class="fa fa-google-plus"></i>Google</button>
-    </div> -->
-    <div class="already">Already have an account? <a href="<?php echo base_url('login'); ?>">Sign In</a></div>
-</div>
-</form>
+	<h1>Patch incoming for Register Page.</h1>
+
+<!--	--><?php
+//	$attributes = array(
+//		'id' => 'formLogin',
+//		'name' => 'formLogin',
+//		'class' => 'formLogin'
+//		);
+//	echo form_open('login/validateLogin', $attributes);
+//	?>
+<!--	<div class="content">-->
+<!--		<div class="title">Create account</div>-->
+<!--		<input type="text" placeholder="E-mail"/>-->
+<!--		<input type="password" placeholder="Password"/>-->
+<!--		<input type="checkbox" id="rememberMe"/>-->
+<!--		<label for="rememberMe"></label><span>I have read and agree to the <a href="#">Terms of Use </a>and <a href="#">Privacy Policy</a></span>-->
+<!--		<button>Create Account</button>-->
+<!--    <!-- <div class="social"> <span>or sign up with social media</span></div>-->
+<!--    <div class="buttons">-->
+<!--        <button class="facebook"><i class="fa fa-facebook"></i>Facebook</button>-->
+<!--        <button class="twitter"><i class="fa fa-twitter"></i>Twitter</button>-->
+<!--        <button class="google"><i class="fa fa-google-plus"></i>Google</button>-->
+<!--    </div> -->-->
+<!--    <div class="already">Already have an account? <a href="--><?php //echo base_url('login'); ?><!--">Sign In</a></div>-->
+<!--</div>-->
+<!--</form>-->
 
 <!-- <div id="formModal">
 		<ul class="nav nav-tabs">
