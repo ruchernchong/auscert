@@ -43,6 +43,7 @@ class register extends CI_Controller {
 		$registerUsername = $this->input->post('registerUsername');
 		$registerPassword = $this->input->post('registerPassword');
 		$registerRepeatPassword = $this->input->post('registerRepeatPassword');
+		$registerGroups = $this->input->post('registerGroup');
 		$registerEmail = $this->input->post('registerEmail');
 		$registerContact = $this->input->post('registerContact');
 
@@ -51,10 +52,22 @@ class register extends CI_Controller {
 
 			$this->load->view('view_login');
 		} else {
-			$this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
+			$thisUserID = $this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
+			$this->debug_to_console($thisUserID);
 
+//			$this->db->model_group->AddUserToGroup($thisUserID, $groupID);
 			$this->session->set_flashdata('login-success', 'Successfully registered. Please proceed to login.');
 			$this->load->view('view_login');
+		}
+	}
+
+	function debug_to_console($data) {
+		if (is_array($data)) {
+			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+		} else {
+			$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+
+			echo $output;
 		}
 	}
 }
