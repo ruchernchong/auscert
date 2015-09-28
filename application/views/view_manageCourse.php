@@ -115,6 +115,64 @@
 		</div>
 	</div>
 </div>
+<script>
+	//Get courseIDs of all the checked courses in the other courses table and send an array via ajax
+	$("#btn_addCourse").click(function() {
+		//loop through each checkbox in the table and add checked courseIDs to the array	var otherCourseIDs = [];
+		var groupID = $("#groupIDHeader").attr('value');
+		var otherCourseIDs = [];
 
-<!-- Include script for event listeners -->
-<script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+		$('.otherSelected').each(function() {
+			if (this.checked == true) {
+				otherCourseIDs.push($(this).attr('value'));
+			}
+		});
+		//alert("Courses to be added: " + otherCourseIDs);
+		$.ajax({
+			method: "POST",
+			url: "<?php echo base_url('manageCourse/addCourses'); ?>",
+			data: {
+				courseIDs : otherCourseIDs,
+				groupID : groupID
+			},
+			success: function(response) {
+				location.reload();
+				console.log(response);
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		});
+	});
+
+	//Get courseIDs of all the checked courses in the assigned courses table and send an array via ajax
+	$("#btn_removeCourse").click(function() {
+		//loop through each checkbox in the table and add checked courseIDs to the array
+		var groupID = $("#groupIDHeader").attr('value');
+		var assignedCourseIDs = [];
+
+		$('.assignedSelected').each(function() {
+			if (this.checked == true) {
+				assignedCourseIDs.push($(this).attr('value'));
+			}
+		});
+		alert("The following courses will be removed: " + assignedCourseIDs);
+		$.ajax({
+			method: "POST",
+			url: "<?php echo base_url('manageCourse/removeCourses'); ?>",
+			data: {
+				courseIDs : assignedCourseIDs,
+				groupID : groupID
+			},
+			success: function(response) {
+				location.reload();
+				console.log(response);
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		});
+	});
+</script>
+</body>
+</html>
