@@ -19,19 +19,19 @@ Class model_user extends CI_Model {
 	}
 
 	//Create a user
-	public function registerUsers($registerUsername, $registerPassword, $registerGroup, $registerEmail, $registerContact) {
-
+	public function registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact) {
 		$data = array(
 			'username' => $registerUsername,
 			'password' => $registerPassword,
-			'group' => $registerGroup,
 			'email' => $registerEmail,
 			'contact' => $registerContact,
 			'userType' => 'student'
 			);
 
 		$this->db->insert('users', $data);
+		return $this->db->insert_id();
 	}
+
 
 	//return a list of all users
 	public function GetAllUsers() {

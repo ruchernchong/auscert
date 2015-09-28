@@ -9,6 +9,7 @@ class register extends CI_Controller {
 		$this->load->model('model_groupCourse');
 		$this->load->model('model_course');
 		$this->load->model('model_group');
+		$this->load->model('userGroup');
 	}
 
 
@@ -57,14 +58,26 @@ class register extends CI_Controller {
 		$registerContact = $this->input->post('registerContact');
 
 		if ($this->form_validation->run() == false) {
-
 			echo "<script>alert('Error registering. Please see register form for errors.');</script>";
 		} else {
-			$this->model_user->registerUsers($registerUsername, $registerPassword, $registerGroup, $registerEmail, $registerContact);
+			$thisUserID = $this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
+//			$this->model_userGroup->AddUserToGroup($thisUserID, $registerGroup);
+			$this->debug_to_console($thisUserID);
 
 			echo "<script>alert('Successfully registered. Please proceed to login.');</script>";
 			
 			$this->load->view('view_login');
+		}
+	}
+
+	//Helpful function for printing to console. Evoke with $this->debug_to_console(value);
+	function debug_to_console($data) {
+		if (is_array($data)) {
+			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+		} else {
+			$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+
+			echo $output;
 		}
 	}
 }
