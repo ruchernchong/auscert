@@ -78,6 +78,7 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-group fa-fw"></i></span>
 				<select class="selectpicker form-control text-input" multiple data-max-options="4" data-live-search="true" data-selected-text-format="count>2" title="Select Faculty" id="registerGroup" name="registerGroup[]">
+					<option value="not_applicable">Not Applicable</option>
 					<?php
 					foreach ($groups as $group) {
 						?>

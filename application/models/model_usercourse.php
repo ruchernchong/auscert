@@ -38,6 +38,18 @@ Class model_usercourse extends CI_Model {
 		$this->db->insert('user_courses', $data);
 	}
 
+	//Returns true if userID and courseID pair already exists in the table
+	public function CourseAlreadyAssigned($userID, $courseID) {
+		$data = array('userID' => $userID, 'courseID' => $courseID);
+		$this->db->where($data);
+		$query = $this->db->get('user_courses');
+		if ($query -> num_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	//Remove a user and his corresponding dropped course from the usercourse table
 	public function DropFromCourse($userID, $courseID) {
 		$data = array('userID' => $userID, 'courseID' => $courseID);

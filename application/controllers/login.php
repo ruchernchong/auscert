@@ -13,7 +13,7 @@ class login extends CI_Controller {
 	}
 
 	public function index() {
-		$groups = $this->model_group->GetGroups();
+		$groups = $this->model_group->GetPublicGroups();
 
 		if ($groups) {
 			$data['groups'] = $groups;

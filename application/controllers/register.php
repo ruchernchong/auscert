@@ -8,6 +8,7 @@ class register extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('model_groupcourse');
 		$this->load->model('model_usergroup');
+		$this->load->model('model_usercourse');
 		$this->load->model('model_course');
 		$this->load->model('model_group');
 	}
@@ -52,7 +53,6 @@ class register extends CI_Controller {
 
 		$registerUsername = $this->input->post('registerUsername');
 		$registerPassword = $this->input->post('registerPassword');
-		$registerRepeatPassword = $this->input->post('registerRepeatPassword');
 		$registerGroup = $this->input->post('registerGroup');
 		$registerEmail = $this->input->post('registerEmail');
 		$registerContact = $this->input->post('registerContact');
@@ -60,12 +60,38 @@ class register extends CI_Controller {
 		if ($this->form_validation->run() == false) {
 			echo "<script>alert('Error registering. Please see register form for errors.');</script>";
 		} else {
-			$thisUserID = $this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
-			foreach ($registerGroup as $thisGroupID) {
-				$this->model_usergroup->AddUserToGroup($thisUserID, $thisGroupID);
-			}
+			$this->registerAndSetup($registerUsername, $registerPassword, $registerGroup, $registerEmail, $registerContact);
 			echo "<script>alert('Successfully registered. Please proceed to login.');</script>";
 			$this->load->view('view_login');
+		}
+	}
+
+	//Adds user to the default AllUser group in addition to their specialised groups.
+	//Also assigns courses to them based on their grouping
+	function registerAndSetup($registerUsername, $registerPassword, $registerGroup, $registerEmail, $registerContact) {
+		$thisUserID = $this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
+
+		//Default AllUser group and courses
+		$defaultGroupID = "1";
+		$this->model_usergroup->AddUserToGroup($thisUserID, $defaultGroupID); //Assign user to default AllUsers group
+		$thisCourses = $this->model_groupcourse->GetGroupCourses($defaultGroupID);//Get all the default courses
+		foreach ($thisCourses as $thisCourse) {
+			$this->model_usercourse->RegisterToCourse($thisUserID, $thisCourse->courseID);
+		}
+
+		//Handle the additional groups and courses
+		if (!in_array("not_applicable", $registerGroup)) { //checks to ensure the Not Applicable field is not selected
+			$this->debug_to_console("Entered!");
+			foreach ($registerGroup as $thisGroupID) {
+				$this->model_usergroup->AddUserToGroup($thisUserID, $thisGroupID); //Assign user to the group
+				$thisCourses = $this->model_groupcourse->GetGroupCourses($thisGroupID);//Get all the courses
+				foreach ($thisCourses as $thisCourse) {
+					//check if course not yet assigned yet. Do nothing if course already assigned
+					if (!$this->model_usercourse->CourseAlreadyAssigned($thisUserID, $thisCourse->courseID)) {
+						$this->model_usercourse->RegisterToCourse($thisUserID, $thisCourse->courseID);
+					}
+				}
+			}
 		}
 	}
 
