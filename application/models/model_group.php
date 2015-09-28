@@ -16,6 +16,18 @@ Class model_group extends CI_Model {
 		return false;
 	}
 
+	//returns a list of all available groups except the default AllUser group
+	public function GetPublicGroups() {
+		$this->db->order_by("organisation", "ASC");
+		$this->db->where('groupID !=', '1'); //exclude AllUser group
+		$query = $this->db->get('groups');
+
+		if ($query->num_rows > 0) {
+			return $query->result();
+		}
+		return false;
+	}
+
 	//returns a group based on the provided groupID
 	public function GetGroupByID($groupID) {
 		$this->db->where('groupID', $groupID);
