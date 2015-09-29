@@ -25,6 +25,14 @@
 					</div>
 				</div>
 
+				<div class="col-lg-12">
+					<div class="panel panel-primary">
+						<div class="panel-body">
+							Search results here
+						</div>
+					</div>
+				</div>
+
 				<div class="clients-list">
 					<ul class="nav nav-tabs">
 						<li class="active">
