@@ -25,7 +25,7 @@
                                         <tr>
                                             <th>Select</th>
                                             <th>User ID</th>
-                                            <th>UserName</th>
+                                            <th>User Email</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -38,7 +38,7 @@
                                                     <label for="assignedChecked_<?php echo $groupUser['userID']; ?>" class="activelabel"></label>
                                                 </td>
                                                 <td><?php echo $groupUser['userID']; ?></td>
-                                                <td><?php echo $groupUser['username']; ?></td>
+                                                <td><?php echo $groupUser['email']; ?></td>
                                             </tr>
                                             <?php
                                         }
@@ -80,7 +80,7 @@
                                         <tr>
                                             <th>Select</th>
                                             <th>User ID</th>
-                                            <th>UserName</th>
+                                            <th>User Email</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -95,7 +95,7 @@
                                                             <label for="otherCheck_<?php echo $otherUser->userID; ?>"></label>
                                                         </td>
                                                         <td><?php echo $otherUser->userID; ?></td>
-                                                        <td><?php echo $otherUser->username; ?></td>
+                                                        <td><?php echo $otherUser->email; ?></td>
                                                     </tr>
                                                 </form>
                                                 <?php
