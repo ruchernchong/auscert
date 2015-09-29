@@ -3,10 +3,9 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
-DROP DATABASE IF EXISTS `auscertdb`;
-CREATE DATABASE IF NOT EXISTS `auscertdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `auscertdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `auscertdb`;
 
 DROP TABLE IF EXISTS `answers`;
@@ -14,7 +13,8 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `courseID` int(11) NOT NULL,
   `questionOrder` int(11) NOT NULL,
   `answerOrder` int(11) NOT NULL,
-  `answerText` text CHARACTER SET latin1 NOT NULL
+  `answerText` text CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`courseID`,`questionOrder`,`answerOrder`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `answers` (`courseID`, `questionOrder`, `answerOrder`, `answerText`) VALUES
@@ -60,16 +60,17 @@ INSERT INTO `answers` (`courseID`, `questionOrder`, `answerOrder`, `answerText`)
 
 DROP TABLE IF EXISTS `courses`;
 CREATE TABLE IF NOT EXISTS `courses` (
-`courseID` int(11) NOT NULL,
+  `courseID` int(11) NOT NULL AUTO_INCREMENT,
   `courseName` varchar(255) NOT NULL,
   `category` varchar(255) DEFAULT NULL,
   `creator` varchar(255) DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
-  `passPercentage` int(7) unsigned NOT NULL DEFAULT '50',
+  `passPercentage` int(7) UNSIGNED NOT NULL DEFAULT '50',
   `description` longtext,
   `dateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastEdited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+  `lastEdited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`courseID`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`, `passPercentage`, `description`, `dateCreated`, `lastEdited`) VALUES
 (1, 'Online Security Basics #1', 'Introductory', 'leon', 1, 50, '<p>Part 1 of the default courses for all users</p>\n', '2015-09-28 09:58:03', '2015-09-28 10:00:12'),
@@ -89,9 +90,11 @@ INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`
 
 DROP TABLE IF EXISTS `groups`;
 CREATE TABLE IF NOT EXISTS `groups` (
-`groupID` int(11) NOT NULL,
-  `organisation` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `groupID` int(11) NOT NULL AUTO_INCREMENT,
+  `organisation` varchar(255) NOT NULL,
+  PRIMARY KEY (`groupID`),
+  KEY `groupID` (`groupID`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 INSERT INTO `groups` (`groupID`, `organisation`) VALUES
 (0, 'AllUsers'),
@@ -114,40 +117,43 @@ INSERT INTO `groups` (`groupID`, `organisation`) VALUES
 DROP TABLE IF EXISTS `group_courses`;
 CREATE TABLE IF NOT EXISTS `group_courses` (
   `groupID` int(11) NOT NULL,
-  `courseID` int(11) NOT NULL
+  `courseID` int(11) NOT NULL,
+  PRIMARY KEY (`groupID`,`courseID`),
+  KEY `group_courses_ibfk_2` (`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `group_courses` (`groupID`, `courseID`) VALUES
 (0, 1),
+(5, 1),
+(9, 1),
 (0, 2),
-(0, 3),
-(0, 4),
-(0, 5),
-(0, 7),
-(0, 11),
 (1, 2),
+(3, 2),
+(0, 3),
 (1, 3),
-(1, 5),
-(1, 9),
-(1, 12),
 (2, 3),
+(0, 4),
+(5, 4),
+(0, 5),
+(1, 5),
+(5, 5),
+(0, 7),
+(3, 7),
+(1, 9),
 (2, 9),
 (2, 10),
-(3, 2),
-(3, 7),
+(0, 11),
 (3, 11),
-(5, 1),
-(5, 4),
-(5, 5),
-(9, 1),
 (9, 11),
-(16, 11);
+(16, 11),
+(1, 12);
 
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
   `courseID` int(11) NOT NULL,
   `questionOrder` int(11) NOT NULL,
-  `questionText` text NOT NULL
+  `questionText` text NOT NULL,
+  PRIMARY KEY (`courseID`,`questionOrder`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `questions` (`courseID`, `questionOrder`, `questionText`) VALUES
@@ -160,12 +166,14 @@ INSERT INTO `questions` (`courseID`, `questionOrder`, `questionText`) VALUES
 
 DROP TABLE IF EXISTS `slides`;
 CREATE TABLE IF NOT EXISTS `slides` (
-`slideID` int(11) NOT NULL,
+  `slideID` int(11) NOT NULL AUTO_INCREMENT,
   `courseID` int(11) NOT NULL,
   `slideOrder` int(3) NOT NULL,
   `slideContent` text,
-  `slideTitle` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+  `slideTitle` varchar(50) NOT NULL,
+  PRIMARY KEY (`slideID`),
+  KEY `courseID` (`courseID`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slideTitle`) VALUES
 (10, 5, 0, '<p>The&nbsp;<strong>Data Encryption Standard</strong>&nbsp;(<strong>DES</strong>,&nbsp;<a href="https://en.wikipedia.org/wiki/Help:IPA_for_English">/ˌdiːˌiːˈɛs/</a>&nbsp;or&nbsp;<a href="https://en.wikipedia.org/wiki/Help:IPA_for_English">/ˈdɛz/</a>) was once a predominant&nbsp;<a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">symmetric-key algorithm</a>&nbsp;for the<a href="https://en.wikipedia.org/wiki/Encryption">encryption</a>&nbsp;of electronic data. It was highly influential in the advancement of modern&nbsp;<a href="https://en.wikipedia.org/wiki/Cryptography">cryptography</a>&nbsp;in the academic world. Developed in the early 1970s at&nbsp;<a href="https://en.wikipedia.org/wiki/IBM">IBM</a>&nbsp;and based on an earlier design by&nbsp;<a href="https://en.wikipedia.org/wiki/Horst_Feistel">Horst Feistel</a>, the algorithm was submitted to the&nbsp;<a href="https://en.wikipedia.org/wiki/National_Bureau_of_Standards">National Bureau of Standards</a>&nbsp;(NBS) following the agency&#39;s invitation to propose a candidate for the protection of sensitive, unclassified electronic government data. In 1976, after consultation with the&nbsp;<a href="https://en.wikipedia.org/wiki/National_Security_Agency">National Security Agency</a>&nbsp;(NSA), the NBS eventually selected a slightly modified version (strengthened against&nbsp;<a href="https://en.wikipedia.org/wiki/Differential_cryptanalysis">differential cryptanalysis</a>, but weakened against&nbsp;<a href="https://en.wikipedia.org/wiki/Brute_force_attack">brute force attacks</a>), which was published as an official&nbsp;<a href="https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard">Federal Information Processing Standard</a>&nbsp;(FIPS) for the&nbsp;<a href="https://en.wikipedia.org/wiki/United_States">United States</a>&nbsp;in 1977. The publication of an NSA-approved encryption standard simultaneously resulted in its quick international adoption and widespread academic scrutiny. Controversies arose out of&nbsp;<a href="https://en.wikipedia.org/wiki/Classified_information">classified</a>&nbsp;design elements, a relatively short&nbsp;<a href="https://en.wikipedia.org/wiki/Key_length">key length</a>&nbsp;of the&nbsp;<a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">symmetric-key</a>&nbsp;<a href="https://en.wikipedia.org/wiki/Block_cipher">block cipher</a>&nbsp;design, and the involvement of the NSA, nourishing suspicions about a&nbsp;<a href="https://en.wikipedia.org/wiki/Backdoor_(computing)">backdoor</a>. The intense academic scrutiny the algorithm received over time led to the modern understanding of block ciphers and their&nbsp;<a href="https://en.wikipedia.org/wiki/Cryptanalysis">cryptanalysis</a>.</p>\n\n<p>&nbsp;</p>\n\n<p><img alt="" src="https://i-msdn.sec.s-msft.com/dynimg/IC155063.gif" style="height:233px; width:350px" /><img alt="" src="https://www.simple-talk.com/iwritefor/articlefiles/948-TDE_1.JPG" style="height:139px; width:350px" /></p>\n\n<p>DES is now considered to be insecure for many applications. This is mainly due to the 56-bit key size being too small; in January 1999,&nbsp;<a href="https://en.wikipedia.org/wiki/Distributed.net">distributed.net</a>&nbsp;and the&nbsp;<a href="https://en.wikipedia.org/wiki/Electronic_Frontier_Foundation">Electronic Frontier Foundation</a>&nbsp;collaborated to publicly break a DES key in 22 hours and 15 minutes (see&nbsp;<a href="https://en.wikipedia.org/wiki/Data_Encryption_Standard#Chronology">chronology</a>). There are also some analytical results which demonstrate theoretical weaknesses in the cipher, although they are infeasible to mount in practice. The algorithm is believed to be practically secure in the form of&nbsp;<a href="https://en.wikipedia.org/wiki/Triple_DES">Triple DES</a>, although there are theoretical attacks. In recent years, the cipher has been superseded by the&nbsp;<a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">Advanced Encryption Standard</a>&nbsp;(AES). Furthermore, DES has been withdrawn as a standard by the&nbsp;<a href="https://en.wikipedia.org/wiki/National_Institute_of_Standards_and_Technology">National Institute of Standards and Technology</a>&nbsp;(formerly the National Bureau of Standards).</p>\n\n<p>Some documentation makes a distinction between DES as a standard and DES as an algorithm, referring to the algorithm as the&nbsp;<strong>DEA</strong>&nbsp;(<strong>Data Encryption Algorithm</strong>).</p>\n', 'Data Encryption Standard'),
@@ -185,35 +193,36 @@ INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slid
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-`userID` int(11) NOT NULL,
-  `username` varchar(65) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `userID` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(65) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `fname` varchar(65) NOT NULL,
+  `lname` varchar(65) NOT NULL,
   `contact` varchar(255) NOT NULL,
-  `userType` varchar(24) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+  `usertype` varchar(24) NOT NULL,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`userID`, `username`, `password`, `email`, `contact`, `userType`) VALUES
-(1, 'admin', 'sha256:1000:D1iVJ0Jk5pvS4kgzqvq2mdSnq/6w63pt:Pc91zGeOH8q7OYmerxKl', 'admin@tartiner.com', '04 1010 1010', 'admin'),
-(2, 'leon', 'sha256:1000:Xcp0j5PBSvYuH1JXdMTq7TCQM3zb2xDk:nw39o+xpVCqI2wCYdZGM', 'leonxenarax@gmail.com', '0423 302 776', 'admin'),
-(3, 'ruchern', 'sha256:1000:pUtBVN0CYVn7R7Lnw2CpPEcCs2DGTAHy:6OC6nluSbTtYiL9cHWkm', 'ruchern.chong@uqconnect.edu.au', '0451 519 513', 'admin'),
-(4, 'huigyeong', 'sha256:1000:dZ4tUMveakkkCniz/tEpx0pyFaCefuN8:3Qn0ipGeazOmi951PHV9c8RSr5Q82o5c', 'hk2518@hotmail.com', '0424 169 232', 'admin'),
-(5, 'cameron', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'cameronpaulsen0@gmail.com', '0401 603 217', 'admin'),
-(6, 'ravi', 'sha256:1000:Gxc3O1YQ8MjuvS8pKZ7uPyTWG3Qe/bqd:AViHuMUfPxeEu1y4pC1s7IkDcmFjn8eE', 'ravi_khemlani@hotmail.com', '0452 525 020', 'admin'),
-(7, 'mal', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'mal.j@live.com', '0450 479 554', 'admin'),
-(8, 'jimsteel', 'admin', 'j.steel@uq.edu.au', '(07) 3365 4917', 'user'),
-(9, 'bolong', 'admin', 'b.zheng@uq.edu.au', '(07) 3365 2447', 'user'),
-(10, 'christeakle', 'admin', 'c.teakle@its.uq.edu.au', '(07) 3365 7555', 'admin'),
-(11, 's.cockcroft', 'admin', 'S.Cockcroft@business.uq.edu.au', '(07) 3346 8016', 'user'),
-(12, 'bethanieong', 'admin', 'bethanie.ong.9@facebook.com', '01 6475 1111', 'user'),
-(13, 'joyceng', 'admin', 'joyceeng@uq.edu.au', '0452 571 787', 'user'),
-(14, 'gavino', 'admin', 'gavino@uq.edu.au', '0412 816 417', 'user'),
-(15, 'kuroneko', 'admin', 'kuroneko@uq.edu.au', '0451 932 133', 'user'),
-(16, 'adityarahardi', 'admin', 'aditya@uq.edu.au', '0406 504 067', 'user'),
-(17, 'j.hadwen', 'admin', 'j.hadwen@uq.edu.au', '(07) 3346 8265', 'user'),
-(18, 'c.mills', 'admin', 'c.mills@uq.edu.au', '(07) 3346 8279', 'user'),
-(19, 'm.farquhar', 'admin', 'm.farquhar@uq.edu.au', '(07) 3346 8265', 'user'),
-(20, 'k.kilner', 'admin', 'k.kilner@uq.edu.au', '(07) 3365 3313', 'user');
+INSERT INTO `users` (`userID`, `email`, `password`, `fname`, `lname`, `contact`, `usertype`) VALUES
+(1, 'admin@tartiner.com', 'sha256:1000:D1iVJ0Jk5pvS4kgzqvq2mdSnq/6w63pt:Pc91zGeOH8q7OYmerxKl', 'Tartiner', 'Admin', '04 1010 1010', 'admin'),
+(2, 'leonxenarax@gmail.com', 'sha256:1000:Xcp0j5PBSvYuH1JXdMTq7TCQM3zb2xDk:nw39o+xpVCqI2wCYdZGM', 'Leon', 'Teh', '0423 302 776', 'admin'),
+(3, 'ruchern.chong@uqconnect.edu.au', 'sha256:1000:pUtBVN0CYVn7R7Lnw2CpPEcCs2DGTAHy:6OC6nluSbTtYiL9cHWkm', 'Ru Chern', 'Chong', '0451 519 513', 'admin'),
+(4, 'hk2518@hotmail.com', 'sha256:1000:dZ4tUMveakkkCniz/tEpx0pyFaCefuN8:3Qn0ipGeazOmi951PHV9c8RSr5Q82o5c', 'HuiGyeong', 'Shin', '0424 169 232', 'admin'),
+(5, 'cameronpaulsen0@gmail.com', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'Cameron', 'Paulsen', '0401 603 217', 'admin'),
+(6, 'ravi_khemlani@hotmail.com', 'sha256:1000:Gxc3O1YQ8MjuvS8pKZ7uPyTWG3Qe/bqd:AViHuMUfPxeEu1y4pC1s7IkDcmFjn8eE', 'Ravi', 'Khemlani', '0452 525 020', 'admin'),
+(7, 'mal.j@live.com', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'Malcolm', 'Joseland', '0450 479 554', 'admin'),
+(8, 'j.steel@uq.edu.au', 'admin', 'Jim', 'Steel', '(07) 3365 4917', 'user'),
+(9, 'b.zheng@uq.edu.au', 'admin', 'Bolong', 'Zheng', '(07) 3365 2447', 'user'),
+(10, 'c.teakle@its.uq.edu.au', 'admin', 'Chris', 'Teakle', '(07) 3365 7555', 'admin'),
+(11, 'S.Cockcroft@business.uq.edu.au', 'admin', 'Sophie', 'Cockcroft', '(07) 3346 8016', 'user'),
+(12, 'bethanie.ong.9@facebook.com', 'admin', 'Bethanie', 'Ball', '01 6475 1111', 'user'),
+(13, 'joyceeng@uq.edu.au', 'admin', 'Joyce', 'Ng', '0452 571 787', 'user'),
+(14, 'gavino@uq.edu.au', 'admin', 'Gavin', 'Norman', '0412 816 417', 'user'),
+(15, 'kuroneko@uq.edu.au', 'admin', 'Rachel', 'Tan', '0451 932 133', 'user'),
+(16, 'aditya@uq.edu.au', 'admin', 'Aditya', 'Rahardi', '0406 504 067', 'user'),
+(17, 'j.hadwen@uq.edu.au', 'admin', 'Jonathan', 'Hadwen', '(07) 3346 8265', 'user'),
+(18, 'c.mills@uq.edu.au', 'admin', 'Catriona', 'Mills', '(07) 3346 8279', 'user'),
+(19, 'm.farquhar@uq.edu.au', 'admin', 'M', 'Farquhar', '(07) 3346 8265', 'user');
 
 DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE IF NOT EXISTS `user_courses` (
@@ -222,36 +231,40 @@ CREATE TABLE IF NOT EXISTS `user_courses` (
   `completion` decimal(5,2) NOT NULL,
   `description` text,
   `grading` varchar(255) DEFAULT NULL,
-  `mandatory` tinyint(1) DEFAULT NULL
+  `mandatory` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`userID`,`courseID`),
+  KEY `courseID` (`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `grading`, `mandatory`) VALUES
-(1, 1, 0, '90.0', NULL),
-(1, 2, 0, '0.0', NULL),
-(1, 3, 0, '70.0', NULL),
-(2, 1, 0, '50.0', NULL),
-(2, 2, 0, '70.0', NULL),
-(2, 3, 0, '90.0', NULL),
-(3, 1, 0, '100.0', NULL),
-(3, 2, 0, '0.0', NULL),
-(3, 3, 0, '0.0', NULL),
-(4, 1, 0, '0.0', NULL),
-(4, 2, 0, '0.0', NULL),
-(4, 3, 0, '0.0', NULL),
-(5, 1, 0, '0.0', NULL),
-(5, 2, 0, '0.0', NULL),
-(5, 3, 0, '0.0', NULL),
-(6, 1, 0, '0.0', NULL),
-(6, 2, 0, '0.0', NULL),
-(6, 3, 0, '0.0', NULL),
-(7, 1, 0, '0.0', NULL),
-(7, 2, 0, '0.0', NULL),
-(7, 3, 0, '0.0', NULL);
+INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `grading`, `mandatory`) VALUES
+(1, 1, '0.00', NULL, '90.0', NULL),
+(1, 2, '0.00', NULL, '0.0', NULL),
+(1, 3, '0.00', NULL, '70.0', NULL),
+(2, 1, '0.00', NULL, '50.0', NULL),
+(2, 2, '0.00', NULL, '70.0', NULL),
+(2, 3, '0.00', NULL, '90.0', NULL),
+(3, 1, '0.00', NULL, '100.0', NULL),
+(3, 2, '0.00', NULL, '0.0', NULL),
+(3, 3, '0.00', NULL, '0.0', NULL),
+(4, 1, '0.00', NULL, '0.0', NULL),
+(4, 2, '0.00', NULL, '0.0', NULL),
+(4, 3, '0.00', NULL, '0.0', NULL),
+(5, 1, '0.00', NULL, '0.0', NULL),
+(5, 2, '0.00', NULL, '0.0', NULL),
+(5, 3, '0.00', NULL, '0.0', NULL),
+(6, 1, '0.00', NULL, '0.0', NULL),
+(6, 2, '0.00', NULL, '0.0', NULL),
+(6, 3, '0.00', NULL, '0.0', NULL),
+(7, 1, '0.00', NULL, '0.0', NULL),
+(7, 2, '0.00', NULL, '0.0', NULL),
+(7, 3, '0.00', NULL, '0.0', NULL);
 
 DROP TABLE IF EXISTS `user_groups`;
 CREATE TABLE IF NOT EXISTS `user_groups` (
   `userID` int(11) NOT NULL,
-  `groupID` int(11) NOT NULL
+  `groupID` int(11) NOT NULL,
+  PRIMARY KEY (`userID`,`groupID`),
+  KEY `groupID` (`groupID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
@@ -266,7 +279,8 @@ CREATE TABLE IF NOT EXISTS `user_results` (
   `questionOrder` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `attempt` int(11) NOT NULL,
-  `userAnswer` int(11) NOT NULL
+  `userAnswer` int(11) NOT NULL,
+  PRIMARY KEY (`courseID`,`questionOrder`,`userID`,`attempt`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_results` (`courseID`, `questionOrder`, `userID`, `attempt`, `userAnswer`) VALUES
@@ -282,66 +296,26 @@ INSERT INTO `user_results` (`courseID`, `questionOrder`, `userID`, `attempt`, `u
 
 
 ALTER TABLE `answers`
- ADD PRIMARY KEY (`courseID`,`questionOrder`,`answerOrder`);
-
-ALTER TABLE `courses`
- ADD PRIMARY KEY (`courseID`);
-
-ALTER TABLE `groups`
- ADD PRIMARY KEY (`groupID`), ADD KEY `groupID` (`groupID`);
+  ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`,`questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE,
+  ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 ALTER TABLE `group_courses`
- ADD PRIMARY KEY (`groupID`,`courseID`), ADD KEY `group_courses_ibfk_2` (`courseID`);
+  ADD CONSTRAINT `group_courses_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `group_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
 
 ALTER TABLE `questions`
- ADD PRIMARY KEY (`courseID`,`questionOrder`);
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
 
 ALTER TABLE `slides`
- ADD PRIMARY KEY (`slideID`), ADD KEY `courseID` (`courseID`);
-
-ALTER TABLE `users`
- ADD PRIMARY KEY (`userID`);
+  ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 ALTER TABLE `user_courses`
- ADD PRIMARY KEY (`userID`,`courseID`), ADD KEY `courseID` (`courseID`);
+  ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
 
 ALTER TABLE `user_groups`
- ADD PRIMARY KEY (`userID`,`groupID`), ADD KEY `groupID` (`groupID`);
-
-ALTER TABLE `user_results`
- ADD PRIMARY KEY (`courseID`,`questionOrder`,`userID`,`attempt`) USING BTREE;
-
-
-ALTER TABLE `courses`
-MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
-ALTER TABLE `groups`
-MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
-ALTER TABLE `slides`
-MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
-ALTER TABLE `users`
-MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
-
-ALTER TABLE `answers`
-ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`, `questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE,
-ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
-
-ALTER TABLE `group_courses`
-ADD CONSTRAINT `group_courses_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE,
-ADD CONSTRAINT `group_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
-
-ALTER TABLE `questions`
-ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
-
-ALTER TABLE `slides`
-ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
-
-ALTER TABLE `user_courses`
-ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE,
-ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
-
-ALTER TABLE `user_groups`
-ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE,
-ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
