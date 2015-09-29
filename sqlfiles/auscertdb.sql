@@ -96,9 +96,6 @@ CREATE TABLE IF NOT EXISTS `groups` (
 INSERT INTO `groups` (`groupID`, `organisation`) VALUES
 (0, 'AllUsers'),
 (1, 'UQ Security'),
-(2, 'UQ AusCert'),
-(0, 'Administrators'),
-(1, 'Tartiner Studios'),
 (2, 'AusCert'),
 (3, 'UQ ITEE'),
 (4, 'UQ BEL'),
@@ -122,29 +119,29 @@ CREATE TABLE IF NOT EXISTS `group_courses` (
 
 INSERT INTO `group_courses` (`groupID`, `courseID`) VALUES
 (0, 1),
-(5, 1),
-(9, 1),
 (0, 2),
-(0, 3);
-(1, 2),
-(3, 2),
-(1, 3),
-(2, 3),
+(0, 3),
 (0, 4),
-(5, 4),
 (0, 5),
-(1, 5),
-(5, 5),
 (0, 7),
-(3, 7),
+(0, 11),
+(1, 2),
+(1, 3),
+(1, 5),
 (1, 9),
+(1, 12),
+(2, 3),
 (2, 9),
 (2, 10),
-(0, 11),
+(3, 2),
+(3, 7),
 (3, 11),
+(5, 1),
+(5, 4),
+(5, 5),
+(9, 1),
 (9, 11),
-(18, 11),
-(1, 12);
+(16, 11);
 
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
@@ -185,8 +182,6 @@ INSERT INTO `slides` (`slideID`, `courseID`, `slideOrder`, `slideContent`, `slid
 (21, 3, 0, '<p>In information security circles, 2014 has been a year of what seems like a never-ending stream of cyberthreats and data breaches, affecting retailers, banks, gaming networks, governments and more.</p>\n\n<p>The calendar year may be drawing to a close, but we can expect that the size, severity and complexity of cyber threats to continue increasing, says Steve Durbin, managing director of the&nbsp;<a href="https://www.securityforum.org/" target="_blank">Information Security Forum (ISF)</a>, a nonprofit association that assesses security and risk management issues on behalf of its members.</p>\n\n<p>Looking ahead to 2015, Durbin says the ISF sees five security trends that will dominate the year.</p>\n\n<p>&quot;For me, there&#39;s not a huge amount that&#39;s spectacularly new,&quot; Durbin says. &quot;What is new is the increase in complexity and sophistication.&quot;</p>\n\n<h3>1. Cybercrime</h3>\n\n<p><img alt="cybercrime" src="http://images.techhive.com/images/article/2014/12/cybercrime-100534917-large.idge.jpg" style="height:383px; width:620px" /><small>Thinkstock</small></p>\n\n<p><a href="http://www.cio.com/article/2932982/resumes/it-resume-makeover-how-to-add-flavor-to-a-bland-resume.html"><img alt="resume makeover executive" src="http://core3.staticworld.net/images/article/2015/06/resume_makeover_executive-100589968-carousel.idge.jpg" /></a></p>\n\n<p><a href="http://www.cio.com/article/2932982/resumes/it-resume-makeover-how-to-add-flavor-to-a-bland-resume.html">IT Resume Makeover: How to add flavor to a bland resume</a></p>\n\n<p>Don&#39;t count on your &#39;plain vanilla&#39; resume to get you noticed - your resume needs a personal flavor to</p>\n\n<p><a href="http://www.cio.com/article/2932982/resumes/it-resume-makeover-how-to-add-flavor-to-a-bland-resume.html">READ NOW</a></p>\n\n<p>The Internet is an increasingly attractive hunting ground for criminals, activists and terrorists motivated to make money, get noticed, cause disruption or even bring down corporations and governments through online attacks, Durbin says.</p>\n\n<p>Today&#39;s cybercriminals primarily operate out of the former Soviet states. They are highly skilled and equipped with very modern tools &mdash; as Durbin notes, they often use 21st century tools to take on 20th century systems.</p>\n\n<p>&quot;In 2014 we saw cybercriminals demonstrating a higher degree of collaboration amongst themselves and a degree of technical competency that caught many large organizations unawares,&quot; Durbin says.</p>\n\n<p>&quot;In 2015, organizations must be prepared for the unpredictable so they have the resilience to withstand unforeseen, high impact events,&quot; he adds. &quot;Cybercrime, along with the increase in online causes (hacktivism), the increase in cost of compliance to deal with the uptick in regulatory requirements coupled with the relentless advances in technology against a backdrop of under investment in security departments, can all combine to cause the perfect threat storm. Organizations that identify what the business relies on most will be well placed to quantify the business case to invest in resilience, therefore minimizing the impact of the unforeseen.&quot;</p>\n', 'In-depth look'),
 (22, 3, 1, '<h3>&nbsp;</h3>\n\n<p><img alt="privacy policy" src="http://images.techhive.com/images/article/2014/12/privacy_policy-100534918-large.idge.jpg" style="height:599px; width:620px" /><small>Thinkstock</small></p>\n\n<p>Most governments have already created, or are in the process of creating, regulations that impose conditions on the safeguard and use of Personally Identifiable Information (PII), with penalties for organizations that fail to sufficiently protect it. As a result, Durbin notes, organizations need to treat privacy as both a compliance and business risk issue, in order to reduce regulatory sanctions and business costs such as reputational damage and loss of customers due to privacy breaches.</p>\n\n<p>The patchwork nature of regulation around the world is likely to become an increasing burden on organizations in 2015.</p>\n\n<p>&quot;We are seeing increasing plans for regulation around the collection, storage and use of information along with severe penalties for loss of data and breach notification particularly across the European Union,&quot; Durbin says. &quot;Expect this to continue and develop further imposing an overhead in regulatory management above and beyond the security function and necessarily including legal, HR and Board level input.&quot;</p>\n\n<p>He adds that organizations should look upon the EU&#39;s struggles with data breach regulation and privacy regulation as a temperature gauge and plan accordingly.</p>\n\n<p>&quot;Regulators and governments are trying to get involved,&quot; he says. &quot;That&#39;s placing a bigger burden on organizations. They need to have resources in place to respond and they need to be aware of what&#39;s going on. If you&#39;ve got in-house counsel, you&#39;re going to start making more use of them. If you don&#39;t, there&#39;s a cost.&quot;</p>\n', 'Privacy and Regulation'),
 (23, 3, 2, '<h3>&nbsp;</h3>\n\n<p><img alt="third party threats" src="http://images.techhive.com/images/article/2014/12/third_party-threats-100534915-large.idge.jpg" style="height:413px; width:620px" /><small>Thinkstock</small></p>\n\n<p>Supply chains are a vital component of every organization&#39;s global business operations and the backbone of today&#39;s global economy. However, Durbin says, security chiefs everywhere are growing more concerned about how open they are to numerous risk factors. A range of valuable and sensitive information is often shared with suppliers, and when that information is shared, direct control is lost. This leads to an increased risk of its confidentiality, integrity or availability being compromised.</p>\n\n<p>Even seemingly innocuous connections can be vectors for attack. The&nbsp;<a href="http://www.cio.com/article/2600345/security0/11-steps-attackers-took-to-crack-target.html" target="_blank">attackers who cracked Target</a>&nbsp;exploited a web services application that the company&#39;s HVAC vendor used to submit invoices.</p>\n\n<p>&quot;Over the next year, third-party providers will continue to come under pressure from targeted attacks and are unlikely to be able to provide assurance of data confidentiality, integrity and/or availability,&quot; Durbin says. &quot;Organizations of all sizes need to think about the consequences of a supplier providing accidental, but harmful, access to their intellectual property, customer or employee information, commercial plans or negotiations. And this thinking should not be confined to manufacturing or distribution partners. It should also embrace your professional services suppliers, your lawyers and accountants, all of whom share access oftentimes to your most valuable data assets.&quot;</p>\n\n<p>Durbin adds that infosec specialists should work closely with those in charge of contracting for services to conduct thorough due diligence on potential arrangements.</p>\n\n<p>&quot;It is imperative that organizations have robust business continuity plans in place to boost both resilience and senior management&#39;s confidence in the functions&#39; abilities,&quot; he says. &quot;A well-structured supply chain information risk assessment approach can provide a detailed, step by step approach to portion an otherwise daunting project into manageable components. This method should be information-driven, and not supplier-centric, so it is scalable and repeatable across the enterprise.&quot;</p>\n', 'Threats From Third-Party Providers');
-(18, 1, 3, '<p>The information in this course is based on UQ&rsquo;s Phishing/Email Scams Factsheet &amp; Prevention webpage. For further information, it can be visited at:</p>\n\n<p><a href="https://www.its.uq.edu.au/helpdesk/phishingemail-scams-factsheet-prevention">https://www.its.uq.edu.au/helpdesk/phishingemail-scams-factsheet-prevention</a></p>\n', 'Further Information'),
-(19, 12, 3, '<p>This course is based on UQ&#39;s&nbsp;Password Guide. For further information, it can be visited at:</p>\n\n<p><a href="https://www.its.uq.edu.au/helpdesk/uq-password-guide">https://www.its.uq.edu.au/helpdesk/uq-password-guide</a></p>\n', 'Further Information');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
@@ -230,28 +225,6 @@ CREATE TABLE IF NOT EXISTS `user_courses` (
   `mandatory` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `grading`, `mandatory`) VALUES
-(1, 1, 0, '90.0', NULL),
-(1, 2, 0, '0.0', NULL),
-(1, 3, 0, '70.0', NULL),
-(2, 1, 0, '50.0', NULL),
-(2, 2, 0, '70.0', NULL),
-(2, 3, 0, '90.0', NULL),
-(3, 1, 0, '100.0', NULL),
-(3, 2, 0, '0.0', NULL),
-(3, 3, 0, '0.0', NULL),
-(4, 1, 0, '0.0', NULL),
-(4, 2, 0, '0.0', NULL),
-(4, 3, 0, '0.0', NULL),
-(5, 1, 0, '0.0', NULL),
-(5, 2, 0, '0.0', NULL),
-(5, 3, 0, '0.0', NULL),
-(6, 1, 0, '0.0', NULL),
-(6, 2, 0, '0.0', NULL),
-(6, 3, 0, '0.0', NULL),
-(7, 1, 0, '0.0', NULL),
-(7, 2, 0, '0.0', NULL),
-(7, 3, 0, '0.0', NULL);
 INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `grading`, `mandatory`) VALUES
 (2, 1, '0.00', NULL, '0.0', NULL),
 (2, 3, '100.00', '', '90', 0),
@@ -272,7 +245,7 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 (1, 0),
 (2, 0),
 (3, 0),
-(8, 0);
+(8, 0),
 (2, 1),
 (3, 1),
 (4, 1),
@@ -318,23 +291,7 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 (9, 15),
 (12, 15),
 (14, 15),
-(16, 15),
-(2, 17),
-(3, 17),
-(13, 17),
-(14, 17),
-(15, 17),
-(16, 17),
-(17, 17),
-(2, 18),
-(3, 18),
-(13, 18),
-(14, 18),
-(15, 18),
-(16, 18),
-(17, 18),
-(19, 18),
-(20, 18);
+(16, 15);
 
 DROP TABLE IF EXISTS `user_results`;
 CREATE TABLE IF NOT EXISTS `user_results` (
