@@ -15,7 +15,7 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="input-group">
-							<input type="search" placeholder="Search" class="form-control" id="courseSearchBar">
+							<input type="search" placeholder="Search" class="form-control" id="userSearchBar">
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-primary">
 									<i class="fa fa-search"></i>
@@ -25,10 +25,23 @@
 					</div>
 				</div>
 
-				<div class="col-lg-12">
+				<div id="userSearchPanel" class="col-lg-12">
 					<div class="panel panel-primary">
 						<div class="panel-body" id="resultBox">
-							Search results here
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Groups</th>
+										<th>User Type</th>
+										<th>Email Address</th>
+										<th>Contact No.</th>
+									</tr>
+								</thead>
+								<tbody>
+									<div id="resultBox">
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -209,17 +222,20 @@ $("#menu-toggle").click(function(e) {
 
 <script>
 	$(document).ready(function(){
+		$('#userSearchPanel').hide();
 		$('[data-toggle="tooltip"]').tooltip();
 		$('#pageAdmin').removeAttr('href');
 		var siteURL = "<?php echo site_url('learning/') ?>";
+		var imgURL = "<?php echo base_url('assets/img/user-placeholder.jpg'); ?>";
 
-		$("#courseSearchBar").keyup(function(){
-			if ($("#courseSearchBar").val().length>1){
+		$("#userSearchBar").keyup(function(){
+			if ($("#userSearchBar").val().length>1){
+				$('#userSearchPanel').show();
 				$.ajax({
 					type:"post",
-					url: "<?php echo base_url('admin/searchCourse'); ?>",
+					url: "<?php echo base_url('admin/searchUser'); ?>",
 					cache: false,
-					data: 'courseSearch='+$("#courseSearchBar").val(),
+					data: 'userSearch='+$("#userSearchBar").val(),
 					success: function(response){
 						$("#resultBox").html("");
 						var obj=JSON.parse(response);
@@ -228,9 +244,13 @@ $("#menu-toggle").click(function(e) {
 								var items=[];
 								$.each(obj, function(index, value){
 									items.push(
-//										'<tr>',
-//										'<td><a href=' + siteURL + '/' + value.courseID + '>' + value.courseName + '</a></td>',
-//										'<td>' + value.lastEdited) ? "None" : $course->lastEdited; ?></td>',
+										'<tr>',
+//										'<td>' + value.username + '</td>',
+										'<td class=\"client-avatar\">',
+//										'<img src=\"' + imgURL + '\">&emsp;',
+										'<a data-toggle=\"tab\" href=\"#' + value.username + '\" class=\"client-link\">' + value.username + '</a>',
+										'</td>',
+										'<tr>'
 									);
 								});
 								$("#resultBox").append.apply($("#resultBox"),items);

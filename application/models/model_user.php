@@ -44,6 +44,17 @@ Class model_user extends CI_Model {
 		return false;
 	}
 
+	//searches for a course based on courseName
+	public function GetUserByName($userName) {
+		$this->db->like('userName', $userName);
+		$query = $this->db->get('users');
+
+		if ($query->num_rows > 0) {
+			return $query->result();
+		}
+		return false;
+	}
+
 	//returns a list of all users except the ones given in the argument
 	public function GetAllUsersExcept($omittedUsers) {
 		if (count($omittedUsers) > 0) {
