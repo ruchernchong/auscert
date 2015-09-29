@@ -15,7 +15,7 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="input-group">
-							<input type="search" placeholder="Search" class="form-control">
+							<input type="search" placeholder="Search" class="form-control" id="courseSearchBar">
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-primary">
 									<i class="fa fa-search"></i>
@@ -27,7 +27,7 @@
 
 				<div class="col-lg-12">
 					<div class="panel panel-primary">
-						<div class="panel-body">
+						<div class="panel-body" id="resultBox">
 							Search results here
 						</div>
 					</div>
@@ -205,11 +205,53 @@ $("#menu-toggle").click(function(e) {
 	e.preventDefault();
 	$("#wrapper").toggleClass("toggled");
 });
-
-$(document).ready(function() {
-	$('[data-toggle="tooltip"]').tooltip();
-	$('#pageAdmin').removeAttr('href');
-});
 </script>
+
+<script>
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+		$('#pageAdmin').removeAttr('href');
+		var siteURL = "<?php echo site_url('learning/') ?>";
+
+		$("#courseSearchBar").keyup(function(){
+			if ($("#courseSearchBar").val().length>1){
+				$.ajax({
+					type:"post",
+					url: "<?php echo base_url('admin/searchCourse'); ?>",
+					cache: false,
+					data: 'courseSearch='+$("#courseSearchBar").val(),
+					success: function(response){
+						$("#resultBox").html("");
+						var obj=JSON.parse(response);
+						if (obj.length>0) {
+							try {
+								var items=[];
+								$.each(obj, function(index, value){
+									items.push(
+//										'<tr>',
+//										'<td><a href=' + siteURL + '/' + value.courseID + '>' + value.courseName + '</a></td>',
+//										'<td>' + value.lastEdited) ? "None" : $course->lastEdited; ?></td>',
+									);
+								});
+								$("#resultBox").append.apply($("#resultBox"),items);
+							} catch(e) {
+								alert('Exeption while request..')
+							}
+						}else {
+							$('#finalResult').html($('<li/>').text("No Courses Found"));
+						}
+					},
+					error: function(){
+						alert('Error 2');
+					}
+				});
+			}
+			return false;
+		})
+
+
+	})
+</script>
+
 </body>
 </html>

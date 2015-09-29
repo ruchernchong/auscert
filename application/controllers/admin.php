@@ -110,8 +110,9 @@ class admin extends CI_Controller {
 	}
 
 	//AJAX search for courses
-	function searchCoure() {
-		$query = "this";
+	function searchCourse() {
+		$searchTerm = $this->input->post('courseSearch');
+		$query = $this->model_course->GetCourseByName($searchTerm);
 		echo json_encode($query);
 	}
 }

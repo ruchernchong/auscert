@@ -50,6 +50,17 @@ Class model_course extends CI_Model {
 		return false;
 	}
 
+	//searches for a course based on courseName
+	public function GetCourseByName($courseName) {
+		$this->db->like('courseName', $courseName);
+		$query = $this->db->get('courses');
+
+		if ($query->num_rows > 0) {
+			return $query->result();
+		}
+		return false;
+	}
+
 	//returns the number of courses available
 	public function GetNumberOfCourses() {
 		$query = $this->db->get('courses');
