@@ -54,7 +54,7 @@ class register extends CI_Controller {
 			),
 			array(
 				'field' => 'registerGroup',
-				'label' => 'Faculty',
+				'label' => 'Group',
 				'rules' => 'required|xss_clean'
 			),
 			array(
