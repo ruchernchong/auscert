@@ -15,13 +15,7 @@ class login extends CI_Controller {
 	}
 
 	public function index() {
-		$groups = $this->model_group->GetPublicGroups();
-
-		if ($groups) {
-			$data['groups'] = $groups;
-		}
-
-		$this->load->view('view_login', $data);
+		$this->load->view('view_login');
 	}
 
 	//validate a user's login
@@ -34,9 +28,10 @@ class login extends CI_Controller {
 		if ($this->password->validate_password($this->input->post('loginPassword'), $row->password)) {
 			$session_array = array(
 				'userID' => $row->userID,
-				'username' => $row->username,
+				'fname' => $row->fname,
+				'lname' => $row->lname,
 				'email' => $row->email,
-				'usertype' => $row->userType
+				'usertype' => $row->usertype
 			);
 			$this->session->set_userdata('logged_in', $session_array);
 
