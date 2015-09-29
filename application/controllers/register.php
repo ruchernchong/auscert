@@ -26,6 +26,12 @@ class register extends CI_Controller {
 
 	//Create user and assign him to groups
 	public function registerUsers() {
+		$groups = $this->model_group->GetPublicGroups();
+
+		if ($groups) {
+			$data['groups'] = $groups;
+		}
+
 		$rules = array(
 			array(
 				'field' => 'registerEmail',
@@ -54,7 +60,7 @@ class register extends CI_Controller {
 			),
 			array(
 				'field' => 'registerGroup',
-				'label' => 'Faculty',
+				'label' => 'Group',
 				'rules' => 'required|xss_clean'
 			),
 			array(
@@ -66,8 +72,10 @@ class register extends CI_Controller {
 
 		$this->form_validation->set_rules($rules);
 
+
+
 		$registerEmail = $this->input->post('registerEmail');
-		$registerPassword = $this->input->post('registerPassword');
+		$registerPassword = $this->password->create_hash($this->input->post('registerPassword'));
 		$registerFName = $this->input->post('registerFName');
 		$registerLName = $this->input->post('registerLName');
 		$registerGroup = $this->input->post('registerGroup');
@@ -75,15 +83,18 @@ class register extends CI_Controller {
 
 		if ($this->form_validation->run() == false) {
 			$this->session->set_flashdata('register-error', 'Please see registration form for errors.');
+
+			$this->load->view('view_register', $data);
 		} else {
-			$this->registerAndSetup(
-				$registerEmail,
-				$registerPassword,
-				$registerFName,
-				$registerLName,
-				$registerGroup,
-				$registerContact
+			$data = array(
+				'email' => $registerEmail,
+				'password' => $registerPassword,
+				'fname' => $registerFName,
+				'lname' => $registerLName,
+				'group' => $registerGroup,
+				'contact' => $registerContact
 			);
+			$this->registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact);
 			$this->session->set_flashdata('register-success', 'Account is successfully registered. Please proceed to login.');
 
 			redirect('login', 'refresh');

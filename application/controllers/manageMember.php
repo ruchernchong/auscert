@@ -90,7 +90,7 @@ class manageMember extends CI_Controller {
     //assign users to a group
 	function addMembers() {
 		$usersArray = $this->input->post('userIDs');
-		$groupID = $this->uri->segment(2);
+		$groupID = $this->input->post('groupID');
 
 		foreach ($usersArray as $userID) {
 			$this->model_usergroup->AddUserToGroup($userID, $groupID);
@@ -100,7 +100,7 @@ class manageMember extends CI_Controller {
     //remove users from a group
 	function removeMembers() {
 		$usersArray = $this->input->post('userIDs');
-		$groupID = $this->uri->segment(2);
+		$groupID = $this->input->post('groupID');
 
 		foreach ($usersArray as $userID) {
 			$this->model_usergroup->RemoveUserFromGroup($userID, $groupID);
