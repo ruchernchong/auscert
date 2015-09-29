@@ -5,7 +5,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-DROP DATABASE `auscertdb`;
+DROP DATABASE IF EXISTS `auscertdb`;
 CREATE DATABASE IF NOT EXISTS `auscertdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `auscertdb`;
 
@@ -202,28 +202,28 @@ CREATE TABLE IF NOT EXISTS `users` (
   `contact` varchar(255) NOT NULL,
   `usertype` varchar(24) NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `users` (`userID`, `email`, `password`, `fname`, `lname`, `contact`, `usertype`) VALUES
-(1, 'admin@tartiner.com', 'sha256:1000:D1iVJ0Jk5pvS4kgzqvq2mdSnq/6w63pt:Pc91zGeOH8q7OYmerxKl', 'Tartiner', 'Admin', '04 1010 1010', 'admin'),
-(2, 'leonxenarax@gmail.com', 'sha256:1000:Xcp0j5PBSvYuH1JXdMTq7TCQM3zb2xDk:nw39o+xpVCqI2wCYdZGM', 'Leon', 'Teh', '0423 302 776', 'admin'),
-(3, 'ruchern.chong@uqconnect.edu.au', 'sha256:1000:pUtBVN0CYVn7R7Lnw2CpPEcCs2DGTAHy:6OC6nluSbTtYiL9cHWkm', 'Ru Chern', 'Chong', '0451 519 513', 'admin'),
-(4, 'hk2518@hotmail.com', 'sha256:1000:dZ4tUMveakkkCniz/tEpx0pyFaCefuN8:3Qn0ipGeazOmi951PHV9c8RSr5Q82o5c', 'HuiGyeong', 'Shin', '0424 169 232', 'admin'),
-(5, 'cameronpaulsen0@gmail.com', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'Cameron', 'Paulsen', '0401 603 217', 'admin'),
-(6, 'ravi_khemlani@hotmail.com', 'sha256:1000:Gxc3O1YQ8MjuvS8pKZ7uPyTWG3Qe/bqd:AViHuMUfPxeEu1y4pC1s7IkDcmFjn8eE', 'Ravi', 'Khemlani', '0452 525 020', 'admin'),
-(7, 'mal.j@live.com', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'Malcolm', 'Joseland', '0450 479 554', 'admin'),
-(8, 'j.steel@uq.edu.au', 'admin', 'Jim', 'Steel', '(07) 3365 4917', 'user'),
-(9, 'b.zheng@uq.edu.au', 'admin', 'Bolong', 'Zheng', '(07) 3365 2447', 'user'),
-(10, 'c.teakle@its.uq.edu.au', 'admin', 'Chris', 'Teakle', '(07) 3365 7555', 'admin'),
-(11, 'S.Cockcroft@business.uq.edu.au', 'admin', 'Sophie', 'Cockcroft', '(07) 3346 8016', 'user'),
-(12, 'bethanie.ong.9@facebook.com', 'admin', 'Bethanie', 'Ball', '01 6475 1111', 'user'),
-(13, 'joyceeng@uq.edu.au', 'admin', 'Joyce', 'Ng', '0452 571 787', 'user'),
-(14, 'gavino@uq.edu.au', 'admin', 'Gavin', 'Norman', '0412 816 417', 'user'),
-(15, 'kuroneko@uq.edu.au', 'admin', 'Rachel', 'Tan', '0451 932 133', 'user'),
-(16, 'aditya@uq.edu.au', 'admin', 'Aditya', 'Rahardi', '0406 504 067', 'user'),
-(17, 'j.hadwen@uq.edu.au', 'admin', 'Jonathan', 'Hadwen', '(07) 3346 8265', 'user'),
-(18, 'c.mills@uq.edu.au', 'admin', 'Catriona', 'Mills', '(07) 3346 8279', 'user'),
-(19, 'm.farquhar@uq.edu.au', 'admin', 'M', 'Farquhar', '(07) 3346 8265', 'user');
+(0, 'admin@tartiner.com', 'sha256:1000:D1iVJ0Jk5pvS4kgzqvq2mdSnq/6w63pt:Pc91zGeOH8q7OYmerxKl', 'Tartiner', 'Admin', '04 1010 1010', 'admin'),
+(1, 'leonxenarax@gmail.com', 'sha256:1000:Xcp0j5PBSvYuH1JXdMTq7TCQM3zb2xDk:nw39o+xpVCqI2wCYdZGM', 'Leon', 'Teh', '0423 302 776', 'admin'),
+(2, 'ruchern.chong@uqconnect.edu.au', 'sha256:1000:pUtBVN0CYVn7R7Lnw2CpPEcCs2DGTAHy:6OC6nluSbTtYiL9cHWkm', 'Ru Chern', 'Chong', '0451 519 513', 'admin'),
+(3, 'hk2518@hotmail.com', 'sha256:1000:dZ4tUMveakkkCniz/tEpx0pyFaCefuN8:3Qn0ipGeazOmi951PHV9c8RSr5Q82o5c', 'HuiGyeong', 'Shin', '0424 169 232', 'admin'),
+(4, 'cameronpaulsen0@gmail.com', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'Cameron', 'Paulsen', '0401 603 217', 'admin'),
+(5, 'ravi_khemlani@hotmail.com', 'sha256:1000:Gxc3O1YQ8MjuvS8pKZ7uPyTWG3Qe/bqd:AViHuMUfPxeEu1y4pC1s7IkDcmFjn8eE', 'Ravi', 'Khemlani', '0452 525 020', 'admin'),
+(6, 'mal.j@live.com', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'Malcolm', 'Joseland', '0450 479 554', 'admin'),
+(7, 'j.steel@uq.edu.au', 'admin', 'Jim', 'Steel', '(07) 3365 4917', 'user'),
+(8, 'b.zheng@uq.edu.au', 'admin', 'Bolong', 'Zheng', '(07) 3365 2447', 'user'),
+(9, 'c.teakle@its.uq.edu.au', 'admin', 'Chris', 'Teakle', '(07) 3365 7555', 'admin'),
+(10, 'S.Cockcroft@business.uq.edu.au', 'admin', 'Sophie', 'Cockcroft', '(07) 3346 8016', 'user'),
+(11, 'bethanie.ong.9@facebook.com', 'admin', 'Bethanie', 'Ball', '01 6475 1111', 'user'),
+(12, 'joyceeng@uq.edu.au', 'admin', 'Joyce', 'Ng', '0452 571 787', 'user'),
+(13, 'gavino@uq.edu.au', 'admin', 'Gavin', 'Norman', '0412 816 417', 'user'),
+(14, 'kuroneko@uq.edu.au', 'admin', 'Rachel', 'Tan', '0451 932 133', 'user'),
+(15, 'aditya@uq.edu.au', 'admin', 'Aditya', 'Rahardi', '0406 504 067', 'user'),
+(16, 'j.hadwen@uq.edu.au', 'admin', 'Jonathan', 'Hadwen', '(07) 3346 8265', 'user'),
+(17, 'c.mills@uq.edu.au', 'admin', 'Catriona', 'Mills', '(07) 3346 8279', 'user'),
+(18, 'm.farquhar@uq.edu.au', 'admin', 'M', 'Farquhar', '(07) 3346 8265', 'user');
 
 DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE IF NOT EXISTS `user_courses` (
@@ -272,7 +272,45 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 (1, 0),
 (2, 0),
 (3, 0),
-(8, 0);
+(4, 0),
+(5, 0),
+(6, 0),
+(7, 0),
+(8, 0),
+(9, 0),
+(10, 0),
+(11, 0),
+(12, 0),
+(13, 0),
+(14, 0),
+(15, 0),
+(16, 0),
+(17, 0),
+(18, 0),
+(2, 2),
+(3, 2),
+(4, 2),
+(5, 2),
+(6, 2),
+(7, 2),
+(10, 2),
+(2, 3),
+(3, 3),
+(4, 3),
+(5, 3),
+(6, 3),
+(7, 3),
+(8, 3),
+(13, 3),
+(14, 3),
+(15, 3),
+(16, 3),
+(8, 6),
+(9, 6),
+(10, 6),
+(11, 6),
+(17, 6),
+(18, 6);
 
 DROP TABLE IF EXISTS `user_results`;
 CREATE TABLE IF NOT EXISTS `user_results` (
