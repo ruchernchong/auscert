@@ -191,7 +191,7 @@ if (!empty($this->session->flashdata('denied'))) {
 					</li>
 					<li>
 						<h4>
-							Logged in as <i><?php echo $username; ?></i>
+							Logged in as <h3><i><?php echo $fname . " " . $lname; ?></i></h3>
 						</h4>
 						<hr />
 						<!-- <h4>

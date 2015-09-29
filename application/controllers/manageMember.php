@@ -33,7 +33,8 @@ class manageMember extends CI_Controller {
 	function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
+			$data['fname'] = $session_data['fname'];
+			$data['lname'] = $session_data['lname'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = 'admin';
 
@@ -89,7 +90,7 @@ class manageMember extends CI_Controller {
     //assign users to a group
 	function addMembers() {
 		$usersArray = $this->input->post('userIDs');
-		$groupID = $this->uri->segment(2);
+		$groupID = $this->input->post('groupID');
 
 		foreach ($usersArray as $userID) {
 			$this->model_usergroup->AddUserToGroup($userID, $groupID);
@@ -99,14 +100,14 @@ class manageMember extends CI_Controller {
     //remove users from a group
 	function removeMembers() {
 		$usersArray = $this->input->post('userIDs');
-		$groupID = $this->uri->segment(2);
+		$groupID = $this->input->post('groupID');
 
 		foreach ($usersArray as $userID) {
 			$this->model_usergroup->RemoveUserFromGroup($userID, $groupID);
 		}
 	}
 
-    //Helpful function for printing to console. Evoke with $this->debug_to_console(value);
+    //Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debug($data) {
 		if (is_array($data)) {
 			$output = "<script>console.log('Debug Objects: " . implode( ',', $data) . "');</script>";

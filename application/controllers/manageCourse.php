@@ -33,7 +33,8 @@ class manageCourse extends CI_Controller {
 	function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
+			$data['fname'] = $session_data['fname'];
+			$data['lname'] = $session_data['lname'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = 'admin';
 
@@ -105,7 +106,7 @@ class manageCourse extends CI_Controller {
 		}
 	}
 
-	//Helpful function for printing to console. Evoke with $this->debug_to_console(value);
+	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debugConsole($data) {
 		if (is_array($data)) {
 			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";

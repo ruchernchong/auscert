@@ -10,7 +10,7 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<a href="<?php echo site_url('addCourse') ?>" class="btn btn-primary">Create new course</a>&emsp;
-						Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "; " . $courseLastEdited[0]->lastEdited; ?>
+						Last modified: <i class="fa fa-clock-o"></i>&emsp;<?php echo $courseLastEdited[0]->courseName . "&emsp;" . $courseLastEdited[0]->lastEdited; ?>
 						<hr>
 					</div>
 					<div class="col-lg-4">
@@ -55,7 +55,7 @@
 										<?php foreach ($users as $user) { ?>
 										<tr>
 											<td class="client-avatar">
-												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userName']; ?>" class="client-link"><?php echo $user['userName']; ?></a>
+												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['fname']; ?>" class="client-link"><?php echo $user['fname']; ?></a>
 											</td>
 											<td>
 												<?php
@@ -80,7 +80,7 @@
 												?>
 											</td>
 											<td>
-												<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user['userType']; ?></span>
+												<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user['usertype']; ?></span>
 											</td>
 											<td>
 												<i class="fa fa-envelope"></i>&emsp;<a href="mailto:<?php echo $user['email']; ?>"><?php echo $user['email']; ?></a>

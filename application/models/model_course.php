@@ -6,7 +6,7 @@ Class model_course extends CI_Model {
 	}
 
 	public function validate() {
-		$this->db->where('username', $this->input->post('username'));
+		$this->db->where('email', $this->input->post('email'));
 		$this->db->where('password', $this->input->post('password'));
 		$query = $this->db->get('users');
 
@@ -61,7 +61,7 @@ Class model_course extends CI_Model {
 		$data = array(
 			'courseName' => $courseTitle,
 			'category' => $courseCategory,
-			'creator' => $this->session->userdata['logged_in']['username'],
+			'creator' => $this->session->userdata['logged_in']['email'],
 			'active' =>  $courseActive,
 			'description' => $courseDescription,
 			'passPercentage' => $coursePassPercentage

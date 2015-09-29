@@ -7,8 +7,8 @@ Class model_usercourse extends CI_Model {
 
 	//Validate user
 	public function validate() {
-		$this->db->where('username',$this->input->post('username'));
-		$this->db->where('password',$this->input->post('password'));
+		$this->db->where('email',$this->input->post('loginEmail'));
+		$this->db->where('password',$this->input->post('loginPassword'));
 		$query = $this->db->get('users');
 		if ($query->num_rows == 1) {
 			return $query->result();
@@ -34,8 +34,20 @@ Class model_usercourse extends CI_Model {
 
 	//Add a user and his corresponding enrolled course to the usercourse table
 	public function RegisterToCourse($userID, $courseID) {
-		$data = array('userID' => $userID, 'courseID' => $courseID); 
+		$data = array('userID' => $userID, 'courseID' => $courseID);
 		$this->db->insert('user_courses', $data);
+	}
+
+	//Returns true if userID and courseID pair already exists in the table
+	public function CourseAlreadyAssigned($userID, $courseID) {
+		$data = array('userID' => $userID, 'courseID' => $courseID);
+		$this->db->where($data);
+		$query = $this->db->get('user_courses');
+		if ($query -> num_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	//Remove a user and his corresponding dropped course from the usercourse table
@@ -48,17 +60,17 @@ Class model_usercourse extends CI_Model {
 	public function GetUsersFromCourse($courseID) {
 		$this->db->where('courseID', $courseID);
 		$this->db->join('users', 'users.userID = user_courses.userID', 'INNER');
-		$this->db->order_by('username', 'ASC');
+		$this->db->order_by('fname', 'ASC');
 		$query = $this->db->get('user_courses');
 		return $query->result();
 	}
 
-    //Returns a list of users who have completed the course
+	//Returns a list of users who have completed the course
 	public function GetCompletedUsers($courseID) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('completion', 100);
 		$this->db->join('users', 'users.userID = user_courses.userID', 'INNER');
-		$this->db->order_by('username', 'ASC');
+		$this->db->order_by('fname', 'ASC');
 		$query = $this->db->get('user_courses');
 		return $query->result();
 	}

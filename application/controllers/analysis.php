@@ -29,7 +29,8 @@ class analysis extends CI_Controller {
 	function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
+			$data['fname'] = $session_data['lname'];
+			$data['lname'] = $session_data['lname'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "admin";
 

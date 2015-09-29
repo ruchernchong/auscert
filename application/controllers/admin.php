@@ -14,7 +14,8 @@ class admin extends CI_Controller {
 	function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
+			$data['fname'] = $session_data['fname'];
+			$data['lname'] = $session_data['lname'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = 'admin';
 
@@ -28,11 +29,12 @@ class admin extends CI_Controller {
 			foreach ($users as $user) {
 				$groupArray = (!empty($this->model_usergroup->GetUserGroups($user->userID)) ? $this->model_usergroup->GetUserGroups($user->userID) : '');
 				$usersList = [
-				'userName' => $user->username,
-				'groupArray' => $groupArray,
-				'email' => $user->email,
-				'contact' => $user->contact,
-				'userType' => $user->userType
+//				'userName' => $user->username,
+					'groupArray' => $groupArray,
+					'email' => $user->email,
+					'fname' => $user->fname,
+					'contact' => $user->contact,
+					'usertype' => $user->usertype
 				];
 				array_push($usersAndGroups, $usersList);
 			}
@@ -43,10 +45,10 @@ class admin extends CI_Controller {
 				$userArray = (!empty($this->model_usergroup->GetGroupUsers($group->groupID)) ? $this->model_usergroup->GetGroupUsers($group->groupID) : '');
 				$userCount = (($this->model_usergroup->GetUserCount($group->groupID) != "") ? $this->model_usergroup->GetUserCount($group->groupID) : "No Members");
 				$groupList = [
-				'groupID' => $group->groupID,
-				'organisation' => $group->organisation,
-				'userArray' => $userArray,
-				'userCount' => $userCount
+					'groupID' => $group->groupID,
+					'organisation' => $group->organisation,
+					'userArray' => $userArray,
+					'userCount' => $userCount
 				];
 				array_push($groupsAndUsers, $groupList);
 			}
