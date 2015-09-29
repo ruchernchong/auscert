@@ -86,17 +86,6 @@ INSERT INTO `courses` (`courseID`, `courseName`, `category`, `creator`, `active`
 (12, 'UQ Privacy and Online Security', 'Sprint Zero', 'RuChern', 1, 50, '2nd Checkpoint', '2015-08-26 12:45:53', '2015-08-26 12:45:53'),
 (13, 'Antiviruses - Selection and Usage', 'Introductory', 'RuChern', 1, 50, '<p>Learn to use Children&#39;s Literature Digital Resource (CLDR).</p>\r\n', '2015-09-01 11:43:15', '2015-09-02 11:50:13'),
 (14, 'Choosing a Secure Password', 'Security', 'leon', 1, 50, '<p>This course will focus on teaching practices recommended by UQ ITS for choosing a secure password. By the end of this course you will know how to choose a password that is:</p>\n\n<ol>\n	<li>Secure from being guessed by another person</li>\n	<li>Secure from being cracked by password cracking software</li>\n	<li>Easy to remember</li>\n</ol>\n', '2015-09-14 18:50:03', '2015-09-15 12:09:22');
-(1, 'Phising Scams', 'Safety', 'Tartiner Studios', 1, 50, '<p>This course will teach you about Phishing Scams.&nbsp;By the end of this course you will expect to have learnt:</p>\n\n<ol>\n	<li>What phishing scams are</li>\n	<li>How to identify phishing attempts</li>\n	<li>What to do if you encounter a phishing attempt</li>\n</ol>\n', '2015-03-08 10:00:00', '2015-09-15 22:07:34'),
-(2, 'Choosing A Safe Password', 'Security', 'Redones', 0, 50, '<p>This course will guide you through how a password works as well as steps to take to ensure a strong and secure password</p>\r\n', '2015-07-15 10:00:00', '2015-09-02 22:00:18'),
-(3, 'Tartiner Studios Training', 'Introductory', 'Tartiner Studios', 0, 50, 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', '2015-08-12 10:00:00', '2015-08-17 10:00:00'),
-(4, 'SQL Injection Attacks', 'Cyber Attacks', 'AusCert', 0, 50, 'Introduction to what SQL Injection Attacks are and how to avoid them', '2015-06-19 10:00:00', '2015-08-25 10:00:00'),
-(5, 'Data Encryption', 'Security', 'UQ ITEE', 0, 50, '<p>Detailed course on the various methods of data encyyption</p>\n', '2015-08-12 10:00:00', '2015-09-14 09:39:19'),
-(6, 'UQ Staff Security Basics', 'Introductory', 'UQ BEL', 0, 50, 'A compulsory online security course for uq staff', '2015-08-12 10:00:00', '2015-08-17 10:00:00'),
-(7, 'Introduction to Online Security', 'Introductory', 'ruchern', 0, 50, 'Ez Workshop.', '2015-08-20 14:13:41', '2015-08-20 14:13:41'),
-(9, 'Tartiner Studios UX Design', 'Design', 'ruchern', 0, 50, 'Please submit your UX Video to blog by Tuesday.\r\n\r\n*This is a test post.', '2015-08-21 12:01:23', '2015-08-21 12:01:23'),
-(10, 'UQ Privacy and Online Security', 'Sprint Zero', 'RuChern', 0, 50, '2nd Checkpoint', '2015-08-26 22:45:53', '2015-08-26 22:45:53'),
-(11, 'Antiviruses - Selection and Usage', 'Introductory', 'RuChern', 0, 50, '<p>Learn to use Children&#39;s Literature Digital Resource (CLDR).</p>\r\n', '2015-09-01 21:43:15', '2015-09-02 21:50:13'),
-(12, 'Choosing a Secure Password', 'Security', 'leon', 1, 50, '<p>This course will focus on teaching practices recommended by UQ ITS for choosing a secure password. By the end of this course you will know how to choose a password that is:</p>\n\n<ol>\n	<li>Secure from being guessed by another person</li>\n	<li>Secure from being cracked by password cracking software</li>\n	<li>Easy to remember</li>\n</ol>\n', '2015-09-15 04:50:03', '2015-09-15 22:09:22');
 
 DROP TABLE IF EXISTS `groups`;
 CREATE TABLE IF NOT EXISTS `groups` (
