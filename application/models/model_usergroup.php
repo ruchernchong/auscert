@@ -21,11 +21,11 @@ Class model_usergroup extends CI_Model {
 
 	//returns an array (instead of object) of all users within a group
 	public function GetGroupUsers($groupID) {
-		$this->db->select('u.userID, u.username');
+		$this->db->select('u.userID, u.email, u.fname');
 		$this->db->from('users AS u, user_groups AS ug');
 		$this->db->where('ug.groupID', $groupID);
 		$this->db->where('u.userID = ug.userID');
-		$this->db->order_by('username', 'ASC');
+		$this->db->order_by('fname', 'ASC');
 		$query = $this->db->get();
 
 		if ($query->num_rows > 0) {

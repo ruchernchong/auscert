@@ -19,13 +19,14 @@ Class model_user extends CI_Model {
 	}
 
 	//Create a user
-	public function registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact) {
+	public function registerUsers($registerEmail, $registerPassword, $registerFName, $registerLName, $registerContact) {
 		$data = array(
-			'username' => $registerUsername,
-			'password' => $registerPassword,
 			'email' => $registerEmail,
+			'password' => $registerPassword,
+			'fname' => $registerFName,
+			'lname' => $registerLName,
 			'contact' => $registerContact,
-			'userType' => 'student'
+			'usertype' => 'user'
 			);
 
 		$this->db->insert('users', $data);
@@ -35,7 +36,7 @@ Class model_user extends CI_Model {
 
 	//return a list of all users
 	public function GetAllUsers() {
-		$this->db->order_by('username', 'ASC');
+		$this->db->order_by('fname', 'ASC');
 		$query = $this->db->get('users');
 
 		if ($query->num_rows > 0) {
@@ -48,7 +49,7 @@ Class model_user extends CI_Model {
 	public function GetAllUsersExcept($omittedUsers) {
 		if (count($omittedUsers) > 0) {
 			$this->db->from('users');
-			$this->db->order_by('username', 'ASC');
+			$this->db->order_by('fname', 'ASC');
 			$this->db->where_not_in('userID', $omittedUsers);
 			$query = $this->db->get();
 
