@@ -9,14 +9,14 @@
 			<div class="panel panel-default">
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a href="#course_details" data-toggle="tab"><i class="fa fa-database"></i>&emsp;Course Details</a>
+						<a href="#course-details" data-toggle="tab"><i class="fa fa-database"></i>&emsp;Course Details</a>
 					</li>
 
 					<?php
 					for ($i=0; $i < sizeof($slides); $i++) {
 						?>
 						<li id="<?php echo $i; ?>">
-							<a href="#chapter_<?php echo $i; ?>" data-toggle="tab">
+							<a href="#chapter-<?php echo $i; ?>" data-toggle="tab">
 								<i class="fa fa-book"></i>&emsp;<?php echo $i+1 . " &mdash; " . $slides[$i]->slideTitle; ?>
 							</a>
 							<span><i class="fa fa-times"></i></span>
@@ -27,7 +27,7 @@
 					if(count($questions) > 0) {
 					?>
 					<li>
-						<a href="#course_quiz" data-toggle="tab"><i class="fa fa-graduation-cap"></i>&emsp;Quiz</a>
+						<a href="#course-quiz" data-toggle="tab"><i class="fa fa-graduation-cap"></i>&emsp;Quiz</a>
 					</li>
 
 					<?php
@@ -39,7 +39,7 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="tab-content">
-								<div class="tab-pane fade in active" id="course_details">
+								<div class="tab-pane fade in active" id="course-details">
 									<h3>
 										Category:&emsp;<?php echo $course->category; ?>
 									</h3>
@@ -50,7 +50,7 @@
 								<?php 
 								for ($i=0; $i < sizeof($slides); $i++) {
 									?>
-									<div class="tab-pane fade" id="chapter_<?php echo $i; ?>">
+									<div class="tab-pane fade" id="chapter-<?php echo $i; ?>">
 										<h2><?php echo $slides[$i]->slideTitle; ?></h2>
 										<p>
 											<?php echo $slides[$i]->slideContent ?>
@@ -61,7 +61,7 @@
 
 								if(count($questions) > 0) {
 								?>
-									<div class="tab-pane fade" id="course_quiz">
+									<div class="tab-pane fade" id="course-quiz">
 										<div class="row display-table">
 											<div class="col-md-1 display-cell">
 												<i id="prev" class="fa fa-chevron-circle-left fa-5x" style="color:#bbb"></i>
@@ -77,7 +77,7 @@
 												for ($i=0; $i < sizeof($questions); $i++) {
 													if ($i == 0) {
 														?>
-														<div class="collapse in" id="current_question">
+														<div class="collapse in" id="current-question">
 															<?php
 														} else {
 															?>

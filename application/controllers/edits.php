@@ -119,6 +119,7 @@ class edits extends CI_Controller {
 		while (true) {
 			$questionText = $this->input->post(sprintf('question-%d', $questionOrder));
 			
+			error_log($questionText);
 			if ($questionText == NULL) {
 				break;
 			}
@@ -129,7 +130,7 @@ class edits extends CI_Controller {
 			$correctAnswer = $this->input->post(sprintf('c-q%d', $questionOrder));
 
 			while (true) {
-				$answerText = $this->input->post(sprintf('q-%d-a-%d', $questionOrder, $answerOrder));
+				$answerText = $this->input->post(sprintf('q%da%d', $questionOrder, $answerOrder));
 				
 				if ($answerText == NULL) {
 					break;

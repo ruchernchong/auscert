@@ -120,9 +120,6 @@ class learning extends CI_Controller {
 
 		$course = $this->model_course->GetCourseById($courseID);
 
-		error_log($grade * 100);
-		error_log($course->passPercentage);
-
 		if($grade * 100 >= $course->passPercentage + 0.001) {
 			// quiz passed, add small value to allow for float inaccuracy
 			$this->model_usercourse->UpdateStatus($courseID, $userID, 4);
