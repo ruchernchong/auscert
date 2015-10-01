@@ -130,6 +130,10 @@ Class model_course extends CI_Model {
 
 		$this->db->where('courseID', $courseID);
 		$this->db->update('courses', $data);
+
+		$this->db->where('courseID', $courseID);
+		$this->db->set('version', 'version+1', FALSE);
+		$this->db->update('courses');
 	}
 }
 ?>

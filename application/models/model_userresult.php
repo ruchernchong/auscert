@@ -6,7 +6,7 @@ Class model_userresult extends CI_Model {
 	}
 
 	//Add a new answer to the answers table for a given course, or updates if it already exists 
-	public function SaveResults($courseID, $userID, $results) {
+	public function SaveResults($courseID, $version, $userID, $results) {
 	// find how many attempts have already been made
 		$this->db->where('courseID', $courseID);
 		$this->db->where('userID', $userID);
@@ -22,6 +22,7 @@ Class model_userresult extends CI_Model {
 			$answer = array(
 				'courseID' => $courseID,
 				'questionOrder' => $key,
+				'version' => $version,
 				'userID' => $userID,
 				'attempt' => $attempt,
 				'userAnswer' => $value,

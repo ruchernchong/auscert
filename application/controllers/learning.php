@@ -23,7 +23,7 @@ class learning extends CI_Controller {
 				$this->index();
 				break;
 			case 'quiz':
-				$this->quiz();
+				$this->quiz($this->uri->segment(3));
 				break;
 			default:
 				show_404();
@@ -78,8 +78,8 @@ class learning extends CI_Controller {
 		}
 	}
 
-	public function quiz() {
-		$courseID = $this->input->get('courseID');
+	public function quiz($courseID) {
+		$course = $this->model_course->GetCourseById($courseID);
 		$results = array();
 		
 		$i = 0;
@@ -90,6 +90,7 @@ class learning extends CI_Controller {
 		
 		$this->model_userresult->SaveResults(
 			$courseID,
+			$course->version,
 			$this->session->userdata['logged_in']['userID'],
 			$results
 			);
