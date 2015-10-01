@@ -40,6 +40,8 @@ class learning extends CI_Controller {
 			$data['menu'] = "course";
 
 			$courseID = $this->uri->segment(2);
+
+			$data['completed'] = $this->model_usercourse->CourseCompleted($courseID, $this->session->userdata['logged_in']['userID']);
 			
 			$query = $this->model_course->GetCourseById($courseID);
 

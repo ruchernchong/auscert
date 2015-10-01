@@ -24,7 +24,7 @@
 						<?php
 					}
 
-					if(count($questions) > 0) {
+					if(count($questions) > 0 && ! $completed) {
 					?>
 					<li>
 						<a href="#course-quiz" data-toggle="tab"><i class="fa fa-graduation-cap"></i>&emsp;Quiz</a>
@@ -58,8 +58,8 @@
 									</div>
 									<?php
 								}
-
-								if(count($questions) > 0) {
+								error_log($completed);
+								if(count($questions) > 0 && ! $completed) {
 								?>
 									<div class="tab-pane fade" id="course-quiz">
 										<div class="row display-table">

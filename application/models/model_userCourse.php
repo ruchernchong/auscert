@@ -68,7 +68,7 @@ Class model_usercourse extends CI_Model {
 	//Returns a list of users who have completed the course
 	public function GetCompletedUsers($courseID) {
 		$this->db->where('courseID', $courseID);
-		$this->db->where('completion', 100);
+		$this->db->where('completion', 4);
 		$this->db->join('users', 'users.userID = user_courses.userID', 'INNER');
 		$this->db->order_by('fname', 'ASC');
 		$query = $this->db->get('user_courses');
@@ -78,11 +78,26 @@ Class model_usercourse extends CI_Model {
 	//Returns a list of courses completed by the user
 	public function GetCompletedUserCourse($userID) {
 		$this->db->where('userID', $userID);
-		$this->db->where('completion', 100);
+		$this->db->where('completion', 4);
 		$this->db->join('courses', 'courses.courseID = user_courses.courseID', 'INNER');
 		$this->db->order_by('courseName', 'ASC');
 		$query = $this->db->get('user_courses');
 		return $query->result();
+	}
+
+	//Update a users quiz score 
+	public function CourseCompleted($courseID, $userID) {
+		$this->db->where('courseID', $courseID);
+		$this->db->where('userID', $userID);
+		$this->db->where('completion', 4);
+		$query = $this->db->get('user_courses');
+
+		error_log($query -> num_rows());
+		if ($query -> num_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	//Update a users quiz score 
