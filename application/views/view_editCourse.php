@@ -46,6 +46,9 @@
 									<?php
 									?>
 									<div class="form-group">
+										<h3>Version: &emsp; <?php echo $course->version; ?></h3>
+									</div>
+									<div class="form-group">
 										<label>Course Name</label>
 										<input class="form-control" name="course-name" value="<?php echo $course->courseName; ?>" required><br />
 									</div>
@@ -56,9 +59,6 @@
 									<div class="form-group">
 										<label for="coursePassPercentage">Quiz pass percentage</label>
 										<input type="number" value="<?php echo $course->passPercentage; ?>" min="1" max="100" class="form-control" id="course-pass-percentage" name="course-pass-percentage">
-									</div>
-									<div class="form-group">
-										<label>Version &mdash; <?php echo $course->version; ?></label>
 									</div>
 									<div class="form-group">
 										<label for="courseDescription">Description</label>
@@ -88,13 +88,7 @@
 												<div class="row">
 													<div class="col-md-2">
 														<div class="form-group">
-															<?php
-															if($j == 0) {
-																echo '<label>Correct Answer:</label>';
-															} else {
-																echo sprintf('<label>Alternate %d:</label>', $j);
-															}
-															?>
+															<label>Answer <?php echo ($j+1); ?>:</label>
 														</div>
 													</div>
 													<div class="col-md-2">
@@ -105,6 +99,9 @@
 																	echo '<i class="fa fa-minus-square delete-answer" style="color:red"></i>';
 																}
 																?>
+															</div>
+															<div class="col-md-2">
+																<input type="radio" name="<?php echo 'c-q' . $i; ?>" value="<?php echo $j; ?>" required/>
 															</div>
 															<div class="col-md-2">
 																<div class="form-group">
