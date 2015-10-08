@@ -60,12 +60,6 @@
 							<i class="fa fa-fw fa-home"></i>&nbsp;Home
 						</a>
 					</li>
-					<!-- Duplicated page -->
-					<!-- <li class="<?php echo $menu=='course' ? 'active' : '' ?>">
-							<a id="pageCourse" href="<?php echo site_url('course'); ?>">
-								<i class="fa fa-fw fa-briefcase"></i>&nbsp;Course
-							</a>
-						</li> -->
 					<?php if ($usertype=="admin") { ?>
 						<li <?php echo $menu=='admin' ? 'class="active"' : '' ?>>
 							<a id="pageAdmin" href="<?php echo site_url('admin'); ?>">
