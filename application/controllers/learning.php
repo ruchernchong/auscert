@@ -9,6 +9,7 @@ class learning extends CI_Controller {
 		$this->load->model('model_question');
 		$this->load->model('model_answer');
 		$this->load->model('model_userresult');
+		$this->load->model('model_usercourse');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form', 'url'));
 	}
@@ -23,7 +24,7 @@ class learning extends CI_Controller {
 				$this->index();
 				break;
 			case 'quiz':
-				$this->quiz();
+				$this->quiz($this->uri->segment(3));
 				break;
 			default:
 				show_404();
@@ -34,11 +35,13 @@ class learning extends CI_Controller {
 	public function index() {
 		if($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
+			//$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "course";
 
 			$courseID = $this->uri->segment(2);
+
+			$data['completed'] = $this->model_usercourse->CourseCompleted($courseID, $this->session->userdata['logged_in']['userID']);
 			
 			$query = $this->model_course->GetCourseById($courseID);
 
@@ -78,8 +81,8 @@ class learning extends CI_Controller {
 		}
 	}
 
-	public function quiz() {
-		$courseID = $this->input->get('courseID');
+	public function quiz($courseID) {
+		$course = $this->model_course->GetCourseById($courseID);
 		$results = array();
 		
 		$i = 0;
@@ -90,11 +93,43 @@ class learning extends CI_Controller {
 		
 		$this->model_userresult->SaveResults(
 			$courseID,
+			$course->version,
 			$this->session->userdata['logged_in']['userID'],
 			$results
-			);
+		);
 
-		redirect('course', 'refresh');
+		$this->score_latest_quiz($courseID, $this->session->userdata['logged_in']['userID']);
+
+		redirect('home', 'refresh');
+	}
+
+
+	public function score_latest_quiz($courseID, $userID) {
+		$answers = $this->model_answer->GetCorrectAnswers($courseID);
+		$results = $this->model_userresult->GetLatestResults($courseID, $userID);
+
+		$correct = 0;
+
+		foreach ($results->result() as $value) {
+
+			if($value->userAnswer == $answers[$value->questionOrder]) {
+				$correct ++;
+			}
+		}
+		$grade = $correct / $results->num_rows;
+
+		$this->model_usercourse->UpdateScore($courseID, $userID,  $grade);
+
+		$course = $this->model_course->GetCourseById($courseID);
+
+		if($grade * 100 >= $course->passPercentage + 0.001) {
+			// quiz passed, add small value to allow for float inaccuracy
+			$this->model_usercourse->UpdateStatus($courseID, $userID, 4);
+		} else {
+			//quiz failed
+			$this->model_usercourse->UpdateStatus($courseID, $userID, 3);
+		}
+
 	}
 }
 ?>

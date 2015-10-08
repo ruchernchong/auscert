@@ -12,6 +12,7 @@
 
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/angular.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/chosen.jquery.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
 </head>
@@ -56,21 +57,14 @@ echo form_open('register/registerUsers', $attributes);
 	<div class="title">Register</div>
 
 	<input type="text" id="registerEmail" name="registerEmail" placeholder="Email Address" value="<?php echo set_value('registerEmail'); ?>">
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerEmail'); ?><!--</span>-->
 
-	<input type="text" id="registerFName" name="registerFName" placeholder="Name" value="<?php echo set_value('registerFName'); ?>" style="width: 48%;float: left;">
+	<input type="text" id="registerFName" name="registerFName" placeholder="First Name" value="<?php echo set_value('registerFName'); ?>" style="width: 48%;float: left;">
 	<input type="text" id="registerLName" name="registerLName" placeholder="Last Name" value="<?php echo set_value('registerLName'); ?>" style="width: 48%;float: right;">
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerFName'); ?><!--</span>-->
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerLName'); ?><!--</span>-->
 
 	<input type="password" id="registerPassword" name="registerPassword" placeholder="Password" style="width:48%;float: left;">
 	<input type="password" id="registerRepeatPassword" name="registerRepeatPassword" placeholder="Confirm Password" style="width: 48%;float: right;">
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerPassword'); ?><!--</span>-->
-
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerRepeatPassword'); ?><!--</span>-->
 
 	<input type="tel" id="registerContact" name="registerContact" placeholder="Contact No." value="<?php echo set_value('registerContact'); ?>">
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerContact'); ?><!--</span>-->
 
 	<select class="chosen-select" id="registerGroup" name="registerGroup[]" data-placeholder="Select Faculty" multiple>
 		<option value="not_applicable">Not Applicable</option>
@@ -82,7 +76,6 @@ echo form_open('register/registerUsers', $attributes);
 		}
 		?>
 	</select>
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerGroup'); ?><!--</span>-->
 
 	<button>Register</button>
 
