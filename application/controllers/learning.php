@@ -110,7 +110,7 @@ class learning extends CI_Controller {
 
 		$correct = 0;
 
-		foreach ($results->result() as &$value) {
+		foreach ($results->result() as $value) {
 
 			if($value->userAnswer == $answers[$value->questionOrder]) {
 				$correct ++;
