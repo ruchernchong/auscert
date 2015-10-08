@@ -1,3 +1,4 @@
+Options All -Indexes
 RewriteEngine On
 RewriteBase /auscert/
 
