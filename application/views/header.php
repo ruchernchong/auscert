@@ -69,9 +69,9 @@
 						<?php
 					}
 					?>
-					<li <?php echo $menu=='settings' ? 'class="active"' : '' ?>>
-						<a id="pageSettings" href="<?php echo site_url('settings'); ?>">
-							<i class="fa fa-fw fa-gear"></i>&nbsp;Settings
+					<li <?php echo $menu=='account' ? 'class="active"' : '' ?>>
+						<a id="pageSettings" href="<?php echo site_url('account'); ?>">
+							<i class="fa fa-fw fa-gear"></i>&nbsp;My Account
 						</a>
 					</li>
 					<li <?php echo $menu=='logout' ? 'clss="active"' : '' ?>>
