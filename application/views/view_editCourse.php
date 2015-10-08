@@ -46,6 +46,9 @@
 									<?php
 									?>
 									<div class="form-group">
+										<h3>Version: &emsp; <?php echo $course->version; ?></h3>
+									</div>
+									<div class="form-group">
 										<label>Course Name</label>
 										<input class="form-control" name="course-name" value="<?php echo $course->courseName; ?>" required><br />
 									</div>
@@ -85,13 +88,7 @@
 												<div class="row">
 													<div class="col-md-2">
 														<div class="form-group">
-															<?php
-															if($j == 0) {
-																echo '<label>Correct Answer:</label>';
-															} else {
-																echo sprintf('<label>Alternate %d:</label>', $j);
-															}
-															?>
+															<label>Answer <?php echo ($j+1); ?>:</label>
 														</div>
 													</div>
 													<div class="col-md-2">
@@ -104,8 +101,17 @@
 																?>
 															</div>
 															<div class="col-md-2">
+																<input type="radio" name="<?php echo 'c-q' . $i; ?>" value="<?php echo $j; ?>" 
+																<?php
+																if($answers[$i][$j]->correct) {
+																	echo 'checked="checked"';
+																}
+																?>
+																 required/>
+															</div>
+															<div class="col-md-2">
 																<div class="form-group">
-																	<input size="64" id="q-<?php echo $i; ?>-a-<?php echo $j; ?>" name="q-<?php echo $i; ?>-a-<?php echo $j; ?>" value="<?php echo $answers[$i][$j]->answerText; ?>" required>
+																	<input size="64" id="q-<?php echo $i; ?>a<?php echo $j; ?>" name="q<?php echo $i; ?>a<?php echo $j; ?>" value="<?php echo $answers[$i][$j]->answerText; ?>" required>
 																</div>
 															</div>
 														</div>

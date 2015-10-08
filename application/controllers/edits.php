@@ -33,7 +33,8 @@ class edits extends CI_Controller {
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
+			$data['fname'] = $session_data['lname'];
+			$data['lname'] = $session_data['lname'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "admin";
 
@@ -118,6 +119,7 @@ class edits extends CI_Controller {
 		while (true) {
 			$questionText = $this->input->post(sprintf('question-%d', $questionOrder));
 			
+			error_log($questionText);
 			if ($questionText == NULL) {
 				break;
 			}
@@ -125,15 +127,20 @@ class edits extends CI_Controller {
 			$this->model_question->SaveQuestion($courseID, $questionOrder, $questionText);
 			
 			$answerOrder = 0;
+			$correctAnswer = $this->input->post(sprintf('c-q%d', $questionOrder));
 
 			while (true) {
-				$answerText = $this->input->post(sprintf('q-%d-a-%d', $questionOrder, $answerOrder));
+				$answerText = $this->input->post(sprintf('q%da%d', $questionOrder, $answerOrder));
 				
 				if ($answerText == NULL) {
 					break;
 				}
-	
-				$this->model_answer->SaveAnswer($courseID, $questionOrder, $answerOrder, $answerText);
+				if($correctAnswer == $answerOrder) {
+					$this->model_answer->SaveAnswer($courseID, $questionOrder, $answerOrder, TRUE, $answerText);
+				} else {
+					$this->model_answer->SaveAnswer($courseID, $questionOrder, $answerOrder, FALSE, $answerText);
+				}
+				
 				$answerOrder++;
 			}
 			$this->model_answer->DeleteHigherAnswers($courseID, $questionOrder, $answerOrder);

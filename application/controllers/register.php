@@ -6,6 +6,7 @@ class register extends CI_Controller {
 
 		$this->load->model('model_user');
 		$this->load->library('form_validation');
+		$this->load->library('password');
 		$this->load->model('model_groupcourse');
 		$this->load->model('model_usergroup');
 		$this->load->model('model_usercourse');
@@ -14,16 +15,38 @@ class register extends CI_Controller {
 	}
 
 	public function index() {
-		$this->load->view('view_register');
+		$groups = $this->model_group->GetPublicGroups();
+
+		if ($groups) {
+			$data['groups'] = $groups;
+		}
+
+		$this->load->view('view_register', $data);
 	}
 
 	//Create user and assign him to groups
 	public function registerUsers() {
+		$groups = $this->model_group->GetPublicGroups();
+
+		if ($groups) {
+			$data['groups'] = $groups;
+		}
+
 		$rules = array(
 			array(
-				'field' => 'registerUsername',
-				'label' => 'Username',
-				'rules' => 'required|is_unique[users.username]|xss_clean'
+				'field' => 'registerEmail',
+				'label' => 'Email',
+				'rules' => 'required|valid_email|is_unique[users.email]|xss_clean'
+			),
+			array(
+				'field' => 'registerFName',
+				'label' => 'First Name',
+				'rules' => 'required|xss_clean'
+			),
+			array(
+				'field' => 'registerLName',
+				'label' => 'Last Name',
+				'rules' => 'required|xss_clean'
 			),
 			array(
 				'field' => 'registerPassword',
@@ -37,13 +60,8 @@ class register extends CI_Controller {
 			),
 			array(
 				'field' => 'registerGroup',
-				'label' => 'Faculty',
+				'label' => 'Group',
 				'rules' => 'required|xss_clean'
-			),
-			array(
-				'field' => 'registerEmail',
-				'label' => 'Email',
-				'rules' => 'required|valid_email|is_unique[users.email]|xss_clean'
 			),
 			array(
 				'field' => 'registerContact',
@@ -54,16 +72,29 @@ class register extends CI_Controller {
 
 		$this->form_validation->set_rules($rules);
 
-		$registerUsername = $this->input->post('registerUsername');
-		$registerPassword = $this->input->post('registerPassword');
-		$registerGroup = $this->input->post('registerGroup');
+
+
 		$registerEmail = $this->input->post('registerEmail');
+		$registerPassword = $this->password->create_hash($this->input->post('registerPassword'));
+		$registerFName = $this->input->post('registerFName');
+		$registerLName = $this->input->post('registerLName');
+		$registerGroup = $this->input->post('registerGroup');
 		$registerContact = $this->input->post('registerContact');
 
 		if ($this->form_validation->run() == false) {
 			$this->session->set_flashdata('register-error', 'Please see registration form for errors.');
+
+			$this->load->view('view_register', $data);
 		} else {
-			$this->registerAndSetup($registerUsername, $registerPassword, $registerGroup, $registerEmail, $registerContact);
+			$data = array(
+				'email' => $registerEmail,
+				'password' => $registerPassword,
+				'fname' => $registerFName,
+				'lname' => $registerLName,
+				'group' => $registerGroup,
+				'contact' => $registerContact
+			);
+			$this->registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact);
 			$this->session->set_flashdata('register-success', 'Account is successfully registered. Please proceed to login.');
 
 			redirect('login', 'refresh');
@@ -72,8 +103,8 @@ class register extends CI_Controller {
 
 	//Adds user to the default AllUser group in addition to their specialised groups.
 	//Also assigns courses to them based on their grouping
-	function registerAndSetup($registerUsername, $registerPassword, $registerGroup, $registerEmail, $registerContact) {
-		$thisUserID = $this->model_user->registerUsers($registerUsername, $registerPassword, $registerEmail, $registerContact);
+	function registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact) {
+		$thisUserID = $this->model_user->registerUsers($registerEmail, $registerPassword, $registerFName, $registerLName, $registerContact);
 
 		//Default AllUser group and courses
 		$defaultGroupID = "1";
