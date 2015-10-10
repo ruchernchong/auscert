@@ -72,8 +72,6 @@ class register extends CI_Controller {
 
 		$this->form_validation->set_rules($rules);
 
-
-
 		$registerEmail = $this->input->post('registerEmail');
 		$registerPassword = $this->password->create_hash($this->input->post('registerPassword'));
 		$registerFName = $this->input->post('registerFName');
@@ -95,7 +93,7 @@ class register extends CI_Controller {
 				'contact' => $registerContact
 			);
 			$this->registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact);
-			$this->session->set_flashdata('register-success', 'Account is successfully registered. Please proceed to login.');
+			$this->session->set_flashdata('register-success', 'We have sent ' . $registerEmail . ' instructions to activate your account. You will have limited access until you have verified your email address.');
 
 			redirect('login', 'refresh');
 		}

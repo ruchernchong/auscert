@@ -25,7 +25,10 @@ if (!empty($this->session->flashdata('register-error'))) {
 		$(function(){
 			$.notifyBar({
 				html: "<?php echo $this->session->flashdata('register-error'); ?>",
-				cssClass: "error"
+				cssClass: "error",
+				delay: 86400,
+				clickToClose: true,
+				animationSpeed: "normal"
 			});
 		});
 	</script>
