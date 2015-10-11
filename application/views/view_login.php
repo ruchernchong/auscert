@@ -7,6 +7,7 @@
 	<!-- <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" /> -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/notify.css'); ?>" />
 
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
@@ -18,25 +19,47 @@
 
 <body>
 <?php
+if (!empty($this->session->flashdata('register-success'))) {
+	?>
+	<script>
+		$(function(){
+			$.notifyBar({
+				html: "<?php echo $this->session->flashdata('register-success'); ?>",
+				cssClass: "success",
+				delay: 86400,
+				closeOnClick: true,
+				animationSpeed: "normal"
+			});
+		});
+	</script>
+	<?php
+}
+?>
+<?php
 if (!empty($this->session->flashdata('login-error'))) {
 	?>
 	<script>
-		$.notify("<?php echo $this->session->flashdata('login-error'); ?>", {
-			className: "error",
-			clickToHide: true,
-			autoHide: false,
-			globalPosition:"bottom right"
+		$(function() {
+			$.notifyBar({
+				html: "<?php echo $this->session->flashdata('login-error'); ?>",
+				cssClass: "error",
+				delay: 3000,
+				clickToClose: true,
+				animationSpeed: "normal"
+			});
 		});
 	</script>
 <?php
 } else if (!empty($this->session->flashdata('login-success'))) {
 ?>
 	<script>
-		$.notify("<?php echo $this->session->flashdata('login-success'); ?>", {
-			className: "success",
-			clickToHide: true,
-			autoHide: false,
-			globalPosition: "bottom right"
+		$(function() {
+			$.notifyBar({
+				html: "<?php echo $this->session->flashdata('login-success'); ?>",
+				cssClass: "success",
+				delay: 3000,
+				animationSpeed: "normal"
+			});
 		});
 	</script>
 	<?php

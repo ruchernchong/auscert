@@ -221,3 +221,11 @@ a {
 	padding-top: 15px;
 	margin: 10px 0;
 }
+.errorMessage::-webkit-input-placeholder {
+	color: #b94a48;
+}
+.content .errorMessage,
+.content .errorMessage,
+.content .errorMessage {
+	border-bottom: 1px #FF0000 solid;
+}
