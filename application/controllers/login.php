@@ -38,6 +38,7 @@ class login extends CI_Controller {
 			);
 			$this->session->set_userdata('logged_in', $session_array);
 
+			$this->session->set_flashdata('login-success', 'Welcome back to AusCert, ' + $row->fname + "!");
 			redirect('home', 'refresh');
 		} else {
 			$this->session->set_flashdata('login-error', 'Invalid Email and/or Password.');
