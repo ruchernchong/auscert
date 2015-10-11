@@ -44,6 +44,7 @@ if (!empty($this->session->flashdata('login-error'))) {
 				html: "<?php echo $this->session->flashdata('login-error'); ?>",
 				cssClass: "error",
 				delay: 3000,
+				clickToClose: true,
 				animationSpeed: "normal"
 			});
 		});
