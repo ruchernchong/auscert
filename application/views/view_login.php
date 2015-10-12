@@ -82,14 +82,18 @@ echo form_open('login/validateLogin', $attributes);
 	<input type="checkbox" id="rememberMe" name="rememberMe" />
 	<label for="rememberMe"></label><span>Remember Me</span>
 	<button>Login</button>
-	<!-- <div class="social"> <span>or sign up with social media</span></div>
-    <div class="buttons">
-        <button class="facebook"><i class="fa fa-facebook"></i>Facebook</button>
-        <button class="twitter"><i class="fa fa-twitter"></i>Twitter</button>
-        <button class="google"><i class="fa fa-google-plus"></i>Google</button>
-    </div> -->
+	<div class="social">
+		<span>Trouble Signing in?</span>
+	</div>
 	<div class="not-already">
-		Do not have an account? <a href="<?php echo base_url('register'); ?>">Register</a>
+		<p>
+			Do not have an account? <a href="<?php echo base_url('register'); ?>">Register</a>
+		</p>
+	</div>
+	<div class="forget-password">
+		<p>
+			Forget Password? <a href="<?php echo base_url('forgetPassword'); ?>">Reset Password</a>
+		</p>
 	</div>
 </div>
 </form>

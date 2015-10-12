@@ -204,7 +204,8 @@ a {
 	clear: both;
 }
 .content .already,
-.content .not-already {
+.content .not-already,
+.content .forget-password {
 	text-align: center;
 	font-size: 0.9rem;
 }
