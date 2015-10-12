@@ -3,6 +3,12 @@
 Class model_user extends CI_Model {
 	function __construct() {
 		parent::__construct();
+
+		$this->load->library(
+			array(
+				'encrypt'
+			)
+		);
 	}
 
 	//Validate the user
@@ -20,6 +26,21 @@ Class model_user extends CI_Model {
 
 	//Create a user
 	public function registerUsers($registerEmail, $registerPassword, $registerFName, $registerLName, $registerContact) {
+		$encrypt_email = $this->encrypt->encode($registerEmail);
+		$encrypted_email = str_replace(
+			array(
+				'+',
+				'/',
+				'='
+			),
+			array(
+				'-',
+				'_',
+				'~'
+			),
+			$encrypt_email
+		);
+
 		$data = array(
 			'email' => $registerEmail,
 			'password' => $registerPassword,
@@ -27,7 +48,8 @@ Class model_user extends CI_Model {
 			'lname' => $registerLName,
 			'contact' => $registerContact,
 			'usertype' => 'user',
-			'status' => 0
+			'activation_key' => $encrypted_email,
+			'activated' => 0
 		);
 
 		$this->db->insert('users', $data);
@@ -77,6 +99,22 @@ Class model_user extends CI_Model {
 
 	// Create email verification.
 	function VerifyEmail($recipient) {
+//		$encrypt_email = md5($recipient);
+		$encrypt_email = $this->encrypt->encode($recipient);
+		$encrypted_email = str_replace(
+			array(
+				'+',
+				'/',
+				'='
+			),
+			array(
+				'-',
+				'_',
+				'~'
+			),
+			$encrypt_email
+		);
+
 		$from = "registration@ruchern.com";
 		$subject = "Welcome AusCert! Verify your email address!";
 		$message = "Dear User, "
@@ -84,24 +122,24 @@ Class model_user extends CI_Model {
 			"Welcome to AusCert. A new and wonderful adventure awaits you."
 			. br(2) .
 			"To being, please kindly click on the activation link below to verify your email address."
-			. br(2) . base_url('register/verify') . $recipient . "." . br(3) .
+			. br(2) . base_url('register/verify') . '/' . $encrypted_email . "." . br(3) .
 			"Thank you,"
 			. br(2) .
 			"AusCert Administrator";
 
 		$config['protocol'] = 'smtp';
 		$config['smtp_host'] = 'ssl://smtp.gmail.com';
-		$config['smtp_port'] = '587';
+		$config['smtp_port'] = '465';
 		$config['smtp_user'] = $from;
 		$config['smtp_pass'] = '12M34h56!';
 		$config['mailtype'] = 'html';
-		$config['charset'] = 'utf8';
+		$config['charset'] = 'utf-8';
 		$config['wordwrap'] = TRUE;
 		$config['newline'] = "\r\n";
 
 		$this->email->initialize($config);
 
-		$this->email->from($from, 'ruchern.com');
+		$this->email->from($from, 'AusCert');
 		$this->email->to($recipient);
 		$this->email->subject($subject);
 		$this->email->message($message);
@@ -111,12 +149,28 @@ Class model_user extends CI_Model {
 
 	// Verify if Email is valid.
 	function VerifyEmailID($key) {
-		$data = array(
-			'status' => 1
+		$decrypt_email = $key;
+		$decrypted_email = str_replace(
+			array(
+				'-',
+				'_',
+				'~'
+			),
+			array(
+				'+',
+				'/',
+				'='
+			),
+			$decrypt_email
 		);
-		$this->db->where('email', $key);
 
-		return $this->db->update('users', $data);
+		$this->encrypt->decode($decrypted_email);
+
+		$this->db->where('activation_key', $decrypt_email);
+//		$this->db->where('activation_key', $key);
+		$this->db->set('activated', 1);
+
+		return $this->db->update('users');
 	}
 }
 ?>

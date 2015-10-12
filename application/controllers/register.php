@@ -7,6 +7,7 @@ class register extends CI_Controller {
 		$this->load->helper('html');
 		$this->load->library(
 			array(
+				'encrypt',
 				'form_validation',
 				'password',
 				'email'
@@ -100,7 +101,6 @@ class register extends CI_Controller {
 			);
 
 			if ($this->registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact)) {
-				$this->debugConsole('Working');
 				if ($this->model_user->VerifyEmail($registerEmail)) {
 					$this->session->set_flashdata('register-success', 'We have sent ' . $registerEmail . ' instructions to activate your account.'
 						. br(1) .
@@ -116,7 +116,9 @@ class register extends CI_Controller {
 		}
 	}
 
-	public function verify($hash = NULL) {
+	public function verify() {
+		$hash = $this->uri->segment(3);
+		print_r($hash);
 		if ($this->model_user->VerifyEmailID($hash)) {
 			$this->session->set_flashdata('email-verified', 'Your email is successfully verified.');
 
@@ -124,7 +126,7 @@ class register extends CI_Controller {
 		} else {
 			$this->session->set_flashdata('email-not-verified', 'Sorry! There was an error verifying your email address.'
 				.br(1).
-				'Please contact regisration@ruchern.com.');
+				'Please contact registration@ruchern.com.');
 		}
 	}
 

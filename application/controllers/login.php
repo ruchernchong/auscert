@@ -6,7 +6,12 @@ class login extends CI_Controller {
 
 		$this->load->library('form_validation');
 		$this->load->library('password');
-		$this->load->helper(array('form', 'url'));
+		$this->load->helper(
+			array(
+				'form',
+				'html',
+				'url'
+			));
 
 		$this->load->model('model_course');
 		$this->load->model('model_group');
@@ -36,14 +41,32 @@ class login extends CI_Controller {
 				'email' => $row->email,
 				'usertype' => $row->usertype
 			);
-			$this->session->set_userdata('logged_in', $session_array);
 
-			$this->session->set_flashdata('login-success', 'Welcome back to AusCert, ' + $row->fname + "!");
-			redirect('home', 'refresh');
+			if ($row->activated == 1) {
+				$this->session->set_userdata('logged_in', $session_array);
+
+				$this->session->set_flashdata('login-success',
+					'Welcome back to AusCert, ' . $row->fname . '!');
+				redirect('home', 'refresh');
+			} else if ($row->activated == 0) {
+				$this->session->set_flashdata('email-not-verified',
+					'Your email: ' . $loginEmail . ' is not activated.'
+					. br(1) .
+					'You are required to activate your email before logging in.');
+				redirect('login', 'refresh');
+			}
 		} else {
-			$this->session->set_flashdata('login-error', 'Invalid Email and/or Password.');
+			$this->session->set_flashdata('login-error',
+				'Invalid Email and/or Password.');
 			redirect('login', 'refresh');
 		}
+//		} else {
+//			$this->session->set_flashdata('email-not-verified',
+//				'Your email: ' . $loginEmail . ' is not activated.'
+//				. br(1) .
+//				'You are required to activate your email before logging in.');
+//			redirect('login', 'refresh');
+//		}
 	}
 }
 ?>

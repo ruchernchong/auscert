@@ -37,23 +37,6 @@ if (!empty($this->session->flashdata('register-success'))) {
 }
 ?>
 <?php
-if (!empty($this->session->flashdata('email-verified'))) {
-	?>
-	<script>
-		$(function() {
-			$.notifyBar({
-				html: "<?php echo $this->session->flashdata('email-verified'); ?>",
-				cssClass: "success",
-				delay: 5000,
-				closeOnClick: true,
-				animationSpeed: "normal"
-			});
-		});
-	</script>
-	<?php
-}
-?>
-<?php
 if (!empty($this->session->flashdata('login-error'))) {
 	?>
 	<script>
@@ -76,6 +59,40 @@ if (!empty($this->session->flashdata('login-error'))) {
 				html: "<?php echo $this->session->flashdata('login-success'); ?>",
 				cssClass: "success",
 				delay: 3000,
+				animationSpeed: "normal"
+			});
+		});
+	</script>
+	<?php
+}
+?>
+<?php
+if (!empty($this->session->flashdata('email-verified'))) {
+	?>
+	<script>
+		$(function() {
+			$.notifyBar({
+				html: "<?php echo $this->session->flashdata('email-verified'); ?>",
+				cssClass: "success",
+				delay: 86400,
+				closeOnClick: true,
+				animationSpeed: "normal"
+			});
+		});
+	</script>
+	<?php
+}
+?>
+<?php
+if (!empty($this->session->flashdata('email-not-verified'))) {
+	?>
+	<script>
+		$(function() {
+			$.notifyBar({
+				html: "<?php echo $this->session->flashdata('email-not-verified'); ?>",
+				cssClass: "error",
+				delay: 86400,
+				closeOnClick: true,
 				animationSpeed: "normal"
 			});
 		});

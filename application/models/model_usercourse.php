@@ -102,8 +102,12 @@ Class model_usercourse extends CI_Model {
 
 	//Update a users quiz score 
 	public function UpdateScore($courseID, $userID, $grading) {
-		$data = array('userID' => $userID, 'courseID' => $courseID, 'grading' => $grading);
-		
+		$data = array(
+			'userID' => $userID,
+			'courseID' => $courseID,
+			'grading' => $grading
+		);
+
 		$this->db->where('courseID', $courseID);
 		$this->db->where('userID', $userID);
 		$this->db->set('grading', $grading);
@@ -116,18 +120,18 @@ Class model_usercourse extends CI_Model {
 		$this->db->where('userID', $userID);
 
 		switch ($status) {
-	    case 1:
-	        $this->db->set('completion', 'Not started');
-	        break;
-	    case 2:
-	        $this->db->set('completion', 'Started');
-	        break;
-	    case 3:
-	        $this->db->set('completion', 'Quiz failed');
-	        break;
-	    case 4:
-	        $this->db->set('completion', 'Completed');
-	        break;
+			case 1:
+				$this->db->set('completion', 'Not started');
+				break;
+			case 2:
+				$this->db->set('completion', 'Started');
+				break;
+			case 3:
+				$this->db->set('completion', 'Quiz failed');
+				break;
+			case 4:
+				$this->db->set('completion', 'Completed');
+				break;
 		}
 
 		$this->db->update('user_courses');
