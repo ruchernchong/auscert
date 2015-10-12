@@ -29,6 +29,7 @@
 	<script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
 </head>
 <body>
+<div id="loader"></div>
 <div id="wrapper">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">

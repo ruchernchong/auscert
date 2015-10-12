@@ -18,6 +18,7 @@
 </head>
 
 <body>
+<div class="loader"></div>
 <?php
 if (!empty($this->session->flashdata('register-success'))) {
 	?>
@@ -27,6 +28,23 @@ if (!empty($this->session->flashdata('register-success'))) {
 				html: "<?php echo $this->session->flashdata('register-success'); ?>",
 				cssClass: "success",
 				delay: 86400,
+				closeOnClick: true,
+				animationSpeed: "normal"
+			});
+		});
+	</script>
+	<?php
+}
+?>
+<?php
+if (!empty($this->session->flashdata('email-verified'))) {
+	?>
+	<script>
+		$(function() {
+			$.notifyBar({
+				html: "<?php echo $this->session->flashdata('email-verified'); ?>",
+				cssClass: "success",
+				delay: 5000,
 				closeOnClick: true,
 				animationSpeed: "normal"
 			});
@@ -81,16 +99,26 @@ echo form_open('login/validateLogin', $attributes);
 	<input type="checkbox" id="rememberMe" name="rememberMe" />
 	<label for="rememberMe"></label><span>Remember Me</span>
 	<button>Login</button>
-	<!-- <div class="social"> <span>or sign up with social media</span></div>
-    <div class="buttons">
-        <button class="facebook"><i class="fa fa-facebook"></i>Facebook</button>
-        <button class="twitter"><i class="fa fa-twitter"></i>Twitter</button>
-        <button class="google"><i class="fa fa-google-plus"></i>Google</button>
-    </div> -->
+	<div class="social">
+		<span>Trouble Signing in?</span>
+	</div>
 	<div class="not-already">
-		Do not have an account? <a href="<?php echo base_url('register'); ?>">Register</a>
+		<p>
+			Do not have an account? <a href="<?php echo base_url('register'); ?>">Register</a>
+		</p>
+	</div>
+	<div class="forget-password">
+		<p>
+			Forget Password? <a href="<?php echo base_url('forgetPassword'); ?>">Reset Password</a>
+		</p>
 	</div>
 </div>
 </form>
+<script>
+	$(window).load(function() {
+// Animate loader off screen
+		$(".loader").fadeOut("slow");;
+	});
+</script>
 </body>
 </html>

@@ -29,10 +29,12 @@ class admin extends CI_Controller {
 			foreach ($users as $user) {
 				$groupArray = (!empty($this->model_usergroup->GetUserGroups($user->userID)) ? $this->model_usergroup->GetUserGroups($user->userID) : '');
 				$usersList = [
-//				'userName' => $user->username,
+//				'studentID' => $user->studentID,
 					'groupArray' => $groupArray,
-					'email' => $user->email,
+					'userID' => $user->userID,
 					'fname' => $user->fname,
+					'lname' => $user->lname,
+					'email' => $user->email,
 					'contact' => $user->contact,
 					'usertype' => $user->usertype
 				];
@@ -109,5 +111,51 @@ class admin extends CI_Controller {
 	function ifNotActive() {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->DeactivateCourse($courseID);
+	}
+
+//	//AJAX search for users
+//	function searchUser() {
+//		$searchTerm = $this->input->post('userSearch');
+//		$query = $this->model_user->GetUserByName($searchTerm);
+//		echo json_encode($query);
+//	}
+
+	//AJAX search for users
+	function searchUser()
+	{
+		$searchTerm = $this->input->post('userSearch');
+		$users = $this->model_user->GetUserByName($searchTerm);
+
+		if ($users) {
+			$noResult = FALSE;
+			$usersAndGroups = [];
+			foreach ($users as $user) {
+				$groupArray = (!empty($this->model_usergroup->GetUserGroups($user->userID)) ? $this->model_usergroup->GetUserGroups($user->userID) : '');
+				$usersList = [
+//				'studentID' => $user->studentID,
+					'groupArray' => $groupArray,
+					'userID' => $user->userID,
+					'fname' => $user->fname,
+					'lname' => $user->lname,
+					'email' => $user->email,
+					'contact' => $user->contact,
+					'usertype' => $user->usertype
+				];
+				array_push($usersAndGroups, $usersList);
+			}
+			$data2['users'] = $usersAndGroups;
+			$payload = array(
+				'html'=>$this->load->view("ajaxPayload", $data2, true),
+				'noResult' => $noResult
+			);
+		}
+		else {
+			$noResult = TRUE;
+			$payload = array(
+				'noResult' => $noResult
+			);
+		}
+
+		echo json_encode($payload);
 	}
 }
