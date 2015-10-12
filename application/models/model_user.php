@@ -50,6 +50,7 @@ Class model_user extends CI_Model {
 		$this->db->like('fname', $searchTerm);
 		$this->db->or_like('lname', $searchTerm);
 		$this->db->or_like('email', $searchTerm);
+		$this->db->order_by("lname", "asc");
 		$query = $this->db->get('users');
 
 		if ($query->num_rows > 0) {

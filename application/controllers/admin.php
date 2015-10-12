@@ -126,8 +126,6 @@ class admin extends CI_Controller {
 		$searchTerm = $this->input->post('userSearch');
 		$users = $this->model_user->GetUserByName($searchTerm);
 
-
-
 		if ($users) {
 			$noResult = FALSE;
 			$usersAndGroups = [];
@@ -146,7 +144,6 @@ class admin extends CI_Controller {
 				array_push($usersAndGroups, $usersList);
 			}
 			$data2['users'] = $usersAndGroups;
-
 			$payload = array(
 				'html'=>$this->load->view("ajaxPayload", $data2, true),
 				'noResult' => $noResult

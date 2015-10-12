@@ -1,10 +1,8 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
-<!--			<div class="col-lg-12" ng-controller="LiveSearchController as liveSearch">-->
 		<div class="col-lg-12" ng-controller="LiveSearchController as liveSearch">
 			<h1 class="page-header">Admin Page</h1>
-<!--				<h1>{{liveSearch.ruchern}}</h1>-->
 			</div>
 		</div>
 		<div class="row">
@@ -23,27 +21,6 @@
 									<i class="fa fa-search"></i>
 								</button>
 							</span>
-						</div>
-					</div>
-				</div>
-
-				<div id="userSearchPanel" class="col-lg-12">
-					<div class="panel panel-primary">
-						<div class="panel-body" id="resultBox">
-							<table class="table table-striped table-hover">
-								<thead>
-									<tr>
-										<th>Username</th>
-										<th>Groups</th>
-										<th>User Type</th>
-										<th>Email Address</th>
-										<th>Contact No.</th>
-									</tr>
-								</thead>
-								<tbody>
-									<div id="resultBox">
-								</tbody>
-							</table>
 						</div>
 					</div>
 				</div>
@@ -67,18 +44,26 @@
 								<table class="table table-striped table-hover">
 									<thead>
 										<tr>
-											<th>Username</th>
+											<th>UserID</th>
+											<th>First Name</th>
+											<th>Last Name</th>
 											<th>Groups</th>
 											<th>User Type</th>
 											<th>Email Address</th>
 											<th>Contact No.</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="users_results">
 										<?php foreach ($users as $user) { ?>
 										<tr>
-											<td class="client-avatar">
-												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userID']; ?>" class="client-link"><?php echo $user['fname']; ?></a>
+											<td>
+												<a data-toggle="tab" href="#<?php echo $user['userID']; ?>" class="client-link"><?php echo $user['userID']; ?></a>
+											</td>
+											<td>
+												<a href="#"><?php echo $user['fname']; ?></a>
+											</td>
+											<td>
+												<a href="#"><?php echo $user['lname']; ?></a>
 											</td>
 											<td>
 												<?php
@@ -96,7 +81,7 @@
 												} else {
 													?>
 													<ul>
-														<li>User does not belong to any group(s)</li>
+														<li>No Groups</li>
 													</ul>
 													<?php
 												}
@@ -240,24 +225,22 @@ $("#menu-toggle").click(function(e) {
 					data: 'userSearch='+$("#userSearchBar").val(),
 					success: function(response){
 //						console.log(response);
-//						$("#resultBox").html("");
+						$("#users_results").html("");
 						var obj=JSON.parse(response);
 //						console.log(obj);
 						if (!obj.noResult) {
-							$("#resultBox").html(obj.html);
+							$("#users_results").html(obj.html);
 						}else {
-							$('#resultBox').html("<h4>No Users Found</h4>");
+							$('#users_results').html("<h5>No Users Found</h5>");
 						}
 					},
 					error: function(){
-						alert('Error 2');
+						console.log('Ajax Error');
 					}
 				});
 			}
 			return false;
 		})
-
-
 	})
 </script>
 
