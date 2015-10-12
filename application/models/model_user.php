@@ -91,7 +91,7 @@ Class model_user extends CI_Model {
 			. br(2) .
 			"Welcome to AusCert. A new and wonderful adventure awaits you."
 			. br(2) .
-			"To being, please kindly click on the activation link below to verify your email address."
+			"To begin, please kindly click on the activation link below to verify your email address."
 			. br(2) . base_url('register/verify') . '/' . $enc_email . "." . br(3) .
 			"Thank you,"
 			. br(2) .
