@@ -5,6 +5,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+DROP DATABASE IF EXISTS `auscertdb`;
 CREATE DATABASE IF NOT EXISTS `auscertdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `auscertdb`;
 
@@ -197,30 +198,30 @@ CREATE TABLE `users` (
   `lname` varchar(65) NOT NULL,
   `contact` varchar(255) NOT NULL,
   `usertype` varchar(24) NOT NULL,
-  `status` bit(1) NOT NULL DEFAULT b'0'
+  `activation_key` varchar(255) NOT NULL,
+  `activated` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`userID`, `email`, `password`, `fname`, `lname`, `contact`, `usertype`, `status`) VALUES
-(0, 'registration@ruchern.com', 'sha256:1000:D1iVJ0Jk5pvS4kgzqvq2mdSnq/6w63pt:Pc91zGeOH8q7OYmerxKl', 'AusCert', 'Administrator', '04 1010 1010', 'admin', b'1'),
-(1, 'leonxenarax@gmail.com', 'sha256:1000:Xcp0j5PBSvYuH1JXdMTq7TCQM3zb2xDk:nw39o+xpVCqI2wCYdZGM', 'Leon', 'Teh', '0423 302 776', 'admin', b'0'),
-(2, 'ruchern.chong@uqconnect.edu.au', 'sha256:1000:pUtBVN0CYVn7R7Lnw2CpPEcCs2DGTAHy:6OC6nluSbTtYiL9cHWkm', 'Ru Chern', 'Chong', '0451 519 513', 'admin', b'1'),
-(3, 'hk2518@hotmail.com', 'sha256:1000:dZ4tUMveakkkCniz/tEpx0pyFaCefuN8:3Qn0ipGeazOmi951PHV9c8RSr5Q82o5c', 'HuiGyeong', 'Shin', '0424 169 232', 'admin', b'0'),
-(4, 'cameronpaulsen0@gmail.com', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'Cameron', 'Paulsen', '0401 603 217', 'admin', b'0'),
-(5, 'ravi_khemlani@hotmail.com', 'sha256:1000:Gxc3O1YQ8MjuvS8pKZ7uPyTWG3Qe/bqd:AViHuMUfPxeEu1y4pC1s7IkDcmFjn8eE', 'Ravi', 'Khemlani', '0452 525 020', 'admin', b'0'),
-(6, 'mal.j@live.com', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'Malcolm', 'Joseland', '0450 479 554', 'admin', b'0'),
-(7, 'j.steel@uq.edu.au', 'admin', 'Jim', 'Steel', '(07) 3365 4917', 'user', b'0'),
-(8, 'b.zheng@uq.edu.au', 'admin', 'Bolong', 'Zheng', '(07) 3365 2447', 'user', b'0'),
-(9, 'c.teakle@its.uq.edu.au', 'admin', 'Chris', 'Teakle', '(07) 3365 7555', 'admin', b'0'),
-(10, 'S.Cockcroft@business.uq.edu.au', 'admin', 'Sophie', 'Cockcroft', '(07) 3346 8016', 'user', b'0'),
-(11, 'bethanie.ong.9@facebook.com', 'admin', 'Bethanie', 'Ball', '01 6475 1111', 'user', b'0'),
-(12, 'joyceeng@uq.edu.au', 'admin', 'Joyce', 'Ng', '0452 571 787', 'user', b'0'),
-(13, 'gavino@uq.edu.au', 'admin', 'Gavin', 'Norman', '0412 816 417', 'user', b'0'),
-(14, 'kuroneko@uq.edu.au', 'admin', 'Rachel', 'Tan', '0451 932 133', 'user', b'0'),
-(15, 'aditya@uq.edu.au', 'admin', 'Aditya', 'Rahardi', '0406 504 067', 'user', b'0'),
-(16, 'j.hadwen@uq.edu.au', 'admin', 'Jonathan', 'Hadwen', '(07) 3346 8265', 'user', b'0'),
-(17, 'c.mills@uq.edu.au', 'admin', 'Catriona', 'Mills', '(07) 3346 8279', 'user', b'0'),
-(18, 'm.farquhar@uq.edu.au', 'admin', 'M', 'Farquhar', '(07) 3346 8265', 'user', b'0'),
-(27, 'me@ruchern.com', 'sha256:1000:CAToIan2MFNycFaF1GBYMkgBkDrxgPwx:0HgS39vMj2tTTFgOoEYAtr8WDpvNVq1Z', 'Ru Chern', 'Chong', '0451 519 513', 'user', b'0');
+INSERT INTO `users` (`userID`, `email`, `password`, `fname`, `lname`, `contact`, `usertype`, `activation_key`, `activated`) VALUES
+(0, 'registration@ruchern.com', 'sha256:1000:D1iVJ0Jk5pvS4kgzqvq2mdSnq/6w63pt:Pc91zGeOH8q7OYmerxKl', 'AusCert', 'Administrator', '04 1010 1010', 'admin', '', b'1'),
+(1, 'leonxenarax@gmail.com', 'sha256:1000:Xcp0j5PBSvYuH1JXdMTq7TCQM3zb2xDk:nw39o+xpVCqI2wCYdZGM', 'Leon', 'Teh', '0423 302 776', 'admin', '', b'0'),
+(2, 'ruchern.chong@uqconnect.edu.au', 'sha256:1000:pUtBVN0CYVn7R7Lnw2CpPEcCs2DGTAHy:6OC6nluSbTtYiL9cHWkm', 'Ru Chern', 'Chong', '0451 519 513', 'admin', '', b'1'),
+(3, 'hk2518@hotmail.com', 'sha256:1000:dZ4tUMveakkkCniz/tEpx0pyFaCefuN8:3Qn0ipGeazOmi951PHV9c8RSr5Q82o5c', 'HuiGyeong', 'Shin', '0424 169 232', 'admin', '', b'0'),
+(4, 'cameronpaulsen0@gmail.com', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'Cameron', 'Paulsen', '0401 603 217', 'admin', '', b'0'),
+(5, 'ravi_khemlani@hotmail.com', 'sha256:1000:Gxc3O1YQ8MjuvS8pKZ7uPyTWG3Qe/bqd:AViHuMUfPxeEu1y4pC1s7IkDcmFjn8eE', 'Ravi', 'Khemlani', '0452 525 020', 'admin', '', b'0'),
+(6, 'mal.j@live.com', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'Malcolm', 'Joseland', '0450 479 554', 'admin', '', b'0'),
+(7, 'j.steel@uq.edu.au', 'admin', 'Jim', 'Steel', '(07) 3365 4917', 'user', '', b'0'),
+(8, 'b.zheng@uq.edu.au', 'admin', 'Bolong', 'Zheng', '(07) 3365 2447', 'user', '', b'0'),
+(9, 'c.teakle@its.uq.edu.au', 'admin', 'Chris', 'Teakle', '(07) 3365 7555', 'admin', '', b'0'),
+(10, 'S.Cockcroft@business.uq.edu.au', 'admin', 'Sophie', 'Cockcroft', '(07) 3346 8016', 'user', '', b'0'),
+(11, 'bethanie.ong.9@facebook.com', 'admin', 'Bethanie', 'Ball', '01 6475 1111', 'user', '', b'0'),
+(12, 'joyceeng@uq.edu.au', 'admin', 'Joyce', 'Ng', '0452 571 787', 'user', '', b'0'),
+(13, 'gavino@uq.edu.au', 'admin', 'Gavin', 'Norman', '0412 816 417', 'user', '', b'0'),
+(14, 'kuroneko@uq.edu.au', 'admin', 'Rachel', 'Tan', '0451 932 133', 'user', '', b'0'),
+(15, 'aditya@uq.edu.au', 'admin', 'Aditya', 'Rahardi', '0406 504 067', 'user', '', b'0'),
+(16, 'j.hadwen@uq.edu.au', 'admin', 'Jonathan', 'Hadwen', '(07) 3346 8265', 'user', '', b'0'),
+(17, 'c.mills@uq.edu.au', 'admin', 'Catriona', 'Mills', '(07) 3346 8279', 'user', '', b'0'),
+(18, 'm.farquhar@uq.edu.au', 'admin', 'M', 'Farquhar', '(07) 3346 8265', 'user', '', b'0');
 
 DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE `user_courses` (
@@ -253,13 +254,7 @@ INSERT INTO `user_courses` (`userID`, `courseID`, `completion`, `description`, `
 (6, 3, '0.00', NULL, '0.0', NULL),
 (7, 1, '0.00', NULL, '0.0', NULL),
 (7, 2, '0.00', NULL, '0.0', NULL),
-(7, 3, '0.00', NULL, '0.0', NULL),
-(27, 2, '0.00', NULL, NULL, NULL),
-(27, 3, '0.00', NULL, NULL, NULL),
-(27, 5, '0.00', NULL, NULL, NULL),
-(27, 9, '0.00', NULL, NULL, NULL),
-(27, 10, '0.00', NULL, NULL, NULL),
-(27, 12, '0.00', NULL, NULL, NULL);
+(7, 3, '0.00', NULL, '0.0', NULL);
 
 DROP TABLE IF EXISTS `user_groups`;
 CREATE TABLE `user_groups` (
@@ -286,7 +281,6 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 (16, 0),
 (17, 0),
 (18, 0),
-(27, 1),
 (2, 2),
 (3, 2),
 (4, 2),
@@ -294,7 +288,6 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 (6, 2),
 (7, 2),
 (10, 2),
-(27, 2),
 (2, 3),
 (3, 3),
 (4, 3),
@@ -399,7 +392,7 @@ ALTER TABLE `groups`
 ALTER TABLE `slides`
   MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 ALTER TABLE `answers`
   ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`,`questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE,
