@@ -212,12 +212,20 @@
 </div>
 
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
-
 <script>
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
 	$("#wrapper").toggleClass("toggled");
 });
+
+	$(document).ajaxStart(function() {
+		$("#loader").addClass("loader");
+		$(".loader").fadeIn("slow");
+	});
+
+	$(document).ajaxStop(function() {
+		$(".loader").fadeOut("slow");
+	});
 </script>
 
 <script>
