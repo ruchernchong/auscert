@@ -15,17 +15,18 @@
 							<div class="panel panel-primary">
 								<div class="panel-heading">
 									<h3 class="panel-title">Courses Assigned to Group</h3>
+<!--									<input id="leftSearchBar" placeholder="Search Courses">-->
 								</div>
 								<div class="panel-body" style="height: 400px;overflow: auto;">
 									<table class="table table-striped table-hover">
 										<thead>
 										<tr>
 											<th>Select</th>
-											<th>Course ID</th>
 											<th>Course Name</th>
+											<th>Course ID</th>
 										</tr>
 										</thead>
-										<tbody>
+										<tbody id="leftCoursePanel">
 										<?php
 										if (!empty($assignedCourses)) {
 											foreach($assignedCourses as $assignedCourse) {?>
@@ -34,8 +35,8 @@
 														<input type="checkbox" id="assignedChecked_<?php echo $assignedCourse->courseID; ?>" value="<?php echo $assignedCourse->courseID;?>" class="courseActive assignedSelected">
 														<label for="assignedChecked_<?php echo $assignedCourse->courseID; ?>" class="activelabel"></label>
 													</td>
-													<td><?php echo $assignedCourse->courseID; ?></td>
 													<td><?php echo $assignedCourse->courseName; ?></td>
+													<td><?php echo $assignedCourse->courseID; ?></td>
 												</tr>
 												<?php
 											}
@@ -76,8 +77,8 @@
 										<thead>
 										<tr>
 											<th>Select</th>
-											<th>Course ID</th>
 											<th>Course Name</th>
+											<th>Course ID</th>
 										</tr>
 										</thead>
 										<tbody>
@@ -91,8 +92,8 @@
 															<input type="checkbox" id="otherCheck_<?php echo $otherCourse->courseID;?>" value="<?php echo $otherCourse->courseID;?>" class="courseActive otherSelected">
 															<label for="otherCheck_<?php echo $otherCourse->courseID; ?>"></label>
 														</td>
-														<td><?php echo $otherCourse->courseID; ?></td>
 														<td><?php echo $otherCourse->courseName; ?></td>
+														<td><?php echo $otherCourse->courseID; ?></td>
 													</tr>
 												</form>
 												<?php
@@ -175,6 +176,35 @@
 		});
 	});
 
+//	$(document).ready(function(){
+//		$("#leftSearchBar").keyup(function(){
+//			if ($("#leftSearchBar").val().length>=0){
+//				$.ajax({
+//					type:"post",
+//					url: "<?php //echo base_url('manageCourse/searchLeftTable'); ?>//",
+//					cache: false,
+//					data: 'leftTableSearch='+$("#leftSearchBar").val(),
+//					success: function(response){
+//	//						console.log(response);
+//						$("#users_results").html("");
+//						var obj=JSON.parse(response);
+//	//						console.log(obj);
+//						if (!obj.noResult) {
+//							$("#leftCoursePanel").html(obj.html);
+//						}else {
+//							$('#leftCoursePanel').html("<h5>No Courses Found</h5>");
+//						}
+//					},
+//					error: function(){
+//						console.log('Ajax Error');
+//					}
+//				});
+//			}
+//			return false;
+//		})
+//	})
+
+
 	$(document).ajaxStart(function() {
 		$("#loader").addClass("loader");
 		$(".loader").fadeIn("slow");
@@ -183,6 +213,7 @@
 	$(document).ajaxStop(function() {
 		$(".loader").fadeOut("slow");
 	});
+
 </script>
 </body>
 </html>
