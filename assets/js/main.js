@@ -1,3 +1,8 @@
+$(window).load(function() {
+	// Animate loader off screen
+	$(".loader").fadeOut("slow");
+});
+
 // Delete chapter
 $(".tab-content").on('click', ".chapter-delete", function() {
 	var tabBar = $('#tab-bar');

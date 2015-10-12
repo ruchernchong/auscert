@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/notify.css'); ?>" />
-	
+
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/angular.min.js'); ?>"></script>
@@ -18,6 +18,7 @@
 </head>
 
 <body>
+<div class="loader"></div>
 <?php
 if (!empty($this->session->flashdata('register-success'))) {
 	?>
@@ -92,5 +93,11 @@ echo form_open('login/validateLogin', $attributes);
 	</div>
 </div>
 </form>
+<script>
+	$(window).load(function() {
+// Animate loader off screen
+		$(".loader").fadeOut("slow");;
+	});
+</script>
 </body>
 </html>

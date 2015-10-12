@@ -29,6 +29,13 @@
 	<script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
 </head>
 <body>
+<div class="loader"></div>
+<script>
+	$(window).ready(function() {
+		// Animate loader off screen
+		$(".loader").fadeOut();
+	});
+</script>
 <div id="wrapper">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
