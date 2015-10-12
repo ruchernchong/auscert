@@ -13,7 +13,7 @@ body {
 	background-color: #fff;
 }
 /*mobile-width*/
-@media(min-width:768px) { 
+@media(min-width:768px) {
 	body {
 		/*margin-top: 50px;*/
 		/*padding-top: 90px;*/
@@ -305,8 +305,8 @@ ul.alert-dropdown {
 .navbar-inverse .navbar-nav>li>a {
 	color: #fff;
 }
-.navbar-inverse .navbar-nav>.open>a, 
-.navbar-inverse .navbar-nav>.open>a:focus, 
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:focus,
 .navbar-inverse .navbar-nav>.open>a:hover {
 	background-color: #5cb85c;
 }
@@ -422,7 +422,7 @@ ul.alert-dropdown {
 }
 
 .nav-tabs > li {
-	position:relative;    
+	position:relative;
 }
 
 .nav-tabs > li > a {
@@ -456,13 +456,13 @@ ul.alert-dropdown {
 	margin-top: 10px;
 }
 
-body::-webkit-scrollbar, 
-/*#sidebar-wrapper::-webkit-scrollbar*/ {
+body::-webkit-scrollbar,
+	/*#sidebar-wrapper::-webkit-scrollbar*/ {
 	width: 0;
 }
 
-#courseList, 
-#availableCourses, 
+#courseList,
+#availableCourses,
 #availableGroups {
 	display: none;
 }
@@ -471,8 +471,8 @@ body::-webkit-scrollbar,
 	cursor: pointer;
 }
 
-.courseLink, 
-.courseLink:link, 
+.courseLink,
+.courseLink:link,
 .courseLink:visited {
 	color: inherit;
 }
@@ -481,7 +481,7 @@ body::-webkit-scrollbar,
 	padding: 0;
 }
 
-.moreInfo-title { 
+.moreInfo-title {
 	text-align: center;
 }
 
@@ -541,7 +541,7 @@ input[type=checkbox].courseActive:checked ~ label:before {
 input[type=radio].courseActive:focus ~ label:before,
 input[type=checkbox].courseActive:focus ~ label:before,
 input[type=radio].courseActive:focus ~ label,
-input[type=checkbox].courseActive:focus ~ label {                
+input[type=checkbox].courseActive:focus ~ label {
 	color: green;
 }
 
@@ -618,11 +618,11 @@ input[type=checkbox].courseActive:focus ~ label {
 	/*width: 0;*/
 }
 
-.table>tbody>tr>td, 
-.table>tbody>tr>th, 
-.table>tfoot>tr>td, 
-.table>tfoot>tr>th, 
-.table>thead>tr>td, 
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
 .table>thead>tr>th {
 	vertical-align: middle;
 }
@@ -631,7 +631,7 @@ input[type=checkbox].courseActive:focus ~ label {
 	margin: 10px 0;
 }
 
-.navbar-inverse .navbar-nav>.active>a, 
+.navbar-inverse .navbar-nav>.active>a,
 .navbar-inverse .navbar-nav>.active>a:focus {
 	/*font-weight: bold;*/
 	background: rgba(255,255,255,0.2);
