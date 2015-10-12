@@ -121,7 +121,7 @@ class register extends CI_Controller {
 
 	public function verify() {
 		$hash = $this->uri->segment(3);
-		print_r($hash);
+
 		if ($this->model_user->VerifyEmailID($hash)) {
 			$this->session->set_flashdata('email-verified', 'Your email is successfully verified.'
 				. br(1) .
@@ -167,8 +167,6 @@ class register extends CI_Controller {
 		}
 		return true;
 	}
-
-
 
 	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debugConsole($data) {
