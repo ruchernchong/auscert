@@ -168,8 +168,6 @@ class register extends CI_Controller {
 		return true;
 	}
 
-
-
 	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debugConsole($data) {
 		if (is_array($data)) {
