@@ -33,7 +33,7 @@
 <script>
 	$(window).ready(function() {
 		// Animate loader off screen
-		$(".loader").fadeOut();
+		$(".loader").fadeOut(1000);
 	});
 </script>
 <div id="wrapper">
