@@ -85,6 +85,9 @@ class register extends CI_Controller {
 		$registerGroup = $this->input->post('registerGroup');
 		$registerContact = $this->input->post('registerContact');
 
+		$enc_email = $this->encrypt->encode($registerEmail);
+		$registerActivationKey = str_replace(array('+', '/', '='), array('-', '_', '~'), $enc_email);
+
 		if ($this->form_validation->run() == false) {
 			$this->form_validation->set_error_delimiters('', '');
 			$this->session->set_flashdata('register-error', 'Please see registration form for errors.');
@@ -100,8 +103,8 @@ class register extends CI_Controller {
 				'contact' => $registerContact
 			);
 
-			if ($this->registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact)) {
-				if ($this->model_user->VerifyEmail($registerEmail)) {
+			if ($this->registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact, $registerActivationKey)) {
+				if ($this->model_user->VerifyEmail($registerActivationKey)) {
 					$this->session->set_flashdata('register-success', 'We have sent ' . $registerEmail . ' instructions to activate your account.'
 						. br(1) .
 						'You will have limited access until you have verified your email address.');
@@ -120,7 +123,10 @@ class register extends CI_Controller {
 		$hash = $this->uri->segment(3);
 		print_r($hash);
 		if ($this->model_user->VerifyEmailID($hash)) {
-			$this->session->set_flashdata('email-verified', 'Your email is successfully verified.');
+			$this->session->set_flashdata('email-verified', 'Your email is successfully verified.'
+				. br(1) .
+				'You may now proceed to login.'
+			);
 
 			redirect('login', 'refresh');
 		} else {
@@ -132,8 +138,8 @@ class register extends CI_Controller {
 
 	//Adds user to the default AllUser group in addition to their specialised groups.
 	//Also assigns courses to them based on their grouping
-	function registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact) {
-		$thisUserID = $this->model_user->registerUsers($registerEmail, $registerPassword, $registerFName, $registerLName, $registerContact);
+	function registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact, $registerActivationKey) {
+		$thisUserID = $this->model_user->registerUsers($registerEmail, $registerPassword, $registerFName, $registerLName, $registerContact, $registerActivationKey);
 
 		//Default AllUser group and courses
 		$defaultGroupID = "1";
