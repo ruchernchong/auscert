@@ -15,7 +15,7 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="input-group">
-							<input type="search" placeholder="Search" class="form-control" id="userSearchBar">
+							<input type="search" placeholder="Search Users" class="form-control" id="userSearchBar">
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-primary">
 									<i class="fa fa-search"></i>
@@ -44,26 +44,27 @@
 								<table class="table table-striped table-hover">
 									<thead>
 										<tr>
-											<th>UserID</th>
 											<th>First Name</th>
 											<th>Last Name</th>
+											<th>UserID</th>
 											<th>Groups</th>
 											<th>User Type</th>
 											<th>Email Address</th>
 											<th>Contact No.</th>
+											<th>Actions</th>
 										</tr>
 									</thead>
 									<tbody id="users_results">
 										<?php foreach ($users as $user) { ?>
 										<tr>
 											<td>
-												<a data-toggle="tab" href="#<?php echo $user['userID']; ?>" class="client-link"><?php echo $user['userID']; ?></a>
-											</td>
-											<td>
 												<a href="#"><?php echo $user['fname']; ?></a>
 											</td>
 											<td>
 												<a href="#"><?php echo $user['lname']; ?></a>
+											</td>
+											<td>
+												<a data-toggle="tab" href="#<?php echo $user['userID']; ?>" class="client-link"><?php echo $user['userID']; ?></a>
 											</td>
 											<td>
 												<?php
@@ -95,6 +96,15 @@
 											</td>
 											<td>
 												<i class="fa fa-phone"></i>&emsp;<a href="tel:<?php echo $user['contact']; ?>"><?php echo $user['contact']; ?></a>
+											</td>
+											<td class="user-actions">
+												<a href="<?php echo site_url('userAssign/' . $user['userID']);?>" class="btn btn-sm btn-success">
+													<i class="fa fa-pencil"></i>&emsp;Manage Courses
+												</a>
+												&nbsp;
+												<a href="<?php echo site_url('userAssign/' . $user['userID']); ?>" class="btn btn-sm btn-primary">
+													<i class="fa fa-bar-chart-o"></i>&emsp;Manage Groups
+												</a>
 											</td>
 										</tr>
 										<?php
@@ -216,8 +226,7 @@ $("#menu-toggle").click(function(e) {
 		var imgURL = "<?php echo base_url('assets/img/user-placeholder.jpg'); ?>";
 
 		$("#userSearchBar").keyup(function(){
-			if ($("#userSearchBar").val().length>=1){
-				$('#userSearchPanel').show();
+			if ($("#userSearchBar").val().length>=0){
 				$.ajax({
 					type:"post",
 					url: "<?php echo base_url('admin/searchUser'); ?>",
