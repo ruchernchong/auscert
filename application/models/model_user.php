@@ -26,8 +26,9 @@ Class model_user extends CI_Model {
 			'fname' => $registerFName,
 			'lname' => $registerLName,
 			'contact' => $registerContact,
-			'usertype' => 'user'
-			);
+			'usertype' => 'user',
+			'status' => 0
+		);
 
 		$this->db->insert('users', $data);
 		return $this->db->insert_id();
@@ -50,7 +51,7 @@ Class model_user extends CI_Model {
 		$this->db->like('fname', $searchTerm);
 		$this->db->or_like('lname', $searchTerm);
 		$this->db->or_like('email', $searchTerm);
-		$this->db->order_by("lname", "asc");
+		$this->db->order_by("fname", "asc");
 		$query = $this->db->get('users');
 
 		if ($query->num_rows > 0) {

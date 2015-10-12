@@ -52,6 +52,9 @@ class manageMember extends CI_Controller {
 				}
 				$otherUsers = $this->model_user->GetAllUsersExcept($omittedUsers);
 			}
+			else {
+				$otherUsers = $this->model_user->GetAllUsers();
+			}
 
 			//Get the current group object
 			if ($thisGroup) {
@@ -71,7 +74,7 @@ class manageMember extends CI_Controller {
 			if (!empty($otherUsers)) {
 				$data['otherUsers'] = $otherUsers;
 			} else {
-				$data['otherUsers'] = $this->model_user->GetAllUsers();
+				$data['otherUsers'] = null;
 			}
 
 			//Verify that the user is an admin. Deny access otherwise

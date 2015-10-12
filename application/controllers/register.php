@@ -4,7 +4,7 @@ class register extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_user');
+		$this->load->helper('html');
 		$this->load->library(
 			array(
 				'form_validation',
@@ -16,6 +16,7 @@ class register extends CI_Controller {
 		$this->load->model('model_usercourse');
 		$this->load->model('model_course');
 		$this->load->model('model_group');
+		$this->load->model('model_user');
 	}
 
 	public function index() {
@@ -99,13 +100,18 @@ class register extends CI_Controller {
 			);
 
 			if ($this->registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact)) {
+				$this->debugConsole('Working');
 				if ($this->model_user->VerifyEmail($registerEmail)) {
 					$this->session->set_flashdata('register-success', 'We have sent ' . $registerEmail . ' instructions to activate your account.'
 						. br(1) .
 						'You will have limited access until you have verified your email address.');
 
 					redirect('login', 'refresh');
+				} else {
+					$this->debugConsole('Verify Email Not Working');
 				}
+			} else {
+				$this->debugConsole('Register and Setup Not working');
 			}
 		}
 	}
@@ -134,12 +140,11 @@ class register extends CI_Controller {
 
 		foreach ($thisCourses as $thisCourse) {
 			$this->model_usercourse->RegisterToCourse($thisUserID, $thisCourse->courseID);
+
 		}
 
 		//Handle the additional groups and courses
 		if (!in_array("not_applicable", $registerGroup)) { //checks to ensure the Not Applicable field is not selected
-			$this->debugConsole("Entered!");
-
 			foreach ($registerGroup as $thisGroupID) {
 				$this->model_usergroup->AddUserToGroup($thisUserID, $thisGroupID); //Assign user to the group
 				$thisCourses = $this->model_groupcourse->GetGroupCourses($thisGroupID);//Get all the courses
@@ -152,6 +157,7 @@ class register extends CI_Controller {
 				}
 			}
 		}
+		return true;
 	}
 
 

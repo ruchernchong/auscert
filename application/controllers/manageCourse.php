@@ -47,11 +47,15 @@ class manageCourse extends CI_Controller {
 			$omittedCourses = [];
 
 			if (!empty($assignedCourses)) {
-				foreach ($assignedCourses as $exceptCourse) {
-					array_push($omittedCourses, $exceptCourse->courseID);
+				foreach ($assignedCourses as $assignedCourse) {
+					array_push($omittedCourses, $assignedCourse->courseID); //push in all the courses to be omitted
 				}
 				$otherCourses = $this->model_course->GetAllCoursesExcept($omittedCourses);
 			}
+			else {
+				$otherCourses = $this->model_course->GetAllCourses();
+			}
+
 
 			//Gets the current group's object
 			if ($thisGroup) {
@@ -71,7 +75,7 @@ class manageCourse extends CI_Controller {
 			if (!empty($otherCourses)) {
 				$data['otherCourses'] = $otherCourses;
 			} else {
-				$data['otherCourses'] = $this->model_course->GetAllCourses();
+				$data['otherCourses'] = null;
 			}
 
 			//Validates that the user is an admin deny access otherwise
@@ -105,6 +109,16 @@ class manageCourse extends CI_Controller {
 			$this->model_groupcourse->RemoveCourseFromGroup($courseID, $groupID);
 		}
 	}
+
+//	//Ajax search left table
+//	function searchLeftTable() {
+//		$searchTerm = $this->input->post('leftTableSearch');
+//	}
+//
+//	//Ajax search right table
+//	function searchRightTable() {
+//		$searchTerm = $this->input->post('leftTableSearch');
+//	}
 
 	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debugConsole($data) {
