@@ -1,8 +1,10 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Admin Page</h1>
+<!--			<div class="col-lg-12" ng-controller="LiveSearchController as liveSearch">-->
+		<div class="col-lg-12" ng-controller="LiveSearchController as liveSearch">
+			<h1 class="page-header">Admin Page</h1>
+<!--				<h1>{{liveSearch.ruchern}}</h1>-->
 			</div>
 		</div>
 		<div class="row">
@@ -76,7 +78,7 @@
 										<?php foreach ($users as $user) { ?>
 										<tr>
 											<td class="client-avatar">
-												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['fname']; ?>" class="client-link"><?php echo $user['fname']; ?></a>
+												<img alt="image" src="<?php echo base_url('assets/img/user-placeholder.jpg'); ?>">&emsp;<a data-toggle="tab" href="#<?php echo $user['userID']; ?>" class="client-link"><?php echo $user['fname']; ?></a>
 											</td>
 											<td>
 												<?php
@@ -113,102 +115,102 @@
 										<?php
 									}
 									?>
-								</tbody>
-							</table>
+									</tbody>
+								</table>
+							</div>
 						</div>
-					</div>
 
-					<div id="tab-courses" class="tab-pane fade in active">
-						<div class="table-responsive">
-							<table class="table table-hover">
-								<thead>
-									<th>Course List</th>
-									<th>Last Edited</th>
-									<th>Status</th>
-									<th>Actions</th>
-								</thead>
-								<tbody>
-									<?php foreach ($courses as $course) {
+						<div id="tab-courses" class="tab-pane fade in active">
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<th>Course List</th>
+										<th>Last Edited</th>
+										<th>Status</th>
+										<th>Actions</th>
+									</thead>
+									<tbody>
+										<?php foreach ($courses as $course) {
+											?>
+											<tr>
+												<td><a href="<?php echo site_url('learning/' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
+												<td><?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
+												<td>
+													<?php
+													if ($course->active == 1) {
+														?>
+														<div class="btn btn-sm btn-default">
+															<input type="checkbox" id="activeChecked_<?php echo $course->courseID; ?>" class="courseActive" checked>
+															<label for="activeChecked_<?php echo $course->courseID; ?>" class="activeLabel">Active</label>
+														</div>
+														<?php
+													} else {
+														?>
+														<div class="btn btn-sm btn-default">
+															<input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
+															<label for="activeNotChecked_<?php echo $course->courseID; ?>" class="activeLabel">Active</label>
+														</div>
+														<?php
+													}
+													?>
+												</td>
+
+												<td class="project-actions">
+													<a href="<?php echo site_url('edits/' . $course->courseID);?>" class="btn btn-sm btn-success">
+														<i class="fa fa-pencil"></i>&emsp;Edit
+													</a>
+													&nbsp;
+													<a href="<?php echo site_url('analysis/' . $course->courseID); ?>" class="btn btn-sm btn-primary">
+														<i class="fa fa-bar-chart-o"></i>&emsp;Course Analytics
+													</a>
+													&nbsp;
+													<a href="<?php echo site_url('admin/dropCourse/' . $course->courseID); ?>" class="btn btn-sm btn-danger">
+														<i class="fa fa-trash"></i>&emsp;Remove
+													</a>
+												</td>
+											</tr>
+											<?php
+										}
 										?>
-										<tr>
-											<td><a href="<?php echo site_url('learning/' . $course->courseID); ?>"><?php echo $course->courseName; ?></a></td>
-											<td><?php echo empty($course->lastEdited) ? "None" : $course->lastEdited; ?></td>
-											<td>
-												<?php
-												if ($course->active == 1) {
-													?>
-													<div class="btn btn-sm btn-default">
-														<input type="checkbox" id="activeChecked_<?php echo $course->courseID; ?>" class="courseActive" checked>
-														<label for="activeChecked_<?php echo $course->courseID; ?>" class="activeLabel">Active</label>
-													</div>
-													<?php
-												} else {
-													?>
-													<div class="btn btn-sm btn-default">
-														<input type="checkbox" id="activeNotChecked_<?php echo $course->courseID; ?>" class="courseActive">
-														<label for="activeNotChecked_<?php echo $course->courseID; ?>" class="activeLabel">Active</label>
-													</div>
-													<?php
-												}
-												?>
-											</td>
+									</tbody>
+								</table>
+							</div>
+						</div>
 
-											<td class="project-actions">
-												<a href="<?php echo site_url('edits/' . $course->courseID);?>" class="btn btn-sm btn-success">
-													<i class="fa fa-pencil"></i>&emsp;Edit
-												</a>
+						<div id="tab-groups" class="tab-pane fade">
+							<div class="table-responsive">
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th>Group Name</th>
+											<th>Total Members</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach($groups as $group) {?>
+										<tr>
+											<td><?php echo $group['organisation'] ?></td>
+											<td><?php echo $group['userCount'] ?></td>
+											<td>
+												<a href="<?php echo base_url('manageMember/' . $group['groupID']); ?>" class="btn btn-sm btn-success"><i class="fa fa-signal"></i>&emsp;Manage Members</a>
 												&nbsp;
-												<a href="<?php echo site_url('analysis/' . $course->courseID); ?>" class="btn btn-sm btn-primary">
-													<i class="fa fa-bar-chart-o"></i>&emsp;Course Analytics
-												</a>
+												<a href="<?php echo base_url('manageCourse/' . $group['groupID']); ?>" class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
 												&nbsp;
-												<a href="<?php echo site_url('admin/dropCourse/' . $course->courseID); ?>" class="btn btn-sm btn-danger">
-													<i class="fa fa-trash"></i>&emsp;Remove
-												</a>
+												<a href="<?php echo site_url('admin/dropGroup/' . $group['groupID'])?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Delete Group</a>
+												&nbsp;
 											</td>
 										</tr>
-										<?php
-									}
-									?>
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-					<div id="tab-groups" class="tab-pane fade">
-						<div class="table-responsive">
-							<table class="table table-striped table-hover">
-								<thead>
-									<tr>
-										<th>Group Name</th>
-										<th>Total Members</th>
-										<th>Actions</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach($groups as $group) {?>
-									<tr>
-										<td><?php echo $group['organisation'] ?></td>
-										<td><?php echo $group['userCount'] ?></td>
-										<td>
-											<a href="<?php echo base_url('manageMember/' . $group['groupID']); ?>" class="btn btn-sm btn-success"><i class="fa fa-signal"></i>&emsp;Manage Members</a>
-											&nbsp;
-											<a href="<?php echo base_url('manageCourse/' . $group['groupID']); ?>" class="btn btn-sm btn-primary"><i class="fa fa-refresh fa-spin"></i>&emsp;Manage Courses</a>
-											&nbsp;
-											<a href="<?php echo site_url('admin/dropGroup/' . $group['groupID'])?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&emsp;Delete Group</a>
-											&nbsp;
-										</td>
-									</tr>
-									<?php } ?>
-								</tbody>
-							</table>
+										<?php } ?>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
@@ -229,7 +231,7 @@ $("#menu-toggle").click(function(e) {
 		var imgURL = "<?php echo base_url('assets/img/user-placeholder.jpg'); ?>";
 
 		$("#userSearchBar").keyup(function(){
-			if ($("#userSearchBar").val().length>3){
+			if ($("#userSearchBar").val().length>=1){
 				$('#userSearchPanel').show();
 				$.ajax({
 					type:"post",
@@ -237,30 +239,14 @@ $("#menu-toggle").click(function(e) {
 					cache: false,
 					data: 'userSearch='+$("#userSearchBar").val(),
 					success: function(response){
-						$("#resultBox").html("");
+//						console.log(response);
+//						$("#resultBox").html("");
 						var obj=JSON.parse(response);
-						if (obj.length>0) {
-							try {
-								var items=[];
-								$.each(obj, function(index, value){
-									items.push(
-										'<tr>',
-//										'<td>' + value.username + '</td>',
-										'<td class=\"client-avatar\">',
-//										'<img src=\"' + imgURL + '\">&emsp;',
-										'<a data-toggle=\"tab\" href=\"#' + value.userID + '\" class=\"client-link\">' + value.fname + '</a>',
-										'     ',
-										'<a data-toggle=\"tab\" href=\"#' + value.userID + '\" class=\"client-link\">' + value.lname + '</a>',
-										'</td>',
-										'<tr>'
-									);
-								});
-								$("#resultBox").append.apply($("#resultBox"),items);
-							} catch(e) {
-								alert('Exeption while request..')
-							}
+//						console.log(obj);
+						if (!obj.noResult) {
+							$("#resultBox").html(obj.html);
 						}else {
-							$('#finalResult').html($('<li/>').text("No Courses Found"));
+							$('#resultBox').html("<h4>No Users Found</h4>");
 						}
 					},
 					error: function(){
