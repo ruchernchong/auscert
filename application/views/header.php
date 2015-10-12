@@ -21,6 +21,7 @@
 
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/angular.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
@@ -59,12 +60,6 @@
 							<i class="fa fa-fw fa-home"></i>&nbsp;Home
 						</a>
 					</li>
-					<!-- Duplicated page -->
-					<!-- <li class="<?php echo $menu=='course' ? 'active' : '' ?>">
-							<a id="pageCourse" href="<?php echo site_url('course'); ?>">
-								<i class="fa fa-fw fa-briefcase"></i>&nbsp;Course
-							</a>
-						</li> -->
 					<?php if ($usertype=="admin") { ?>
 						<li <?php echo $menu=='admin' ? 'class="active"' : '' ?>>
 							<a id="pageAdmin" href="<?php echo site_url('admin'); ?>">
@@ -74,9 +69,9 @@
 						<?php
 					}
 					?>
-					<li <?php echo $menu=='settings' ? 'class="active"' : '' ?>>
-						<a id="pageSettings" href="<?php echo site_url('settings'); ?>">
-							<i class="fa fa-fw fa-gear"></i>&nbsp;Settings
+					<li <?php echo $menu=='account' ? 'class="active"' : '' ?>>
+						<a id="pageSettings" href="<?php echo site_url('account'); ?>">
+							<i class="fa fa-fw fa-gear"></i>&nbsp;My Account
 						</a>
 					</li>
 					<li <?php echo $menu=='logout' ? 'clss="active"' : '' ?>>

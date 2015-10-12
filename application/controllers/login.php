@@ -20,12 +20,15 @@ class login extends CI_Controller {
 
 	//validate a user's login
 	public function validateLogin() {
-		$this->db->where('email', $this->input->post('loginEmail'));
+		$loginEmail = $this->input->post('loginEmail');
+		$loginPassword = $this->input->post('loginPassword');
+
+		$this->db->where('email', $loginEmail);
 		$query = $this->db->get('users');
 
 		$row = $query->row();
 
-		if ($this->password->validate_password($this->input->post('loginPassword'), $row->password)) {
+		if ($this->password->validate_password($loginPassword, $row->password)) {
 			$session_array = array(
 				'userID' => $row->userID,
 				'fname' => $row->fname,

@@ -7,37 +7,29 @@
 	<!-- <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" /> -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" />
-	<!--	<link rel="stylesheet" type="text/css" href="--><?php //echo base_url('assets/css/bootstrap.min.css'); ?><!--" />-->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/notify.css'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/chosen.css'); ?>" />
 
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/angular.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/chosen.jquery.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
 </head>
 
 <body>
-<?php echo validation_errors(); ?>
 <?php
 if (!empty($this->session->flashdata('register-error'))) {
 	?>
 	<script>
-		$.notify("<?php echo $this->session->flashdata('register-error'); ?>", {
-			className: "error",
-			clickToHide: true,
-			autoHide: false,
-			globalPosition: "top right"
-		});
-	</script>
-<?php
-} else if (!empty($this->session->flashdata('register-success'))) {
-?>
-	<script>
-		$.notify("<?php echo $this->session->flashdata('register-success'); ?>", {
-			className: "success",
-			clickToHide: true,
-			autoHide: false,
-			globalPosition: "bottom right"
+		$(function(){
+			$.notifyBar({
+				html: "<?php echo $this->session->flashdata('register-error'); ?>",
+				cssClass: "error",
+				delay: 86400,
+				clickToClose: true,
+				animationSpeed: "normal"
+			});
 		});
 	</script>
 	<?php
@@ -54,24 +46,12 @@ echo form_open('register/registerUsers', $attributes);
 <div class="content">
 
 	<div class="title">Register</div>
-
-	<input type="text" id="registerEmail" name="registerEmail" placeholder="Email Address" value="<?php echo set_value('registerEmail'); ?>">
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerEmail'); ?><!--</span>-->
-
-	<input type="text" id="registerFName" name="registerFName" placeholder="Name" value="<?php echo set_value('registerFName'); ?>" style="width: 48%;float: left;">
-	<input type="text" id="registerLName" name="registerLName" placeholder="Last Name" value="<?php echo set_value('registerLName'); ?>" style="width: 48%;float: right;">
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerFName'); ?><!--</span>-->
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerLName'); ?><!--</span>-->
-
-	<input type="password" id="registerPassword" name="registerPassword" placeholder="Password" style="width:48%;float: left;">
-	<input type="password" id="registerRepeatPassword" name="registerRepeatPassword" placeholder="Confirm Password" style="width: 48%;float: right;">
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerPassword'); ?><!--</span>-->
-
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerRepeatPassword'); ?><!--</span>-->
-
-	<input type="tel" id="registerContact" name="registerContact" placeholder="Contact No." value="<?php echo set_value('registerContact'); ?>">
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerContact'); ?><!--</span>-->
-
+	<input type="text" id="registerEmail" <?php echo form_error('registerEmail') ? 'class="errorMessage"' : '' ?> name="registerEmail" placeholder="<?php echo form_error('registerEmail') ? form_error('registerEmail') : 'Email Address' ?>" value="<?php echo set_value('registerEmail'); ?>">
+	<input type="text" id="registerFName" <?php echo form_error('registerFName') ? 'class="errorMessage"' : '' ?>name="registerFName" placeholder="<?php echo form_error('registerFName') ? form_error('registerFName') : 'First Name' ?>" value="<?php echo set_value('registerFName'); ?>" style="width: 48%;float: left;">
+	<input type="text" id="registerLName" <?php echo form_error('registerLName') ? 'class="errorMessage"' : '' ?>name="registerLName" placeholder="<?php echo form_error('registerLName') ? form_error('registerLName') : 'Last Name' ?>" value="<?php echo set_value('registerLName'); ?>" style="width: 48%;float: right;">
+	<input type="password" id="registerPassword" <?php echo form_error('registerPassword') ? 'class="errorMessage"' : '' ?>name="registerPassword" placeholder="<?php echo form_error('registerPassword') ? form_error('registerPassword') : 'Password' ?>" style="width:48%;float: left;">
+	<input type="password" id="registerRepeatPassword" <?php echo form_error('registerRepeatPassword') ? 'class="errorMessage"' : '' ?>name="registerRepeatPassword" placeholder="<?php echo form_error('registerRepeatPassword') ? form_error('registerRepeatPassword') : 'Confirm Password' ?>" style="width: 48%;float: right;">
+	<input type="tel" id="registerContact" <?php echo form_error('registerContact') ? 'class="errorMessage"' : '' ?>name="registerContact" placeholder="<?php echo form_error('registerContact') ? form_error('registerContact') : 'Contact No.' ?>" value="<?php echo set_value('registerContact'); ?>">
 	<select class="chosen-select" id="registerGroup" name="registerGroup[]" data-placeholder="Select Faculty" multiple>
 		<option value="not_applicable">Not Applicable</option>
 		<?php
@@ -82,8 +62,6 @@ echo form_open('register/registerUsers', $attributes);
 		}
 		?>
 	</select>
-	<!--		<span class="errorMessage">--><?php //echo form_error('registerGroup'); ?><!--</span>-->
-
 	<button>Register</button>
 
 	<div class="already">
