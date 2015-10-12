@@ -26,8 +26,9 @@ Class model_user extends CI_Model {
 			'fname' => $registerFName,
 			'lname' => $registerLName,
 			'contact' => $registerContact,
-			'usertype' => 'user'
-			);
+			'usertype' => 'user',
+			'status' => 0
+		);
 
 		$this->db->insert('users', $data);
 		return $this->db->insert_id();
