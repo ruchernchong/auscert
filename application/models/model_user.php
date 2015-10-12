@@ -73,5 +73,49 @@ Class model_user extends CI_Model {
 			return false;
 		}
 	}
+
+	// Create email verification.
+	function VerifyEmail($recipient) {
+		$from = "registration@ruchern.com";
+		$subject = "Welcome AusCert! Verify your email address!";
+		$message = "Dear User, "
+			. br(2) .
+			"Welcome to AusCert. A new and wonderful adventure awaits you."
+			. br(2) .
+			"To being, please kindly click on the activation link below to verify your email address."
+			. br(2) . base_url('register/verify') . $recipient . "." . br(3) .
+			"Thank you,"
+			. br(2) .
+			"AusCert Administrator";
+
+		$config['protocol'] = 'smtp';
+		$config['smtp_host'] = 'ssl://smtp.gmail.com';
+		$config['smtp_port'] = '587';
+		$config['smtp_user'] = $from;
+		$config['smtp_pass'] = '12M34h56!';
+		$config['mailtype'] = 'html';
+		$config['charset'] = 'utf8';
+		$config['wordwrap'] = TRUE;
+		$config['newline'] = "\r\n";
+
+		$this->email->initialize($config);
+
+		$this->email->from($from, 'ruchern.com');
+		$this->email->to($recipient);
+		$this->email->subject($subject);
+		$this->email->message($message);
+
+		return $this->email->send();
+	}
+
+	// Verify if Email is valid.
+	function VerifyEmailID($key) {
+		$data = array(
+			'status' => 1
+		);
+		$this->db->where('email', $key);
+
+		return $this->db->update('users', $data);
+	}
 }
 ?>

@@ -22,7 +22,6 @@
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/angular.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/js/app.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quiz.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
@@ -30,13 +29,7 @@
 	<script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
 </head>
 <body>
-<div class="loader"></div>
-<script>
-	$(window).ready(function() {
-		// Animate loader off screen
-		$(".loader").fadeOut(1000);
-	});
-</script>
+<div id="loader"></div>
 <div id="wrapper">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">

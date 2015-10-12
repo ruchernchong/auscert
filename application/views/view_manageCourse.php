@@ -204,6 +204,16 @@
 //		})
 //	})
 
+
+	$(document).ajaxStart(function() {
+		$("#loader").addClass("loader");
+		$(".loader").fadeIn("slow");
+	});
+
+	$(document).ajaxStop(function() {
+		$(".loader").fadeOut("slow");
+	});
+
 </script>
 </body>
 </html>

@@ -37,6 +37,23 @@ if (!empty($this->session->flashdata('register-success'))) {
 }
 ?>
 <?php
+if (!empty($this->session->flashdata('email-verified'))) {
+	?>
+	<script>
+		$(function() {
+			$.notifyBar({
+				html: "<?php echo $this->session->flashdata('email-verified'); ?>",
+				cssClass: "success",
+				delay: 5000,
+				closeOnClick: true,
+				animationSpeed: "normal"
+			});
+		});
+	</script>
+	<?php
+}
+?>
+<?php
 if (!empty($this->session->flashdata('login-error'))) {
 	?>
 	<script>

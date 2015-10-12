@@ -5,8 +5,12 @@ class register extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('model_user');
-		$this->load->library('form_validation');
-		$this->load->library('password');
+		$this->load->library(
+			array(
+				'form_validation',
+				'password',
+				'email'
+			));
 		$this->load->model('model_groupcourse');
 		$this->load->model('model_usergroup');
 		$this->load->model('model_usercourse');
@@ -93,10 +97,28 @@ class register extends CI_Controller {
 				'group' => $registerGroup,
 				'contact' => $registerContact
 			);
-			$this->registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact);
-			$this->session->set_flashdata('register-success', 'We have sent ' . $registerEmail . ' instructions to activate your account. You will have limited access until you have verified your email address.');
+
+			if ($this->registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact)) {
+				if ($this->model_user->VerifyEmail($registerEmail)) {
+					$this->session->set_flashdata('register-success', 'We have sent ' . $registerEmail . ' instructions to activate your account.'
+						. br(1) .
+						'You will have limited access until you have verified your email address.');
+
+					redirect('login', 'refresh');
+				}
+			}
+		}
+	}
+
+	public function verify($hash = NULL) {
+		if ($this->model_user->VerifyEmailID($hash)) {
+			$this->session->set_flashdata('email-verified', 'Your email is successfully verified.');
 
 			redirect('login', 'refresh');
+		} else {
+			$this->session->set_flashdata('email-not-verified', 'Sorry! There was an error verifying your email address.'
+				.br(1).
+				'Please contact regisration@ruchern.com.');
 		}
 	}
 
@@ -131,6 +153,8 @@ class register extends CI_Controller {
 			}
 		}
 	}
+
+
 
 	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debugConsole($data) {
