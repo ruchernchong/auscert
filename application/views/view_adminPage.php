@@ -229,7 +229,7 @@ $("#menu-toggle").click(function(e) {
 		var imgURL = "<?php echo base_url('assets/img/user-placeholder.jpg'); ?>";
 
 		$("#userSearchBar").keyup(function(){
-			if ($("#userSearchBar").val().length>1){
+			if ($("#userSearchBar").val().length>3){
 				$('#userSearchPanel').show();
 				$.ajax({
 					type:"post",
@@ -248,7 +248,9 @@ $("#menu-toggle").click(function(e) {
 //										'<td>' + value.username + '</td>',
 										'<td class=\"client-avatar\">',
 //										'<img src=\"' + imgURL + '\">&emsp;',
-										'<a data-toggle=\"tab\" href=\"#' + value.username + '\" class=\"client-link\">' + value.username + '</a>',
+										'<a data-toggle=\"tab\" href=\"#' + value.userID + '\" class=\"client-link\">' + value.fname + '</a>',
+										'     ',
+										'<a data-toggle=\"tab\" href=\"#' + value.userID + '\" class=\"client-link\">' + value.lname + '</a>',
 										'</td>',
 										'<tr>'
 									);

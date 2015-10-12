@@ -46,8 +46,9 @@ Class model_user extends CI_Model {
 	}
 
 	//searches for a course based on courseName
-	public function GetUserByName($userName) {
-		$this->db->like('userName', $userName);
+	public function GetUserByName($searchTerm) {
+		$this->db->like('fname', $searchTerm);
+		$this->db->or_like('lname', $searchTerm);
 		$query = $this->db->get('users');
 
 		if ($query->num_rows > 0) {
