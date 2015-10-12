@@ -15,12 +15,33 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="input-group">
-							<input type="search" placeholder="Search" class="form-control">
+							<input type="search" placeholder="Search" class="form-control" id="userSearchBar">
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-primary">
 									<i class="fa fa-search"></i>
 								</button>
 							</span>
+						</div>
+					</div>
+				</div>
+
+				<div id="userSearchPanel" class="col-lg-12">
+					<div class="panel panel-primary">
+						<div class="panel-body" id="resultBox">
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Groups</th>
+										<th>User Type</th>
+										<th>Email Address</th>
+										<th>Contact No.</th>
+									</tr>
+								</thead>
+								<tbody>
+									<div id="resultBox">
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -197,11 +218,60 @@ $("#menu-toggle").click(function(e) {
 	e.preventDefault();
 	$("#wrapper").toggleClass("toggled");
 });
-
-$(document).ready(function() {
-	$('[data-toggle="tooltip"]').tooltip();
-	$('#pageAdmin').removeAttr('href');
-});
 </script>
+
+<script>
+	$(document).ready(function(){
+		$('#userSearchPanel').hide();
+		$('[data-toggle="tooltip"]').tooltip();
+		$('#pageAdmin').removeAttr('href');
+		var siteURL = "<?php echo site_url('learning/') ?>";
+		var imgURL = "<?php echo base_url('assets/img/user-placeholder.jpg'); ?>";
+
+		$("#userSearchBar").keyup(function(){
+			if ($("#userSearchBar").val().length>1){
+				$('#userSearchPanel').show();
+				$.ajax({
+					type:"post",
+					url: "<?php echo base_url('admin/searchUser'); ?>",
+					cache: false,
+					data: 'userSearch='+$("#userSearchBar").val(),
+					success: function(response){
+						$("#resultBox").html("");
+						var obj=JSON.parse(response);
+						if (obj.length>0) {
+							try {
+								var items=[];
+								$.each(obj, function(index, value){
+									items.push(
+										'<tr>',
+//										'<td>' + value.username + '</td>',
+										'<td class=\"client-avatar\">',
+//										'<img src=\"' + imgURL + '\">&emsp;',
+										'<a data-toggle=\"tab\" href=\"#' + value.username + '\" class=\"client-link\">' + value.username + '</a>',
+										'</td>',
+										'<tr>'
+									);
+								});
+								$("#resultBox").append.apply($("#resultBox"),items);
+							} catch(e) {
+								alert('Exeption while request..')
+							}
+						}else {
+							$('#finalResult').html($('<li/>').text("No Courses Found"));
+						}
+					},
+					error: function(){
+						alert('Error 2');
+					}
+				});
+			}
+			return false;
+		})
+
+
+	})
+</script>
+
 </body>
 </html>

@@ -110,4 +110,11 @@ class admin extends CI_Controller {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->DeactivateCourse($courseID);
 	}
+
+	//AJAX search for courses
+	function searchUser() {
+		$searchTerm = $this->input->post('userSearch');
+		$query = $this->model_user->GetUserByName($searchTerm);
+		echo json_encode($query);
+	}
 }

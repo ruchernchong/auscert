@@ -46,17 +46,12 @@ echo form_open('register/registerUsers', $attributes);
 <div class="content">
 
 	<div class="title">Register</div>
-
 	<input type="text" id="registerEmail" <?php echo form_error('registerEmail') ? 'class="errorMessage"' : '' ?> name="registerEmail" placeholder="<?php echo form_error('registerEmail') ? form_error('registerEmail') : 'Email Address' ?>" value="<?php echo set_value('registerEmail'); ?>">
-
 	<input type="text" id="registerFName" <?php echo form_error('registerFName') ? 'class="errorMessage"' : '' ?>name="registerFName" placeholder="<?php echo form_error('registerFName') ? form_error('registerFName') : 'First Name' ?>" value="<?php echo set_value('registerFName'); ?>" style="width: 48%;float: left;">
 	<input type="text" id="registerLName" <?php echo form_error('registerLName') ? 'class="errorMessage"' : '' ?>name="registerLName" placeholder="<?php echo form_error('registerLName') ? form_error('registerLName') : 'Last Name' ?>" value="<?php echo set_value('registerLName'); ?>" style="width: 48%;float: right;">
-
 	<input type="password" id="registerPassword" <?php echo form_error('registerPassword') ? 'class="errorMessage"' : '' ?>name="registerPassword" placeholder="<?php echo form_error('registerPassword') ? form_error('registerPassword') : 'Password' ?>" style="width:48%;float: left;">
 	<input type="password" id="registerRepeatPassword" <?php echo form_error('registerRepeatPassword') ? 'class="errorMessage"' : '' ?>name="registerRepeatPassword" placeholder="<?php echo form_error('registerRepeatPassword') ? form_error('registerRepeatPassword') : 'Confirm Password' ?>" style="width: 48%;float: right;">
-
 	<input type="tel" id="registerContact" <?php echo form_error('registerContact') ? 'class="errorMessage"' : '' ?>name="registerContact" placeholder="<?php echo form_error('registerContact') ? form_error('registerContact') : 'Contact No.' ?>" value="<?php echo set_value('registerContact'); ?>">
-
 	<select class="chosen-select" id="registerGroup" name="registerGroup[]" data-placeholder="Select Faculty" multiple>
 		<option value="not_applicable">Not Applicable</option>
 		<?php
@@ -67,7 +62,6 @@ echo form_open('register/registerUsers', $attributes);
 		}
 		?>
 	</select>
-
 	<button>Register</button>
 
 	<div class="already">
