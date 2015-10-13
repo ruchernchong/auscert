@@ -112,7 +112,7 @@ class admin extends CI_Controller {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->DeactivateCourse($courseID);
 	}
-	
+
 	//AJAX search for users
 	function searchUser()
 	{
