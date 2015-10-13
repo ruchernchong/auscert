@@ -223,12 +223,15 @@ a {
 	margin: 10px 0;
 }
 .errorMessage::-webkit-input-placeholder {
-	color: #b94a48;
+	/*color: #b94a48;*/
+	color: #cc0000;
 }
-.content .errorMessage,
-.content .errorMessage,
 .content .errorMessage {
-	border-bottom: 1px #FF0000 solid;
+	border-bottom: 2px #cc0000 solid;
+}
+
+.content .successMessage {
+	border-bottom: 2px #00cc00 solid;
 }
 /* Paste this css to your style sheet file or under head tag */
 /* This only works with JavaScript,
