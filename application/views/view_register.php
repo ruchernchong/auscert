@@ -36,7 +36,7 @@ if (!empty($this->session->flashdata('register-error'))) {
 			$.notifyBar({
 				html: "<?php echo $this->session->flashdata('register-error'); ?>",
 				cssClass: "error",
-				delay: 86400,
+				delay: 3000,
 				clickToClose: true,
 				animationSpeed: "normal"
 			});
