@@ -138,8 +138,7 @@ class register extends CI_Controller {
 	}
 
 	public function isStrongPassword($password) {
-//		if (preg_match('#[0-9]#', $password) && preg_match('#[a-zA-Z]#', $password) || preg_match('#[!@#$%^&*()]#', $password)) {
-		if (preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]$/', $password) || preg_match('/^(?=.*[a-zA-Z])(?=.*[$@$!%*#?&])[a-zA-Z$@$!%*#?&]$/', $password)) {
+		if (preg_match('/^(.*[a-zA-Z])(.*\d)$/', $password) || preg_match('/^(.*[a-zA-Z])(.*[$@$!%*#?&])$/', $password)) {
 			return true;
 		} else {
 			$this->form_validation->set_message('isStrongPassword',
