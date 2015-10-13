@@ -119,7 +119,6 @@ class edits extends CI_Controller {
 		while (true) {
 			$questionText = $this->input->post(sprintf('question-%d', $questionOrder));
 			
-			error_log($questionText);
 			if ($questionText == NULL) {
 				break;
 			}
