@@ -12,6 +12,7 @@ class register extends CI_Controller {
 				'password',
 				'email'
 			));
+
 		$this->load->model('model_groupcourse');
 		$this->load->model('model_usergroup');
 		$this->load->model('model_usercourse');
@@ -171,9 +172,9 @@ class register extends CI_Controller {
 	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debugConsole($data) {
 		if (is_array($data)) {
-			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+			$output = "<script>console.log('Debug Objects: " . implode(',', $data) . "');</script>";
 		} else {
-			$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+			$output = "<script>console.log('Debug Objects: " . $data . "');</script>";
 
 			echo $output;
 		}

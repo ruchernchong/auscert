@@ -112,14 +112,7 @@ class admin extends CI_Controller {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->DeactivateCourse($courseID);
 	}
-
-//	//AJAX search for users
-//	function searchUser() {
-//		$searchTerm = $this->input->post('userSearch');
-//		$query = $this->model_user->GetUserByName($searchTerm);
-//		echo json_encode($query);
-//	}
-
+	
 	//AJAX search for users
 	function searchUser()
 	{
@@ -129,6 +122,7 @@ class admin extends CI_Controller {
 		if ($users) {
 			$noResult = FALSE;
 			$usersAndGroups = [];
+
 			foreach ($users as $user) {
 				$groupArray = (!empty($this->model_usergroup->GetUserGroups($user->userID)) ? $this->model_usergroup->GetUserGroups($user->userID) : '');
 				$usersList = [
@@ -145,7 +139,7 @@ class admin extends CI_Controller {
 			}
 			$data2['users'] = $usersAndGroups;
 			$payload = array(
-				'html'=>$this->load->view("ajaxPayload", $data2, true),
+				'html' => $this->load->view("ajaxPayload", $data2, true),
 				'noResult' => $noResult
 			);
 		}
