@@ -42,7 +42,7 @@ class register extends CI_Controller {
 		$rules = array(
 			array(
 				'field' => 'registerEmail',
-				'label' => 'Email',
+				'label' => 'Email Address',
 				'rules' => 'required|valid_email|is_unique[users.email]|xss_clean'
 			),
 			array(
@@ -67,7 +67,7 @@ class register extends CI_Controller {
 			),
 			array(
 				'field' => 'registerGroup',
-				'label' => 'Group',
+				'label' => 'Select Faculty',
 				'rules' => 'required|xss_clean'
 			),
 			array(
