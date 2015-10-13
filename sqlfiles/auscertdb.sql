@@ -14,6 +14,7 @@ CREATE TABLE `answers` (
   `courseID` int(11) NOT NULL,
   `questionOrder` int(11) NOT NULL,
   `answerOrder` int(11) NOT NULL,
+  `correct` tinyint(1) NOT NULL DEFAULT '0',
   `answerText` text CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -66,6 +67,7 @@ CREATE TABLE `courses` (
   `creator` varchar(255) DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `passPercentage` int(7) UNSIGNED NOT NULL DEFAULT '50',
+  `version` int(10) unsigned NOT NULL,
   `description` longtext,
   `dateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastEdited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -227,9 +229,9 @@ DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE `user_courses` (
   `userID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
-  `completion` decimal(5,2) NOT NULL,
+  `completion` enum('Not started','Started','Quiz failed','Completed') NOT NULL,
   `description` text,
-  `grading` varchar(255) DEFAULT NULL,
+  `grading` float DEFAULT NULL,
   `mandatory` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -332,6 +334,7 @@ DROP TABLE IF EXISTS `user_results`;
 CREATE TABLE `user_results` (
   `courseID` int(11) NOT NULL,
   `questionOrder` int(11) NOT NULL,
+  `version` int(10) unsigned NOT NULL,
   `userID` int(11) NOT NULL,
   `attempt` int(11) NOT NULL,
   `userAnswer` int(11) NOT NULL
