@@ -58,12 +58,12 @@ class register extends CI_Controller {
 			array(
 				'field' => 'registerPassword',
 				'label' => 'Password',
-				'rules' => 'required|matches[registerRepeatPassword]|xss_clean'
+				'rules' => 'required|matches[registerRepeatPassword]|min_length[8]|callback_isStrongPassword|xss_clean'
 			),
 			array(
 				'field' => 'registerRepeatPassword',
 				'label' => 'Confirm Password',
-				'rules' => 'required|xss_clean'
+				'rules' => 'required|matches[registerPassword]|min_length[8]|xss_clean'
 			),
 			array(
 				'field' => 'registerGroup',
@@ -134,6 +134,17 @@ class register extends CI_Controller {
 			$this->session->set_flashdata('email-not-verified', 'Sorry! There was an error verifying your email address.'
 				.br(1).
 				'Please contact registration@ruchern.com.');
+		}
+	}
+
+	public function isStrongPassword($password) {
+//		if (preg_match('#[0-9]#', $password) && preg_match('#[a-zA-Z]#', $password) || preg_match('#[!@#$%^&*()]#', $password)) {
+		if (preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]$/', $password) || preg_match('/^(?=.*[a-zA-Z])(?=.*[$@$!%*#?&])[a-zA-Z$@$!%*#?&]$/', $password)) {
+			return true;
+		} else {
+			$this->form_validation->set_message('isStrongPassword',
+				'The %s field requires at least one number or symbol.');
+			return false;
 		}
 	}
 
