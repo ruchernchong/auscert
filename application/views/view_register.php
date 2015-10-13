@@ -19,6 +19,16 @@
 
 <body>
 <?php
+if (empty(validation_errors())) {
+} else {
+	?>
+	<div class="tooltip">
+		<?php echo validation_errors(); ?>
+	</div>
+	<?php
+}
+?>
+<?php
 if (!empty($this->session->flashdata('register-error'))) {
 	?>
 	<script>
