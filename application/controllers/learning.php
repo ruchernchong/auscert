@@ -87,7 +87,7 @@ class learning extends CI_Controller {
 		
 		$i = 0;
 		while ($this->input->post('q' . $i) != NULL) {
-			array_push($results,  $this->input->post('q' . $i));
+			$results[$i] = $this->input->post('q' . $i);
 			$i++;
 		}
 		
@@ -122,7 +122,7 @@ class learning extends CI_Controller {
 
 		$course = $this->model_course->GetCourseById($courseID);
 
-		if($grade * 100 >= $course->passPercentage + 0.001) {
+		if($grade * 100 + 0.001 >= $course->passPercentage) {
 			// quiz passed, add small value to allow for float inaccuracy
 			$this->model_usercourse->UpdateStatus($courseID, $userID, 4);
 		} else {

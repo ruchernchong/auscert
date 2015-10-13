@@ -58,7 +58,6 @@
 									</div>
 									<?php
 								}
-								error_log($completed);
 								if(count($questions) > 0 && ! $completed) {
 								?>
 									<div class="tab-pane fade" id="course-quiz">
