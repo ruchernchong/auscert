@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta name="google-site-verification" content="1LBGW060DUsPKhNgB2y34EQATnRahk9D3F9vR5VyFaI" />
 	<title>AusCert | Login</title>
 	<!-- <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" /> -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
@@ -13,8 +14,6 @@
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/angular.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
-
-	<meta name="google-site-verification" content="1LBGW060DUsPKhNgB2y34EQATnRahk9D3F9vR5VyFaI" />
 </head>
 
 <body>
