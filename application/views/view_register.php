@@ -18,6 +18,7 @@
 </head>
 
 <body>
+<div class="loader"></div>
 <?php
 if (empty(validation_errors())) {
 } else {
@@ -101,6 +102,11 @@ echo form_open('register/registerUsers', $attributes);
 	$(".chosen-select").chosen({
 		no_results_text: "Oops, nothing found!",
 		max_selected_options: 4
+	});
+
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".loader").fadeOut("slow");;
 	});
 </script>
 </body>
