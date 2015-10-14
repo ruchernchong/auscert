@@ -13,6 +13,9 @@ class home extends CI_Controller {
 		$this->load->model('model_group');
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$thisUserID = $this->session->userdata('logged_in')['userID'];
@@ -86,6 +89,9 @@ class home extends CI_Controller {
 
 	//Enrol a user to a course
 	function EnrolToCourse() {
+	/**
+	 * Enrol a user to a course
+	 */
 		$session_data = $this->session->userdata('logged_in');
 		$courseID = $this->uri->segment(2);
 		$this->model_usercourse->RegisterToCourse($session_data['userID'], $courseID);
@@ -95,6 +101,9 @@ class home extends CI_Controller {
 
 	//Drop a user from a course
 	function dropCourse() {
+	/**
+	 * Drop a user from a course
+	 */
 		$session_data = $this->session->userdata('logged_in');
 		$courseID = $this->uri->segment(2);
 		$this->model_usercourse->DropFromCourse($session_data['userID'], $courseID);

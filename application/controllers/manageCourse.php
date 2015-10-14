@@ -13,6 +13,9 @@ class manageCourse extends CI_Controller {
 	}
 
 	function _remap() {
+	/**
+	 *
+	 */
 		$method = $this->uri->segment(2);
 
 		switch($method){
@@ -34,6 +37,9 @@ class manageCourse extends CI_Controller {
 	}
 
 	function index() {
+	/**
+	 *
+	 */
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['fname'] = $session_data['fname'];
@@ -96,6 +102,9 @@ class manageCourse extends CI_Controller {
 
 	//assign courses to a group
 	function addCourses() {
+	/**
+	 * Assigns courses to a group
+	 */
 		$coursesArray = $this->input->post('courseIDs');
 		$groupID = $this->input->post('groupID');
 
@@ -106,6 +115,9 @@ class manageCourse extends CI_Controller {
 
 	//remove courses from a group
 	function removeCourses() {
+	/**
+	 * Removes courses from a group
+	 */
 		$coursesArray = $this->input->post('courseIDs');
 		$groupID = $this->input->post('groupID');
 		foreach ($coursesArray as $courseID) {
@@ -125,6 +137,10 @@ class manageCourse extends CI_Controller {
 
 	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debugConsole($data) {
+	/**
+	 * Helpful function for printing to console. Evoke with $this->debugConsole(value);
+	 * @param $data
+	 */
 		if (is_array($data)) {
 			$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
 		} else {

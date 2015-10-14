@@ -12,6 +12,9 @@ class addCourse extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
@@ -27,7 +30,9 @@ class addCourse extends CI_Controller {
 		}
 	}
 
-	//Create and save a course
+	/**
+	 * Create and save a course
+	 */
 	public function createCourse() {
 		$rules = array(
 			array(

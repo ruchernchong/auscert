@@ -19,6 +19,9 @@ class learning extends CI_Controller {
 	}
 
 	function _remap() {
+	/**
+	 *
+	 */
 		$method = $this->uri->segment(2);
 
 		switch ($method) {
@@ -36,6 +39,9 @@ class learning extends CI_Controller {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
@@ -81,6 +87,9 @@ class learning extends CI_Controller {
 		}
 	}
 
+	/**
+	 * @param $courseID
+	 */
 	public function quiz($courseID) {
 		$course = $this->model_course->GetCourseById($courseID);
 		$userID = $this->session->userdata['logged_in']['userID'];
@@ -111,7 +120,10 @@ class learning extends CI_Controller {
 		redirect('home', 'refresh');
 	}
 
-
+	/**
+	 * @param $courseID
+	 * @param $userID
+	 */
 	public function score_latest_quiz($courseID, $userID) {
 		$answers = $this->model_answer->GetCorrectAnswers($courseID);
 		$attempt = $this->model_quizattempt->GetLatestAttemptNumber($courseID, $userID);

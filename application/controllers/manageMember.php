@@ -13,6 +13,9 @@ class manageMember extends CI_Controller {
 	}
 
 	function _remap(){
+	/**
+	 *
+	 */
 		$method = $this->uri->segment(2);
 
 		switch ($method) {
@@ -34,6 +37,9 @@ class manageMember extends CI_Controller {
 	}
 
 	function index() {
+	/**
+	 *
+	 */
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['fname'] = $session_data['fname'];
@@ -95,6 +101,9 @@ class manageMember extends CI_Controller {
 
     //assign users to a group
 	function addMembers() {
+	/**
+	 * Assigns users to a group
+	 */
 		$usersArray = $this->input->post('userIDs');
 		$groupID = $this->input->post('groupID');
 
@@ -105,6 +114,9 @@ class manageMember extends CI_Controller {
 
     //remove users from a group
 	function removeMembers() {
+	/**
+	 * Remove users from a group
+	 */
 		$usersArray = $this->input->post('userIDs');
 		$groupID = $this->input->post('groupID');
 
@@ -115,6 +127,10 @@ class manageMember extends CI_Controller {
 
     //Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	function debug($data) {
+	/**
+	 * Helpful function for printing to console. Evoke with $this->debugConsole(value);
+	 * @param $data
+	 */
 		if (is_array($data)) {
 			$output = "<script>console.log('Debug Objects: " . implode( ',', $data) . "');</script>";
 		} else {

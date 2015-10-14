@@ -12,6 +12,9 @@ class course extends CI_Controller {
 		$this->load->model('model_slide');
 	}
 	
+	/**
+	 *
+	 */
 	public function index() {
 		if($this->session->userdata('logged_in')) {
 			$query = $this->model_usercourse->GetUserCourses();

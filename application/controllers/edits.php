@@ -15,6 +15,9 @@ class edits extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 	}
 
+	/**
+	 *
+	 */
 	function _remap() {
 		$method = $this->uri->segment(2);
 
@@ -33,6 +36,9 @@ class edits extends CI_Controller {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
@@ -85,9 +91,11 @@ class edits extends CI_Controller {
 			redirect('login', 'refresh');
 		}
 	}
-	
-	// Updates the description for a course and saves slides, quiz questions and quiz answers.
-	// Deletes any excess content if the user has removed content
+
+	/**
+	 * Updates the description for a course and saves slides, quiz questions and quz answers.
+	 * Deletes any excess content if the user has removed content
+	 */
 	public function save() {
 		$courseID = $this->uri->segment(3);
 		$courseName = $this->input->post('course-name');

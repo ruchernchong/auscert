@@ -25,6 +25,9 @@ class login extends CI_Controller {
 		$this->load->model('model_user');
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			redirect('home', 'refresh');

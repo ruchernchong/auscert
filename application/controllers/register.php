@@ -35,6 +35,9 @@ class register extends CI_Controller {
 	}
 
 	//Create user and assign him to groups
+	/**
+	 * Creates user and assigns the person to groups
+	 */
 	public function registerUsers() {
 		$groups = $this->model_group->GetPublicGroups();
 
@@ -123,6 +126,9 @@ class register extends CI_Controller {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public function verify() {
 		$hash = $this->uri->segment(3);
 
@@ -140,6 +146,12 @@ class register extends CI_Controller {
 		}
 	}
 
+	/**
+	 * Using Regular Expressions (Regex method) to enforce a strong password policy
+	 * Password must have at least one alphabet and one number, or one alphabet and one symbol
+	 * @param $password
+	 * @return bool
+	 */
 	public function isStrongPassword($password) {
 		if (preg_match('/^(.*[a-zA-Z])(.*\d)$/', $password) || preg_match('/^(.*[a-zA-Z])(.*[$@$!%*#?&])$/', $password)) {
 			return true;
@@ -153,6 +165,19 @@ class register extends CI_Controller {
 	//Adds user to the default AllUser group in addition to their specialised groups.
 	//Also assigns courses to them based on their grouping
 	function registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact, $registerActivationKey) {
+	/**
+	 *
+	 * Adds user to the default AllUser group in addition to their specialised groups
+	 * Also assigns courses to them based on their grouping
+	 * @param $registerEmail
+	 * @param $registerPassword
+	 * @param $registerFName
+	 * @param $registerLName
+	 * @param $registerGroup
+	 * @param $registerContact
+	 * @param $registerActivationKey
+	 * @return bool
+	 */
 		$thisUserID = $this->model_user->registerUsers($registerEmail, $registerPassword, $registerFName, $registerLName, $registerContact, $registerActivationKey);
 
 		//Default AllUser group and courses
@@ -183,6 +208,10 @@ class register extends CI_Controller {
 	}
 
 	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
+	/**
+	 * Helpful function for printing to console. Evoke with $this->debugConsole(value);
+	 * @param $data
+	 */
 	function debugConsole($data) {
 		if (is_array($data)) {
 			$output = "<script>console.log('Debug Objects: " . implode(',', $data) . "');</script>";
