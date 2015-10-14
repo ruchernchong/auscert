@@ -39,9 +39,6 @@ if (!empty($this->session->flashdata('welcome'))) {
 							<?php
 							if (!empty($userCourses)) {
 							?>
-							<thead>
-							<th>Course Name</th>
-							</thead>
 							<tbody>
 							<?php
 							foreach ($userCourses as $userCourse) {
@@ -161,7 +158,7 @@ if (!empty($this->session->flashdata('welcome'))) {
 					<div class="table-responsive">
 						<table class="table table-hover">
 							<?php
-							if (!empty($userCourses[0]->completion)) {
+							if (!empty($userCourses)) {
 							?>
 							<thead>
 							<th>Status</th>

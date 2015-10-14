@@ -22,6 +22,7 @@ Class model_usercourse extends CI_Model {
 		$this->db->join('courses', 'courses.courseID = user_courses.courseID', 'INNER');
 		$this->db->order_by('courseName', 'ASC');
 		$query = $this->db->get('user_courses');
+
 		return $query->result();
 	}
 
