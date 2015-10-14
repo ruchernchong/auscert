@@ -1,3 +1,28 @@
+<!--Modal popup for delete course-->
+<div id="courseDelModal" class="modal fade" role="dialog">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+				<h4>Delete Course</h4>
+			</div>
+			<div class="modal-body">
+				<h5>The following course will be deleted. All users and courses will be disassociated from it. Are you sure?</h5>
+				<h6>CourseID</h6>
+				<a><h6 id="delID"></h6></a>
+				<h6>CourseName</h6>
+				<a><h8 id="delName"></h8></a>
+			</div>
+			<div class="modal-footer">
+				<a id="yesDelete" href="" type="button" class="btn btn-success">Yes</a>
+				<a type="button" class="btn btn-danger" data-dismiss="modal">No</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
@@ -159,7 +184,7 @@
 													<i class="fa fa-bar-chart-o"></i>&emsp;Course Analytics
 												</a>
 												&nbsp;
-												<a href="<?php echo site_url('admin/dropCourse/' . $course->courseID); ?>" class="btn btn-sm btn-danger">
+												<a id="<?php echo $course->courseID ?>" data-toggle="modal" data-target="#courseDelModal" class="courseDelBtn btn btn-sm btn-danger" data-delName="<?php echo $course->courseName ?>" data-delUrl="<?php echo site_url('admin/dropCourse/' . $course->courseID); ?>">
 													<i class="fa fa-trash"></i>&emsp;Remove
 												</a>
 											</td>
@@ -257,7 +282,30 @@
 				});
 			}
 			return false;
+		});
+
+
+		//Render bootstrap popup for course delete confirmation
+		$('.project-actions').on('click', '.courseDelBtn', function(){
+//		$('.courseDel').click(function(){
+			var thisID = $(this).attr('id');
+			var thisName = $(this).attr('data-delName');
+			var thisUrl = $(this).attr('data-delUrl');
+//			$.ajax({
+//				cache: false,
+//				type: 'POST',
+//				url: 'admin/getDeleteID',
+//				data: 'courseID=' + thisID,
+//				success: function(data) {
+					$('#courseDelModal').show();
+					$('#delID').html(thisID);
+					$('#delName').html(thisName);
+					$('#yesDelete').attr('href', thisUrl);
+//				}
+//			})
 		})
+
+
 	})
 </script>
 
