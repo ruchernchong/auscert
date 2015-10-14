@@ -49,7 +49,7 @@ Class model_userresult extends CI_Model {
 		if ($query->num_rows > 0) {
 			return $query;
 		}
-		return FALSE;
+		return false;
 	}
 }
 ?>

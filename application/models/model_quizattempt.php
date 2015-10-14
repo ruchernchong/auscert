@@ -65,7 +65,7 @@ Class model_quizattempt extends CI_Model {
 		$query = $this->db->get('quiz_attempt');
 
 		if ($query->num_rows < 1) {
-			return FALSE;
+			return false;
 		}
 
 		return (int) $query->result()[0]->attempt;
@@ -87,7 +87,7 @@ Class model_quizattempt extends CI_Model {
 		if ($query->num_rows > 0) {
 			return $query->row();
 		}
-		return FALSE;
+		return false;
 	}
 
 	/**
@@ -105,7 +105,7 @@ Class model_quizattempt extends CI_Model {
 		if ($query->num_rows > 0) {
 			return $query->row();
 		}
-		return FALSE;
+		return false;
 	}
 }
 ?>
