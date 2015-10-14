@@ -96,7 +96,7 @@ if (!empty($this->session->flashdata('welcome'))) {
 									</td>
 									<td>
 										<?php
-										if ($completedUserCourse->grading > 50) {
+										if ($completedUserCourse->grading >= 50) {
 											?>
 											<p class="btn btn-success pull-right disabled">Pass</p>
 											<?php
