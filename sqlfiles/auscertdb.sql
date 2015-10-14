@@ -166,6 +166,16 @@ INSERT INTO `questions` (`courseID`, `questionOrder`, `questionText`) VALUES
 (12, 4, '<p>Which of the following password examples don&rsquo;t contain one of the practices to avoid when choosing a new password?</p>\n'),
 (12, 5, '<p>Which of the following statements regarding the use of personal details in passwords is true?</p>\n');
 
+DROP TABLE IF EXISTS `quiz_attempt`;
+CREATE TABLE `quiz_attempt` (
+  `courseID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `attempt` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `score` float DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `slides`;
 CREATE TABLE `slides` (
   `slideID` int(11) NOT NULL,
@@ -333,23 +343,11 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 DROP TABLE IF EXISTS `user_results`;
 CREATE TABLE `user_results` (
   `courseID` int(11) NOT NULL,
-  `questionOrder` int(11) NOT NULL,
-  `version` int(10) unsigned NOT NULL,
   `userID` int(11) NOT NULL,
   `attempt` int(11) NOT NULL,
+  `questionNumber` int(11) NOT NULL,
   `userAnswer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `user_results` (`courseID`, `questionOrder`, `userID`, `attempt`, `userAnswer`) VALUES
-(0, 0, 3, 0, 0),
-(0, 1, 3, 0, 0),
-(0, 2, 3, 0, 0),
-(0, 3, 3, 0, 0),
-(0, 4, 3, 0, 0),
-(0, 5, 3, 0, 0),
-(2, 0, 1, 0, 2),
-(2, 0, 3, 0, 0),
-(11, 0, 3, 0, 2);
 
 
 ALTER TABLE `answers`
@@ -369,6 +367,9 @@ ALTER TABLE `group_courses`
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`courseID`,`questionOrder`);
 
+ALTER TABLE `quiz_attempt`
+  ADD PRIMARY KEY (`courseID`,`userID`,`attempt`);
+
 ALTER TABLE `slides`
   ADD PRIMARY KEY (`slideID`),
   ADD KEY `courseID` (`courseID`);
@@ -385,7 +386,7 @@ ALTER TABLE `user_groups`
   ADD KEY `groupID` (`groupID`);
 
 ALTER TABLE `user_results`
-  ADD PRIMARY KEY (`courseID`,`questionOrder`,`userID`,`attempt`) USING BTREE;
+  ADD PRIMARY KEY (`courseID`,`userID`,`attempt`,`questionNumber`);
 
 
 ALTER TABLE `courses`

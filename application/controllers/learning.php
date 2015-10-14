@@ -8,6 +8,7 @@ class learning extends CI_Controller {
 		$this->load->model('model_slide');
 		$this->load->model('model_question');
 		$this->load->model('model_answer');
+		$this->load->model('model_quizattempt');
 		$this->load->model('model_userresult');
 		$this->load->model('model_usercourse');
 		$this->load->library('form_validation');
@@ -35,7 +36,6 @@ class learning extends CI_Controller {
 	public function index() {
 		if($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
-			//$data['username'] = $session_data['username'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "course";
 
@@ -47,8 +47,6 @@ class learning extends CI_Controller {
 
 			if ($query) {
 				$data['course'] = $query;
-//				$slides = $this->model_slide->GetSlidesByCourse($data['course']->courseID);
-//				$questions = $this->model_question->GetQuestions($data['course']->courseID);
 				$slides = $this->model_slide->GetSlidesByCourse($courseID);
 				$questions = $this->model_question->GetQuestions($courseID);
 			}
@@ -62,7 +60,6 @@ class learning extends CI_Controller {
 			if ($questions) {
 				$data['questions'] = $questions;
 				for($i = 0; $i < sizeof($questions); $i++) {
-//					$answers = $this->model_answer->GetAnswers($data['course']->courseID, $questions[$i]->questionOrder);
 					$answers = $this->model_answer->GetAnswers($courseID, $questions[$i]->questionOrder);
 					if ($answers) {
 						$data['answers'][$questions[$i]->questionOrder] = $answers;
@@ -83,6 +80,14 @@ class learning extends CI_Controller {
 
 	public function quiz($courseID) {
 		$course = $this->model_course->GetCourseById($courseID);
+		$userID = $this->session->userdata['logged_in']['userID'];
+
+		$attempt = $this->model_quizattempt->SaveAttempt(
+			$courseID,
+			$userID,
+			$course->version
+		);
+		
 		$results = array();
 		
 		$i = 0;
@@ -93,12 +98,12 @@ class learning extends CI_Controller {
 		
 		$this->model_userresult->SaveResults(
 			$courseID,
-			$course->version,
-			$this->session->userdata['logged_in']['userID'],
+			$userID,
+			$attempt,
 			$results
 		);
 
-		$this->score_latest_quiz($courseID, $this->session->userdata['logged_in']['userID']);
+		$this->score_latest_quiz($courseID, $userID);
 
 		redirect('home', 'refresh');
 	}
@@ -106,18 +111,18 @@ class learning extends CI_Controller {
 
 	public function score_latest_quiz($courseID, $userID) {
 		$answers = $this->model_answer->GetCorrectAnswers($courseID);
-		$results = $this->model_userresult->GetLatestResults($courseID, $userID);
+		$attempt = $this->model_quizattempt->GetLatestAttemptNumber($courseID, $userID);
+		$result = $this->model_userresult->GetResult($courseID, $userID, $attempt);
 
 		$correct = 0;
 
-		foreach ($results->result() as $value) {
-
-			if($value->userAnswer == $answers[$value->questionOrder]) {
+		foreach ($result->result() as $value) {
+			if($value->userAnswer == $answers[$value->questionNumber]) {
 				$correct ++;
 			}
 		}
-		$grade = $correct / $results->num_rows;
-
+		$grade = $correct / $result->num_rows;
+		$this->model_quizattempt->SaveAttemptScore($courseID, $userID, $attempt, $grade);
 		$this->model_usercourse->UpdateScore($courseID, $userID,  $grade);
 
 		$course = $this->model_course->GetCourseById($courseID);
@@ -126,10 +131,9 @@ class learning extends CI_Controller {
 			// quiz passed, add small value to allow for float inaccuracy
 			$this->model_usercourse->UpdateStatus($courseID, $userID, 4);
 		} else {
-			//quiz failed
+			// quiz failed
 			$this->model_usercourse->UpdateStatus($courseID, $userID, 3);
 		}
-
 	}
 }
 ?>
