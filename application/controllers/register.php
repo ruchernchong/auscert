@@ -20,6 +20,9 @@ class register extends CI_Controller {
 		);
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		$groups = $this->model_group->GetPublicGroups();
 
