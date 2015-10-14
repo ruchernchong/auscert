@@ -159,7 +159,6 @@ class register extends CI_Controller {
 
 		foreach ($thisCourses as $thisCourse) {
 			$this->model_usercourse->RegisterToCourse($thisUserID, $thisCourse->courseID);
-
 		}
 
 		//Handle the additional groups and courses
