@@ -77,11 +77,11 @@ class analysis extends CI_Controller {
 		}
 	}
 
-		$courseID = $this->input->get('id', TRUE);
 	/**
 	 * Delete a course
 	 */
 	public function dropCourse() {
+		$courseID = $this->uri->segment(3);
 		$this->model_course->DeleteCourse($courseID);
 
 		redirect('admin', 'refresh');
