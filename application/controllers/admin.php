@@ -151,7 +151,7 @@ class admin extends CI_Controller {
 		$users = $this->model_user->GetUserByName($searchTerm);
 
 		if ($users) {
-			$noResult = FALSE;
+			$noResult = false;
 			$usersAndGroups = [];
 
 			foreach ($users as $user) {
@@ -175,7 +175,7 @@ class admin extends CI_Controller {
 			);
 		}
 		else {
-			$noResult = TRUE;
+			$noResult = true;
 			$payload = array(
 				'noResult' => $noResult
 			);
