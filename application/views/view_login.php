@@ -113,8 +113,6 @@ echo form_open('login/validateLogin', $attributes);
 	<div class="title">Login</div>
 	<input type="text" id="loginEmail" name="loginEmail" placeholder="E-mail" />
 	<input type="password" id="loginPassword" name="loginPassword" placeholder="Password" />
-	<input type="checkbox" id="rememberMe" name="rememberMe" />
-	<label for="rememberMe"></label><span>Remember Me</span>
 	<button>Login</button>
 	<div class="social">
 		<span>Trouble Signing in?</span>
@@ -133,7 +131,7 @@ echo form_open('login/validateLogin', $attributes);
 </form>
 <script>
 	$(window).load(function() {
-// Animate loader off screen
+		// Animate loader off screen
 		$(".loader").fadeOut("slow");;
 	});
 </script>

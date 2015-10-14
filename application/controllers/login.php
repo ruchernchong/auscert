@@ -4,8 +4,11 @@ class login extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->library('form_validation');
-		$this->load->library('password');
+		$this->load->library(
+			array(
+				'form_validation',
+				'password'
+			));
 		$this->load->helper(
 			array(
 				'form',
@@ -27,7 +30,10 @@ class login extends CI_Controller {
 		}
 	}
 
-	//validate a user's login
+
+	/**
+	 * Validate a user's login
+	 */
 	public function validateLogin() {
 		$loginEmail = $this->input->post('loginEmail');
 		$loginPassword = $this->input->post('loginPassword');
@@ -64,13 +70,6 @@ class login extends CI_Controller {
 				'Invalid Email and/or Password.');
 			redirect('login', 'refresh');
 		}
-//		} else {
-//			$this->session->set_flashdata('email-not-verified',
-//				'Your email: ' . $loginEmail . ' is not activated.'
-//				. br(1) .
-//				'You are required to activate your email before logging in.');
-//			redirect('login', 'refresh');
-//		}
 	}
 }
 ?>
