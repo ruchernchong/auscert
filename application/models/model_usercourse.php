@@ -17,8 +17,8 @@ Class model_usercourse extends CI_Model {
 	}
 
 	//Returns a list of the current user's courses
-	public function GetUserCourses() {
-		$this->db->where('userID', $this->session->userdata['logged_in']['userID']);
+	public function GetUserCourses($userID) {
+		$this->db->where('userID', $userID);
 		$this->db->join('courses', 'courses.courseID = user_courses.courseID', 'INNER');
 		$this->db->order_by('courseName', 'ASC');
 		$query = $this->db->get('user_courses');
@@ -38,6 +38,12 @@ Class model_usercourse extends CI_Model {
 		$this->db->insert('user_courses', $data);
 	}
 
+	//Remove a user and his corresponding dropped course from the usercourse table
+	public function DropFromCourse($userID, $courseID) {
+		$data = array('userID' => $userID, 'courseID' => $courseID);
+		$this->db->delete('user_courses', $data);
+	}
+
 	//Returns true if userID and courseID pair already exists in the table
 	public function CourseAlreadyAssigned($userID, $courseID) {
 		$data = array('userID' => $userID, 'courseID' => $courseID);
@@ -48,12 +54,6 @@ Class model_usercourse extends CI_Model {
 		} else {
 			return false;
 		}
-	}
-
-	//Remove a user and his corresponding dropped course from the usercourse table
-	public function DropFromCourse($userID, $courseID) {
-		$data = array('userID' => $userID, 'courseID' => $courseID);
-		$this->db->delete('user_courses', $data);
 	}
 
 	//Returns a list of users who are enrolled in a course
