@@ -4,6 +4,7 @@
  * Class manageUserCourse
  */
 class manageUserCourse extends CI_Controller {
+
     function __construct() {
         parent::__construct();
 
@@ -50,22 +51,20 @@ class manageUserCourse extends CI_Controller {
             $data['menu'] = 'admin';
 
             $userID = $this->uri->segment(2); //get the current userID
-
             $thisUser = $this->model_user->GetUserByID($userID);
-            $this->debugConsole($thisUser->fname);
-            $assignedCourses = $this->model_usercourse->GetUserCourses($userID); //Get courses user is enrolled in
-            $omittedCourses = [];
+            $assignedGroups = $this->model_usergroup->GetUserGroups($userID); //Get groups the user is assigned to
+            $omittedGroups = [];
 
-            if (!empty($assignedCourses)) {
-                foreach ($assignedCourses as $assignedCourse) {
-                    array_push($omittedCourses, $assignedCourse->courseID); //push in all the courses to be omitted
+
+            if (!empty($assignedGroups)) {
+                foreach ($assignedGroups as $assignedGroup) {
+                    array_push($omittedGroups, $assignedGroup['groupID']); //push in all the groups to be omitted
                 }
-                $otherCourses = $this->model_course->GetAllCoursesExcept($omittedCourses);//Get all courses not assigned to user
+                $otherGroups = $this->model_group->GetAllGroupsExcept($omittedGroups);//Get all groups not assigned to user
             }
             else {
-                $otherCourses = $this->model_course->GetAllCourses();
+                $otherGroups = $this->model_group->GetGroups();
             }
-
 
             //Gets the current user object
             if ($thisUser) {
@@ -74,18 +73,18 @@ class manageUserCourse extends CI_Controller {
                 $data['thisUser'] = null;
             }
 
-            //Gets the current user's assigned course
-            if ($assignedCourses) {
-                $data['assignedCourses'] = $assignedCourses;
+            //Gets the current user's assigned group
+            if ($assignedGroups) {
+                $data['assignedGroups'] = $assignedGroups;
             } else {
-                $data['assignedCourses'] = null;
+                $data['assignedGroups'] = null;
             }
 
-            //Gets all the other courses not assigned to the current user
-            if (!empty($otherCourses)) {
-                $data['otherCourses'] = $otherCourses;
+            //Gets all the other groups not assigned to the current user
+            if (!empty($otherGroups)) {
+                $data['otherGroups'] = $otherGroups;
             } else {
-                $data['otherCourses'] = null;
+                $data['$otherGroups'] = null;
             }
 
             //Validates that the user is an admin, deny access otherwise
@@ -94,7 +93,7 @@ class manageUserCourse extends CI_Controller {
                 redirect('home', 'refresh');
             } else {
                 $this->load->view('header', $data);
-                $this->load->view('view_manageUserCourse', $data);
+                $this->load->view('view_manageUserGroup', $data);
             }
         } else {
             redirect('login', 'refresh');
@@ -102,25 +101,26 @@ class manageUserCourse extends CI_Controller {
     }
 
     /**
-     * Assigns courses to a user
+     * assign group to a user
      */
-    public function addCourses() {
-        $courseIDArray = $this->input->post('courseIDs');
+    public function addGroup() {
+        $groupIDArray = $this->input->post('groupIDs');
         $userID = $this->input->post('userID');
 
-        foreach ($courseIDArray as $courseID) {
-            $this->model_usercourse->RegisterToCourse($userID, $courseID);
+        foreach ($groupIDArray as $groupID) {
+            $this->model_usergroup->AddUserToGroup($userID, $groupID);
         }
     }
 
     /**
-     * Removes courses from a user
+     * remove group from a user
      */
-    public function removeCourses() {
-        $courseIDArray = $this->input->post('courseIDs');
+    public function removeGroup() {
+        $groupIDArray = $this->input->post('groupIDs');
         $userID = $this->input->post('userID');
-        foreach ($courseIDArray as $courseID) {
-            $this->model_usercourse->DropFromCourse($userID, $courseID);
+
+        foreach ($groupIDArray as $groupID) {
+            $this->model_usergroup->RemoveUserFromGroup($userID, $groupID);
         }
     }
 

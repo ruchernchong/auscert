@@ -495,7 +495,9 @@ body::-webkit-scrollbar,
 }
 
 input[type=radio].courseActive,
-input[type=checkbox].courseActive {
+input[type=radio].customCheckBox,
+input[type=checkbox].courseActive,
+input[type=checkbox].customCheckBox {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: 1px;
@@ -511,7 +513,9 @@ input[type=checkbox].courseActive {
 }
 
 input[type=radio].courseActive ~ label:before,
-input[type=checkbox].courseActive ~ label:before {
+input[type=checkbox].courseActive ~ label:before,
+input[type=radio].customCheckBox ~ label:before,
+input[type=checkbox].customCheckBox ~ label:before {
 	font-family: FontAwesome;
 	display: inline-block;
 	content: "\f1db";
@@ -522,18 +526,22 @@ input[type=checkbox].courseActive ~ label:before {
 }
 
 input[type=radio].courseActive:checked ~ label:before,
-input[type=checkbox].courseActive:checked ~ label:before {
+input[type=checkbox].courseActive:checked ~ label:before,
+input[type=radio].customCheckBox:checked ~ label:before,
+input[type=checkbox].customCheckBox:checked ~ label:before {
 	content: "\f00c";
 	font-size: 1.2em;
 	color: darkgreen;
 	letter-spacing: 5px;
 }
 
-input[type=checkbox].courseActive ~ label:before {
+input[type=checkbox].courseActive ~ label:before,
+input[type=checkbox].customCheckBox ~ label:before {
 	content: "\f096";
 }
 
-input[type=checkbox].courseActive:checked ~ label:before {
+input[type=checkbox].courseActive:checked ~ label:before,
+input[type=checkbox].customCheckBox:checked ~ label:before {
 	content: "\f046";
 	color: darkgreen;
 }
@@ -541,7 +549,11 @@ input[type=checkbox].courseActive:checked ~ label:before {
 input[type=radio].courseActive:focus ~ label:before,
 input[type=checkbox].courseActive:focus ~ label:before,
 input[type=radio].courseActive:focus ~ label,
-input[type=checkbox].courseActive:focus ~ label {
+input[type=checkbox].courseActive:focus ~ label
+input[type=radio].customCheckBox:focus ~ label:before,
+input[type=checkbox].customCheckBox:focus ~ label:before,
+input[type=radio].customCheckBox:focus ~ label,
+input[type=checkbox].customCheckBox:focus ~ label {
 	color: green;
 }
 

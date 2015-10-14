@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <h1 id="userIDHeader" value="<?php echo $thisUser->userID; ?>" class="page-header">
                     <?php echo $thisUser->fname . " " . $thisUser->lname; ?>&nbsp;
-                    <small>Manage Courses</small>
+                    <small>Manage Groups</small>
                 </h1>
             </div>
 
@@ -14,36 +14,35 @@
                         <div class="col-lg-5">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Courses User is Enrolled In</h3>
-                                    <!--									<input id="leftSearchBar" placeholder="Search Courses">-->
+                                    <h3 class="panel-title">Groups User is Enrolled In</h3>
                                 </div>
                                 <div class="panel-body" style="height: 400px;overflow: auto;">
                                     <table class="table table-striped table-hover">
                                         <thead>
                                         <tr>
                                             <th>Select</th>
-                                            <th>Course Name</th>
-                                            <th>Course ID</th>
+                                            <th>Group Name</th>
+                                            <th>Group ID</th>
                                         </tr>
                                         </thead>
-                                        <tbody id="leftCoursePanel">
+                                        <tbody id="leftGroupPanel">
                                         <?php
-                                        if (!empty($assignedCourses)) {
-                                            foreach($assignedCourses as $assignedCourse) {?>
+                                        if (!empty($assignedGroups)) {
+                                            foreach($assignedGroups as $assignedGroup) {?>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" id="assignedChecked_<?php echo $assignedCourse->courseID; ?>" value="<?php echo $assignedCourse->courseID;?>" class="customCheckBox assignedSelected">
-                                                        <label for="assignedChecked_<?php echo $assignedCourse->courseID; ?>" class="activelabel"></label>
+                                                        <input type="checkbox" id="assignedChecked_<?php echo $assignedGroup['groupID']; ?>" value="<?php echo $assignedGroup['groupID'];?>" class="customCheckBox assignedSelected">
+                                                        <label for="assignedChecked_<?php echo $assignedGroup['groupID']; ?>" class="activelabel"></label>
                                                     </td>
-                                                    <td><?php echo $assignedCourse->courseName; ?></td>
-                                                    <td><?php echo $assignedCourse->courseID; ?></td>
+                                                    <td><?php echo $assignedGroup['organisation']; ?></td>
+                                                    <td><?php echo $assignedGroup['groupID']; ?></td>
                                                 </tr>
                                                 <?php
                                             }
                                         } else {
                                             ?>
                                             <tr>
-                                                <td colspan="3">There are no courses available.</td>
+                                                <td colspan="3">There are no groups available.</td>
                                             </tr>
                                             <?php
                                         }
@@ -56,12 +55,12 @@
 
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <a class="btn btn-success" id="btn_addCourse">
-                                    <i class="fa fa-caret-left"></i>&emsp;Add Course&emsp;&emsp;
+                                <a class="btn btn-success" id="btn_addGroup">
+                                    <i class="fa fa-caret-left"></i>&emsp;Add Group&emsp;&emsp;
                                 </a>
                             </div>
                             <div class="form-group">
-                                <a class="btn btn-danger" id="btn_removeCourse">Remove Course&emsp;
+                                <a class="btn btn-danger" id="btn_removeGroup">Remove Group&emsp;
                                     <i class="fa fa-caret-right"></i>
                                 </a>
                             </div>
@@ -70,30 +69,30 @@
                         <div class="col-lg-5">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Courses Available</h3>
+                                    <h3 class="panel-title">Groups Available</h3>
                                 </div>
                                 <div class="panel-body" style="height: 400px;overflow: auto;">
                                     <table class="table table-striped table-hover">
                                         <thead>
                                         <tr>
                                             <th>Select</th>
-                                            <th>Course Name</th>
-                                            <th>Course ID</th>
+                                            <th>Group Name</th>
+                                            <th>Group ID</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <?php
-                                        if (!empty($otherCourses)) {
-                                            foreach ($otherCourses as $otherCourse) {
+                                        if (!empty($otherGroups)) {
+                                            foreach ($otherGroups as $otherGroup) {
                                                 ?>
-                                                <form id="otherCoursesForm">
+                                                <form id="otherGroupsForm">
                                                     <tr>
                                                         <td>
-                                                            <input type="checkbox" id="otherCheck_<?php echo $otherCourse->courseID;?>" value="<?php echo $otherCourse->courseID;?>" class="customCheckBox otherSelected">
-                                                            <label for="otherCheck_<?php echo $otherCourse->courseID; ?>"></label>
+                                                            <input type="checkbox" id="otherCheck_<?php echo $otherGroup->groupID;?>" value="<?php echo $otherGroup->groupID;?>" class="customCheckBox otherSelected">
+                                                            <label for="otherCheck_<?php echo $otherGroup->groupID; ?>"></label>
                                                         </td>
-                                                        <td><?php echo $otherCourse->courseName; ?></td>
-                                                        <td><?php echo $otherCourse->courseID; ?></td>
+                                                        <td><?php echo $otherGroup->organisation; ?></td>
+                                                        <td><?php echo $otherGroup->groupID; ?></td>
                                                     </tr>
                                                 </form>
                                                 <?php
@@ -101,7 +100,7 @@
                                         } else {
                                             ?>
                                             <tr>
-                                                <td colspan="2">There are no courses available.</td>
+                                                <td colspan="2">There are no groups available.</td>
                                             </tr>
                                             <?php
                                         }
@@ -118,22 +117,22 @@
     </div>
 </div>
 <script>
-    //Get courseIDs of all the checked courses in the other courses table and send an array via ajax
-    $("#btn_addCourse").click(function() {
-        //loop through each checkbox in the table and add checked courseIDs to the array
+    //Get groupIDs of all the checked groups in the other groups table and send an array via ajax
+    $("#btn_addGroup").click(function() {
+        //loop through each checkbox in the table and add checked groupIDs to the array
         var userID = $(userIDHeader).attr('value');
-        var otherCourseIDs = [];
+        var otherGroupIDs = [];
 
         $('.otherSelected').each(function() {
             if (this.checked == true) {
-                otherCourseIDs.push($(this).attr('value'));
+                otherGroupIDs.push($(this).attr('value'));
             }
         });
         $.ajax({
             method: "POST",
-            url: "<?php echo base_url('manageUserCourse/addCourses'); ?>",
+            url: "<?php echo base_url('manageUserGroup/addGroup'); ?>",
             data: {
-                courseIDs : otherCourseIDs,
+                groupIDs : otherGroupIDs,
                 userID : userID
             },
             success: function(response) {
@@ -146,22 +145,22 @@
         });
     });
 
-    //Get courseIDs of all the checked courses in the assigned courses table and send an array via ajax
-    $("#btn_removeCourse").click(function() {
-        //loop through each checkbox in the table and add checked courseIDs to the array
+    //Get groupIDs of all the checked groups in the assigned groups table and send an array via ajax
+    $("#btn_removeGroup").click(function() {
+        //loop through each checkbox in the table and add checked groupIDs to the array
         var userID = $(userIDHeader).attr('value');
-        var assignedCourseIDs = [];
+        var assignedGroupIDs = [];
 
         $('.assignedSelected').each(function() {
             if (this.checked == true) {
-                assignedCourseIDs.push($(this).attr('value'));
+                assignedGroupIDs.push($(this).attr('value'));
             }
         });
         $.ajax({
             method: "POST",
-            url: "<?php echo base_url('manageUserCourse/removeCourses'); ?>",
+            url: "<?php echo base_url('manageUserGroup/removeGroup'); ?>",
             data: {
-                courseIDs : assignedCourseIDs,
+                groupIDs : assignedGroupIDs,
                 userID : userID
             },
             success: function(response) {

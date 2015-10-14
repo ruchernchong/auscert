@@ -34,7 +34,7 @@
                                             ?>
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" id="assignedChecked_<?php echo $groupUser['userID']; ?>" value="<?php echo $groupUser['userID'];?>" class="courseActive assignedSelected">
+                                                    <input type="checkbox" id="assignedChecked_<?php echo $groupUser['userID']; ?>" value="<?php echo $groupUser['userID'];?>" class="customCheckBox assignedSelected">
                                                     <label for="assignedChecked_<?php echo $groupUser['userID']; ?>" class="activelabel"></label>
                                                 </td>
                                                 <td><?php echo $groupUser['userID']; ?></td>
@@ -91,7 +91,7 @@
                                                 <form id="otherUsersForm">
                                                     <tr>
                                                         <td>
-                                                            <input type="checkbox" id="otherCheck_<?php echo $otherUser->userID;?>" value="<?php echo $otherUser->userID;?>" class="courseActive otherSelected">
+                                                            <input type="checkbox" id="otherCheck_<?php echo $otherUser->userID;?>" value="<?php echo $otherUser->userID;?>" class="customCheckBox otherSelected">
                                                             <label for="otherCheck_<?php echo $otherUser->userID; ?>"></label>
                                                         </td>
                                                         <td><?php echo $otherUser->userID; ?></td>

@@ -38,6 +38,25 @@ Class model_group extends CI_Model {
 	}
 
 	/**
+	 * returns a list of groups except the ones stated in the argument
+	 * @param $omittedGroups
+	 * @return bool
+	 */
+	public function GetAllGroupsExcept($omittedGroups) {
+		if (count($omittedGroups) > 0) {
+			$this->db->from('groups');
+			$this->db->order_by('organisation', 'ASC');
+			$this->db->where_not_in('groupID', $omittedGroups);
+			$query = $this->db->get();
+
+			if ($query->num_rows > 0) {
+				return $query->result();
+			}
+			return false;
+		}
+	}
+
+	/**
 	 * returns a group based on the provided groupID
 	 * @param $groupID
 	 * @return bool

@@ -32,7 +32,7 @@
 											foreach($assignedCourses as $assignedCourse) {?>
 												<tr>
 													<td>
-														<input type="checkbox" id="assignedChecked_<?php echo $assignedCourse->courseID; ?>" value="<?php echo $assignedCourse->courseID;?>" class="courseActive assignedSelected">
+														<input type="checkbox" id="assignedChecked_<?php echo $assignedCourse->courseID; ?>" value="<?php echo $assignedCourse->courseID;?>" class="customCheckBox assignedSelected">
 														<label for="assignedChecked_<?php echo $assignedCourse->courseID; ?>" class="activelabel"></label>
 													</td>
 													<td><?php echo $assignedCourse->courseName; ?></td>
@@ -89,7 +89,7 @@
 												<form id="otherCoursesForm">
 													<tr>
 														<td>
-															<input type="checkbox" id="otherCheck_<?php echo $otherCourse->courseID;?>" value="<?php echo $otherCourse->courseID;?>" class="courseActive otherSelected">
+															<input type="checkbox" id="otherCheck_<?php echo $otherCourse->courseID;?>" value="<?php echo $otherCourse->courseID;?>" class="customCheckBox otherSelected">
 															<label for="otherCheck_<?php echo $otherCourse->courseID; ?>"></label>
 														</td>
 														<td><?php echo $otherCourse->courseName; ?></td>
