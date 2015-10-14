@@ -70,24 +70,22 @@ CREATE TABLE `courses` (
   `version` int(11) UNSIGNED NOT NULL,
   `dateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastEdited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `active` tinyint(1) NOT NULL
+  `active` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `courses` (`courseID`, `courseName`, `category`, `description`, `creator`, `passPercentage`, `version`, `dateCreated`, `lastEdited`, `active`) VALUES
 (1, 'Online Security Basics #1', 'Introductory', '<p>Part 1 of the default courses for all users</p>\n', 'leon', 50, 0, '2015-09-28 09:58:03', '2015-09-28 10:00:12', 1),
-(2, 'Online Security Basics #2', 'Introductory', '<p>Part 2 of the default courses for all users</p>\n', 'leon', 50, 0, '2015-09-28 10:00:44', '2015-09-28 10:01:45', 0),
+(2, 'Online Security Basics #2', 'Introductory', '<p>Part 2 of the default courses for all users</p>\n', 'leon', 50, 0, '2015-09-28 10:00:44', '2015-09-28 10:01:45', 1),
 (3, 'Online Security Basics #3', 'Introductory', '<p>Part 3 of the default courses for all users</p>\n', 'leon', 50, 0, '2015-09-28 10:02:22', '2015-09-28 10:03:12', 1),
 (4, 'Phising Scams', 'Safety', '<p>This course will teach you about Phishing Scams.&nbsp;By the end of this course you will expect to have learnt:</p>\n\n<ol>\n	<li>What phishing scams are</li>\n	<li>How to identify phishing attempts</li>\n	<li>What to do if you encounter a phishing attempt</li>\n</ol>\n', 'Tartiner Studios', 50, 0, '2015-03-08 00:00:00', '2015-09-15 12:07:34', 1),
 (5, 'Choosing A Safe Password', 'Security', '<p>This course will guide you through how a password works as well as steps to take to ensure a strong and secure password</p>\r\n', 'Redones', 50, 0, '2015-07-15 00:00:00', '2015-09-02 12:00:18', 1),
-(6, 'Tartiner Studios Training', 'Introductory', 'Self made course designed by team tartiner on the importance of spreading nutella the RIGHT way on bread', 'Tartiner Studios', 50, 0, '2015-08-12 00:00:00', '2015-08-17 00:00:00', 1),
-(7, 'SQL Injection Attacks', 'Cyber Attacks', 'Introduction to what SQL Injection Attacks are and how to avoid them', 'AusCert', 50, 0, '2015-06-19 00:00:00', '2015-08-25 00:00:00', 0),
+(7, 'SQL Injection Attacks', 'Cyber Attacks', 'Introduction to what SQL Injection Attacks are and how to avoid them', 'AusCert', 50, 0, '2015-06-19 00:00:00', '2015-08-25 00:00:00', 1),
 (8, 'Data Encryption', 'Security', '<p>Detailed course on the various methods of data encyyption</p>\n', 'UQ ITEE', 50, 0, '2015-08-12 00:00:00', '2015-09-13 23:39:19', 1),
-(9, 'UQ Staff Security Basics', 'Introductory', 'A compulsory online security course for uq staff', 'UQ BEL', 50, 0, '2015-08-12 00:00:00', '2015-08-17 00:00:00', 0),
+(9, 'UQ Staff Security Basics', 'Introductory', 'A compulsory online security course for uq staff', 'UQ BEL', 50, 0, '2015-08-12 00:00:00', '2015-08-17 00:00:00', 1),
 (10, 'Introduction to Online Security', 'Introductory', 'Ez Workshop.', 'ruchern', 50, 0, '2015-08-20 04:13:41', '2015-08-20 04:13:41', 1),
-(11, 'Tartiner Studios UX Design', 'Design', 'Please submit your UX Video to blog by Tuesday.\r\n\r\n*This is a test post.', 'ruchern', 50, 0, '2015-08-21 02:01:23', '2015-08-21 02:01:23', 1),
 (12, 'UQ Privacy and Online Security', 'Sprint Zero', '2nd Checkpoint', 'RuChern', 50, 0, '2015-08-26 12:45:53', '2015-08-26 12:45:53', 1),
-(13, 'Antiviruses - Selection and Usage', 'Introductory', '<p>Learn to use Children&#39;s Literature Digital Resource (CLDR).</p>\r\n', 'RuChern', 50, 0, '2015-09-01 11:43:15', '2015-09-02 11:50:13', 0),
-(14, 'Choosing a Secure Password', 'Security', '<p>This course will focus on teaching practices recommended by UQ ITS for choosing a secure password. By the end of this course you will know how to choose a password that is:</p>\n\n<ol>\n	<li>Secure from being guessed by another person</li>\n	<li>Secure from being cracked by password cracking software</li>\n	<li>Easy to remember</li>\n</ol>\n', 'leon', 50, 0, '2015-09-14 18:50:03', '2015-09-15 12:09:22', 0);
+(13, 'Antiviruses - Selection and Usage', 'Introductory', '<p>Learn to use Children&#39;s Literature Digital Resource (CLDR).</p>\r\n', 'RuChern', 50, 0, '2015-09-01 11:43:15', '2015-09-02 11:50:13', 1),
+(14, 'Choosing a Secure Password', 'Security', '<p>This course will focus on teaching practices recommended by UQ ITS for choosing a secure password. By the end of this course you will know how to choose a password that is:</p>\n\n<ol>\n	<li>Secure from being guessed by another person</li>\n	<li>Secure from being cracked by password cracking software</li>\n	<li>Easy to remember</li>\n</ol>\n', 'leon', 50, 0, '2015-09-14 18:50:03', '2015-09-15 12:09:22', 1);
 
 DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
@@ -134,7 +132,6 @@ INSERT INTO `group_courses` (`groupID`, `courseID`) VALUES
 (0, 5),
 (1, 5),
 (5, 5),
-(0, 6),
 (0, 7),
 (3, 7),
 (0, 8),
@@ -143,10 +140,6 @@ INSERT INTO `group_courses` (`groupID`, `courseID`) VALUES
 (2, 9),
 (0, 10),
 (2, 10),
-(0, 11),
-(3, 11),
-(9, 11),
-(16, 11),
 (0, 12),
 (1, 12),
 (0, 14);
