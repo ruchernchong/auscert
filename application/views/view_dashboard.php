@@ -2,16 +2,28 @@
 if (!empty($this->session->flashdata('denied'))) {
 	?>
 	<script>
-		$.notify("<?php echo $this->session->flashdata('denied'); ?>", {
-			className: "error",
-			globalPosition: 'bottom right'
+		$.notifyBar({
+			html: "<?php echo $this->session->flashdata('denied'); ?>",
+			cssClass: "error",
+			delay: 3000,
+			clickToClose: true,
+			animationSpeed: "normal"
 		});
 	</script>
 	<?php
 }
-if (!empty($this->session->flashdata('welcome'))) {
+?>
+<?php
+if (!empty($this->session->flashdata('login-success'))) {
 	?>
 	<script>
+		$.notifyBar({
+			html: "<?php echo $this->session->flashdata('login-success'); ?>",
+			cssClass: "success",
+			delay: 3000,
+			clickToClose: true,
+			animationSpeed: "normal"
+		});
 	</script>
 	<?php
 }
