@@ -7,13 +7,13 @@ class addCourse extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
 		$this->load->helper(
 			array(
 				'form', 'url'
 			)
 		);
 		$this->load->library('form_validation');
+		$this->load->model('model_course');
 	}
 
 	/**
