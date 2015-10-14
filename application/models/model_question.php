@@ -15,17 +15,16 @@ Class model_question extends CI_Model {
 	 */
 	public function GetQuestions($courseID) {
 		$this->db->where('courseID', $courseID);
-		$this->db->order_by("questionOrder", "asc"); 
+		$this->db->order_by("questionOrder", "asc");
 
 		$query = $this->db->get('questions');
-		
+
 		if ($query->num_rows > 0) {
 			return $query->result();
 		} else {
 			return array();
-		}	
+		}
 	}
-	
 
 	/**
 	 * Delete all questions for a given course with a question order equal to or higher than that given
@@ -37,7 +36,6 @@ Class model_question extends CI_Model {
 		$this->db->where('questionOrder >=', $questionOrder);
 		$this->db->delete('questions');
 	}
-	
 	
 	/**
 	 * Add a new question to the questions table for a given course, or updates if it already exists
@@ -53,8 +51,8 @@ Class model_question extends CI_Model {
 		if ($query->num_rows > 0) {
 			$data = array(
 				'questionText' => $questionText,
-				);
-			
+			);
+
 			$this->db->where('courseID', $courseID);
 			$this->db->where('questionOrder', $questionOrder);
 			$this->db->update('questions', $data);
@@ -63,8 +61,8 @@ Class model_question extends CI_Model {
 				'courseID' => $courseID,
 				'questionOrder' => $questionOrder,
 				'questionText' => $questionText,
-				);
-			
+			);
+
 			$this->db->insert('questions', $data);
 		}
 	}

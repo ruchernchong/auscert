@@ -29,7 +29,7 @@ Class model_quizattempt extends CI_Model {
 			'attempt' => $attempt,
 			'version' => $version,
 		);
-			
+
 		$this->db->insert('quiz_attempt', $data);
 		return $attempt;
 	}
@@ -61,7 +61,7 @@ Class model_quizattempt extends CI_Model {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('userID', $userID);
 		$query = $this->db->get('quiz_attempt');
-		
+
 		if ($query->num_rows < 1) {
 			return FALSE;
 		}

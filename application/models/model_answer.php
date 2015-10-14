@@ -20,12 +20,12 @@ Class model_answer extends CI_Model {
 		$this->db->order_by("answerOrder", "asc");
 
 		$query = $this->db->get('answers');
-		
+
 		if ($query->num_rows > 0) {
 			return $query->result();
 		} else {
 			return array();
-		}	
+		}
 	}
 
 	/**
@@ -42,12 +42,11 @@ Class model_answer extends CI_Model {
 		$answers = array();
 
 		foreach ($query->result() as $row) {
-    		$answers[$row->questionOrder] = $row->answerOrder;
+			$answers[$row->questionOrder] = $row->answerOrder;
 		}
-		
+
 		return $answers;
 	}
-	
 
 	/**
 	 * Delete all answers for a given course with a answer order equal to or higher than that given
@@ -76,18 +75,18 @@ Class model_answer extends CI_Model {
 		$this->db->where('answerOrder', $answerOrder);
 		$query = $this->db->get('answers');
 
-		
+
 		if ($query->num_rows > 0) {
 			// previous answer with this order exist; update
 			$data = array(
 				'answerText' => $answerText,
 				'correct' => $correct,
-				);
-			
+			);
+
 			$this->db->where('courseID', $courseID);
 			$this->db->where('questionOrder', $questionOrder);
 			$this->db->where('answerOrder', $answerOrder);
-			
+
 			$this->db->update('answers', $data);
 		} else {
 			// previous answer with this order doesn't exist; insert
@@ -97,8 +96,8 @@ Class model_answer extends CI_Model {
 				'answerOrder' => $answerOrder,
 				'correct' => $correct,
 				'answerText' => $answerText,
-				);
-			
+			);
+
 			$this->db->insert('answers', $data);
 		}
 	}

@@ -108,7 +108,7 @@ Class model_course extends CI_Model {
 			'active' =>  $courseActive,
 			'description' => $courseDescription,
 			'passPercentage' => $coursePassPercentage
-			);
+		);
 
 		$this->db->insert('courses', $data);
 		$insert_id = $this->db->insert_id();
@@ -140,7 +140,7 @@ Class model_course extends CI_Model {
 	public function ActivateCourse($courseID) {
 		$data = array(
 			'active' => 1
-			);
+		);
 
 		$this->db->where('courseID', $courseID);
 		$this->db->update('courses', $data);
@@ -150,7 +150,7 @@ Class model_course extends CI_Model {
 	public function DeactivateCourse($courseID) {
 		$data = array(
 			'active' => 0
-			);
+		);
 
 		$this->db->where('courseID', $courseID);
 		$this->db->update('courses', $data);
@@ -185,7 +185,7 @@ Class model_course extends CI_Model {
 			'description' => $courseDescription,
 			'passPercentage' => $coursePassPercentage,
 			'lastEdited' => date("Y-m-d H:i:s", time())
-			);
+		);
 
 		$this->db->where('courseID', $courseID);
 		$this->db->update('courses', $data);

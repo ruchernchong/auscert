@@ -17,7 +17,7 @@ Class model_slide extends CI_Model {
 		$this->db->where('slideID', $this->input->get('slideID'));
 
 		$query = $this->db->get('slides');
-		
+
 		if ($query->num_rows == 1) {
 			return $query->result();
 		}
@@ -35,7 +35,7 @@ Class model_slide extends CI_Model {
 
 		if ($query->num_rows > 0) {
 			return $query->result();
-		} 
+		}
 		return false;
 	}
 
@@ -49,14 +49,13 @@ Class model_slide extends CI_Model {
 		$this->db->order_by("slideOrder", "asc"); 
 
 		$query = $this->db->get('slides');
-		
+
 		if ($query->num_rows > 0) {
 			return $query->result();
 		} else {
 			return array();
-		}		
+		}
 	}
-	
 
 	/**
 	 * Add a new slide to the slides table for a given course, or updates if it already exists
@@ -69,8 +68,8 @@ Class model_slide extends CI_Model {
 		$data = array(
 			'slideTitle' => $slideTitle,
 			'slideContent' =>  $slideContent,
-			);
-		
+		);
+
 		$this->db->where('courseID', $courseID);
 		$this->db->where('slideOrder', $slideOrder);
 		$query = $this->db->get('slides');
@@ -79,8 +78,8 @@ Class model_slide extends CI_Model {
 			$data = array(
 				'slideTitle' => $slideTitle,
 				'slideContent' =>  $slideContent,
-				);
-			
+			);
+
 			$this->db->where('courseID', $courseID);
 			$this->db->where('slideOrder', $slideOrder);
 			$this->db->update('slides', $data);
@@ -90,13 +89,12 @@ Class model_slide extends CI_Model {
 				'slideOrder' => $slideOrder,
 				'slideTitle' => $slideTitle,
 				'slideContent' =>  $slideContent,
-				);
-			
+			);
+
 			$this->db->insert('slides', $data);
 			$insert_id = $this->db->insert_id();
 		}
 	}
-	
 
 	/**
 	 * Delete a slide from a given course with a given ID
@@ -108,7 +106,6 @@ Class model_slide extends CI_Model {
 		$this->db->where('slideOrder', $slideOrder);
 		$this->db->delete('slides');
 	}
-	
 
 	/**
 	 * Delete all slides for a given course with a slide order equal to or higher than that given

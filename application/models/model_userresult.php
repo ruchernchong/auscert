@@ -27,7 +27,7 @@ Class model_userresult extends CI_Model {
 				'attempt' => $attempt,
 				'questionNumber' => $key,
 				'userAnswer' => $value,
-				);
+			);
 			array_push($data, $answer);
 		}
 		$this->db->insert_batch('user_results', $data);

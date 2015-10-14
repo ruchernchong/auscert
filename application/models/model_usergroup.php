@@ -68,7 +68,7 @@ Class model_usergroup extends CI_Model {
 		$user = array(
 			'groupID' => $groupID,
 			'userID' => $userID
-			);
+		);
 		$this->db->insert('user_groups', $user);
 	}
 
@@ -81,7 +81,7 @@ Class model_usergroup extends CI_Model {
 		$user = array(
 			'groupID' => $groupID,
 			'userID' => $userID
-			);
+		);
 		$this->db->where($user);
 		$this->db->delete('user_groups', $user);
 	}
