@@ -212,7 +212,6 @@ INSERT INTO `users` (`userID`, `email`, `password`, `fname`, `lname`, `contact`,
 (4, 'cameronpaulsen0@gmail.com', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'Cameron', 'Paulsen', '0401 603 217', 'admin', '', b'1'),
 (5, 'ravi_khemlani@hotmail.com', 'sha256:1000:Gxc3O1YQ8MjuvS8pKZ7uPyTWG3Qe/bqd:AViHuMUfPxeEu1y4pC1s7IkDcmFjn8eE', 'Ravi', 'Khemlani', '0452 525 020', 'admin', '', b'1'),
 (6, 'mal.j@live.com', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'Malcolm', 'Joseland', '0450 479 554', 'admin', '', b'1'),
-(7, 'c.teakle@its.uq.edu.au', 'admin', 'Chris', 'Teakle', '(07) 3365 7555', 'admin', '', b'1');
 
 DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE `user_courses` (
@@ -350,7 +349,7 @@ ALTER TABLE `groups`
 ALTER TABLE `slides`
   MODIFY `slideID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 ALTER TABLE `answers`
   ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`,`questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE,
