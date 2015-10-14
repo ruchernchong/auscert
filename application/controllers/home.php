@@ -14,7 +14,7 @@ class home extends CI_Controller {
 		if ($this->session->userdata('logged_in')) {
 
 			$courses = $this->model_course->GetAllCourses();
-			$userCourses = $this->model_usercourse->GetUserCourses();
+			$userCourses = $this->model_usercourse->GetUserCourses($this->session->userdata['logged_in']['userID']);
 
 			if ($courses) {
 				$coursesAvail = array_udiff($courses, $userCourses, function ($courses, $userCourses) {
@@ -27,7 +27,6 @@ class home extends CI_Controller {
 			}
 
 			//List of courses the user is enrolled in
-			$userCourses = $this->model_usercourse->GetUserCourses();
 			if ($userCourses) {
 				$data['userCourses'] = $userCourses;
 			}

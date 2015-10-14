@@ -49,7 +49,18 @@ Class model_user extends CI_Model {
 		return false;
 	}
 
-	//searches for a course based on courseName
+	//returns a user, given its userID
+	public function GetUserByID($userID) {
+		$this->db->where('userID', $userID);
+		$query = $this->db->get('users');
+
+		if ($query->num_rows > 0) {
+			return $query->result();
+		}
+		return false;
+	}
+
+	//searched for a user given a userName
 	public function GetUserByName($searchTerm) {
 		$this->db->like('fname', $searchTerm);
 		$this->db->or_like('lname', $searchTerm);
