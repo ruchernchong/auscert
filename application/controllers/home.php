@@ -3,7 +3,7 @@
 class home extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		
+
 		$this->load->model('model_course');
 		$this->load->model('model_user');
 		$this->load->model('model_usercourse');
@@ -12,9 +12,10 @@ class home extends CI_Controller {
 
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
+			$thisUserID = $this->session->userdata('logged_in')['userID'];
 
 			$courses = $this->model_course->GetAllCourses();
-			$userCourses = $this->model_usercourse->GetUserCourses($this->session->userdata['logged_in']['userID']);
+			$userCourses = $this->model_usercourse->GetUserCourses($thisUserID);
 
 			if ($courses) {
 				$coursesAvail = array_udiff($courses, $userCourses, function ($courses, $userCourses) {
@@ -75,7 +76,7 @@ class home extends CI_Controller {
 			$this->load->view('view_dashboard');
 			// $this->load->view("footer");
 		} else {
-			 //If no session, redirect to login page
+			//If no session, redirect to login page
 			redirect('login', 'refresh');
 		}
 	}
