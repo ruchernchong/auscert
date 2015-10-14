@@ -111,7 +111,7 @@ class register extends CI_Controller {
 				if ($this->model_user->VerifyEmail($registerActivationKey)) {
 					$this->session->set_flashdata('register-success', 'We have sent ' . $registerEmail . ' instructions to activate your account.'
 						. br(1) .
-						'You will have limited access until you have verified your email address.');
+						'You will not be able to login until you have verified your email address.');
 
 					redirect('login', 'refresh');
 				}
