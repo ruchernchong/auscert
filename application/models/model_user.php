@@ -143,15 +143,27 @@ Class model_user extends CI_Model {
 			. br(2) .
 			"AusCert Administrator";
 
-		$config['protocol'] = 'smtp';
-		$config['smtp_host'] = 'ssl://smtp.gmail.com';
-		$config['smtp_port'] = '465';
-		$config['smtp_user'] = $from;
-		$config['smtp_pass'] = '12M34h56!';
-		$config['mailtype'] = 'html';
-		$config['charset'] = 'utf-8';
-		$config['wordwrap'] = TRUE;
-		$config['newline'] = "\r\n";
+//		$config['protocol'] = 'smtp';
+//		$config['smtp_host'] = 'ssl://smtp.gmail.com';
+//		$config['smtp_port'] = '465';
+//		$config['smtp_user'] = $from;
+//		$config['smtp_pass'] = '12M34h56!';
+//		$config['mailtype'] = 'html';
+//		$config['charset'] = 'utf-8';
+//		$config['wordwrap'] = TRUE;
+//		$config['newline'] = "\r\n";
+
+		$config = array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.gmail.com',
+			'smtp_port' => '465',
+			'smtp_user' => $from,
+			'smtp_pass' => '12M34h56!',
+			'mailtype' => 'html',
+			'charset' => 'utf-8',
+			'wordwrap' => true,
+			'newline' => '\r\n'
+		);
 
 		$this->email->initialize($config);
 
