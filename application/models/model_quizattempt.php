@@ -16,7 +16,9 @@ Class model_quizattempt extends CI_Model {
 	 * @return mixed
 	 */
 	public function SaveAttempt($courseID, $userID, $version) {
-	// find how many attempts have already been made
+		/**
+		 * find how many attempts have already been made
+		 */
 		$this->db->where('courseID', $courseID);
 		$this->db->where('userID', $userID);
 		$query = $this->db->get('quiz_attempt');
