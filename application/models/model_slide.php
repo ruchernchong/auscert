@@ -46,7 +46,7 @@ Class model_slide extends CI_Model {
 	 */
 	public function GetSlidesByCourse($courseID) {
 		$this->db->where('courseID', $courseID);
-		$this->db->order_by("slideOrder", "asc"); 
+		$this->db->order_by("slideOrder", "asc");
 
 		$query = $this->db->get('slides');
 
