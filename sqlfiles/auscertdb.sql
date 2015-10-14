@@ -211,7 +211,7 @@ INSERT INTO `users` (`userID`, `email`, `password`, `fname`, `lname`, `contact`,
 (3, 'hk2518@hotmail.com', 'sha256:1000:dZ4tUMveakkkCniz/tEpx0pyFaCefuN8:3Qn0ipGeazOmi951PHV9c8RSr5Q82o5c', 'HuiGyeong', 'Shin', '0424 169 232', 'admin', '', b'1'),
 (4, 'cameronpaulsen0@gmail.com', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'Cameron', 'Paulsen', '0401 603 217', 'admin', '', b'1'),
 (5, 'ravi_khemlani@hotmail.com', 'sha256:1000:Gxc3O1YQ8MjuvS8pKZ7uPyTWG3Qe/bqd:AViHuMUfPxeEu1y4pC1s7IkDcmFjn8eE', 'Ravi', 'Khemlani', '0452 525 020', 'admin', '', b'1'),
-(6, 'mal.j@live.com', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'Malcolm', 'Joseland', '0450 479 554', 'admin', '', b'1'),
+(6, 'mal.j@live.com', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'Malcolm', 'Joseland', '0450 479 554', 'admin', '', b'1');
 
 DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE `user_courses` (
@@ -241,10 +241,7 @@ INSERT INTO `user_courses` (`userID`, `courseID`, `description`, `grading`, `com
 (5, 3, NULL, 0, '', NULL),
 (6, 1, NULL, 0, '', NULL),
 (6, 2, NULL, 0, '', NULL),
-(6, 3, NULL, 0, '', NULL),
-(7, 1, NULL, 0, '', NULL),
-(7, 2, NULL, 0, '', NULL),
-(7, 3, NULL, 0, '', NULL);
+(6, 3, NULL, 0, '', NULL);
 
 DROP TABLE IF EXISTS `user_groups`;
 CREATE TABLE `user_groups` (
@@ -259,23 +256,19 @@ INSERT INTO `user_groups` (`userID`, `groupID`) VALUES
 (4, 0),
 (5, 0),
 (6, 0),
-(7, 0),
 (2, 2),
 (3, 2),
 (4, 2),
 (5, 2),
 (6, 2),
-(7, 2),
 (2, 3),
 (3, 3),
 (4, 3),
 (5, 3),
 (6, 3),
-(7, 3),
 (1, 4),
 (2, 5),
 (5, 5),
-(7, 6),
 (1, 7),
 (1, 8),
 (2, 8),
@@ -352,26 +345,26 @@ ALTER TABLE `users`
   MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 ALTER TABLE `answers`
-  ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`,`questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE,
+  ADD CONSTRAINT `DeleteOnOwnerDeletion` FOREIGN KEY (`courseID`,`questionOrder`) REFERENCES `questions` (`courseID`, `questionOrder`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 ALTER TABLE `group_courses`
-  ADD CONSTRAINT `group_courses_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `group_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `group_courses_ibfk_1` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `group_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `questions`
-  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `slides`
   ADD CONSTRAINT `slides_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`);
 
 ALTER TABLE `user_courses`
-  ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `user_courses_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_courses_ibfk_2` FOREIGN KEY (`courseID`) REFERENCES `courses` (`courseID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `user_groups`
-  ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `groups` (`groupID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
