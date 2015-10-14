@@ -18,6 +18,7 @@
 	<link href="<?php echo base_url('assets/css/email.css'); ?>" rel="stylesheet" />
 	<link href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url('assets/css/course.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo base_url('assets/css/notify.css'); ?>" rel="stylesheet" />
 
 	<script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
