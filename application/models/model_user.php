@@ -74,7 +74,11 @@ Class model_user extends CI_Model {
 		return false;
 	}
 
-	//returns a list of all users except the ones given in the argument
+	/**
+	 * Return a list of all users except the ones given in the argument
+	 * @param $omittedUsers
+	 * @return bool
+	 */
 	public function GetAllUsersExcept($omittedUsers) {
 		if (count($omittedUsers) > 0) {
 			$this->db->from('users');
