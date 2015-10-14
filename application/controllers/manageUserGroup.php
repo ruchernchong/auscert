@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Class manageUserCourse
+ * Class manageUserGroup
  */
-class manageUserCourse extends CI_Controller {
+class manageUserGroup extends CI_Controller {
 
     function __construct() {
         parent::__construct();
