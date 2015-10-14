@@ -158,7 +158,7 @@ if (!empty($this->session->flashdata('welcome'))) {
 					<div class="table-responsive">
 						<table class="table table-hover">
 							<?php
-							if (!empty($userCourses[0]->completion)) {
+							if (!empty($userCourses)) {
 							?>
 							<thead>
 							<th>Status</th>
