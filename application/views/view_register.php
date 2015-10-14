@@ -19,6 +19,16 @@
 
 <body>
 <?php
+if (empty(validation_errors())) {
+} else {
+	?>
+	<div class="tooltip">
+		<?php echo validation_errors(); ?>
+	</div>
+	<?php
+}
+?>
+<?php
 if (!empty($this->session->flashdata('register-error'))) {
 	?>
 	<script>
@@ -26,7 +36,7 @@ if (!empty($this->session->flashdata('register-error'))) {
 			$.notifyBar({
 				html: "<?php echo $this->session->flashdata('register-error'); ?>",
 				cssClass: "error",
-				delay: 86400,
+				delay: 3000,
 				clickToClose: true,
 				animationSpeed: "normal"
 			});
@@ -44,14 +54,32 @@ $attributes = array(
 echo form_open('register/registerUsers', $attributes);
 ?>
 <div class="content">
-
 	<div class="title">Register</div>
-	<input type="text" id="registerEmail" <?php echo form_error('registerEmail') ? 'class="errorMessage"' : '' ?> name="registerEmail" placeholder="<?php echo form_error('registerEmail') ? form_error('registerEmail') : 'Email Address' ?>" value="<?php echo set_value('registerEmail'); ?>">
-	<input type="text" id="registerFName" <?php echo form_error('registerFName') ? 'class="errorMessage"' : '' ?>name="registerFName" placeholder="<?php echo form_error('registerFName') ? form_error('registerFName') : 'First Name' ?>" value="<?php echo set_value('registerFName'); ?>" style="width: 48%;float: left;">
-	<input type="text" id="registerLName" <?php echo form_error('registerLName') ? 'class="errorMessage"' : '' ?>name="registerLName" placeholder="<?php echo form_error('registerLName') ? form_error('registerLName') : 'Last Name' ?>" value="<?php echo set_value('registerLName'); ?>" style="width: 48%;float: right;">
-	<input type="password" id="registerPassword" <?php echo form_error('registerPassword') ? 'class="errorMessage"' : '' ?>name="registerPassword" placeholder="<?php echo form_error('registerPassword') ? form_error('registerPassword') : 'Password' ?>" style="width:48%;float: left;">
-	<input type="password" id="registerRepeatPassword" <?php echo form_error('registerRepeatPassword') ? 'class="errorMessage"' : '' ?>name="registerRepeatPassword" placeholder="<?php echo form_error('registerRepeatPassword') ? form_error('registerRepeatPassword') : 'Confirm Password' ?>" style="width: 48%;float: right;">
-	<input type="tel" id="registerContact" <?php echo form_error('registerContact') ? 'class="errorMessage"' : '' ?>name="registerContact" placeholder="<?php echo form_error('registerContact') ? form_error('registerContact') : 'Contact No.' ?>" value="<?php echo set_value('registerContact'); ?>">
+	<!--	<div class="on-focus">-->
+	<input type="text" id="registerEmail" <?php echo form_error('registerEmail') ? 'class="errorMessage"' : (!empty(form_error('registerEmail') ? '' : 'class="successMessage"')) ?> name="registerEmail" placeholder="Email Address" value="<?php echo set_value('registerEmail'); ?>">
+	<!--	</div>-->
+	<!--			<div class="tooltip">--><?php //echo form_error('registerEmail'); ?><!--</div>-->
+	<!--	</div>-->
+	<!--	<div class="on-focus">-->
+	<input type="text" id="registerFName" <?php echo form_error('registerFName') ? 'class="errorMessage"' : (!empty(form_error('registerFName') ? '' :'class="successMessage"')) ?> name="registerFName" placeholder="First Name" value="<?php echo set_value('registerFName'); ?>" style="width: 48%;float: left;">
+	<!--	<div class="tooltip">--><?php //echo form_error('registerFName'); ?><!--</div>-->
+	<!--	</div>-->
+	<!--	<div class="on-focus">-->
+	<input type="text" id="registerLName" <?php echo form_error('registerLName') ? 'class="errorMessage"' : (!empty(form_error('registerLName') ? '' :'class="successMessage"')) ?> name="registerLName" placeholder="Last Name" value="<?php echo set_value('registerLName'); ?>" style="width: 48%;float: right;">
+	<!--	<div class="tooltip">--><?php //echo form_error('registerLName'); ?><!--</div>-->
+	<!--	</div>-->
+	<!--	<div class="on-focus">-->
+	<input type="password" id="registerPassword" <?php echo form_error('registerPassword') ? 'class="errorMessage"' : (!empty(form_error('registerPassword') ? '' : 'class="successMessage"')) ?> name="registerPassword" placeholder="Password" style="width:48%;float: left;">
+	<!--	<div class="tooltip">--><?php //echo form_error('registerPassword'); ?><!--</div>-->
+	<!--	</div>-->
+	<!--	<div class="on-focus">-->
+	<input type="password" id="registerRepeatPassword" name="registerRepeatPassword" placeholder="Confirm Password" style="width: 48%;float: right;">
+	<!--	<div class="tooltip">--><?php //echo form_error('registerRepeatPassword'); ?><!--</div>-->
+	<!--	</div>-->
+	<!--	<div class="on-focus">-->
+	<input type="tel" id="registerContact" <?php echo form_error('registerContact') ? 'class="errorMessage"' : (!empty(form_error('registerContact') ? '' :'class="successMessage"')) ?> name="registerContact" placeholder="Contact No." value="<?php echo set_value('registerContact'); ?>">
+	<!--	<div class="tooltip">--><?php //echo form_error('registerContact'); ?><!--</div>-->
+	<!--	</div>-->
 	<select class="chosen-select" id="registerGroup" name="registerGroup[]" data-placeholder="Select Faculty" multiple>
 		<option value="not_applicable">Not Applicable</option>
 		<?php
@@ -62,6 +90,7 @@ echo form_open('register/registerUsers', $attributes);
 		}
 		?>
 	</select>
+
 	<button>Register</button>
 
 	<div class="already">

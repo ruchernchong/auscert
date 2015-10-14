@@ -14,6 +14,7 @@ CREATE TABLE `answers` (
   `courseID` int(11) NOT NULL,
   `questionOrder` int(11) NOT NULL,
   `answerOrder` int(11) NOT NULL,
+  `correct` tinyint(1) NOT NULL DEFAULT '0',
   `answerText` text CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -66,6 +67,7 @@ CREATE TABLE `courses` (
   `creator` varchar(255) DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `passPercentage` int(7) UNSIGNED NOT NULL DEFAULT '50',
+  `version` int(10) unsigned NOT NULL,
   `description` longtext,
   `dateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastEdited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -207,7 +209,7 @@ INSERT INTO `users` (`userID`, `email`, `password`, `fname`, `lname`, `contact`,
 (1, 'leonxenarax@gmail.com', 'sha256:1000:Xcp0j5PBSvYuH1JXdMTq7TCQM3zb2xDk:nw39o+xpVCqI2wCYdZGM', 'Leon', 'Teh', '0423 302 776', 'admin', '', b'0'),
 (2, 'ruchern.chong@uqconnect.edu.au', 'sha256:1000:pUtBVN0CYVn7R7Lnw2CpPEcCs2DGTAHy:6OC6nluSbTtYiL9cHWkm', 'Ru Chern', 'Chong', '0451 519 513', 'admin', '', b'1'),
 (3, 'hk2518@hotmail.com', 'sha256:1000:dZ4tUMveakkkCniz/tEpx0pyFaCefuN8:3Qn0ipGeazOmi951PHV9c8RSr5Q82o5c', 'HuiGyeong', 'Shin', '0424 169 232', 'admin', '', b'0'),
-(4, 'cameronpaulsen0@gmail.com', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'Cameron', 'Paulsen', '0401 603 217', 'admin', '', b'0'),
+(4, 'cameronpaulsen0@gmail.com', 'sha256:1000:PgpeL0U3tOV+dPTXHPqdIIyT0mXScCCw:+13fqNURp3y46Mlf07WZrm3GoNpW46BL', 'Cameron', 'Paulsen', '0401 603 217', 'admin', '', b'1'),
 (5, 'ravi_khemlani@hotmail.com', 'sha256:1000:Gxc3O1YQ8MjuvS8pKZ7uPyTWG3Qe/bqd:AViHuMUfPxeEu1y4pC1s7IkDcmFjn8eE', 'Ravi', 'Khemlani', '0452 525 020', 'admin', '', b'0'),
 (6, 'mal.j@live.com', 'sha256:1000:dRryUSKi/AvjXGBegDbWW6mO4e20Etb5:eLSoj3n/KrzmPCxonRmj0a4OpIsivcN7', 'Malcolm', 'Joseland', '0450 479 554', 'admin', '', b'0'),
 (7, 'j.steel@uq.edu.au', 'admin', 'Jim', 'Steel', '(07) 3365 4917', 'user', '', b'0'),
@@ -227,9 +229,9 @@ DROP TABLE IF EXISTS `user_courses`;
 CREATE TABLE `user_courses` (
   `userID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
-  `completion` decimal(5,2) NOT NULL,
+  `completion` enum('Not started','Started','Quiz failed','Completed') NOT NULL,
   `description` text,
-  `grading` varchar(255) DEFAULT NULL,
+  `grading` float DEFAULT NULL,
   `mandatory` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -332,6 +334,7 @@ DROP TABLE IF EXISTS `user_results`;
 CREATE TABLE `user_results` (
   `courseID` int(11) NOT NULL,
   `questionOrder` int(11) NOT NULL,
+  `version` int(10) unsigned NOT NULL,
   `userID` int(11) NOT NULL,
   `attempt` int(11) NOT NULL,
   `userAnswer` int(11) NOT NULL

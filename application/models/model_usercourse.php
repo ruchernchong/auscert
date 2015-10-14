@@ -92,7 +92,6 @@ Class model_usercourse extends CI_Model {
 		$this->db->where('completion', 4);
 		$query = $this->db->get('user_courses');
 
-		error_log($query -> num_rows());
 		if ($query -> num_rows() > 0) {
 			return true;
 		} else {

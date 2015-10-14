@@ -20,7 +20,11 @@ class login extends CI_Controller {
 	}
 
 	public function index() {
-		$this->load->view('view_login');
+		if ($this->session->userdata('logged_in')) {
+			redirect('home', 'refresh');
+		} else {
+			$this->load->view('view_login');
+		}
 	}
 
 	//validate a user's login

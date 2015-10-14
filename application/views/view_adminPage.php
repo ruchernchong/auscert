@@ -272,7 +272,7 @@
 //						console.log(obj);
 						if (!obj.noResult) {
 							$("#users_results").html(obj.html);
-						}else {
+						} else {
 							$("#users_results").html("<h5>No Users Found</h5>");
 						}
 					},
@@ -283,7 +283,6 @@
 			}
 			return false;
 		});
-
 
 		//Render bootstrap popup for course delete confirmation
 		$('.project-actions').on('click', '.courseDelBtn', function(){
@@ -303,10 +302,9 @@
 					$('#yesDelete').attr('href', thisUrl);
 //				}
 //			})
-		})
+		});
 
-
-	})
+	});
 </script>
 
 </body>

@@ -42,7 +42,7 @@ class register extends CI_Controller {
 		$rules = array(
 			array(
 				'field' => 'registerEmail',
-				'label' => 'Email',
+				'label' => 'Email Address',
 				'rules' => 'required|valid_email|is_unique[users.email]|xss_clean'
 			),
 			array(
@@ -58,16 +58,16 @@ class register extends CI_Controller {
 			array(
 				'field' => 'registerPassword',
 				'label' => 'Password',
-				'rules' => 'required|matches[registerRepeatPassword]|xss_clean'
+				'rules' => 'required|matches[registerRepeatPassword]|min_length[8]|callback_isStrongPassword|xss_clean'
 			),
 			array(
 				'field' => 'registerRepeatPassword',
 				'label' => 'Confirm Password',
-				'rules' => 'required|xss_clean'
+				'rules' => 'required|matches[registerPassword]|min_length[8]|xss_clean'
 			),
 			array(
 				'field' => 'registerGroup',
-				'label' => 'Group',
+				'label' => 'Select Faculty',
 				'rules' => 'required|xss_clean'
 			),
 			array(
@@ -90,7 +90,7 @@ class register extends CI_Controller {
 		$registerActivationKey = str_replace(array('+', '/', '='), array('-', '_', '~'), $enc_email);
 
 		if ($this->form_validation->run() == false) {
-			$this->form_validation->set_error_delimiters('', '');
+//			$this->form_validation->set_error_delimiters('', '');
 			$this->session->set_flashdata('register-error', 'Please see registration form for errors.');
 
 			$this->load->view('view_register', $data);
@@ -134,6 +134,16 @@ class register extends CI_Controller {
 			$this->session->set_flashdata('email-not-verified', 'Sorry! There was an error verifying your email address.'
 				.br(1).
 				'Please contact registration@ruchern.com.');
+		}
+	}
+
+	public function isStrongPassword($password) {
+		if (preg_match('/^(.*[a-zA-Z])(.*\d)$/', $password) || preg_match('/^(.*[a-zA-Z])(.*[$@$!%*#?&])$/', $password)) {
+			return true;
+		} else {
+			$this->form_validation->set_message('isStrongPassword',
+				'The %s field requires at least one number or symbol.');
+			return false;
 		}
 	}
 

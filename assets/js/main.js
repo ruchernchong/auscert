@@ -150,7 +150,7 @@ $("#course-quiz").on("click", ".add-answer", function(e) {
 	e.preventDefault();
 	console.log('ping');
 
-	var count = (($(this).parents(".form-group").find(".row").length) / 2)+1;
+	var count = (($(this).parents(".form-group").find(".row").length) / 2);
 	var question = ($(this).parent().parent().attr('id').match(/\d+/)[0]) * 1;
 	var new_answer = $(
 		'<div class="row">' +

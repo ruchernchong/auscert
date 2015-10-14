@@ -223,12 +223,15 @@ a {
 	margin: 10px 0;
 }
 .errorMessage::-webkit-input-placeholder {
-	color: #b94a48;
+	/*color: #b94a48;*/
+	color: #cc0000;
 }
-.content .errorMessage,
-.content .errorMessage,
 .content .errorMessage {
-	border-bottom: 1px #FF0000 solid;
+	border-bottom: 2px #cc0000 solid;
+}
+
+.content .successMessage {
+	border-bottom: 2px #00cc00 solid;
 }
 /* Paste this css to your style sheet file or under head tag */
 /* This only works with JavaScript,
@@ -250,4 +253,73 @@ if it's not present, don't show loader */
 	height: 100%;
 	z-index: 9999;
 	background: url(../img/spinner.gif) center no-repeat #fff;
+}
+
+.tooltip {
+	width: auto;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.7);
+	text-shadow: none;
+	font-size: 0.8em;
+	visibility: hidden;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+	text-align: center;
+	opacity: 0;
+	z-index: 999;
+	padding: 3px 8px;
+	position: absolute;
+	top: auto;
+	left: auto;
+	bottom:	auto;
+	cursor: default;
+	-webkit-transition: all 240ms ease-in-out;
+	-moz-transition: all 240ms ease-in-out;
+	-ms-transition: all 240ms ease-in-out;
+	-o-transition: all 240ms ease-in-out;
+	transition: all 240ms ease-in-out;
+}
+
+.on-focus .tooltip {
+	margin-top: -20px;
+}
+
+*:not(.on-focus):hover > .tooltip,
+.on-focus input:focus + .tooltip {
+	visibility: visible;
+	opacity: 1;
+	-webkit-transition: all 240ms ease-in-out;
+	-moz-transition: all 240ms ease-in-out;
+	-ms-transition: all 240ms ease-in-out;
+	-o-transition: all 240ms ease-in-out;
+	transition: all 240ms ease-in-out;
+}
+
+*:not(.on-focus) > .tooltip,
+.on-focus > .tooltip {
+	display: block;
+}
+
+.on-focus > .tooltip {
+	z-index: -1;
+}
+
+.on-focus > input:focus + .tooltip{
+	z-index: 1;
+}
+
+*:not(.on-focus) > .tooltip,
+.on-focus > .tooltip {
+	/*bottom: 50%;*/
+	/*bottom: 80%;*/
+	bottom: auto;
+}
+
+*:not(.on-focus):hover > .tooltip,
+.on-focus > input:focus + .tooltip {
+	/*bottom: 100%;*/
+	/*bottom: 60%;*/
+	bottom: auto;
 }

@@ -111,7 +111,7 @@
 															</div>
 															<div class="col-md-2">
 																<div class="form-group">
-																	<input size="64" id="q-<?php echo $i; ?>a<?php echo $j; ?>" name="q<?php echo $i; ?>a<?php echo $j; ?>" value="<?php echo $answers[$i][$j]->answerText; ?>" required>
+																	<input size="64" id="q<?php echo $i; ?>a<?php echo $j; ?>" name="q<?php echo $i; ?>a<?php echo $j; ?>" value="<?php echo $answers[$i][$j]->answerText; ?>" required>
 																</div>
 															</div>
 														</div>
@@ -178,7 +178,6 @@
 		</div>
 	</div>
 </div>
-<?php echo date("d M Y h:i A"); ?>
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 <script>
 // $(document).ready(function() {
