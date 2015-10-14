@@ -46,14 +46,15 @@ class learning extends CI_Controller {
 	 */
 	public function index() {
 		if($this->session->userdata('logged_in')) {
+			$thisUserID = $this->session->userdata['logged_in']['userID'];
 			$session_data = $this->session->userdata('logged_in');
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "course";
 
 			$courseID = $this->uri->segment(2);
 
-			$data['completed'] = $this->model_usercourse->CourseCompleted($courseID, $this->session->userdata['logged_in']['userID']);
-			
+			$data['completed'] = $this->model_usercourse->CourseCompleted($courseID, $thisUserID);
+
 			$query = $this->model_course->GetCourseById($courseID);
 
 			if ($query) {
