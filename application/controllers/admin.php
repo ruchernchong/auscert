@@ -108,7 +108,6 @@ class admin extends CI_Controller {
 		}
 	}
 
-	// Delete a course
 	/**
 	 * Delete a course
 	 */
@@ -127,7 +126,6 @@ class admin extends CI_Controller {
 		redirect('admin', 'refresh');
 	}
 
-	//Activate a course if checkbox is ticked
 	/**
 	 * Activate a course if checkbox is ticked.
 	 */
@@ -136,7 +134,6 @@ class admin extends CI_Controller {
 		$this->model_course->ActivateCourse($courseID);
 	}
 
-	//Deactivate a course if checkbox is ticked
 	/**
 	 * Deactivate a course if checkbox is unticked.
 	 */
@@ -145,7 +142,6 @@ class admin extends CI_Controller {
 		$this->model_course->DeactivateCourse($courseID);
 	}
 
-	//AJAX search for users
 	/*
 	 * AJAX search for users
 	 */

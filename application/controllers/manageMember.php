@@ -101,7 +101,6 @@ class manageMember extends CI_Controller {
 		}
 	}
 
-    //assign users to a group
 	/**
 	 * Assigns users to a group
 	 */
@@ -114,7 +113,6 @@ class manageMember extends CI_Controller {
 		}
 	}
 
-    //remove users from a group
 	/**
 	 * Remove users from a group
 	 */
@@ -127,7 +125,7 @@ class manageMember extends CI_Controller {
 		}
 	}
 
-    //Helpful function for printing to console. Evoke with $this->debugConsole(value);
+
 	/**
 	 * Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	 * @param $data

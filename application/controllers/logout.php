@@ -8,7 +8,6 @@ class logout extends CI_Controller {
 		parent::__construct();
 	}
 
-	//Log out a user
 	/**
 	 * Logs out a user
 	 */

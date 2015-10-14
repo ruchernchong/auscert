@@ -88,7 +88,6 @@ class home extends CI_Controller {
 		}
 	}
 
-	//Enrol a user to a course
 	/**
 	 * Enrol a user to a course
 	 */
@@ -100,7 +99,6 @@ class home extends CI_Controller {
 		redirect('home', 'refresh');
 	}
 
-	//Drop a user from a course
 	/**
 	 * Drop a user from a course
 	 */

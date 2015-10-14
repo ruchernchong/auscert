@@ -31,7 +31,6 @@ class register extends CI_Controller {
 		$this->load->view('view_register', $data);
 	}
 
-	//Create user and assign him to groups
 	/**
 	 * Creates user and assigns the person to groups
 	 */
@@ -159,9 +158,6 @@ class register extends CI_Controller {
 		}
 	}
 
-	//Adds user to the default AllUser group in addition to their specialised groups.
-	//Also assigns courses to them based on their grouping
-	function registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact, $registerActivationKey) {
 	/**
 	 *
 	 * Adds user to the default AllUser group in addition to their specialised groups
@@ -204,7 +200,6 @@ class register extends CI_Controller {
 		return true;
 	}
 
-	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	/**
 	 * Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	 * @param $data

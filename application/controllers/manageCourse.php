@@ -103,7 +103,6 @@ class manageCourse extends CI_Controller {
 		}
 	}
 
-	//assign courses to a group
 	/**
 	 * Assigns courses to a group
 	 */
@@ -116,7 +115,6 @@ class manageCourse extends CI_Controller {
 		}
 	}
 
-	//remove courses from a group
 	/**
 	 * Removes courses from a group
 	 */
@@ -138,7 +136,6 @@ class manageCourse extends CI_Controller {
 //		$searchTerm = $this->input->post('leftTableSearch');
 //	}
 
-	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	/**
 	 * Helpful function for printing to console. Evoke with $this->debugConsole(value);
 	 * @param $data

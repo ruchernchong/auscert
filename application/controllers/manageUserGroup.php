@@ -101,7 +101,6 @@ class manageUserCourse extends CI_Controller {
         }
     }
 
-    //assign courses to a user
     /**
      * Assigns courses to a user
      */
@@ -114,7 +113,6 @@ class manageUserCourse extends CI_Controller {
         }
     }
 
-    //remove courses from a user
     /**
      * Removes courses from a user
      */
@@ -126,8 +124,6 @@ class manageUserCourse extends CI_Controller {
         }
     }
 
-
-    //Helpful function for printing to console. Evoke with $this->debugConsole(value);
     /**
      * Helpful function for printing to console. Evoke with $this->debugConsole(value);
      * @param $data

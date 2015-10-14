@@ -77,7 +77,6 @@ class analysis extends CI_Controller {
 		}
 	}
 
-	//Delete a course
 		$courseID = $this->input->get('id', TRUE);
 	/**
 	 * Delete a course
