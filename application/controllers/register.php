@@ -94,7 +94,6 @@ class register extends CI_Controller {
 		$registerActivationKey = str_replace(array('+', '/', '='), array('-', '_', '~'), $enc_email);
 
 		if ($this->form_validation->run() == false) {
-//			$this->form_validation->set_error_delimiters('', '');
 			$this->session->set_flashdata('register-error', 'Please see registration form for errors.');
 
 			$this->load->view('view_register', $data);
