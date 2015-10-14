@@ -1,14 +1,16 @@
 @ECHO OFF
 
+echo Importing sql script.
+
 mysql -u auscert -padmin auscertdb < auscertdb.sql
 
-if ERRORLEVEL==0 goto success
-if ERRORLEVEL==1 goto failure
+if %ERRORLEVEL%==0 goto success
+if %ERRORLEVEL%==1 goto failure
 
-:success
+:success:
 echo Database has been successfully imported.
 
-:failure
+:failure:
 echo Database has failed to import the file.
 
 pause
