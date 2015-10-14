@@ -70,7 +70,7 @@ CREATE TABLE `courses` (
   `version` int(11) UNSIGNED NOT NULL,
   `dateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastEdited` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `active` tinyint(1) NOT NULL
+  `active` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `courses` (`courseID`, `courseName`, `category`, `description`, `creator`, `passPercentage`, `version`, `dateCreated`, `lastEdited`, `active`) VALUES
