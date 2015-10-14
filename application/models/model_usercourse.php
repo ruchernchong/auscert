@@ -44,7 +44,12 @@ Class model_usercourse extends CI_Model {
 		$this->db->delete('user_courses', $data);
 	}
 
-	//Returns true if userID and courseID pair already exists in the table
+	/**
+	 * Returns true if userID and courseID pair already exists in the table
+	 * @param $userID
+	 * @param $courseID
+	 * @return bool
+	 */
 	public function CourseAlreadyAssigned($userID, $courseID) {
 		$data = array('userID' => $userID, 'courseID' => $courseID);
 		$this->db->where($data);

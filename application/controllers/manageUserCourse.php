@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class manageCourse extends CI_Controller {
+class manageUserCourse extends CI_Controller {
     function __construct() {
         parent::__construct();
 
@@ -43,6 +43,7 @@ class manageCourse extends CI_Controller {
             $userID = $this->uri->segment(2); //get the current userID
 
             $thisUser = $this->model_user->GetUserByID($userID);
+            $this->debugConsole($thisUser->fname);
             $assignedCourses = $this->model_usercourse->GetUserCourses($userID); //Get courses user is enrolled in
             $omittedCourses = [];
 
@@ -57,28 +58,28 @@ class manageCourse extends CI_Controller {
             }
 
 
-            //Gets the current group's object
+            //Gets the current user object
             if ($thisUser) {
                 $data['thisUser'] = $thisUser;
             } else {
-                $data['thisGroup'] = null;
+                $data['thisUser'] = null;
             }
 
-            //Gets the current group's assigned course
+            //Gets the current user's assigned course
             if ($assignedCourses) {
                 $data['assignedCourses'] = $assignedCourses;
             } else {
                 $data['assignedCourses'] = null;
             }
 
-            //Gets all the other courses not assigned to the current group
+            //Gets all the other courses not assigned to the current user
             if (!empty($otherCourses)) {
                 $data['otherCourses'] = $otherCourses;
             } else {
                 $data['otherCourses'] = null;
             }
 
-            //Validates that the user is an admin deny access otherwise
+            //Validates that the user is an admin, deny access otherwise
             if ($data['usertype'] != 'admin') {
                 $this->session->set_flashdata('denied', 'You do not have permission to view this page.');
                 redirect('home', 'refresh');

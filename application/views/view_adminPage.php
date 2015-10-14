@@ -123,11 +123,11 @@
 												<i class="fa fa-phone"></i>&emsp;<a href="tel:<?php echo $user['contact']; ?>"><?php echo $user['contact']; ?></a>
 											</td>
 											<td class="user-actions">
-												<a href="<?php echo site_url('userAssign/' . $user['userID']);?>" class="btn btn-sm btn-success">
+												<a href="<?php echo site_url('manageUserCourse/' . $user['userID']);?>" class="btn btn-sm btn-success">
 													<i class="fa fa-pencil"></i>&emsp;Manage Courses
 												</a>
 												&nbsp;
-												<a href="<?php echo site_url('userAssign/' . $user['userID']); ?>" class="btn btn-sm btn-primary">
+												<a href="<?php echo site_url('manageUserGroup/' . $user['userID']); ?>" class="btn btn-sm btn-primary">
 													<i class="fa fa-bar-chart-o"></i>&emsp;Manage Groups
 												</a>
 											</td>
