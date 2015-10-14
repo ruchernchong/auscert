@@ -10,7 +10,6 @@ class register extends CI_Controller {
 		$this->load->helper('html');
 		$this->load->library(
 			array(
-
 				'encrypt', 'form_validation', 'password', 'email'
 			)
 		);
@@ -113,17 +112,13 @@ class register extends CI_Controller {
 						'You will have limited access until you have verified your email address.');
 
 					redirect('login', 'refresh');
-				} else {
-					$this->debugConsole('Verify Email Not Working');
 				}
-			} else {
-				$this->debugConsole('Register and Setup Not working');
 			}
 		}
 	}
 
 	/**
-	 *
+	 * Verify if the activation key sent to email matches with the one stored in the database tied to user's email address
 	 */
 	public function verify() {
 		$hash = $this->uri->segment(3);

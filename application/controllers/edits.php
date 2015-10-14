@@ -83,7 +83,7 @@ class edits extends CI_Controller {
 			} else {
 				$data['questions'] = array();
 			}
-			
+
 			// If user is not admin, redirect to dashboard.
 			if ($data['usertype'] != "admin") {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
@@ -113,14 +113,15 @@ class edits extends CI_Controller {
 			$courseName,
 			$courseCategory,
 			$courseDescription,
-			$coursePassPercentage);
-		
+			$coursePassPercentage
+		);
+
 		$slideOrder = 0;
 
 		while (true) {
 			$slideTitle = $this->input->post(sprintf('title-%d', $slideOrder));
 			$slideContent = $this->input->post(sprintf('editor-%d', $slideOrder));
-			
+
 			if ($slideTitle == NULL) {
 				break;
 			}
@@ -134,19 +135,19 @@ class edits extends CI_Controller {
 
 		while (true) {
 			$questionText = $this->input->post(sprintf('question-%d', $questionOrder));
-			
+
 			if ($questionText == NULL) {
 				break;
 			}
 
 			$this->model_question->SaveQuestion($courseID, $questionOrder, $questionText);
-			
+
 			$answerOrder = 0;
 			$correctAnswer = $this->input->post(sprintf('c-q%d', $questionOrder));
 
 			while (true) {
 				$answerText = $this->input->post(sprintf('q%da%d', $questionOrder, $answerOrder));
-				
+
 				if ($answerText == NULL) {
 					break;
 				}
@@ -155,16 +156,16 @@ class edits extends CI_Controller {
 				} else {
 					$this->model_answer->SaveAnswer($courseID, $questionOrder, $answerOrder, FALSE, $answerText);
 				}
-				
+
 				$answerOrder++;
 			}
 			$this->model_answer->DeleteHigherAnswers($courseID, $questionOrder, $answerOrder);
-			
+
 			$questionOrder++;
 		}
 		$this->model_question->DeleteHigherQuestions($courseID, $questionOrder);
-		
-		redirect('admin','refresh');
+
+		redirect('admin', 'refresh');
 	}
 }
 ?>

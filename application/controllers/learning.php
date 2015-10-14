@@ -67,7 +67,7 @@ class learning extends CI_Controller {
 			} else {
 				$data['slides'] = array();
 			}
-			
+
 			if ($questions) {
 				$data['questions'] = $questions;
 				for($i = 0; $i < sizeof($questions); $i++) {
@@ -81,7 +81,7 @@ class learning extends CI_Controller {
 			} else {
 				$data['questions'] = array();
 			}
-			
+
 			$this->load->view('header', $data);
 			$this->load->view('view_learning', $data);
 		} else {
@@ -101,15 +101,15 @@ class learning extends CI_Controller {
 			$userID,
 			$course->version
 		);
-		
+
 		$results = array();
-		
+
 		$i = 0;
 		while ($this->input->post('q' . $i) != NULL) {
 			$results[$i] = $this->input->post('q' . $i);
 			$i++;
 		}
-		
+
 		$this->model_userresult->SaveResults(
 			$courseID,
 			$userID,

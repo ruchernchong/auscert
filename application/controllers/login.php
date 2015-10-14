@@ -19,7 +19,6 @@ class login extends CI_Controller {
 		);
 		$this->load->model(
 			array(
-
 				'model_course', 'model_group', 'model_groupcourse', 'model_user'
 			)
 		);
@@ -35,7 +34,6 @@ class login extends CI_Controller {
 			$this->load->view('view_login');
 		}
 	}
-
 
 	/**
 	 * Validate a user's login

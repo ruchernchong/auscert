@@ -13,12 +13,12 @@ class course extends CI_Controller {
 			)
 		);
 	}
-	
+
 	/**
 	 *
 	 */
 	public function index() {
-		if($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('logged_in')) {
 			$query = $this->model_usercourse->GetUserCourses();
 			$getCompletion = $this->model_usercourse->GetUserCourses();
 
