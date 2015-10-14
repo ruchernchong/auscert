@@ -8,7 +8,12 @@ Class model_answer extends CI_Model {
 		parent::__construct();
 	}
 
-	// Returns all answers associated with a given course's question
+	/**
+	 * Returns all answers associated with a given course's question
+	 * @param $courseID
+	 * @param $questionOrder
+	 * @return array
+	 */
 	public function GetAnswers($courseID, $questionOrder) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('questionOrder', $questionOrder);
@@ -23,7 +28,11 @@ Class model_answer extends CI_Model {
 		}	
 	}
 
-	// Returns all answers associated with a given course's question
+	/**
+	 * Returns all answers associated with a given course's question
+	 * @param $courseID
+	 * @return array
+	 */
 	public function GetCorrectAnswers($courseID) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('correct', TRUE);
@@ -39,7 +48,13 @@ Class model_answer extends CI_Model {
 		return $answers;
 	}
 	
-	//Delete all answers for a given course with a answer order equal to or higher than that given 
+
+	/**
+	 * Delete all answers for a given course with a answer order equal to or higher than that given
+	 * @param $courseID
+	 * @param $questionOrder
+	 * @param $answerOrder
+	 */
 	public function DeleteHigherAnswers($courseID, $questionOrder, $answerOrder) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('questionOrder', $questionOrder);
@@ -47,7 +62,14 @@ Class model_answer extends CI_Model {
 		$this->db->delete('answers');
 	}
 
-	//Add a new answer to the answers table for a given course, or updates if it already exists 
+	/**
+	 * Add a new answer to the answers table for a given course, or updates if it already exists
+	 * @param $courseID
+	 * @param $questionOrder
+	 * @param $answerOrder
+	 * @param $correct
+	 * @param $answerText
+	 */
 	public function SaveAnswer($courseID, $questionOrder, $answerOrder, $correct, $answerText) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('questionOrder', $questionOrder);

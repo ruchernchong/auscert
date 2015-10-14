@@ -8,7 +8,10 @@ Class model_slide extends CI_Model {
 		parent::__construct();
 	}
 
-	//Get the current slide id
+	/**
+	 * Get the current slide id
+	 * @return bool
+	 */
 	public function GetSlideById() {
 		$this->db->where('courseID', $this->input->get('courseID'));
 		$this->db->where('slideID', $this->input->get('slideID'));
@@ -21,7 +24,10 @@ Class model_slide extends CI_Model {
 		return false;
 	}
 
-	//get the current slide object
+	/**
+	 * get the current slide object
+	 * @return bool
+	 */
 	public function GetSlide() {
 		$this->db->where('courseID', $this->input->get('courseID'));
 
@@ -33,7 +39,11 @@ Class model_slide extends CI_Model {
 		return false;
 	}
 
-	//get the current slide
+	/**
+	 * get the current slide
+	 * @param $courseID
+	 * @return array
+	 */
 	public function GetSlidesByCourse($courseID) {
 		$this->db->where('courseID', $courseID);
 		$this->db->order_by("slideOrder", "asc"); 
@@ -47,7 +57,14 @@ Class model_slide extends CI_Model {
 		}		
 	}
 	
-	//Add a new slide to the slides table for a given course, or updates if it already exists 
+
+	/**
+	 * Add a new slide to the slides table for a given course, or updates if it already exists
+	 * @param $courseID
+	 * @param $slideOrder
+	 * @param $slideTitle
+	 * @param $slideContent
+	 */
 	public function SaveSlide($courseID, $slideOrder, $slideTitle, $slideContent) {
 		$data = array(
 			'slideTitle' => $slideTitle,
@@ -80,14 +97,24 @@ Class model_slide extends CI_Model {
 		}
 	}
 	
-	//Delete a slide from a given course with a given ID
+
+	/**
+	 * Delete a slide from a given course with a given ID
+	 * @param $courseID
+	 * @param $slideOrder
+	 */
 	public function DeleteSlide($courseID, $slideOrder) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('slideOrder', $slideOrder);
 		$this->db->delete('slides');
 	}
 	
-	//Delete all slides for a given course with a slide order equal to or higher than that given 
+
+	/**
+	 * Delete all slides for a given course with a slide order equal to or higher than that given
+	 * @param $courseID
+	 * @param $slideOrder
+	 */
 	public function DeleteHigherSlides($courseID, $slideOrder) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('slideOrder >=', $slideOrder);

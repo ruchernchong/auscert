@@ -10,7 +10,10 @@ Class model_user extends CI_Model {
 		$this->load->library(array('encrypt'));
 	}
 
-	//Validate the user
+	/**
+	 * Validate the user
+	 * @return bool
+	 */
 	public function validate() {
 		$this->db->where('email', $this->input->post('loginEmail'));
 		$this->db->where('password', $this->input->post('loginPassword'));
@@ -23,7 +26,16 @@ Class model_user extends CI_Model {
 		return false;
 	}
 
-	//Create a user
+	/**
+	 * Create a user
+	 * @param $registerEmail
+	 * @param $registerPassword
+	 * @param $registerFName
+	 * @param $registerLName
+	 * @param $registerContact
+	 * @param $registerActivationKey
+	 * @return mixed
+	 */
 	public function registerUsers($registerEmail, $registerPassword, $registerFName, $registerLName, $registerContact, $registerActivationKey) {
 		$data = array(
 			'email' => $registerEmail,
@@ -41,7 +53,10 @@ Class model_user extends CI_Model {
 	}
 
 
-	//return a list of all users
+	/**
+	 * return a list of all users
+	 * @return bool
+	 */
 	public function GetAllUsers() {
 		$this->db->order_by('fname', 'ASC');
 		$query = $this->db->get('users');
@@ -52,7 +67,11 @@ Class model_user extends CI_Model {
 		return false;
 	}
 
-	//returns a user, given its userID
+	/**
+	 * returns a user, given its userID
+	 * @param $userID
+	 * @return bool
+	 */
 	public function GetUserByID($userID) {
 		$this->db->where('userID', $userID);
 		$query = $this->db->get('users');
@@ -64,7 +83,11 @@ Class model_user extends CI_Model {
 		return false;
 	}
 
-	//searched for a user given a userName
+	/**
+	 * searched for a user given a userName
+	 * @param $searchTerm
+	 * @return bool
+	 */
 	public function GetUserByName($searchTerm) {
 		$this->db->like('fname', $searchTerm);
 		$this->db->or_like('lname', $searchTerm);
@@ -97,8 +120,12 @@ Class model_user extends CI_Model {
 		}
 	}
 
-	// Create email verification.
 	function VerifyEmail($registerActivationKey) {
+	/**
+	 * Create email verification
+	 * @param $registerActivationKey
+	 * @return mixed
+	 */
 		$fname = $this->input->post('registerFName');
 		$lname = $this->input->post('registerLName');
 		$recipient = $this->input->post('registerEmail');
@@ -136,8 +163,12 @@ Class model_user extends CI_Model {
 		return $this->email->send();
 	}
 
-	// Verify if Email is valid.
 	function VerifyEmailID($activation_key) {
+	/**
+	 * Verify if Email is valid
+	 * @param $activation_key
+	 * @return mixed
+	 */
 		$activate = array(
 			'activated' => 1
 		);

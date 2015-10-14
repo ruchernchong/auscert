@@ -8,6 +8,9 @@ Class model_course extends CI_Model {
 		parent::__construct();
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function validate() {
 		$this->db->where('email', $this->input->post('email'));
 		$this->db->where('password', $this->input->post('password'));
@@ -19,7 +22,10 @@ Class model_course extends CI_Model {
 		return false;
 	}
 
-	//returns a list of all courses available
+	/**
+	 * returns a list of all courses available
+	 * @return mixed
+	 */
 	public function GetAllCourses() {
 		$this->db->from('courses');
 		$this->db->order_by('courseName', 'ASC');
@@ -27,7 +33,11 @@ Class model_course extends CI_Model {
 		return $query->result();
 	}
 
-	//returns a list of courses except the ones stated in the argument
+	/**
+	 * returns a list of courses except the ones stated in the argument
+	 * @param $omittedCourses
+	 * @return bool
+	 */
 	public function GetAllCoursesExcept($omittedCourses) {
 		if (count($omittedCourses) > 0) {
 			$this->db->from('courses');
@@ -42,7 +52,11 @@ Class model_course extends CI_Model {
 		}
 	}
 
-	//returns a course based on an ID
+	/**
+	 * returns a course based on an ID
+	 * @param $courseID
+	 * @return bool
+	 */
 	public function GetCourseById($courseID) {
 		$this->db->where('courseID', $courseID);
 		$query = $this->db->get('courses');
@@ -53,7 +67,11 @@ Class model_course extends CI_Model {
 		return false;
 	}
 
-	//searches for a course based on courseName
+	/**
+	 * searches for a course based on courseName
+	 * @param $courseName
+	 * @return bool
+	 */
 	public function GetCourseByName($courseName) {
 		$this->db->like('courseName', $courseName);
 		$query = $this->db->get('courses');
@@ -64,13 +82,24 @@ Class model_course extends CI_Model {
 		return false;
 	}
 
-	//returns the number of courses available
+	/**
+	 * returns the number of courses available
+	 * @return mixed
+	 */
 	public function GetNumberOfCourses() {
 		$query = $this->db->get('courses');
 		return $query->num_rows;
 	}
 
-	//Add a new course to the courses table
+	/**
+	 * Add a new course to the courses table
+	 * @param $courseTitle
+	 * @param $courseCategory
+	 * @param $courseActive
+	 * @param $courseDescription
+	 * @param $coursePassPercentage
+	 * @return mixed
+	 */
 	public function AddCourse($courseTitle, $courseCategory, $courseActive, $courseDescription, $coursePassPercentage) {
 		$data = array(
 			'courseName' => $courseTitle,
@@ -87,7 +116,10 @@ Class model_course extends CI_Model {
 		return $insert_id;
 	}
 
-	//Delete an existing course from the courses table
+	/**
+	 * Delete an existing course from the courses table
+	 * @param $courseID
+	 */
 	public function DeleteCourse($courseID) {
 		// Cascade deletion. If deleting from courses, remove the others first before deleting the course itself.
 		$tables = array(
@@ -101,7 +133,10 @@ Class model_course extends CI_Model {
 		$this->db->delete($tables);
 	}
 
-	//activate a course
+	/**
+	 * activate a course
+	 * @param $courseID
+	 */
 	public function ActivateCourse($courseID) {
 		$data = array(
 			'active' => 1
@@ -121,7 +156,10 @@ Class model_course extends CI_Model {
 		$this->db->update('courses', $data);
 	}
 
-	//Get the date of the last edited course
+	/**
+	 * Get the date of the last edited course
+	 * @return bool
+	 */
 	public function GetCourseLastEdited() {
 		$this->db->order_By('lastEdited', 'DESC');
 		$query = $this->db->get('courses');
@@ -132,7 +170,14 @@ Class model_course extends CI_Model {
 		return false;
 	}
 
-	//Update the values of a course
+	/**
+	 * Update the values of a course
+	 * @param $courseID
+	 * @param $courseTitle
+	 * @param $courseCategory
+	 * @param $courseDescription
+	 * @param $coursePassPercentage
+	 */
 	public function UpdateCourse($courseID, $courseTitle, $courseCategory, $courseDescription, $coursePassPercentage) {
 		$data = array(
 			'courseName' => $courseTitle,

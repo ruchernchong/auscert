@@ -8,7 +8,13 @@ Class model_quizattempt extends CI_Model {
 		parent::__construct();
 	}
 
-	//Add a new attempt to the table 
+	/**
+	 * Add a new attempt to the table
+	 * @param $courseID
+	 * @param $userID
+	 * @param $version
+	 * @return mixed
+	 */
 	public function SaveAttempt($courseID, $userID, $version) {
 	// find how many attempts have already been made
 		$this->db->where('courseID', $courseID);
@@ -28,7 +34,13 @@ Class model_quizattempt extends CI_Model {
 		return $attempt;
 	}
 
-	//Save the score for a given attempt
+	/**
+	 * Save the score for a given attempt
+	 * @param $courseID
+	 * @param $userID
+	 * @param $attempt
+	 * @param $score
+	 */
 	public function SaveAttemptScore($courseID, $userID, $attempt, $score) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('userID', $userID);
@@ -38,7 +50,12 @@ Class model_quizattempt extends CI_Model {
 	}
 
 
-	// Return the latest Attempt number for a user and course
+	/**
+	 * Return the latest Attempt number for a user and course
+	 * @param $courseID
+	 * @param $userID
+	 * @return bool|int
+	 */
 	public function GetLatestAttemptNumber($courseID, $userID) {
 		$this->db->select_max('attempt');
 		$this->db->where('courseID', $courseID);
@@ -52,7 +69,13 @@ Class model_quizattempt extends CI_Model {
 		return (int) $query->result()[0]->attempt;
 	}
 
-	// Return an attempt from a user for a given course and attmpt number
+	/**
+	 * Return an attempt from a user for a given course and attmpt number
+	 * @param $courseID
+	 * @param $userID
+	 * @param $attempt
+	 * @return bool
+	 */
 	public function GetAttempt($courseID, $userID, $attempt) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('userID', $userID);
@@ -65,7 +88,12 @@ Class model_quizattempt extends CI_Model {
 		return FALSE;
 	}
 
-	// Return the latest attempt from a user for a given course
+	/**
+	 * Return the latest attempt from a user for a given course
+	 * @param $courseID
+	 * @param $userID
+	 * @return bool
+	 */
 	public function GetLatestAttempt($courseID, $userID) {
 		$this->db->select_max('attempt');
 		$this->db->where('courseID', $courseID);
