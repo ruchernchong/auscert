@@ -89,7 +89,8 @@
 												<a href="#"><?php echo $user['lname']; ?></a>
 											</td>
 											<td>
-												<a data-toggle="tab" href="#<?php echo $user['userID']; ?>" class="client-link"><?php echo $user['userID']; ?></a>
+												<!--												<a data-toggle="tab" href="#--><?php //echo $user['userID']; ?><!--" class="client-link">--><?php //echo $user['userID']; ?><!--</a>-->
+												<?php echo $user['userID']; ?>
 											</td>
 											<td>
 												<?php
@@ -114,7 +115,7 @@
 												?>
 											</td>
 											<td>
-												<span data-toggle="tooltip" title="Any suggestion what would you prefer for this? Right now I am using 'userType' from the database."><?php echo $user['usertype']; ?></span>
+												<?php echo $user['usertype']; ?>
 											</td>
 											<td>
 												<i class="fa fa-envelope"></i>&emsp;<a href="mailto:<?php echo $user['email']; ?>"><?php echo $user['email']; ?></a>
@@ -296,10 +297,10 @@
 //				url: 'admin/getDeleteID',
 //				data: 'courseID=' + thisID,
 //				success: function(data) {
-					$('#courseDelModal').show();
-					$('#delID').html(thisID);
-					$('#delName').html(thisName);
-					$('#yesDelete').attr('href', thisUrl);
+			$('#courseDelModal').show();
+			$('#delID').html(thisID);
+			$('#delName').html(thisName);
+			$('#yesDelete').attr('href', thisUrl);
 //				}
 //			})
 		});

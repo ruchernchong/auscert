@@ -168,6 +168,7 @@ class register extends CI_Controller {
 	 * @param $registerActivationKey
 	 * @return bool
 	 */
+	public function registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact, $registerActivationKey) {
 		$thisUserID = $this->model_user->registerUsers($registerEmail, $registerPassword, $registerFName, $registerLName, $registerContact, $registerActivationKey);
 
 		//Default AllUser group and courses
