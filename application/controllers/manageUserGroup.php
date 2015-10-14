@@ -27,11 +27,11 @@ class manageUserGroup extends CI_Controller {
             case is_numeric($method):
                 $this->index();
                 break;
-            case 'addCourses':
-                $this->addCourses();
+            case 'addGroup':
+                $this->addGroup();
                 break;
-            case 'removeCourses':
-                $this->removeCourses();
+            case 'removeGroup':
+                $this->removeGroup();
                 break;
             default:
                 show_404();
