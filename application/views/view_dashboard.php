@@ -39,9 +39,6 @@ if (!empty($this->session->flashdata('welcome'))) {
 							<?php
 							if (!empty($userCourses)) {
 							?>
-							<thead>
-							<th>Course Name</th>
-							</thead>
 							<tbody>
 							<?php
 							foreach ($userCourses as $userCourse) {
