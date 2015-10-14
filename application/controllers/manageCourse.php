@@ -125,6 +125,9 @@ class manageCourse extends CI_Controller {
 		}
 	}
 
+	/**
+	 * @author Leon, please check if you still want this
+	 */
 //	//Ajax search left table
 //	function searchLeftTable() {
 //		$searchTerm = $this->input->post('leftTableSearch');
