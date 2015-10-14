@@ -14,10 +14,10 @@ class admin extends CI_Controller {
 		);
 	}
 
-	function index() {
 	/**
 	 *
 	 */
+	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['fname'] = $session_data['fname'];
@@ -95,47 +95,47 @@ class admin extends CI_Controller {
 	}
 
 	// Delete a course
-	function dropCourse() {
 	/**
 	 * Delete a course
 	 */
+	public function dropCourse() {
 		$courseID = $this->uri->segment(3);
 		$this->model_course->DeleteCourse($courseID);
 		redirect('admin', 'refresh');
 	}
 
-	function dropGroup() {
 	/**
 	 *
 	 */
+	public function dropGroup() {
 		$groupID = $this->uri->segment(3);
 		$this->model_group->DeleteGroup($groupID);
 		redirect('admin', 'refresh');
 	}
 
 	//Activate a course if checkbox is ticked
-	function ifActive() {
 	/**
 	 * Activate a course if checkbox is ticked.
 	 */
+	public function ifActive() {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->ActivateCourse($courseID);
 	}
 
 	//Deactivate a course if checkbox is ticked
-	function ifNotActive() {
 	/**
 	 * Deactivate a course if checkbox is unticked.
 	 */
+	public function ifNotActive() {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->DeactivateCourse($courseID);
 	}
 
 	//AJAX search for users
-	function searchUser()
 	/*
 	 * AJAX search for users
 	 */
+	public function searchUser()
 	{
 		$searchTerm = $this->input->post('userSearch');
 		$users = $this->model_user->GetUserByName($searchTerm);

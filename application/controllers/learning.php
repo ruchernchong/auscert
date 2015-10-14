@@ -20,10 +20,10 @@ class learning extends CI_Controller {
 		);
 	}
 
-	function _remap() {
 	/**
 	 *
 	 */
+	public function _remap() {
 		$method = $this->uri->segment(2);
 
 		switch ($method) {

@@ -14,10 +14,10 @@ class analysis extends CI_Controller {
 		);
 	}
 
-	function _remap() {
 	/**
 	 *
 	 */
+	public function _remap() {
 		$courseID = $this->uri->segment(3);
 
 		switch ($courseID) {
@@ -32,10 +32,10 @@ class analysis extends CI_Controller {
 		}
 	}
 
-	function index() {
 	/**
 	 *
 	 */
+	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['fname'] = $session_data['lname'];
@@ -78,11 +78,11 @@ class analysis extends CI_Controller {
 	}
 
 	//Delete a course
-	function dropCourse() {
 		$courseID = $this->input->get('id', TRUE);
 	/**
 	 * Delete a course
 	 */
+	public function dropCourse() {
 		$this->model_course->DeleteCourse($courseID);
 
 		redirect('admin', 'refresh');
