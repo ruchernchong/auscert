@@ -30,7 +30,9 @@ class admin extends CI_Controller {
 			$users = $this->model_user->GetAllUsers();
 			$groups = $this->model_group->GetGroups();
 
-			//User list with associated array of groups
+			/**
+			 * User list with associated array of groups
+			 */
 			$usersAndGroups = [];
 			foreach ($users as $user) {
 				$groupArray = (!empty($this->model_usergroup->GetUserGroups($user->userID)) ? $this->model_usergroup->GetUserGroups($user->userID) : '');
@@ -47,7 +49,9 @@ class admin extends CI_Controller {
 				array_push($usersAndGroups, $usersList);
 			}
 
-			//Group list with associated array of users
+			/**
+			 * Group list with associated array of users
+			 */
 			$groupsAndUsers = [];
 			foreach ($groups as $group) {
 				$userArray = (!empty($this->model_usergroup->GetGroupUsers($group->groupID)) ? $this->model_usergroup->GetGroupUsers($group->groupID) : '');
@@ -61,27 +65,37 @@ class admin extends CI_Controller {
 				array_push($groupsAndUsers, $groupList);
 			}
 
-			//List of all courses
+			/**
+			 * List of all courses
+			 */
 			if ($allCourses) {
 				$data['courses'] = $allCourses;
 			}
 
-			//Last edited course
+			/**
+			 * Last edited course
+			 */
 			if ($lastEdited) {
 				$data['courseLastEdited'] = $lastEdited;
 			}
 
-			//List of users and the groups they belong to
+			/**
+			 * List of users and the groups they belong to
+			 */
 			if ($usersAndGroups) {
 				$data['users'] = $usersAndGroups;
 			}
 
-			//List of groups and the users assigned to them
+			/**
+			 * List of groups and the users assigned to them
+			 */
 			if ($groupsAndUsers) {
 				$data['groups'] = $groupsAndUsers;
 			}
 
-			//Validates user to be admin in order for access
+			/**
+			 * Validates user to be admin in order for access
+			 */
 			if ($data['usertype'] != 'admin') {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
 				redirect('home', 'refresh');
