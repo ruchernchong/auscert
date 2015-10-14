@@ -59,7 +59,6 @@ Class model_usergroup extends CI_Model {
 			'groupID' => $groupID,
 			'userID' => $userID
 			);
-		$this->db->where($user);
 		$this->db->delete('user_groups', $user);
 	}
 }
