@@ -7,12 +7,17 @@ class edits extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
-		$this->load->model('model_slide');
-		$this->load->model('model_question');
-		$this->load->model('model_answer');
+		$this->load->helper(
+			array(
+				'form', 'url'
+			)
+		);
 		$this->load->library('form_validation');
-		$this->load->helper(array('form', 'url'));
+		$this->load->model(
+			array(
+				'model_answer', 'model_course', 'model_question', 'model_slide'
+			)
+		);
 	}
 
 	/**

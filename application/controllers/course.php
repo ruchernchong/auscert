@@ -7,9 +7,11 @@ class course extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
-		$this->load->model('model_usercourse');
-		$this->load->model('model_slide');
+		$this->load->model(
+			array(
+				'model_course', 'model_slide', 'model_usercourse'
+			)
+		);
 	}
 	
 	/**

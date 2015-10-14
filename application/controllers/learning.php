@@ -7,15 +7,17 @@ class learning extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
-		$this->load->model('model_slide');
-		$this->load->model('model_question');
-		$this->load->model('model_answer');
-		$this->load->model('model_quizattempt');
-		$this->load->model('model_userresult');
-		$this->load->model('model_usercourse');
+		$this->load->helper(
+			array(
+				'form', 'url'
+			)
+		);
 		$this->load->library('form_validation');
-		$this->load->helper(array('form', 'url'));
+		$this->load->model(
+			array(
+				'model_answer', 'model_course',  'model_question', 'model_quizattempt', 'model_slide', 'model_usercourse', 'model_userresult'
+			)
+		);
 	}
 
 	function _remap() {

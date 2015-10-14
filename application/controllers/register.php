@@ -10,18 +10,15 @@ class register extends CI_Controller {
 		$this->load->helper('html');
 		$this->load->library(
 			array(
-				'encrypt',
-				'form_validation',
-				'password',
-				'email'
-			));
 
-		$this->load->model('model_groupcourse');
-		$this->load->model('model_usergroup');
-		$this->load->model('model_usercourse');
-		$this->load->model('model_course');
-		$this->load->model('model_group');
-		$this->load->model('model_user');
+				'encrypt', 'form_validation', 'password', 'email'
+			)
+		);
+		$this->load->model(
+			array(
+				'model_groupcourse', 'model_usergroup', 'model_usercourse', 'model_course', 'model_group', 'model_user'
+			)
+		);
 	}
 
 	public function index() {

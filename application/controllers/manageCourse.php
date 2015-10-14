@@ -7,9 +7,12 @@ class manageCourse extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		
-		$this->load->model('model_group');
-		$this->load->model('model_course');
-		$this->load->model('model_groupcourse');
+
+		$this->load->model(
+			array(
+				'model_course', 'model_group', 'model_groupcourse'
+			)
+		);
 	}
 
 	function _remap() {

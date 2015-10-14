@@ -7,9 +7,11 @@ class manageMember extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_user');
-		$this->load->model('model_group');
-		$this->load->model('model_usergroup');
+		$this->load->model(
+			array(
+				'model_group', 'model_user', 'model_usergroup'
+			)
+		);
 	}
 
 	function _remap(){

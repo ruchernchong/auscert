@@ -7,22 +7,22 @@ class login extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->library(
-			array(
-				'form_validation',
-				'password'
-			));
 		$this->load->helper(
 			array(
-				'form',
-				'html',
-				'url'
-			));
+				'form', 'html', 'url'
+			)
+		);
+		$this->load->library(
+			array(
+				'form_validation', 'password'
+			)
+		);
+		$this->load->model(
+			array(
 
-		$this->load->model('model_course');
-		$this->load->model('model_group');
-		$this->load->model('model_groupcourse');
-		$this->load->model('model_user');
+				'model_course', 'model_group', 'model_groupcourse', 'model_user'
+			)
+		);
 	}
 
 	/**
