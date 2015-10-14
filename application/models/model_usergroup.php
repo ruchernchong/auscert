@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class model_usergroup
+ */
 Class model_usergroup extends CI_Model {
 	function __construct() {
 		parent::__construct();

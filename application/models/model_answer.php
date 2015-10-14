@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class model_answer
+ */
 Class model_answer extends CI_Model {
 	function __construct() {
 		parent::__construct();

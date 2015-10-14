@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class model_slide
+ */
 Class model_slide extends CI_Model {
 	function __construct() {
 		parent::__construct();
