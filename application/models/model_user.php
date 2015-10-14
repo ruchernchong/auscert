@@ -120,12 +120,12 @@ Class model_user extends CI_Model {
 		}
 	}
 
-	function VerifyEmail($registerActivationKey) {
 	/**
 	 * Create email verification
 	 * @param $registerActivationKey
 	 * @return mixed
 	 */
+	public function VerifyEmail($registerActivationKey) {
 		$fname = $this->input->post('registerFName');
 		$lname = $this->input->post('registerLName');
 		$recipient = $this->input->post('registerEmail');
@@ -163,12 +163,12 @@ Class model_user extends CI_Model {
 		return $this->email->send();
 	}
 
-	function VerifyEmailID($activation_key) {
 	/**
 	 * Verify if Email is valid
 	 * @param $activation_key
 	 * @return mixed
 	 */
+	public function VerifyEmailID($activation_key) {
 		$activate = array(
 			'activated' => 1
 		);
