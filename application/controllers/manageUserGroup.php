@@ -1,17 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class manageUserGroup
+ */
 class manageUserGroup extends CI_Controller {
+
     function __construct() {
         parent::__construct();
 
-        $this->load->model('model_course');
-        $this->load->model('model_user');
-        $this->load->model('model_usercourse');
-        $this->load->model('model_group');
-        $this->load->model('model_usergroup');
+        $this->load->model(
+            array(
+                'model_course', 'model_user', 'model_usercourse', 'model_group', 'model_usergroup'
+            )
+        );
     }
 
-    function _remap() {
+    /**
+     *
+     */
+    public function _remap() {
         $method = $this->uri->segment(2);
 
         switch($method){
@@ -20,11 +27,11 @@ class manageUserGroup extends CI_Controller {
             case is_numeric($method):
                 $this->index();
                 break;
-            case 'addCourses':
-                $this->addCourses();
+            case 'addGroup':
+                $this->addGroup();
                 break;
-            case 'removeCourses':
-                $this->removeCourses();
+            case 'removeGroup':
+                $this->removeGroup();
                 break;
             default:
                 show_404();
@@ -32,7 +39,10 @@ class manageUserGroup extends CI_Controller {
         }
     }
 
-    function index() {
+    /**
+     *
+     */
+    public function index() {
         if ($this->session->userdata('logged_in')) {
             $session_data = $this->session->userdata('logged_in');
             $data['fname'] = $session_data['fname'];
@@ -90,8 +100,10 @@ class manageUserGroup extends CI_Controller {
         }
     }
 
-    //assign group to a user
-    function addGroup() {
+    /**
+     * assign group to a user
+     */
+    public function addGroup() {
         $groupIDArray = $this->input->post('groupIDs');
         $userID = $this->input->post('userID');
 
@@ -100,17 +112,23 @@ class manageUserGroup extends CI_Controller {
         }
     }
 
-    //remove group from a user
-    function removeGroup() {
+    /**
+     * remove group from a user
+     */
+    public function removeGroup() {
         $groupIDArray = $this->input->post('groupIDs');
         $userID = $this->input->post('userID');
+
         foreach ($groupIDArray as $groupID) {
             $this->model_usergroup->RemoveUserFromGroup($userID, $groupID);
         }
     }
 
-    //Helpful function for printing to console. Evoke with $this->debugConsole(value);
-    function debugConsole($data) {
+    /**
+     * Helpful function for printing to console. Evoke with $this->debugConsole(value);
+     * @param $data
+     */
+    public function debugConsole($data) {
         if (is_array($data)) {
             $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
         } else {

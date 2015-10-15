@@ -1,17 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class manageUserCourse
+ */
 class manageUserCourse extends CI_Controller {
     function __construct() {
         parent::__construct();
 
-        $this->load->model('model_course');
-        $this->load->model('model_user');
-        $this->load->model('model_usercourse');
-        $this->load->model('model_group');
-        $this->load->model('model_usergroup');
+        $this->load->model(
+            array(
+                'model_course', 'model_group', 'model_user', 'model_usercourse', 'model_usergroup'
+            )
+        );
     }
 
-    function _remap() {
+    /**
+     *
+     */
+    public function _remap() {
         $method = $this->uri->segment(2);
 
         switch($method){
@@ -32,7 +38,10 @@ class manageUserCourse extends CI_Controller {
         }
     }
 
-    function index() {
+    /**
+     *
+     */
+    public function index() {
         if ($this->session->userdata('logged_in')) {
             $session_data = $this->session->userdata('logged_in');
             $data['fname'] = $session_data['fname'];
@@ -92,8 +101,10 @@ class manageUserCourse extends CI_Controller {
         }
     }
 
-    //assign courses to a user
-    function addCourses() {
+    /**
+     * Assigns courses to a user
+     */
+    public function addCourses() {
         $courseIDArray = $this->input->post('courseIDs');
         $userID = $this->input->post('userID');
 
@@ -111,9 +122,11 @@ class manageUserCourse extends CI_Controller {
         }
     }
 
-
-    //Helpful function for printing to console. Evoke with $this->debugConsole(value);
-    function debugConsole($data) {
+    /**
+     * Helpful function for printing to console. Evoke with $this->debugConsole(value);
+     * @param $data
+     */
+    public function debugConsole($data) {
         if (is_array($data)) {
             $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
         } else {

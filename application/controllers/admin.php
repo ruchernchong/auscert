@@ -1,17 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class admin
+ */
 class admin extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
-		$this->load->model('model_user');
-		$this->load->model('model_usercourse');
-		$this->load->model('model_group');
-		$this->load->model('model_usergroup');
+		$this->load->model(
+			array(
+				'model_course', 'model_group', 'model_user', 'model_usercourse', 'model_usergroup'
+			)
+		);
 	}
 
-	function index() {
+	/**
+	 *
+	 */
+	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['fname'] = $session_data['fname'];
@@ -24,7 +30,9 @@ class admin extends CI_Controller {
 			$users = $this->model_user->GetAllUsers();
 			$groups = $this->model_group->GetGroups();
 
-			//User list with associated array of groups
+			/**
+			 * User list with associated array of groups
+			 */
 			$usersAndGroups = [];
 			foreach ($users as $user) {
 				$groupArray = (!empty($this->model_usergroup->GetUserGroups($user->userID)) ? $this->model_usergroup->GetUserGroups($user->userID) : '');
@@ -41,7 +49,9 @@ class admin extends CI_Controller {
 				array_push($usersAndGroups, $usersList);
 			}
 
-			//Group list with associated array of users
+			/**
+			 * Group list with associated array of users
+			 */
 			$groupsAndUsers = [];
 			foreach ($groups as $group) {
 				$userArray = (!empty($this->model_usergroup->GetGroupUsers($group->groupID)) ? $this->model_usergroup->GetGroupUsers($group->groupID) : '');
@@ -55,27 +65,37 @@ class admin extends CI_Controller {
 				array_push($groupsAndUsers, $groupList);
 			}
 
-			//List of all courses
+			/**
+			 * List of all courses
+			 */
 			if ($allCourses) {
 				$data['courses'] = $allCourses;
 			}
 
-			//Last edited course
+			/**
+			 * Last edited course
+			 */
 			if ($lastEdited) {
 				$data['courseLastEdited'] = $lastEdited;
 			}
 
-			//List of users and the groups they belong to
+			/**
+			 * List of users and the groups they belong to
+			 */
 			if ($usersAndGroups) {
 				$data['users'] = $usersAndGroups;
 			}
 
-			//List of groups and the users assigned to them
+			/**
+			 * List of groups and the users assigned to them
+			 */
 			if ($groupsAndUsers) {
 				$data['groups'] = $groupsAndUsers;
 			}
 
-			//Validates user to be admin in order for access
+			/**
+			 * Validates user to be admin in order for access
+			 */
 			if ($data['usertype'] != 'admin') {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
 				redirect('home', 'refresh');
@@ -88,39 +108,50 @@ class admin extends CI_Controller {
 		}
 	}
 
-	// Delete a course
-	function dropCourse() {
+	/**
+	 * Delete a course
+	 */
+	public function dropCourse() {
 		$courseID = $this->uri->segment(3);
 		$this->model_course->DeleteCourse($courseID);
 		redirect('admin', 'refresh');
 	}
 
-	function dropGroup() {
+	/**
+	 *
+	 */
+	public function dropGroup() {
 		$groupID = $this->uri->segment(3);
 		$this->model_group->DeleteGroup($groupID);
 		redirect('admin', 'refresh');
 	}
 
-	//Activate a course if checkbox is ticked
-	function ifActive() {
+	/**
+	 * Activate a course if checkbox is ticked.
+	 */
+	public function ifActive() {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->ActivateCourse($courseID);
 	}
 
-	//Deactivate a course if checkbox is ticked
-	function ifNotActive() {
+	/**
+	 * Deactivate a course if checkbox is unticked.
+	 */
+	public function ifNotActive() {
 		$courseID = $this->input->post('courseID');
 		$this->model_course->DeactivateCourse($courseID);
 	}
 
-	//AJAX search for users
-	function searchUser()
+	/*
+	 * AJAX search for users
+	 */
+	public function searchUser()
 	{
 		$searchTerm = $this->input->post('userSearch');
 		$users = $this->model_user->GetUserByName($searchTerm);
 
 		if ($users) {
-			$noResult = FALSE;
+			$noResult = false;
 			$usersAndGroups = [];
 
 			foreach ($users as $user) {
@@ -144,7 +175,7 @@ class admin extends CI_Controller {
 			);
 		}
 		else {
-			$noResult = TRUE;
+			$noResult = true;
 			$payload = array(
 				'noResult' => $noResult
 			);

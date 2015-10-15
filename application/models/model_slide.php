@@ -1,24 +1,33 @@
 <?php
 
+/**
+ * Class model_slide
+ */
 Class model_slide extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
 
-	//Get the current slide id
+	/**
+	 * Get the current slide id
+	 * @return bool
+	 */
 	public function GetSlideById() {
 		$this->db->where('courseID', $this->input->get('courseID'));
 		$this->db->where('slideID', $this->input->get('slideID'));
 
 		$query = $this->db->get('slides');
-		
+
 		if ($query->num_rows == 1) {
 			return $query->result();
 		}
 		return false;
 	}
 
-	//get the current slide object
+	/**
+	 * get the current slide object
+	 * @return bool
+	 */
 	public function GetSlide() {
 		$this->db->where('courseID', $this->input->get('courseID'));
 
@@ -26,31 +35,41 @@ Class model_slide extends CI_Model {
 
 		if ($query->num_rows > 0) {
 			return $query->result();
-		} 
+		}
 		return false;
 	}
 
-	//get the current slide
+	/**
+	 * get the current slide
+	 * @param $courseID
+	 * @return array
+	 */
 	public function GetSlidesByCourse($courseID) {
 		$this->db->where('courseID', $courseID);
-		$this->db->order_by("slideOrder", "asc"); 
+		$this->db->order_by("slideOrder", "asc");
 
 		$query = $this->db->get('slides');
-		
+
 		if ($query->num_rows > 0) {
 			return $query->result();
 		} else {
 			return array();
-		}		
+		}
 	}
-	
-	//Add a new slide to the slides table for a given course, or updates if it already exists 
+
+	/**
+	 * Add a new slide to the slides table for a given course, or updates if it already exists
+	 * @param $courseID
+	 * @param $slideOrder
+	 * @param $slideTitle
+	 * @param $slideContent
+	 */
 	public function SaveSlide($courseID, $slideOrder, $slideTitle, $slideContent) {
 		$data = array(
 			'slideTitle' => $slideTitle,
 			'slideContent' =>  $slideContent,
-			);
-		
+		);
+
 		$this->db->where('courseID', $courseID);
 		$this->db->where('slideOrder', $slideOrder);
 		$query = $this->db->get('slides');
@@ -59,8 +78,8 @@ Class model_slide extends CI_Model {
 			$data = array(
 				'slideTitle' => $slideTitle,
 				'slideContent' =>  $slideContent,
-				);
-			
+			);
+
 			$this->db->where('courseID', $courseID);
 			$this->db->where('slideOrder', $slideOrder);
 			$this->db->update('slides', $data);
@@ -70,21 +89,29 @@ Class model_slide extends CI_Model {
 				'slideOrder' => $slideOrder,
 				'slideTitle' => $slideTitle,
 				'slideContent' =>  $slideContent,
-				);
-			
+			);
+
 			$this->db->insert('slides', $data);
 			$insert_id = $this->db->insert_id();
 		}
 	}
-	
-	//Delete a slide from a given course with a given ID
+
+	/**
+	 * Delete a slide from a given course with a given ID
+	 * @param $courseID
+	 * @param $slideOrder
+	 */
 	public function DeleteSlide($courseID, $slideOrder) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('slideOrder', $slideOrder);
 		$this->db->delete('slides');
 	}
-	
-	//Delete all slides for a given course with a slide order equal to or higher than that given 
+
+	/**
+	 * Delete all slides for a given course with a slide order equal to or higher than that given
+	 * @param $courseID
+	 * @param $slideOrder
+	 */
 	public function DeleteHigherSlides($courseID, $slideOrder) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('slideOrder >=', $slideOrder);

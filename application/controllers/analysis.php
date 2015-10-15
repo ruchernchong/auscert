@@ -1,17 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class analysis
+ */
 class analysis extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_user');
-		$this->load->model('model_usercourse');
-		$this->load->model('model_course');
-		$this->load->model('model_group');
-		$this->load->model('model_slide');
+		$this->load->model(
+			array(
+				'model_course', 'model_group', 'model_slide', 'model_user', 'model_usercourse'
+			)
+		);
 	}
 
-	function _remap() {
+	/**
+	 *
+	 */
+	public function _remap() {
 		$courseID = $this->uri->segment(3);
 
 		switch ($courseID) {
@@ -26,7 +32,10 @@ class analysis extends CI_Controller {
 		}
 	}
 
-	function index() {
+	/**
+	 *
+	 */
+	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['fname'] = $session_data['lname'];
@@ -68,9 +77,11 @@ class analysis extends CI_Controller {
 		}
 	}
 
-	//Delete a course
-	function dropCourse() {
-		$courseID = $this->input->get('id', TRUE);
+	/**
+	 * Delete a course
+	 */
+	public function dropCourse() {
+		$courseID = $this->uri->segment(3);
 		$this->model_course->DeleteCourse($courseID);
 
 		redirect('admin', 'refresh');

@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Cyber Security online training system for a business context." />
+	<meta name="author" content="Tartiner Studios" />
+	<meta name="google-site-verification" content="1LBGW060DUsPKhNgB2y34EQATnRahk9D3F9vR5VyFaI" />
 	<title>AusCert | Login</title>
 	<!-- <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png'); ?>" /> -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
@@ -13,8 +17,6 @@
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/angular.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/notify.min.js'); ?>"></script>
-
-	<meta name="google-site-verification" content="1LBGW060DUsPKhNgB2y34EQATnRahk9D3F9vR5VyFaI" />
 </head>
 
 <body>
@@ -113,8 +115,6 @@ echo form_open('login/validateLogin', $attributes);
 	<div class="title">Login</div>
 	<input type="text" id="loginEmail" name="loginEmail" placeholder="E-mail" />
 	<input type="password" id="loginPassword" name="loginPassword" placeholder="Password" />
-	<input type="checkbox" id="rememberMe" name="rememberMe" />
-	<label for="rememberMe"></label><span>Remember Me</span>
 	<button>Login</button>
 	<div class="social">
 		<span>Trouble Signing in?</span>
@@ -133,7 +133,7 @@ echo form_open('login/validateLogin', $attributes);
 </form>
 <script>
 	$(window).load(function() {
-// Animate loader off screen
+		// Animate loader off screen
 		$(".loader").fadeOut("slow");;
 	});
 </script>

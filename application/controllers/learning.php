@@ -1,21 +1,29 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class learning
+ */
 class learning extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
-		$this->load->model('model_slide');
-		$this->load->model('model_question');
-		$this->load->model('model_answer');
-		$this->load->model('model_quizattempt');
-		$this->load->model('model_userresult');
-		$this->load->model('model_usercourse');
+		$this->load->helper(
+			array(
+				'form', 'url'
+			)
+		);
 		$this->load->library('form_validation');
-		$this->load->helper(array('form', 'url'));
+		$this->load->model(
+			array(
+				'model_answer', 'model_course',  'model_question', 'model_quizattempt', 'model_slide', 'model_usercourse', 'model_userresult'
+			)
+		);
 	}
 
-	function _remap() {
+	/**
+	 *
+	 */
+	public function _remap() {
 		$method = $this->uri->segment(2);
 
 		switch ($method) {
@@ -33,16 +41,20 @@ class learning extends CI_Controller {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if($this->session->userdata('logged_in')) {
+			$thisUserID = $this->session->userdata['logged_in']['userID'];
 			$session_data = $this->session->userdata('logged_in');
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "course";
 
 			$courseID = $this->uri->segment(2);
 
-			$data['completed'] = $this->model_usercourse->CourseCompleted($courseID, $this->session->userdata['logged_in']['userID']);
-			
+			$data['completed'] = $this->model_usercourse->CourseCompleted($courseID, $thisUserID);
+
 			$query = $this->model_course->GetCourseById($courseID);
 
 			if ($query) {
@@ -56,7 +68,7 @@ class learning extends CI_Controller {
 			} else {
 				$data['slides'] = array();
 			}
-			
+
 			if ($questions) {
 				$data['questions'] = $questions;
 				for($i = 0; $i < sizeof($questions); $i++) {
@@ -70,7 +82,7 @@ class learning extends CI_Controller {
 			} else {
 				$data['questions'] = array();
 			}
-			
+
 			$this->load->view('header', $data);
 			$this->load->view('view_learning', $data);
 		} else {
@@ -78,6 +90,9 @@ class learning extends CI_Controller {
 		}
 	}
 
+	/**
+	 * @param $courseID
+	 */
 	public function quiz($courseID) {
 		$course = $this->model_course->GetCourseById($courseID);
 		$userID = $this->session->userdata['logged_in']['userID'];
@@ -87,15 +102,15 @@ class learning extends CI_Controller {
 			$userID,
 			$course->version
 		);
-		
+
 		$results = array();
-		
+
 		$i = 0;
 		while ($this->input->post('q' . $i) != NULL) {
 			$results[$i] = $this->input->post('q' . $i);
 			$i++;
 		}
-		
+
 		$this->model_userresult->SaveResults(
 			$courseID,
 			$userID,
@@ -108,7 +123,10 @@ class learning extends CI_Controller {
 		redirect('home', 'refresh');
 	}
 
-
+	/**
+	 * @param $courseID
+	 * @param $userID
+	 */
 	public function score_latest_quiz($courseID, $userID) {
 		$answers = $this->model_answer->GetCorrectAnswers($courseID);
 		$attempt = $this->model_quizattempt->GetLatestAttemptNumber($courseID, $userID);
@@ -127,7 +145,7 @@ class learning extends CI_Controller {
 
 		$course = $this->model_course->GetCourseById($courseID);
 
-		if($grade * 100 + 0.001 >= $course->passPercentage) {
+		if ($grade * 100 + 0.001 >= $course->passPercentage) {
 			// quiz passed, add small value to allow for float inaccuracy
 			$this->model_usercourse->UpdateStatus($courseID, $userID, 4);
 		} else {

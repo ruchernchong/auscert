@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * Class model_userresult
+ */
 Class model_userresult extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
 
-	// Adds a new set of answers for a quiz attempt by a user 
+	/**
+	 * Adds a new set of answers for a quiz attempt by a user
+	 * @param $courseID
+	 * @param $userID
+	 * @param $attempt
+	 * @param $results
+	 */
 	public function SaveResults($courseID, $userID, $attempt, $results) {
 		$questionCount = count($results);
 
@@ -18,13 +27,19 @@ Class model_userresult extends CI_Model {
 				'attempt' => $attempt,
 				'questionNumber' => $key,
 				'userAnswer' => $value,
-				);
+			);
 			array_push($data, $answer);
 		}
 		$this->db->insert_batch('user_results', $data);
 	}
 
-	// Return the results for a given, course, user and attempt
+	/**
+	 * Return the results for a given, course, user and attempt
+	 * @param $courseID
+	 * @param $userID
+	 * @param $attempt
+	 * @return bool
+	 */
 	public function GetResult($courseID, $userID, $attempt) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('userID', $userID);
@@ -34,7 +49,7 @@ Class model_userresult extends CI_Model {
 		if ($query->num_rows > 0) {
 			return $query;
 		}
-		return FALSE;
+		return false;
 	}
 }
 ?>

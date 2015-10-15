@@ -1,24 +1,32 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class login
+ */
 class login extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->library('form_validation');
-		$this->load->library('password');
 		$this->load->helper(
 			array(
-				'form',
-				'html',
-				'url'
-			));
-
-		$this->load->model('model_course');
-		$this->load->model('model_group');
-		$this->load->model('model_groupcourse');
-		$this->load->model('model_user');
+				'form', 'html', 'url'
+			)
+		);
+		$this->load->library(
+			array(
+				'form_validation', 'password'
+			)
+		);
+		$this->load->model(
+			array(
+				'model_course', 'model_group', 'model_groupcourse', 'model_user'
+			)
+		);
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			redirect('home', 'refresh');
@@ -27,7 +35,9 @@ class login extends CI_Controller {
 		}
 	}
 
-	//validate a user's login
+	/**
+	 * Validate a user's login
+	 */
 	public function validateLogin() {
 		$loginEmail = $this->input->post('loginEmail');
 		$loginPassword = $this->input->post('loginPassword');
@@ -64,13 +74,6 @@ class login extends CI_Controller {
 				'Invalid Email and/or Password.');
 			redirect('login', 'refresh');
 		}
-//		} else {
-//			$this->session->set_flashdata('email-not-verified',
-//				'Your email: ' . $loginEmail . ' is not activated.'
-//				. br(1) .
-//				'You are required to activate your email before logging in.');
-//			redirect('login', 'refresh');
-//		}
 	}
 }
 ?>

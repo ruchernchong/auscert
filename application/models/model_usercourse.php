@@ -1,11 +1,17 @@
 <?php
 
+/**
+ * Class model_usercourse
+ */
 Class model_usercourse extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
 
-	//Validate user
+	/**
+	 * Validate user
+	 * @return bool
+	 */
 	public function validate() {
 		$this->db->where('email',$this->input->post('loginEmail'));
 		$this->db->where('password',$this->input->post('loginPassword'));
@@ -16,7 +22,11 @@ Class model_usercourse extends CI_Model {
 		return false;
 	}
 
-	//Returns a list of the current user's courses
+	/**
+	 * Returns a list of the current user's courses
+	 * @param $userID
+	 * @return mixed
+	 */
 	public function GetUserCourses($userID) {
 		$this->db->where('userID', $userID);
 		$this->db->join('courses', 'courses.courseID = user_courses.courseID', 'INNER');
@@ -26,20 +36,31 @@ Class model_usercourse extends CI_Model {
 		return $query->result();
 	}
 
-	//Returns the number of courses a user is enrolled into
+	/**
+	 * Returns the number of courses a user is enrolled into
+	 * @return mixed
+	 */
 	public function GetNumberOfUserCourses() {
 		$this->db->where('userID', $this->session->userdata['logged_in']['userID']);
 		$query = $this->db->get('user_courses');
 		return $query->num_rows;
 	}
 
-	//Add a user and his corresponding enrolled course to the usercourse table
+	/**
+	 * Add a user and his corresponding enrolled course to the usercourse table
+	 * @param $userID
+	 * @param $courseID
+	 */
 	public function RegisterToCourse($userID, $courseID) {
 		$data = array('userID' => $userID, 'courseID' => $courseID);
 		$this->db->insert('user_courses', $data);
 	}
 
-	//Remove a user and his corresponding dropped course from the usercourse table
+	/**
+	 * Remove a user and his corresponding dropped course from the usercourse table
+	 * @param $userID
+	 * @param $courseID
+	 */
 	public function DropFromCourse($userID, $courseID) {
 		$data = array('userID' => $userID, 'courseID' => $courseID);
 		$this->db->delete('user_courses', $data);
@@ -62,7 +83,11 @@ Class model_usercourse extends CI_Model {
 		}
 	}
 
-	//Returns a list of users who are enrolled in a course
+	/**
+	 * Returns a list of users who are enrolled in a course
+	 * @param $courseID
+	 * @return mixed
+	 */
 	public function GetUsersFromCourse($courseID) {
 		$this->db->where('courseID', $courseID);
 		$this->db->join('users', 'users.userID = user_courses.userID', 'INNER');
@@ -71,7 +96,11 @@ Class model_usercourse extends CI_Model {
 		return $query->result();
 	}
 
-	//Returns a list of users who have completed the course
+	/**
+	 * Returns a list of users who have completed the course
+	 * @param $courseID
+	 * @return mixed
+	 */
 	public function GetCompletedUsers($courseID) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('completion', 4);
@@ -81,7 +110,11 @@ Class model_usercourse extends CI_Model {
 		return $query->result();
 	}
 
-	//Returns a list of courses completed by the user
+	/**
+	 * Returns a list of courses completed by the user
+	 * @param $userID
+	 * @return mixed
+	 */
 	public function GetCompletedUserCourse($userID) {
 		$this->db->where('userID', $userID);
 		$this->db->where('completion', 4);
@@ -91,7 +124,12 @@ Class model_usercourse extends CI_Model {
 		return $query->result();
 	}
 
-	//Update a users quiz score 
+	/**
+	 * Update a users quiz score
+	 * @param $courseID
+	 * @param $userID
+	 * @return bool
+	 */
 	public function CourseCompleted($courseID, $userID) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('userID', $userID);
@@ -105,7 +143,12 @@ Class model_usercourse extends CI_Model {
 		}
 	}
 
-	//Update a users quiz score 
+	/**
+	 * Update a users quiz score
+	 * @param $courseID
+	 * @param $userID
+	 * @param $grading
+	 */
 	public function UpdateScore($courseID, $userID, $grading) {
 		$data = array(
 			'userID' => $userID,
@@ -119,7 +162,12 @@ Class model_usercourse extends CI_Model {
 		$this->db->update('user_courses');
 	}
 
-	//Update a users course status
+	/**
+	 * Update a users course status
+	 * @param $courseID
+	 * @param $userID
+	 * @param $status
+	 */
 	public function UpdateStatus($courseID, $userID, $status) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('userID', $userID);

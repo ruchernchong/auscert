@@ -1,14 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class addCourse
+ */
 class addCourse extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
+		$this->load->helper(
+			array(
+				'form', 'url'
+			)
+		);
 		$this->load->library('form_validation');
-		$this->load->helper(array('form', 'url'));
+		$this->load->model('model_course');
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
@@ -24,7 +34,9 @@ class addCourse extends CI_Controller {
 		}
 	}
 
-	//Create and save a course
+	/**
+	 * Create and save a course
+	 */
 	public function createCourse() {
 		$rules = array(
 			array(

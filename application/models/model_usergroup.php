@@ -1,11 +1,18 @@
 <?php
 
+/**
+ * Class model_usergroup
+ */
 Class model_usergroup extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
 
-	//returns an array (instead of an object) of all groupID and organisations of a user
+	/**
+	 * returns an array (instead of an object) of all groupID and organisations of a user
+	 * @param $userID
+	 * @return bool
+	 */
 	public function GetUserGroups($userID) {
 		$this->db->select('g.groupID, g.organisation');
 		$this->db->from('groups AS g, user_groups AS ug');
@@ -19,7 +26,11 @@ Class model_usergroup extends CI_Model {
 		return false;
 	}
 
-	//returns an array (instead of object) of all users within a group
+	/**
+	 * returns an array (instead of object) of all users within a group
+	 * @param $groupID
+	 * @return bool
+	 */
 	public function GetGroupUsers($groupID) {
 		$this->db->select('u.userID, u.email, u.fname');
 		$this->db->from('users AS u, user_groups AS ug');
@@ -34,7 +45,11 @@ Class model_usergroup extends CI_Model {
 		return false;
 	}
 
-	//returns the count of members within a group
+	/**
+	 * returns the count of members within a group
+	 * @param $groupID
+	 * @return mixed
+	 */
 	public function GetUserCount($groupID) {
 		$this->db->where('groupID', $groupID);
 		$query = $this->db->count_all_results('user_groups');
@@ -44,16 +59,24 @@ Class model_usergroup extends CI_Model {
 		}
 	}
 
-	//Assign a user to the group
+	/**
+	 * Assign a user to the group
+	 * @param $userID
+	 * @param $groupID
+	 */
 	public function AddUserToGroup($userID, $groupID) {
 		$user = array(
 			'groupID' => $groupID,
 			'userID' => $userID
-			);
+		);
 		$this->db->insert('user_groups', $user);
 	}
 
-	//Remove a user from the group
+	/**
+	 * Remove a user from the group
+	 * @param $userID
+	 * @param $groupID
+	 */
 	public function RemoveUserFromGroup($userID, $groupID) {
 		$user = array(
 			'groupID' => $groupID,

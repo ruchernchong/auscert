@@ -1,16 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class course
+ */
 class course extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
-		$this->load->model('model_usercourse');
-		$this->load->model('model_slide');
+		$this->load->model(
+			array(
+				'model_course', 'model_slide', 'model_usercourse'
+			)
+		);
 	}
-	
+
+	/**
+	 *
+	 */
 	public function index() {
-		if($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('logged_in')) {
 			$query = $this->model_usercourse->GetUserCourses();
 			$getCompletion = $this->model_usercourse->GetUserCourses();
 
@@ -23,7 +31,8 @@ class course extends CI_Controller {
 			}
 
 			$session_data = $this->session->userdata('logged_in');
-			//$data['username'] = $session_data['username'];
+			$data['fname'] = $session_data['fname'];
+			$data['lname'] = $session_data['lname'];
 			$data['usertype'] = $session_data['usertype'];
 			$data['menu'] = "course";
 

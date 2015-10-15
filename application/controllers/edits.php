@@ -1,17 +1,28 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class edits
+ */
 class edits extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
-		$this->load->model('model_slide');
-		$this->load->model('model_question');
-		$this->load->model('model_answer');
+		$this->load->helper(
+			array(
+				'form', 'url'
+			)
+		);
 		$this->load->library('form_validation');
-		$this->load->helper(array('form', 'url'));
+		$this->load->model(
+			array(
+				'model_answer', 'model_course', 'model_question', 'model_slide'
+			)
+		);
 	}
 
+	/**
+	 *
+	 */
 	function _remap() {
 		$method = $this->uri->segment(2);
 
@@ -30,6 +41,9 @@ class edits extends CI_Controller {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
@@ -69,7 +83,7 @@ class edits extends CI_Controller {
 			} else {
 				$data['questions'] = array();
 			}
-			
+
 			// If user is not admin, redirect to dashboard.
 			if ($data['usertype'] != "admin") {
 				$this->session->set_flashdata('denied', 'You do not have permission to view this page.');
@@ -82,9 +96,11 @@ class edits extends CI_Controller {
 			redirect('login', 'refresh');
 		}
 	}
-	
-	// Updates the description for a course and saves slides, quiz questions and quiz answers.
-	// Deletes any excess content if the user has removed content
+
+	/**
+	 * Updates the description for a course and saves slides, quiz questions and quz answers.
+	 * Deletes any excess content if the user has removed content
+	 */
 	public function save() {
 		$courseID = $this->uri->segment(3);
 		$courseName = $this->input->post('course-name');
@@ -97,14 +113,15 @@ class edits extends CI_Controller {
 			$courseName,
 			$courseCategory,
 			$courseDescription,
-			$coursePassPercentage);
-		
+			$coursePassPercentage
+		);
+
 		$slideOrder = 0;
 
 		while (true) {
 			$slideTitle = $this->input->post(sprintf('title-%d', $slideOrder));
 			$slideContent = $this->input->post(sprintf('editor-%d', $slideOrder));
-			
+
 			if ($slideTitle == NULL) {
 				break;
 			}
@@ -118,19 +135,19 @@ class edits extends CI_Controller {
 
 		while (true) {
 			$questionText = $this->input->post(sprintf('question-%d', $questionOrder));
-			
+
 			if ($questionText == NULL) {
 				break;
 			}
 
 			$this->model_question->SaveQuestion($courseID, $questionOrder, $questionText);
-			
+
 			$answerOrder = 0;
 			$correctAnswer = $this->input->post(sprintf('c-q%d', $questionOrder));
 
 			while (true) {
 				$answerText = $this->input->post(sprintf('q%da%d', $questionOrder, $answerOrder));
-				
+
 				if ($answerText == NULL) {
 					break;
 				}
@@ -139,16 +156,16 @@ class edits extends CI_Controller {
 				} else {
 					$this->model_answer->SaveAnswer($courseID, $questionOrder, $answerOrder, FALSE, $answerText);
 				}
-				
+
 				$answerOrder++;
 			}
 			$this->model_answer->DeleteHigherAnswers($courseID, $questionOrder, $answerOrder);
-			
+
 			$questionOrder++;
 		}
 		$this->model_question->DeleteHigherQuestions($courseID, $questionOrder);
-		
-		redirect('admin','refresh');
+
+		redirect('admin', 'refresh');
 	}
 }
 ?>

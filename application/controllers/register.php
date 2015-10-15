@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class register
+ */
 class register extends CI_Controller {
 	function __construct() {
 		parent::__construct();
@@ -7,20 +10,19 @@ class register extends CI_Controller {
 		$this->load->helper('html');
 		$this->load->library(
 			array(
-				'encrypt',
-				'form_validation',
-				'password',
-				'email'
-			));
-
-		$this->load->model('model_groupcourse');
-		$this->load->model('model_usergroup');
-		$this->load->model('model_usercourse');
-		$this->load->model('model_course');
-		$this->load->model('model_group');
-		$this->load->model('model_user');
+				'encrypt', 'form_validation', 'password', 'email'
+			)
+		);
+		$this->load->model(
+			array(
+				'model_groupcourse', 'model_usergroup', 'model_usercourse', 'model_course', 'model_group', 'model_user'
+			)
+		);
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		$groups = $this->model_group->GetPublicGroups();
 
@@ -31,7 +33,9 @@ class register extends CI_Controller {
 		$this->load->view('view_register', $data);
 	}
 
-	//Create user and assign him to groups
+	/**
+	 * Creates user and assigns the person to groups
+	 */
 	public function registerUsers() {
 		$groups = $this->model_group->GetPublicGroups();
 
@@ -90,7 +94,6 @@ class register extends CI_Controller {
 		$registerActivationKey = str_replace(array('+', '/', '='), array('-', '_', '~'), $enc_email);
 
 		if ($this->form_validation->run() == false) {
-//			$this->form_validation->set_error_delimiters('', '');
 			$this->session->set_flashdata('register-error', 'Please see registration form for errors.');
 
 			$this->load->view('view_register', $data);
@@ -108,18 +111,17 @@ class register extends CI_Controller {
 				if ($this->model_user->VerifyEmail($registerActivationKey)) {
 					$this->session->set_flashdata('register-success', 'We have sent ' . $registerEmail . ' instructions to activate your account.'
 						. br(1) .
-						'You will have limited access until you have verified your email address.');
+						'You will not be able to login until you have verified your email address.');
 
 					redirect('login', 'refresh');
-				} else {
-					$this->debugConsole('Verify Email Not Working');
 				}
-			} else {
-				$this->debugConsole('Register and Setup Not working');
 			}
 		}
 	}
 
+	/**
+	 * Verify if the activation key sent to email matches with the one stored in the database tied to user's email address
+	 */
 	public function verify() {
 		$hash = $this->uri->segment(3);
 
@@ -137,6 +139,12 @@ class register extends CI_Controller {
 		}
 	}
 
+	/**
+	 * Using Regular Expressions (Regex method) to enforce a strong password policy
+	 * Password must have at least one alphabet and one number, or one alphabet and one symbol
+	 * @param $password
+	 * @return bool
+	 */
 	public function isStrongPassword($password) {
 		if (preg_match('/^(.*[a-zA-Z])(.*\d)$/', $password) || preg_match('/^(.*[a-zA-Z])(.*[$@$!%*#?&])$/', $password)) {
 			return true;
@@ -147,9 +155,20 @@ class register extends CI_Controller {
 		}
 	}
 
-	//Adds user to the default AllUser group in addition to their specialised groups.
-	//Also assigns courses to them based on their grouping
-	function registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact, $registerActivationKey) {
+	/**
+	 *
+	 * Adds user to the default AllUser group in addition to their specialised groups
+	 * Also assigns courses to them based on their grouping
+	 * @param $registerEmail
+	 * @param $registerPassword
+	 * @param $registerFName
+	 * @param $registerLName
+	 * @param $registerGroup
+	 * @param $registerContact
+	 * @param $registerActivationKey
+	 * @return bool
+	 */
+	public function registerAndSetup($registerEmail, $registerPassword, $registerFName, $registerLName, $registerGroup, $registerContact, $registerActivationKey) {
 		$thisUserID = $this->model_user->registerUsers($registerEmail, $registerPassword, $registerFName, $registerLName, $registerContact, $registerActivationKey);
 
 		//Default AllUser group and courses
@@ -178,7 +197,10 @@ class register extends CI_Controller {
 		return true;
 	}
 
-	//Helpful function for printing to console. Evoke with $this->debugConsole(value);
+	/**
+	 * Helpful function for printing to console. Evoke with $this->debugConsole(value);
+	 * @param $data
+	 */
 	function debugConsole($data) {
 		if (is_array($data)) {
 			$output = "<script>console.log('Debug Objects: " . implode(',', $data) . "');</script>";

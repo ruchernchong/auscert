@@ -1,33 +1,48 @@
 <?php
 
+/**
+ * Class model_question
+ */
 Class model_question extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
 
-	// Returns all questions associated with a given course
+	/**
+	 * Returns all questions associated with a given course
+	 * @param $courseID
+	 * @return array
+	 */
 	public function GetQuestions($courseID) {
 		$this->db->where('courseID', $courseID);
-		$this->db->order_by("questionOrder", "asc"); 
+		$this->db->order_by("questionOrder", "asc");
 
 		$query = $this->db->get('questions');
-		
+
 		if ($query->num_rows > 0) {
 			return $query->result();
 		} else {
 			return array();
-		}	
+		}
 	}
-	
-	//Delete all questions for a given course with a question order equal to or higher than that given 
+
+	/**
+	 * Delete all questions for a given course with a question order equal to or higher than that given
+	 * @param $courseID
+	 * @param $questionOrder
+	 */
 	public function DeleteHigherQuestions($courseID, $questionOrder) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('questionOrder >=', $questionOrder);
 		$this->db->delete('questions');
 	}
 	
-	
-	//Add a new question to the questions table for a given course, or updates if it already exists 
+	/**
+	 * Add a new question to the questions table for a given course, or updates if it already exists
+	 * @param $courseID
+	 * @param $questionOrder
+	 * @param $questionText
+	 */
 	public function SaveQuestion($courseID, $questionOrder, $questionText) {
 		$this->db->where('courseID', $courseID);
 		$this->db->where('questionOrder', $questionOrder);
@@ -36,8 +51,8 @@ Class model_question extends CI_Model {
 		if ($query->num_rows > 0) {
 			$data = array(
 				'questionText' => $questionText,
-				);
-			
+			);
+
 			$this->db->where('courseID', $courseID);
 			$this->db->where('questionOrder', $questionOrder);
 			$this->db->update('questions', $data);
@@ -46,8 +61,8 @@ Class model_question extends CI_Model {
 				'courseID' => $courseID,
 				'questionOrder' => $questionOrder,
 				'questionText' => $questionText,
-				);
-			
+			);
+
 			$this->db->insert('questions', $data);
 		}
 	}

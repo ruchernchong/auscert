@@ -1,15 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class manageMember
+ */
 class manageMember extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_user');
-		$this->load->model('model_group');
-		$this->load->model('model_usergroup');
+		$this->load->model(
+			array(
+				'model_group', 'model_user', 'model_usergroup'
+			)
+		);
 	}
 
-	function _remap(){
+	/**
+	 *
+	 */
+	public function _remap() {
 		$method = $this->uri->segment(2);
 
 		switch ($method) {
@@ -30,7 +38,10 @@ class manageMember extends CI_Controller {
 		}
 	}
 
-	function index() {
+	/**
+	 *
+	 */
+	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$session_data = $this->session->userdata('logged_in');
 			$data['fname'] = $session_data['fname'];
@@ -90,8 +101,10 @@ class manageMember extends CI_Controller {
 		}
 	}
 
-    //assign users to a group
-	function addMembers() {
+	/**
+	 * Assigns users to a group
+	 */
+	public function addMembers() {
 		$usersArray = $this->input->post('userIDs');
 		$groupID = $this->input->post('groupID');
 
@@ -100,8 +113,10 @@ class manageMember extends CI_Controller {
 		}
 	}
 
-    //remove users from a group
-	function removeMembers() {
+	/**
+	 * Remove users from a group
+	 */
+	public function removeMembers() {
 		$usersArray = $this->input->post('userIDs');
 		$groupID = $this->input->post('groupID');
 
@@ -110,8 +125,12 @@ class manageMember extends CI_Controller {
 		}
 	}
 
-    //Helpful function for printing to console. Evoke with $this->debugConsole(value);
-	function debug($data) {
+
+	/**
+	 * Helpful function for printing to console. Evoke with $this->debugConsole(value);
+	 * @param $data
+	 */
+	public function debug($data) {
 		if (is_array($data)) {
 			$output = "<script>console.log('Debug Objects: " . implode( ',', $data) . "');</script>";
 		} else {

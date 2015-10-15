@@ -1,15 +1,22 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class home
+ */
 class home extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('model_course');
-		$this->load->model('model_user');
-		$this->load->model('model_usercourse');
-		$this->load->model('model_group');
+		$this->load->model(
+			array(
+				'model_course', 'model_group', 'model_user', 'model_usercourse'
+			)
+		);
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
 			$thisUserID = $this->session->userdata('logged_in')['userID'];
@@ -74,25 +81,30 @@ class home extends CI_Controller {
 
 			$this->load->view('header', $data);
 			$this->load->view('view_dashboard');
-			// $this->load->view("footer");
 		} else {
 			//If no session, redirect to login page
 			redirect('login', 'refresh');
 		}
 	}
 
-	//Enrol a user to a course
-	function EnrolToCourse() {
+	/**
+	 * Enrol a user to a course
+	 */
+	public function EnrolToCourse() {
 		$session_data = $this->session->userdata('logged_in');
+
 		$courseID = $this->uri->segment(2);
 		$this->model_usercourse->RegisterToCourse($session_data['userID'], $courseID);
 
 		redirect('home', 'refresh');
 	}
 
-	//Drop a user from a course
-	function dropCourse() {
+	/**
+	 * Drop a user from a course
+	 */
+	public function dropCourse() {
 		$session_data = $this->session->userdata('logged_in');
+
 		$courseID = $this->uri->segment(2);
 		$this->model_usercourse->DropFromCourse($session_data['userID'], $courseID);
 

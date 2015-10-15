@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class account
+ */
 class account extends CI_Controller {
 	function __construct() {
 		parent::__construct();
@@ -7,6 +10,9 @@ class account extends CI_Controller {
 		$this->load->model('model_user');
 	}
 
+	/**
+	 *
+	 */
 	public function index() {
 		$session_data = $this->session->userdata('logged_in');
 		$data['userID'] = $session_data['userID'];
