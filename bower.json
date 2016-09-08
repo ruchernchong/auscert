@@ -1,0 +1,17 @@
+{
+  "name": "auscert",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Ru Chern <iruchern@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ruchern/auscert",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
