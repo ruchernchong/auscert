@@ -11,8 +11,8 @@
     <title>AusCert | Tartiner Studios</title>
 
     <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet"/>
-    <link href="{{ url('/css/sb-admin.css') }}" rel="stylesheet"/>
-    <link href="{{ url('/css/sb-admin-rtl.css') }}" rel="stylesheet"/>
+    <link href="{{ url('/css/custom.css') }}" rel="stylesheet"/>
+    {{--<link href="{{ url('/css/sb-admin-rtl.css') }}" rel="stylesheet"/>--}}
     <link href="{{ url('/css/quiz.css') }}" rel="stylesheet"/>
     <link href="{{ url('/css/jquery-ui.min.css') }}" rel="stylesheet"/>
     <link href="{{ url('/css/email.css') }}" rel="stylesheet"/>
@@ -37,10 +37,11 @@
         $(".loader").fadeOut("slow");
     });
 </script>
-@include('dashboard.header')
+@include('dashboard.layouts.header')
 
 @yield('content')
 
+@include('dashboard.layouts.footer')
 <!-- Scripts -->
 <script src="{{ url('/js/app.js') }}"></script>
 </body>
