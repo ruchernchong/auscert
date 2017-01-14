@@ -21,7 +21,7 @@ class CreateCoursesTable extends Migration
             $table->longText('description');
             $table->string('creator');
             $table->unsignedInteger('passPercentage')->default(50);
-            $table->unsignedInteger('version');
+            $table->unsignedInteger('version')->default(0);
             $table->boolean('active')->default(0);
             $table->timestamps();
             $table->softDeletes();
