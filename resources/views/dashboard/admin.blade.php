@@ -139,19 +139,19 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover">
                                     <tr>
-                                        <th>#</th>
+                                        <th>User ID</th>
                                         <th>Name</th>
                                         <th>Groups</th>
                                         <th>Email Address</th>
                                         <th>Contact No.</th>
                                         <th>Type</th>
+                                        <th>Date Joined</th>
                                         <th>Actions</th>
                                     </tr>
-                                    <?php $i = 1; ?>
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>
-                                                {{ $i++ }}
+                                                {{ $user->id }}
                                             </td>
                                             <td>
                                                 <span>{{ $user->first_name . ' ' . $user->last_name }}</span>
@@ -182,21 +182,27 @@
                                             <td>
                                                 {{ ucwords($user->type) }}
                                             </td>
+                                            <td>{{ date_format($user->created_at, 'M d, Y') }}</td>
                                             <td class="user-actions">
-                                                <a href="{{ url('manage_usercourse/' . $user['userID']) }}"
-                                                   class="btn btn-sm btn-success">
-                                                    <i class="fa fa-pencil"></i>&emsp;Manage Courses
+                                                <a href="{{ url('manage_usercourse/' . $user->id) }}"
+                                                   class="btn btn-sm btn-success"
+                                                   rel="tooltip"
+                                                   data-title="Manage Courses">
+                                                    <i class="fa fa-pencil"></i>&emsp;Courses
                                                 </a>
                                                 &nbsp;
-                                                <a href="{{ url('manage_usergroup/' . $user['userID']) }}"
-                                                   class="btn btn-sm btn-primary">
-                                                    <i class="fa fa-bar-chart-o"></i>&emsp;Manage Groups
+                                                <a href="{{ url('manage_usergroup/' . $user->id) }}"
+                                                   class="btn btn-sm btn-primary"
+                                                   rel="tooltip"
+                                                   data-title="Manage Groups">
+                                                    <i class="fa fa-bar-chart-o"></i>&emsp;Groups
                                                 </a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </table>
                             </div>
+                            {{ $users->links() }}
                         </div>
 
                         <div id="tab-groups" class="tab-pane fade">
@@ -287,7 +293,7 @@
         });
     </script>
     <script>
-        $(window).ready(function () {
+        $(document).ready(function () {
             document.title = "AusCert | Admin";
             $('[data-toggle="tooltip"]').tooltip();
             $('#pageAdmin').removeAttr('href');

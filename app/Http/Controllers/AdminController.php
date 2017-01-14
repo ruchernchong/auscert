@@ -24,7 +24,7 @@ class AdminController extends Controller
         $users = User::with(['userGroups' => function ($query)
         {
             $query->join('groups', 'groups.id', '=', 'user_groups.group_id')->orderBy('organisation');
-        }])->get();
+        }])->paginate(10);
 
         $courses = Course::orderBy('name', 'ASC')->get();
         $groups = Groups::with('userGroups')->orderBy('organisation')->get();
