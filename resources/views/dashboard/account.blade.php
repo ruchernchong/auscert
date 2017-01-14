@@ -29,6 +29,9 @@
                                 {{ empty($user->UQ_id) ? 'You do not have a valid UQ ID' : 'Your UQ ID: ' . $user->UQ_id }}
                             </span>
                         </label>
+                        <p>
+                            <small>Member since {{ date_format($user->created_at, 'M d, Y') }}</small>
+                        </p>
                     </div>
                     <div class="form-group">
                         <label>Registered Faculties and/or Groups:&emsp;</label>
@@ -182,8 +185,6 @@
             $("#changeEmailForm").css("display", "none");
 
             $('[data-toggle="tooltip"]').tooltip();
-            $('#pageAccount').parent('li').addClass('active');
-//            $('#pageAccount').removeAttr('href');
         });
 
         /**

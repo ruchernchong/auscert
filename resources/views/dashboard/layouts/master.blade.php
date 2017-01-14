@@ -19,6 +19,7 @@
     <link href="{{ url('/css/font-awesome.min.css') }}" rel="stylesheet"/>
     <link href="{{ url('/css/course.css') }}" rel="stylesheet"/>
     <link href="{{ url('/css/jquery.notifyBar.css') }}" rel="stylesheet"/>
+    <link href="{{ url('/css/sweetalert2.min.css') }}" rel=" stylesheet"/>
 
     <script src="{{ url('/js/jquery.min.js') }}"></script>
     <script src="{{ url('/js/bootstrap.min.js') }}"></script>
@@ -28,6 +29,7 @@
     <script src="{{ url('/js/jquery-ui.min.js') }}"></script>
     <script src="{{ url('/js/course.js') }}"></script>
     <script src="{{ url('/js/jquery.notifyBar.js') }}"></script>
+    <script src="{{ url('/js/sweetalert2.min.js') }}"></script>
 </head>
 <body>
 <div id="loader"></div>
@@ -44,5 +46,11 @@
 @include('dashboard.layouts.footer')
 <!-- Scripts -->
 <script src="{{ url('/js/app.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        var url = $(location).attr('href');
+        $('a[href="' + url + '"]').parent('li').addClass('active');
+    });
+</script>
 </body>
 </html>

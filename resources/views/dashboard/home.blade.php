@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('dashboard.layouts.master')
 
 @section('content')
     {{--@if ($this->session->flashdata('denied'))--}}
