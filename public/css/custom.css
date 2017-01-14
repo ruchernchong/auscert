@@ -3,7 +3,6 @@
 * Code licensed under the Apache License v2.0.
 * For details, see http://www.apache.org/licenses/LICENSE-2.0.
 */
-
 /* Global Styles */
 @import url('//fonts.googleapis.com/css?family=Lato');
 
@@ -12,12 +11,14 @@ body {
     padding-top: 70px;
     background-color: #fff;
 }
+
 /*mobile-width*/
-@media(min-width:768px) {
+@media (min-width: 768px) {
     body {
         /*margin-top: 50px;*/
         /*padding-top: 90px;*/
     }
+
     #dropdownMenu {
         /*display: none;*/
     }
@@ -29,44 +30,44 @@ body {
 }
 
 .top-nav {
-    padding: 10px ;
+    padding: 10px;
 }
 
-.top-nav>li {
+.top-nav > li {
     display: inline-block;
     float: left;
 }
 
-.top-nav>li>a {
+.top-nav > li > a {
     padding-top: 15px;
     padding-bottom: 10px;
     line-height: 20px;
     /*color: #999;*/
-    color:white;
+    color: white;
 }
 
-.top-nav>li>a:hover,
-.top-nav>li>a:focus,
-.top-nav>.open>a,
-.top-nav>.open>a:hover,
-.top-nav>.open>a:focus {
+.top-nav > li > a:hover,
+.top-nav > li > a:focus,
+.top-nav > .open > a,
+.top-nav > .open > a:hover,
+.top-nav > .open > a:focus {
     color: #fff;
     background-color: #5cb85c;
 }
 
-.top-nav>.open>.dropdown-menu {
+.top-nav > .open > .dropdown-menu {
     float: left;
     position: absolute;
     margin-top: 0;
-    border: 1px solid rgba(0,0,0,.15);
+    border: 1px solid rgba(0, 0, 0, .15);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     background-color: #fff;
-    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
 
-.top-nav>.open>.dropdown-menu>li>a {
+.top-nav > .open > .dropdown-menu > li > a {
     white-space: normal;
 }
 
@@ -79,10 +80,10 @@ ul.message-dropdown {
 
 li.message-preview {
     width: 275px;
-    border-bottom: 1px solid rgba(0,0,0,.15);
+    border-bottom: 1px solid rgba(0, 0, 0, .15);
 }
 
-li.message-preview>a {
+li.message-preview > a {
     padding-top: 15px;
     padding-bottom: 15px;
 }
@@ -99,7 +100,7 @@ ul.alert-dropdown {
     width: 225px;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
     .side-nav {
         position: absolute;
         top: 0;
@@ -108,11 +109,11 @@ ul.alert-dropdown {
         padding: 0;
         list-style: none;
         padding-bottom: 40px;
-        border:none;
+        border: none;
         border-radius: 0;
     }
 
-    .side-nav>li>a {
+    .side-nav > li > a {
         width: 225px;
     }
 
@@ -121,54 +122,62 @@ ul.alert-dropdown {
         background-color: #fff !important;
     }
 }
+
 .side-nav .side-nav-search {
     padding: 15px;
 }
+
 .sidebar .arrow {
     float: right;
 }
 
-.side-nav>li>ul {
+.side-nav > li > ul {
     padding: 0;
 }
+
 .side-nav {
     color: #FFFFFF;
 }
-.side-nav>li>ul>li>a {
+
+.side-nav > li > ul > li > a {
     display: block;
     padding: 10px 15px 10px 38px;
     text-decoration: none;
     color: #999;
-    background-color:#fff;
+    background-color: #fff;
 }
-.side-nav>li>ul>li>ul>li>a {
+
+.side-nav > li > ul > li > ul > li > a {
     display: block;
     padding: 10px 15px 10px 48px;
     text-decoration: none;
     color: black;
-    background-color:#fff;
+    background-color: #fff;
 }
-.side-nav>li>ul>li>ul {
+
+.side-nav > li > ul > li > ul {
     list-style-type: none;
     padding: 0;
 }
 
-.side-nav>li>ul>li>a:hover,.side-nav>li>ul>li>a:focus {
+.side-nav > li > ul > li > a:hover, .side-nav > li > ul > li > a:focus {
     color: #fff;
-}
-.navbar-inverse .navbar-nav .phis .phistol> .active>a,.navbar-inverse .navbar-nav .phis> .active>a{
-    color:#fff;
-    background-color:#5cb85c;
 }
 
-.side-nav>li>ul>li>ul>li>a:hover,.side-nav>li>ul>li>ul>li>a:focus {
+.navbar-inverse .navbar-nav .phis .phistol > .active > a, .navbar-inverse .navbar-nav .phis > .active > a {
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.side-nav > li > ul > li > ul > li > a:hover, .side-nav > li > ul > li > ul > li > a:focus {
     color: #fff;
 }
-.navbar-header a
-{
-    color:#fff;
+
+.navbar-header a {
+    color: #fff;
 }
-@media(min-width:768px) {
+
+@media (min-width: 768px) {
     body {
         width: 95%;
         margin: 0 auto;
@@ -177,21 +186,19 @@ ul.alert-dropdown {
     /*#wrapper.toggled {*/
     /*padding-left: 0;*/
     /*}*/
-
     /*#wrapper.toggled #sidebar-wrapper {*/
     /*width: 0;*/
     /*}*/
-
     /*#page-content-wrapper {*/
     /*padding: 20px;*/
     /*position: relative;*/
     /*}*/
-
     /*#wrapper.toggled #page-content-wrapper {*/
     /*position: relative;*/
     /*margin-right: 0;*/
     /*}*/
 }
+
 /* Flot Chart Containers */
 
 .flot-chart {
@@ -263,42 +270,48 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
-.navbar-fixed-top
-{
+
+.navbar-fixed-top {
     background-color: #49075e;
     padding: 10px;
 }
-.navbar-inverse .navbar-nav>li>a {
+
+.navbar-inverse .navbar-nav > li > a {
     color: #fff;
 }
-.navbar-inverse .navbar-nav>.open>a,
-.navbar-inverse .navbar-nav>.open>a:focus,
-.navbar-inverse .navbar-nav>.open>a:hover {
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .open > a:hover {
     background-color: #5cb85c;
 }
+
 .uq-logo {
     margin: -10px 0 0 -5px;
-    height:40px;
+    height: 40px;
 }
+
 .auscert-logo {
     margin-left: 15px;
 }
+
 .img-circle {
     width: 100px;
     height: 100px;
     padding: 5px;
 }
-.photo
-{
+
+.photo {
     /*margin-left:10px;*/
     text-align: center;
-    padding-bottom:10px;
+    padding-bottom: 10px;
 }
-#icon1{
-    position:fixed;
-    top:20px;
-    left:225px;
-    color:#fff;
+
+#icon1 {
+    position: fixed;
+    top: 20px;
+    left: 225px;
+    color: #fff;
 }
 
 .side-nav .side-user .welcome {
@@ -316,7 +329,7 @@ ul.alert-dropdown {
 }
 
 .topic {
-    float:right;
+    float: right;
 }
 
 .project-list table tr td {
@@ -348,8 +361,8 @@ ul.alert-dropdown {
 
 .panel-heading .accordion-toggle:after {
     /* symbol for "opening" panels */
-    font-family: FontAwesome;  /* essential for enabling glyphicon */
-    content: "\f078";    /* adjust as needed, taken from bootstrap.css */
+    font-family: FontAwesome; /* essential for enabling glyphicon */
+    content: "\f078"; /* adjust as needed, taken from bootstrap.css */
     display: inline-block;
     float: right;
     margin-top: 0px;
@@ -359,11 +372,11 @@ ul.alert-dropdown {
 
 .panel-heading .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
-    content: "\f077";    /* adjust as needed, taken from bootstrap.css */
+    content: "\f077"; /* adjust as needed, taken from bootstrap.css */
 }
 
-.quiz p{
-    padding-bottom:30px;
+.quiz p {
+    padding-bottom: 30px;
 }
 
 .clients-list {
@@ -387,17 +400,17 @@ ul.alert-dropdown {
 }
 
 .nav-tabs > li {
-    position:relative;
+    position: relative;
 }
 
 .nav-tabs > li > a {
-    display:inline-block;
+    display: inline-block;
 }
 
 .nav-tabs > li > span {
-    display:none;
-    cursor:pointer;
-    position:absolute;
+    display: none;
+    cursor: pointer;
+    position: absolute;
     top: 0;
     right: 10px;
     color: red;
@@ -408,13 +421,13 @@ ul.alert-dropdown {
 }
 
 .extraQuizTemplate {
-    display:none;
-    padding:10px
+    display: none;
+    padding: 10px
 }
 
 .aw {
-    margin-top:10px;
-    margin-bottom:50px;
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 #container {
@@ -428,6 +441,7 @@ body::-webkit-scrollbar {
 ::-webkit-scrollbar {
     width: 12px;
 }
+
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -612,6 +626,7 @@ input[type=checkbox].customCheckBox:focus ~ label {
     padding: 15px;
     padding-top: 0;
 }
+
 .panel-announcement .body {
     height: 375px;
 }
@@ -624,12 +639,12 @@ input[type=checkbox].customCheckBox:focus ~ label {
 
 }
 
-.table>tbody>tr>td,
-.table>tbody>tr>th,
-.table>tfoot>tr>td,
-.table>tfoot>tr>th,
-.table>thead>tr>td,
-.table>thead>tr>th {
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
     vertical-align: middle;
 }
 
@@ -660,13 +675,13 @@ input[type=checkbox].customCheckBox:focus ~ label {
     transition: all 0.3s linear;
 }
 
-.navbar-inverse .navbar-nav>.active>a,
-.navbar-inverse .navbar-nav>.active>a:focus,
-.navbar-inverse .navbar-nav>.active>a:hover,
-.navbar-inverse .navbar-nav>li>a:hover {
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > li > a:hover {
     /*font-weight: bold;*/
     /*background: rgba(255,255,255,0.5);*/
-    background: rgba(36,3,47,0.5);
+    background: rgba(36, 3, 47, 0.5);
     border-radius: 10px;
     -webkit-transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
@@ -684,27 +699,32 @@ input[type=checkbox].customCheckBox:focus ~ label {
     margin: 0 auto;
     border-left: 1px solid #fff;
 }
+
 .navbar-inverse .navbar-brand {
     color: #fff;
     font-size: 1.5em;
 }
+
 #tartiner-logo {
     font-family: 'Lato';
     font-size: 1.3em;
     font-weight: bold;
 }
+
 /* Paste this css to your style sheet file or under head tag */
 /* This only works with JavaScript,
 if it's not present, don't show loader */
 .no-js #loader {
     display: none;
 }
+
 .js #loader {
     display: block;
     position: absolute;
     left: 100px;
     top: 0;
 }
+
 .loader {
     position: fixed;
     left: 0px;
@@ -724,4 +744,12 @@ if it's not present, don't show loader */
 #changePasswordForm,
 #changeContactNoForm {
     display: none;
+}
+
+.footer {
+    position: absolute;
+    padding: 50px 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
 }
