@@ -355,8 +355,9 @@ section.login {
     background-position: bottom;
 }
 
-input[type="email"],
-input[type="password"] {
+section.login input[type=text],
+section.login input[type=email],
+section.login input[type=password] {
     background-color: rgba(255, 255, 255, 0.05);
     border: 0;
     /*border-bottom: 2px solid #ffffff;*/
