@@ -67,4 +67,17 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Override function
+     *
+     * Temporarily close the registration form.
+     *
+     * @return mixed
+     */
+    protected function showRegistrationForm()
+    {
+        return redirect()->route('login')
+            ->withErrors('Registering for an account is temporarily closed till further notice! Sorry for the inconvenience caused.');
+    }
 }
