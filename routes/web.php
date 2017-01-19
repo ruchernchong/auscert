@@ -1,5 +1,7 @@
 <?php
 
+Route::get('/', 'IndexController@index');
+
 Auth::routes();
 
 Route::group(['prefix' => 'dashboard'], function ()
