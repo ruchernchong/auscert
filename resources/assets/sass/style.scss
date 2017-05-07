@@ -1,0 +1,218 @@
+@import "email";
+@import "quiz";
+@import url(//fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans";
+  font-size: 14px;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  background: #000;
+}
+
+a {
+  color: #ccc;
+}
+
+*[data-href] {
+  cursor: pointer;
+}
+
+.content .title {
+  text-align: center;
+  font-size: 2.0rem;
+  font-weight: 600;
+  padding-bottom: 30px;
+}
+
+.group {
+  position: relative;
+}
+
+input {
+  width: 100%;
+  display: block;
+  background: transparent;
+  color: #fff;
+  font-size: 1em;
+  border: none;
+  padding: 10px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+label {
+  color: #fff;
+  font-size: 1em;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+input {
+  &:focus ~ label, &:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #5264ae;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.underline {
+  position: relative;
+  display: block;
+  width: 100%;
+  &:before, &:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: #a483ae;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  &:before {
+    left: 50%;
+  }
+  &:after {
+    right: 50%;
+  }
+}
+
+input:focus ~ .underline {
+  &:before, &:after {
+    width: 50%;
+  }
+}
+
+.no-js #loader {
+  display: none;
+}
+
+.js #loader {
+  display: block;
+  position: absolute;
+  left: 100px;
+  top: 0;
+}
+
+.loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  //background: url(../img/spinner.gif) center no-repeat #fff;
+}
+
+.tooltip {
+  width: auto;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-shadow: none;
+  font-size: 0.8em;
+  visibility: hidden;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  text-align: center;
+  opacity: 0;
+  z-index: 999;
+  padding: 3px 8px;
+  position: absolute;
+  top: auto;
+  left: auto;
+  bottom: auto;
+  cursor: default;
+  -webkit-transition: all 240ms ease-in-out;
+  -moz-transition: all 240ms ease-in-out;
+  -ms-transition: all 240ms ease-in-out;
+  -o-transition: all 240ms ease-in-out;
+  transition: all 240ms ease-in-out;
+}
+
+.on-focus .tooltip {
+  margin-top: -20px;
+}
+
+*:not(.on-focus):hover > .tooltip, .on-focus input:focus + .tooltip {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: all 240ms ease-in-out;
+  -moz-transition: all 240ms ease-in-out;
+  -ms-transition: all 240ms ease-in-out;
+  -o-transition: all 240ms ease-in-out;
+  transition: all 240ms ease-in-out;
+}
+
+*:not(.on-focus) > .tooltip {
+  display: block;
+}
+
+.on-focus > {
+  .tooltip {
+    display: block;
+    z-index: -1;
+  }
+  input:focus + .tooltip {
+    z-index: 1;
+  }
+}
+
+*:not(.on-focus) > .tooltip, .on-focus > .tooltip {
+  bottom: auto;
+}
+
+*:not(.on-focus):hover > .tooltip, .on-focus > input:focus + .tooltip {
+  bottom: auto;
+}
+
+::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+  color: #fff;
+}
+
+input:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+  &:hover, &:focus, &:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+section.login {
+  min-height: 100%;
+  background-color: #49075e;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom;
+  input {
+    &[type=text], &[type=email], &[type=password] {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 0;
+    }
+  }
+}

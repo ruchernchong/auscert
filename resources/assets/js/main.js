@@ -1,9 +1,3 @@
-$(window).on('load', function () {
-    // Animate loader off screen
-    $(".loader").fadeOut("slow");
-});
-
-// Delete chapter
 $(".tab-content").on('click', ".chapter-delete", function () {
     var tabBar = $('#tab-bar');
     var tabContent = $(this).closest('.tab-pane');
@@ -26,7 +20,6 @@ $(".tab-content").on('click', ".chapter-delete", function () {
     }
 });
 
-// Move chapter right
 $(".tab-content").on('click', ".chapter-move-right", function () {
     var tabBar = $('#tab-bar');
     var tabContent = $(this).closest('.tab-pane');
@@ -44,7 +37,6 @@ $(".tab-content").on('click', ".chapter-move-right", function () {
     reorderChapter(-1, index);
 });
 
-// Move chaoter left
 $(".tab-content").on('click', ".chapter-move-left", function () {
     var tabBar = $('#tab-bar');
     var tabContent = $(this).closest('.tab-pane');
@@ -61,8 +53,6 @@ $(".tab-content").on('click', ".chapter-move-left", function () {
     reorderChapter(-1, index);
 });
 
-
-// Add chapter
 $("#add-chapter").click(function (e) {
     e.preventDefault();
 
@@ -115,12 +105,10 @@ $("#add-chapter").click(function (e) {
 
 });
 
-// Shows the tab with a given id
 function showTab(id) {
     $('.nav-tabs a[href="#chapter-' + id + '"]').tab('show');
 }
 
-// Dynamically update chapter titles
 $(".tab-content").on("keyup", ".chapter-title", function () {
     var id = ($(this).attr('id').match(/\d+/)[0]) * 1;
 
@@ -133,13 +121,6 @@ $(".tab-content").on("focus", ".chapter-title", function () {
     $("#chapter-tab-" + id).html('<a href="#chapter-' + id + '" data-toggle="tab"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash;' + $("#title-" + (id)).val() + '</a>');
 });
 
-//$("#btnResetCourseEdit").on("click", ".chapter-title", function(e) {
-//	var id = ($(this).attr("id").match(/\d+/)[0]) * 1;
-//
-//	$("#chapter-tab-" + id).html('<a href=#chapter-' + id + '" data-toggle="tab"><i class="fa fa-book"></i>&emsp;' + (id + 1) + ' &mdash;' + $("#title-" + (id)).val() + '</a>');
-//});
-
-// Delete question script, cascade order to following questions
 $("#course-quiz").on("click", ".delete-question", function () {
     var $target = $(this).closest(".form-group");
     var targetNum = $target.attr('id').match(/\d+/)[0] * 1;
@@ -153,9 +134,6 @@ $("#course-quiz").on("click", ".delete-question", function () {
     var children = $("#course-quiz").children(".form-group");
     for (var i = targetNum; i < children.length; i++) {
         var curr = children.eq(i + 1);
-
-        //console.log('q-' + i);
-        //console.log(curr.attr('id'));
         curr.attr('id', 'q' + i);
 
         curr.find('h3').html('<h3><i class="fa fa-minus-square delete-question" style="color:red"></i> &emsp; Question ' + (i + 1) + '</h3>');
@@ -177,7 +155,6 @@ $("#course-quiz").on("click", ".delete-question", function () {
     }
 });
 
-// Delete answer script, cascade order to following answers
 $("#course-quiz").on("click", ".delete-answer", function () {
     var $question = $(this).closest(".form-group");
     var questionNumber = $(this).closest(".form-group").attr('id').match(/\d+/)[0] * 1;
@@ -203,7 +180,6 @@ $("#course-quiz").on("click", ".delete-answer", function () {
     $("#add-answer-" + questionNumber).show('fast');
 });
 
-// Adds a new answer to a question
 $("#course-quiz").on("click", ".add-answer", function (e) {
     e.preventDefault();
     console.log('ping');
@@ -241,7 +217,6 @@ $("#course-quiz").on("click", ".add-answer", function (e) {
 
 });
 
-// Adds a new question to the course
 $("#add-question").click(function (e) {
     e.preventDefault();
 
@@ -306,7 +281,6 @@ $("#add-question").click(function (e) {
 });
 
 
-//Ajax method for handling course status based on the state of the checkbox
 $(".courseActive").click(function () {
     if ($(this).prop('checked') == true) {
         var courseID = $(this).attr('id').match(/\d+/)[0] * 1;
@@ -341,7 +315,6 @@ $(".courseActive").click(function () {
     }
 });
 
-// Click handler for the 'next' button
 $('#next').click(function (e) {
     $target = $('#current-question');
 
@@ -376,7 +349,6 @@ $('#next').click(function (e) {
     e.preventDefault();
 });
 
-// Click handler for the 'next' button
 $('#prev').click(function (e) {
     $target = $('#current-question');
 
@@ -432,5 +404,178 @@ $(function () {
 
         $('.nav a[href="#' + id + '"]').tab('show');
         $('#userInput').valid();
+    });
+});
+
+(function () {
+    var questions = [{
+        question: "What is 2*5?",
+        choices: [2, 5, 10, 15],
+        correctAnswer: 2
+    },
+        {
+            question: "What is 3*6?",
+            choices: [3, 6, 9, 18],
+            correctAnswer: 3
+        },
+        {
+            question: "What is 8*9?",
+            choices: [72, 99, 108, 134],
+            correctAnswer: 0
+        },
+        {
+            question: "What is 1*7?",
+            choices: [4, 5, 6, 7],
+            correctAnswer: 3
+        },
+        {
+            question: "What is 8*8?",
+            choices: [20, 30, 40, 64],
+            correctAnswer: 3
+        }];
+
+    var questionCounter = 0;
+    var selections = [];
+    var quiz = $('#quiz');
+
+    displayNext();
+
+    $('#next').on('click', function (e) {
+        e.preventDefault();
+
+        if (quiz.is(':animated')) {
+            return false;
+        }
+        choose();
+
+        if (isNaN(selections[questionCounter])) {
+            alert('Please make a selection!');
+        } else {
+            questionCounter++;
+            displayNext();
+        }
+    });
+
+    $('#prev').on('click', function (e) {
+        e.preventDefault();
+
+        if (quiz.is(':animated')) {
+            return false;
+        }
+
+        choose();
+        questionCounter--;
+        displayNext();
+    });
+
+    $('#start').on('click', function (e) {
+        e.preventDefault();
+
+        if (quiz.is(':animated')) {
+            return false;
+        }
+
+        questionCounter = 0;
+        selections = [];
+        displayNext();
+
+        $('#start').hide();
+    });
+
+    $('.button').on('mouseenter', function () {
+        $(this).addClass('active');
+    });
+
+    $('.button').on('mouseleave', function () {
+        $(this).removeClass('active');
+    });
+
+    function createQuestionElement(index) {
+        var qElement = $('<div>',
+            {
+                id: 'question'
+            });
+
+        var header = $('<h1>Question ' + (index + 1) + ':</h2>');
+        qElement.append(header);
+
+        var question = $('<p>').append(questions[index].question);
+        qElement.append(question);
+
+        var radioButtons = createRadios(index);
+        qElement.append(radioButtons);
+
+        return qElement;
+    }
+
+    function createRadios(index) {
+        var radioList = $('<ul>');
+        var item;
+        var input = '';
+
+        for (var i = 0; i < questions[index].choices.length; i++) {
+            item = $('<li>');
+            input = '<input type="radio" name="answer" value=' + i + ' />';
+            input += questions[index].choices[i];
+            item.append(input);
+            radioList.append(item);
+        }
+        return radioList;
+    }
+
+    function choose() {
+        selections[questionCounter] = +$('input[name="answer"]:checked').val();
+    }
+
+    function displayNext() {
+        quiz.fadeOut(function () {
+            $('#question').remove();
+
+            if (questionCounter < questions.length) {
+                var nextQuestion = createQuestionElement(questionCounter);
+
+                quiz.append(nextQuestion).fadeIn();
+
+                if (!(isNaN(selections[questionCounter]))) {
+                    $('input[value=' + selections[questionCounter] + ']').prop('checked', true);
+                }
+
+                // Controls display of 'prev' button
+                if (questionCounter === 1) {
+                    $('#prev').show();
+                } else if (questionCounter === 0) {
+                    $('#prev').hide();
+                    $('#next').show();
+                }
+            } else {
+                var scoreElem = displayScore();
+
+                quiz.append(scoreElem).fadeIn();
+                $('#next').hide();
+                $('#prev').hide();
+                $('#start').show();
+            }
+        });
+    }
+
+    function displayScore() {
+        var score = $('<p>', {id: 'question'});
+        var numCorrect = 0;
+
+        for (var i = 0; i < selections.length; i++) {
+            if (selections[i] === questions[i].correctAnswer) {
+                numCorrect++;
+            }
+        }
+
+        score.append('You got ' + numCorrect + ' questions out of ' + questions.length + ' correct!');
+        return score;
+    }
+})();
+
+$(function () {
+    $('*[data-href]').click(function () {
+        window.location = $(this).data('href');
+        return false;
     });
 });
