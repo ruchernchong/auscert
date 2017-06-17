@@ -21,7 +21,7 @@
             }
         },
         mounted() {
-            axios.get('/data/help.json').then(response => this.items = response.data)
+            axios.get('../data/help.json').then(response => this.items = response.data)
         }
     }
 </script>
