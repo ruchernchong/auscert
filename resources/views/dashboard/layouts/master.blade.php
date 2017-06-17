@@ -3,54 +3,43 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="description" content="Cyber Security online training system for a business context."/>
     <meta name="author" content="Tartiner Studios"/>
-    <link rel="shortcut icon" href="{{ url('/img/favicon.png') }}"/>
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
 
-    <title>AusCert | Tartiner Studios</title>
+    <title>@yield('title') | Tartiner Studios</title>
 
-    <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet"/>
-    <link href="{{ url('/css/custom.css') }}" rel="stylesheet"/>
-    {{--<link href="{{ url('/css/sb-admin-rtl.css') }}" rel="stylesheet"/>--}}
-    <link href="{{ url('/css/quiz.css') }}" rel="stylesheet"/>
-    <link href="{{ url('/css/jquery-ui.min.css') }}" rel="stylesheet"/>
-    <link href="{{ url('/css/email.css') }}" rel="stylesheet"/>
-    <link href="{{ url('/css/font-awesome.min.css') }}" rel="stylesheet"/>
-    <link href="{{ url('/css/course.css') }}" rel="stylesheet"/>
-    <link href="{{ url('/css/jquery.notifyBar.css') }}" rel="stylesheet"/>
-    <link href="{{ url('/css/sweetalert2.min.css') }}" rel=" stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <script src="{{ url('/js/jquery.min.js') }}"></script>
-    <script src="{{ url('/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ url('/ckeditor/adapters/jquery.js') }}"></script>
-    <script src="{{ url('/js/quiz.js') }}"></script>
-    <script src="{{ url('/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ url('/js/course.js') }}"></script>
-    <script src="{{ url('/js/jquery.notifyBar.js') }}"></script>
-    <script src="{{ url('/js/sweetalert2.min.js') }}"></script>
+    {{--<link href="{{ asset('/css/custom.css') }}" rel="stylesheet"/>--}}
+    {{--<link href="{{ asset('/css/quiz.css') }}" rel="stylesheet"/>--}}
+    {{--<link href="{{ asset('/css/jquery-ui.min.css') }}" rel="stylesheet"/>--}}
+    {{--<link href="{{ asset('/css/email.css') }}" rel="stylesheet"/>--}}
+    {{--<link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet"/>--}}
+    {{--<link href="{{ asset('/css/course.css') }}" rel="stylesheet"/>--}}
+    {{--<link href="{{ asset('/css/jquery.notifyBar.css') }}" rel="stylesheet"/>--}}
+    {{--<link href="{{ asset('/css/sweetalert2.min.css') }}" rel=" stylesheet"/>--}}
+    <script>
+        window.Laravel =  {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]); !!}
+    </script>
 </head>
 <body>
-<div id="loader"></div>
-<script>
-    $(window).on('load', function () {
-        // Animate loader off screen
-        $(".loader").fadeOut("slow");
-    });
-</script>
+@include('flash::message')
 @include('dashboard.layouts.header')
-
-@yield('content')
-
+<div id="app">
+    @yield('content')
+</div>
 @include('dashboard.layouts.footer')
-<!-- Scripts -->
-<script src="{{ url('/js/app.js') }}"></script>
-<script>
-    $(document).ready(function () {
-        var url = $(location).attr('href');
-        $('a[href="' + url + '"]').parent('li').addClass('active');
-    });
-</script>
+<script async src="{{ asset('js/app.js') }}"></script>
+{{--<script src="{{ asset('/ckeditor/ckeditor.js') }}"></script>--}}
+{{--<script src="{{ asset('/ckeditor/adapters/jquery.js') }}"></script>--}}
+{{--<script src="{{ asset('/js/quiz.js') }}"></script>--}}
+{{--<script src="{{ asset('/js/jquery-ui.min.js') }}"></script>--}}
+{{--<script src="{{ asset('/js/course.js') }}"></script>--}}
+{{--<script src="{{ asset('/js/jquery.notifyBar.js') }}"></script>--}}
+{{--<script src="{{ asset('/js/sweetalert2.min.js') }}"></script>--}}
 </body>
 </html>

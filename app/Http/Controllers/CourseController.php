@@ -9,17 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class CourseController extends Controller
 {
-    protected $user;
-
     /**
      * CourseController constructor.
-     * @param UserRepository $user
      */
-    function __construct(UserRepository $user)
+    public function __construct()
     {
         $this->middleware('admin');
-
-        $this->user = $user;
     }
 
     /**
@@ -53,8 +48,7 @@ class CourseController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return redirect()->back()
                 ->withInput()
                 ->withErrors($validator);

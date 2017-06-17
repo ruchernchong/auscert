@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
 class CheckIfAdmin
 {
@@ -16,12 +15,11 @@ class CheckIfAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->isAdmin())
-        {
+        if (auth()->check() && $request->user()->isSuperAdmin()) {
             return $next($request);
         }
 
-        return redirect()->action('HomeController@index')
-            ->withErrors('You do not have permission to use this feature. If you believe this is an error, please contact support.');
+        flash()->warning('You do not have permission to use this feature. If you believe this is an error, please contact support.');
+        return redirect()->route('dashboard');
     }
 }

@@ -204,6 +204,4 @@
 
     <!-- Theme JavaScript -->
     <script src="{{ url('/js/new-age.min.js') }}"></script>
-
-
 @endsection

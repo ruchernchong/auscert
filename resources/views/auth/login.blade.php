@@ -1,52 +1,54 @@
 @extends('layouts.master')
 
-@section('title', 'Login')
+@section('title'){{ 'Login' }}@stop
 
 @section('content')
-    <section class="login">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h1 class="page-header">Login</h1>
-                    @if(count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>{{ $errors->first() }}</strong>
-                        </div>
-                    @endif
-                    <form method="POST" id="formLogin" class="formLogin" name="formLogin" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input id="email" type="email" class="form-control" name="email"
+    <section>
+        <div class="uk-container">
+            <div class="uk-section uk-section-default uk-flex uk-flex-center uk-flex-middle" data-uk-height-viewport>
+                @if(count($errors) > 0)
+                    <div class="uk-alert uk-alert-danger">
+                        <strong>{{ $errors->first() }}</strong>
+                    </div>
+                @endif
+                <form class="uk-form-horizontal" id="formLogin" method="POST"
+                      action="{{ action('Auth\LoginController@login') }}">
+                    {{ csrf_field() }}
+
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-header"><h3 class="uk-card-title">Login</h3></div>
+                        <div class="uk-card-body">
+                            <div class="uk-margin">
+                                <div class="uk-inline">
+                                    <span class="uk-form-icon" data-uk-icon="icon: mail"></span>
+                                    <input type="email" name="email" class="uk-input" id="email"
+                                           placeholder="Email address"
                                            value="{{ old('email') }}" required autofocus>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input id="password" type="password" class="form-control" name="password" required>
+                            <div class="uk-margin">
+                                <div class="uk-inline-clip">
+                                    <span class="uk-form-icon" data-uk-icon="icon: lock"></span>
+                                    <input type="password" name="password" class="uk-input" id="password"
+                                           placeholder="Password" required>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Login</button>
-
-                                    <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your
-                                        Password?</a>
+                        <div class="uk-card-footer">
+                            <div class="uk-width-1-1@m">
+                                <div class="uk-margin">
+                                    <button type="submit" class="uk-button uk-button-primary">Login</button>
+                                    <a class="uk-button uk-button-link" href="{{ route('password.request') }}">
+                                        Forgot Your Password?</a>
                                 </div>
                                 <p>
                                     Did not receive your activation email? <a>Resend Activation Email</a>
                                 </p>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

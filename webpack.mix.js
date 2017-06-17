@@ -11,6 +11,7 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
     .sass('resources/assets/sass/style.scss', 'public/css')
 
 mix.copyDirectory('resources/assets/images', 'public/images')
+    .copyDirectory('resources/assets/data', 'public/data')
 
 if (mix.config.inProduction) {
     mix.version()

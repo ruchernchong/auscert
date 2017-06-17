@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\UserCourses;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,19 +23,17 @@ class HomeController extends Controller
      */
     protected function index()
     {
-        //                Auth::loginUsingId(2);
-
-        $user = User::findOrFail(Auth::user()->id);
+        $user = User::findOrFail(auth()->id());
 
         $userCourses = UserCourses::join('courses', 'courses.id', '=', 'user_courses.course_id')
             ->with('user')
-            ->where('user_id', Auth::user()->id)
+            ->where('user_id', auth()->id())
             ->get();
 
         $completedUserCourses = UserCourses::join('courses', 'courses.id', '=', 'user_courses.course_id')
             ->with('user')
             ->where('status', '=', 'Completed')
-            ->where('user_id', Auth::user()->id)
+            ->where('user_id', auth()->id())
             ->get();
 
         return view('dashboard.home', compact('user', 'userCourses', 'completedUserCourses'));

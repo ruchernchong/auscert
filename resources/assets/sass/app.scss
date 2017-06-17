@@ -1,3 +1,7 @@
 @import "~uikit/src/scss/variables-theme.scss";
 @import "~uikit/src/scss/mixins-theme.scss";
 @import "~uikit/src/scss/uikit-theme.scss";
+
+.uk-navbar-sticky {
+  box-shadow: 2px 15px 50px rgba(41, 44, 61, .1);
+}

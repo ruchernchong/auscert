@@ -1,18 +1,11 @@
 <?php
-
 Route::get('/', 'IndexController@index');
-
 Auth::routes();
 
-Route::group(['prefix' => 'dashboard'], function ()
-{
-    Route::get('/', 'HomeController@index');
-    Route::get('/account', 'AccountController@index');
-    Route::get('/help', 'HelpController@index');
-});
-
-Route::group(['prefix' => 'admin'], function ()
-{
-    Route::get('/', 'AdminController@index');
-    Route::resource('course', 'CourseController');
+Route::group(['prefix' => 'dashboard'], function () {
+    Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('accounts', 'AccountController');
+    Route::resource('admin', 'AdminController');
+    Route::resource('courses', 'CourseController');
+    Route::resource('help', 'HelpController');
 });

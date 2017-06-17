@@ -15,9 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'UQ_id', 'first_name', 'last_name', 'email', 'password', 'contact',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -31,18 +29,19 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     /**
+     * @return string
+     */
+    public function name()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
      * @return mixed
      */
-    public function isAdmin()
+    public function isSuperAdmin()
     {
-        if ($this->type == 'admin')
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return $this->type === 'admin';
     }
 
     /**

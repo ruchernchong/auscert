@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repositories\UserRepository;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
-    protected $user;
-
     /**
      * AccountController constructor.
-     * @param UserRepository $user
      */
-    function __construct(UserRepository $user)
+    public function __construct()
     {
         $this->middleware('auth');
-
-        $this->user = $user;
     }
 
     /**
@@ -26,12 +19,10 @@ class AccountController extends Controller
      */
     protected function index()
     {
-        $user = User::with(['userGroups' => function ($query)
-        {
+        $user = User::with(['userGroups' => function ($query) {
             $query->join('groups', 'groups.id', '=', 'user_groups.group_id');
-        }
-        ])->where('id', Auth::user()->id)->firstOrFail();
+        }])->findOrFail(auth()->id());
 
-        return view('dashboard.account', compact('user'));
+        return view('dashboard.account.index', compact('user'));
     }
 }
