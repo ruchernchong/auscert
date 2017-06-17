@@ -1,0 +1,22 @@
+[
+  {
+    "question": "How do I gain access to this application and begin taking courses?",
+    "answer": "Simply register an account. After verifying your email, you can immediately begin using the application."
+  },
+  {
+    "question": "How do I attempt a course?",
+    "answer": "To attempt a course, locate and click it in the yellow 'Course Progress' section of the dashboard page. Courses consist of a description, followed by a number of slides to teach content, and a quiz. All sections of a course are navigated to using the tabs located across the top when viewing a course. A course will be moved to the 'CompletedCourses' section once a passing grade has been achieved for the quiz."
+  },
+  {
+    "question": "Am I required to complete or pass all the courses assigned to me?",
+    "answer": "There will no penalties for users who failing to attempt or complete courses. However, users are highly recommended to complete all of the assigned courses to have an understanding of the possible cyber security threats."
+  },
+  {
+    "question": "Is there any deadline to complete my assigned course?",
+    "answer": "There is no deadline or time limit for the completion of any course enforced by the site."
+  },
+  {
+    "question": "How can I update the personal details linked to my account?",
+    "answer": "Both users and administrators can edit their personal details such as email, contact number and password by clicking on the 'My Account' tab."
+  }
+]
