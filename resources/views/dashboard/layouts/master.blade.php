@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="description" content="Cyber Security online training system for a business context."/>
     <meta name="author" content="Tartiner Studios"/>
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
+    <link rel="shortcut icon" href="{{ url(mix('images/favicon.png')) }}"/>
 
     <title>@yield('title') | Tartiner Studios</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
 
     <script>
         window.Laravel =  {!! json_encode([
@@ -25,6 +25,6 @@
     @yield('content')
 </div>
 @include('dashboard.layouts.footer')
-<script async src="{{ asset('js/app.js') }}"></script>
+<script async src="{{ url(mix('js/app.js')) }}"></script>
 </body>
 </html>
