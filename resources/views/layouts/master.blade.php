@@ -17,8 +17,9 @@
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 </head>
 <body>
+@include('layouts.header')
 @yield('content')
-@include('dashboard.layouts.footer')
 <script src="{{ url(mix('/js/app.js')) }}"></script>
+@include('layouts.footer')
 </body>
 </html>
