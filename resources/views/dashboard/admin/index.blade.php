@@ -1,43 +1,31 @@
 @extends('dashboard.layouts.master')
 
 @section('content')
-    <script>
-        $(document).ajaxStart(function () {
-            $("#loader").addClass("loader");
-            $(".loader").fadeIn("slow");
-        });
-
-        $(document).ajaxStop(function () {
-            $(".loader").fadeOut("slow");
-        });
-    </script>
-
     <!--Modal popup for delete course-->
-    <div id="adminModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-                    <h4></h4>
-                </div>
-                <div class="modal-body">
-                    <h5></h5>
-                    <h8 id="delName"></h8>
-                </div>
-                <div class="modal-footer">
-                    <a type="button" class="btn btn-success yesConfirm">Yes</a>
-                    <a type="button" class="btn btn-danger noConfirm" data-dismiss="modal">No</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--<div id="adminModal" class="modal fade" role="dialog">--}}
+    {{--<div class="modal-dialog">--}}
+    {{--<div class="modal-content">--}}
+    {{--<div class="modal-header">--}}
+    {{--<button class="close" data-dismiss="modal" aria-label="Close">&times;</button>--}}
+    {{--<h4></h4>--}}
+    {{--</div>--}}
+    {{--<div class="modal-body">--}}
+    {{--<h5></h5>--}}
+    {{--<h8 id="delName"></h8>--}}
+    {{--</div>--}}
+    {{--<div class="modal-footer">--}}
+    {{--<a type="button" class="btn btn-success yesConfirm">Yes</a>--}}
+    {{--<a type="button" class="btn btn-danger noConfirm" data-dismiss="modal">No</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Admin Page</h1>
-            </div>
-        </div>
+    <div class="uk-container">
+        <ul class="uk-breadcrumb">
+            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li><span>Admin</span></li>
+        </ul>
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">
