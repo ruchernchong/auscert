@@ -12,18 +12,10 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    {{--<link href="{{ asset('/css/custom.css') }}" rel="stylesheet"/>--}}
-    {{--<link href="{{ asset('/css/quiz.css') }}" rel="stylesheet"/>--}}
-    {{--<link href="{{ asset('/css/jquery-ui.min.css') }}" rel="stylesheet"/>--}}
-    {{--<link href="{{ asset('/css/email.css') }}" rel="stylesheet"/>--}}
-    {{--<link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet"/>--}}
-    {{--<link href="{{ asset('/css/course.css') }}" rel="stylesheet"/>--}}
-    {{--<link href="{{ asset('/css/jquery.notifyBar.css') }}" rel="stylesheet"/>--}}
-    {{--<link href="{{ asset('/css/sweetalert2.min.css') }}" rel=" stylesheet"/>--}}
     <script>
         window.Laravel =  {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]); !!}
+    'csrfToken' => csrf_token(),
+    ]); !!}
     </script>
 </head>
 <body>
@@ -34,12 +26,5 @@
 </div>
 @include('dashboard.layouts.footer')
 <script async src="{{ asset('js/app.js') }}"></script>
-{{--<script src="{{ asset('/ckeditor/ckeditor.js') }}"></script>--}}
-{{--<script src="{{ asset('/ckeditor/adapters/jquery.js') }}"></script>--}}
-{{--<script src="{{ asset('/js/quiz.js') }}"></script>--}}
-{{--<script src="{{ asset('/js/jquery-ui.min.js') }}"></script>--}}
-{{--<script src="{{ asset('/js/course.js') }}"></script>--}}
-{{--<script src="{{ asset('/js/jquery.notifyBar.js') }}"></script>--}}
-{{--<script src="{{ asset('/js/sweetalert2.min.js') }}"></script>--}}
 </body>
 </html>
