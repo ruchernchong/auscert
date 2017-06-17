@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="description" content="Cyber Security online training system for a business context."/>
     <meta name="author" content="Tartiner Studios"/>
-    <link rel="shortcut icon" href="{{ url(mix('images/favicon.png')) }}"/>
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
 
     <title>@yield('title') | Tartiner Studios</title>
 
