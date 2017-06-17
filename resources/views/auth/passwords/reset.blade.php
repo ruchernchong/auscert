@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Reset Password')
+@section('title'){{ 'Reset password' }}@stop
 
 @section('content')
     <section class="login">
