@@ -13,6 +13,6 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
 mix.copyDirectory('resources/assets/images', 'public/images')
     .copyDirectory('resources/assets/data', 'public/data')
 
-if (mix.config.inProduction) {
+if (mix.inProduction()) {
     mix.version()
 }
