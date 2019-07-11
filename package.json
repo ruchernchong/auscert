@@ -11,7 +11,7 @@
     "axios": "^0.18.1",
     "browser-sync": "^2.18.13",
     "browser-sync-webpack-plugin": "^1.2.0",
-    "jquery": "^3.2.1",
+    "jquery": "^3.4.0",
     "laravel-mix": "^1.6.1",
     "lodash": "^4.17.13",
     "uikit": "^3.0.0-beta.35",
